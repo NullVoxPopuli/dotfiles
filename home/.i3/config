@@ -149,3 +149,6 @@ bindsym $mod+u mode "resize"
 bar {
         status_command i3status
 }
+
+# Removes the titlebars from windows
+new_window 1pixel
