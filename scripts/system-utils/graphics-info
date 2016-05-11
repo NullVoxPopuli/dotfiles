@@ -1,0 +1,28 @@
+#!/bin/bash
+
+echo -e "\n\e[01;33mGraphics Card(s): \e[00m";
+lspci | grep VGA;
+
+echo -e "\n\e[01;33mConnected Monitors: \e[00m";
+egrep -i " connected|card detect|primary dev" /var/log/Xorg.0.log;
+
+echo -e "\n\e[01;33mCurrent Video Driver: \e[00m";
+lsmod | grep "kms\|drm";
+
+echo -e "\n\e[01;33mVideo Output Locations: \e[00m";
+find /dev -group video;
+
+echo -e "\n\e[01;33mGrub boot command: \e[00m";
+cat /proc/cmdline;
+
+echo -e "\n\e[01;33mmodprobe.d drivers: \e[00m";
+find /etc/modprobe.d/;
+
+echo -e "\n\e[01;33mDo we have a xorg.conf file?\e[00m";
+ls /etc/X11/xorg.conf;
+
+echo -e "\n\e[01;33mglxinfo: \e[00m";
+glxinfo | grep -i "vendor\|rendering";
+
+echo -e "\n\e[01;33mDrivers loaded by Xorg: \e[00m";
+grep LoadModule /var/log/Xorg.0.log;

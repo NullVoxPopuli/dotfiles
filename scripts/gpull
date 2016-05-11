@@ -1,0 +1,3 @@
+#!/bin/bash
+branchname=${1:-$(git describe --contains --all HEAD)}
+git pull --rebase origin $branchname
