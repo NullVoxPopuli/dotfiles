@@ -153,7 +153,11 @@ bar {
 # Removes the titlebars from windows
 new_window 1pixel
 
+# Turn off edge scrolling
+exec synclient HorizEdgeScroll=0 VertEdgeScroll=0
+
 # Disable Tap-To-Click (1 finger, 2 finger, 3 finger)
 exec synclient TapButton1=0 TapButton2=0 TapButton3=0
-synclient MaxTapTime=0
+exec synclient MaxTapTime=0
+
 
