@@ -152,3 +152,8 @@ bar {
 
 # Removes the titlebars from windows
 new_window 1pixel
+
+# Disable Tap-To-Click (1 finger, 2 finger, 3 finger)
+exec synclient TapButton1=0 TapButton2=0 TapButton3=0
+synclient MaxTapTime=0
+
