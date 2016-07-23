@@ -1,0 +1,5 @@
+#!/bin/bash
+rebaseAgainstBranch=${1:-master}
+numberOfCommits=$(git rev-list --count HEAD ^$rebaseAgainstBranch)
+echo "Squashing ${numberOfCommits} commits"
+git rebase -i HEAD~$numberOfCommits
