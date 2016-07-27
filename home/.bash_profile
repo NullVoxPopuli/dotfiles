@@ -14,6 +14,7 @@
 # handy aliases
 alias ll="ls -l"
 alias la="ls -la"
+alias docko="docker-compose"
 
 # tab completion
 if [ -f /etc/bash_completion ]; then
