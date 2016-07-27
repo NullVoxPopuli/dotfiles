@@ -1,6 +1,8 @@
 #!/bin/bash
 # by http://github.com/jehiah
-# this prints out some branch status (similar to the '... ahead' info you get from git status)
+# and https://gist.github.com/knovoselic/1a20dc28dbb0141fc176
+# this prints out some branch status
+# (similar to the '... ahead' info you get from git status)
 
 # example:
 # $ git branch-status
