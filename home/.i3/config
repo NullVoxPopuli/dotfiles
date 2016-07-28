@@ -160,4 +160,8 @@ exec synclient HorizEdgeScroll=0 VertEdgeScroll=0
 exec synclient TapButton1=0 TapButton2=0 TapButton3=0
 exec synclient MaxTapTime=0
 
+# Volume Control (ALSA - uses media keys)
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
