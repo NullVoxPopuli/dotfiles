@@ -16,7 +16,6 @@ E=$'\e[0m'
 
 while read local remote
 do
-    [ -z "$remote" ] && continue
     git rev-list --left-right ${local}...${remote} -- 2>/dev/null >/tmp/git_upstream_status_delta || continue
     LEFT_AHEAD=$(grep -c '^<' /tmp/git_upstream_status_delta)
     RIGHT_BEHIND=$(grep -c '^>' /tmp/git_upstream_status_delta)
