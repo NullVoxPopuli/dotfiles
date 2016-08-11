@@ -1,1 +1,4 @@
-netstat -atp tcp | grep -i "listen"
+#!/bin/bash
+# old command
+# netstat -atp tcp | grep -i "listen"
+sudo netstat -nlp | grep -i "listen" | grep tcp
