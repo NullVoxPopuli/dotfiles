@@ -1,0 +1,55 @@
+# Your keymap
+#
+# Atom keymaps work similarly to style sheets. Just as style sheets use
+# selectors to apply styles to elements, Atom keymaps use selectors to associate
+# keystrokes with events in specific contexts.
+#
+# You can create a new keybinding in this file by typing "key" and then hitting
+# tab.
+#
+# Here's an example taken from Atom's built-in keymap:
+#
+# 'atom-text-editor':
+#   'enter': 'editor:newline'
+#
+# 'atom-workspace':
+#   'ctrl-shift-p': 'core:move-up'
+#   'ctrl-p': 'core:move-down'
+#
+# You can find more information about keymaps in these guides:
+# * https://atom.io/docs/latest/customizing-atom#customizing-key-bindings
+# * https://atom.io/docs/latest/advanced/keymaps
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it here:
+# https://github.com/bevry/cson#what-is-cson
+#
+# See: https://gist.github.com/BinaryMuse/621bf3e66a66876e4d78
+#      - (Handy Shortcuts)
+#
+'atom-workspace atom-text-editor':
+  'ctrl alt-down':   'pane:split-down-and-move-active-item'
+  'ctrl alt-left':   'pane:split-left-and-move-active-item'
+  'ctrl alt-right':  'pane:split-right-and-move-active-item'
+  'ctrl alt-up':     'pane:split-up-and-move-active-item'
+  'ctrl-shift-up':   'editor:add-selection-above'
+  'ctrl-shift-down': 'editor:add-selection-below'
+  # alt-enter converts search results into selections
+
+  # ctrl+k + ctrl+direction navigates panes
+  # but that's too many keystrokes, therefore:
+  'alt-left':        'window:focus-pane-on-left'
+  'alt-down':        'window:focus-pane-below'
+  'alt-right':       'window:focus-pane-on-right'
+  'alt-up':          'window:focus-pane-above'
+
+  # pane moving
+  'alt-shift-left':  'window:move-active-item-to-pane-on-left'
+  'alt-shift-right': 'window:move-active-item-to-pane-on-right'
+  'alt-shift-up':    'window:move-active-item-to-pane-above'
+  'alt-shift-down':  'window:move-active-item-to-pane-below'
+
+# reset / clear default keybindings, cause we don't like them
+'atom-workspace atom-text-editor:not([mini])':
+  'alt-shift-down': 'native!'
+  'alt-shift-up': 'native!'
