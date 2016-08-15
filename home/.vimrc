@@ -46,12 +46,6 @@ Bundle 'gabrielelana/vim-markdown'
 Bundle 'takac/vim-hardtime'
 
 
-" Typescript
-" Plugin 'leafgarland/typescript-vim'
-
-" Jade/Pug
-" Plugin 'digitaltoad/vim-pug'
-
 call vundle#end()
 
 filetype plugin indent on
@@ -81,29 +75,11 @@ set foldlevel=99
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+%/
 
-" Python Exclusive Settings
-au BufNewFile,BufRead *.py
-	\ set tabstop=4 |
-	\ set softtabstop=4 |
-	\ set shiftwidth=4 |
-	\ set expandtab |
-	\ set fileformat=unix |
-
-" Typescript and Javascript
-au BufNewFile,BufRead *.ts,*.js,*.jade,*.scss,*.css,*.html
-	\ set tabstop=2 |
-	\ set softtabstop=2 |
-	\ set shiftwidth=2 |
 
 " YouCompleteMe Space+G go-to-definition
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" Python Highlighting
-let python_highlight_all=1
-
-let NERDTreeIgnore=['\.pyc$', '\~$', '__pycache__']
-let g:typescript_indent_disable = 1
 
 " Nerdtree configuration
 augroup appearance
