@@ -4,27 +4,53 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" General 
-Plugin 'scrooloose/nerdtree' 
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'kien/ctrlp.vim'
+"""""""""
+" General
+"""""""""
+" Git Commands from Vim
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" File / Project Browsing
+Plugin 'scrooloose/nerdtree' 
 Plugin 'scrooloose/nerdtree-git-plugin'
 Plugin 'jistr/vim-nerdtree-tabs'
+" Fuzzy File FInder
+Plugin 'kien/ctrlp.vim'
 
-" Python
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
+""""""
+" Ruby
+""""""
+Bundle 'vim-ruby/vim-ruby'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'tpope/vim-rake'
+
+""""""""""""
+" Javascript
+""""""""""""
+Plugin 'pangloss/vim-javascript'
+
+"React
+Plugin 'mxw/vim-jsx'
+
+"Ember
+Plugin 'dsawardekar/ember.vim'
+Plugin 'nono/vim-handlebars'
+
+"""""""
+" Other
+"""""""
+Plugin 'elzr/vim-json'
+Bundle 'gabrielelana/vim-markdown'
+" Vim (Hard Mode) - Forces better Navigation
+" let g:hardtime_default_on = 1
+Bundle 'takac/vim-hardtime'
+
 
 " Typescript
-Plugin 'leafgarland/typescript-vim'
+" Plugin 'leafgarland/typescript-vim'
 
 " Jade/Pug
-Plugin 'digitaltoad/vim-pug'
+" Plugin 'digitaltoad/vim-pug'
 
 call vundle#end()
 
@@ -35,9 +61,14 @@ syntax on
 set laststatus=2
 set number						" Enables Line numbers
 set t_Co=256					" 256 Terminal Colors
-let g:solarized_termcolors=256  " Force solarized to use 256 colors
+" let g:solarized_termcolors=256  " Force solarized to use 256 colors
 set background=dark				" Dark mode
-colorscheme solarized 			" Use solarized font
+
+" colorscheme solarized 			" Use solarized font
+colorscheme molokai
+let g:molokai_original=1
+let g:rehash256 = 1
+
 set ruler						
 set autoindent
 set smartindent
