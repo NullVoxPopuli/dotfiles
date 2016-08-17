@@ -26,6 +26,9 @@ Plugin 'kien/ctrlp.vim'
 " White space highlighter
 Plugin 'ntpeters/vim-better-whitespace'
 
+" Showing of leading whitespace and indentation
+Plugin 'Yggdroot/indentLine'
+
 """"""
 " Ruby
 """"""
@@ -63,6 +66,7 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""
 " Commands / Key Mappings
 """"""""""""""""""""""""""""""""""""""""""
+" http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
 " <S-...> Shift
 " <C-...> Control
 " <M-...> Alt
@@ -75,16 +79,20 @@ filetype plugin indent on
 let mapleader = "'"
 
 " Nerd Tree-Specfic Window Management
-map <C-c> :NERDTreeMapOpenVSplit <CR>
-:map <Leader>n <plug>NERDTreeTabsToggle<CR>
-"	:map <S-F5> :vertical resize +10<CR>
-"	:map <F5> :vertical resize +2<CR>
-"	:map <S-F6> :resize -10<CR>
-"	:map <S-F7> :resize +10<CR>
-"	:map <F6> :resize -2<CR>
-"	:map <F7> :resize +2<CR>
-"	:map <S-F8> :vertical resize -10<CR>
-"	:map <F8> :vertical resize -2<CR>
+nmap <C-c> <plug>NERDTreeMapOpenVSplit <CR>
+nmap <leader>nt <plug>NERDTreeTabsToggle<CR>
+nmap <leader>nn :NERDTreeToggle <CR>
+" s - splits to the right
+" o - splits below
+
+map <S-i> :vertical resize +10<CR>
+map <C-<S-i>> :vertical resize +2<CR>
+map <S-F6> :resize -10<CR>
+map <S-F7> :resize +10<CR>
+map <F6> :resize -2<CR>
+map <F7> :resize +2<CR>
+map <S-F8> :vertical resize -10<CR>
+map <F8> :vertical resize -2<CR>
 
 " Notes for myself, because holy cow, there are a lot of shortcuts
 " gt - switch tabs
@@ -96,6 +104,15 @@ map <C-c> :NERDTreeMapOpenVSplit <CR>
 let g:move_key_modifier = 'C'
 vmap <C-<Up>> <Plug>MoveBlockUp
 vmap <C-<Down>> <Plug>MoveBlockDown
+
+"""""""""""""
+" Navigation
+"""""""""""""
+" Exit insert mode upon arrow key navigation
+inoremap <silent> <Up> <ESC><Up>
+inoremap <silent> <Down> <ESC><Down>
+
+
 
 """""""""""""""""""""""""""""""""""""""""""
 " UI Settings
@@ -111,17 +128,38 @@ colorscheme deep-space
 let g:rehash256 = 1
 
 set ruler			" Always show current position
+
+" The first setting tells vim to use "autoindent" (that is, use the current
+" line's indent level to set the indent level of new lines). The second makes
+" vim attempt to intelligently guess the indent level of any new line based
+" on the previous line.
 set autoindent
 set smartindent
+
+" turn off smart indentation when pasting
+set pastetoggle=<F2>
+
+
 set encoding=utf-8
 set splitright
 set foldmethod=indent
 set foldlevel=99
+" highlight the cursor line
+set cursorline
 
 
 set showmode "show the current mode (Insert, Visual...)
 set mouse=a " use mouse for everything
+" Doesn't work with mouse=a
+" set mousemodel=popup " make a menu popup on right click
 
+
+" set the title of the window to the filename
+set title
+set titlestring=%f%(\ [%M]%)
+
+" highlight the terms
+set hlsearch
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -136,10 +174,18 @@ set smarttab
 set shiftwidth=2
 set tabstop=2
 
+"""""""""""""""""""""""""""""""""""
+" Yggdroot/indentLine Configuration
+"""""""""""""""""""""""""""""""""""
+let g:indentLine_char = '│'
+let g:indentLine_enabled = 1
+let g:indentLine_color_term = 240
+let g:indentLine_leadingSpaceEnabled = 1
+
+
 """""""""""""""""""""""""
 " Nerd Tree Configuration
 """"""""""""""""""""""""""
-nmap <leader>nt :NERDTreeToggle <CR>
 let NERDTreeShowHidden=1 " This also ignores .gitignore
 let NERDTreeIgnore=['.git$[[dir]]', '.swp']
 
@@ -157,12 +203,6 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
-"""""""""""""
-" Navigation
-"""""""""""""
-" Exit insert mode upon arrow key navigation
-inoremap <silent> <Up> <ESC><Up>
-inoremap <silent> <Down> <ESC><Down>
 
 
 """"""""""""""""""""""
