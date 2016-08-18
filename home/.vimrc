@@ -21,6 +21,9 @@ Plugin 'jistr/vim-nerdtree-tabs'
 " Allows moving lines / selections up or down
 Bundle 'matze/vim-move'
 
+" Multiple Cursor Selection
+Plugin 'terryma/vim-multiple-cursors'
+
 " Fuzzy File Finder
 Plugin 'kien/ctrlp.vim'
 " White space highlighter
@@ -181,6 +184,11 @@ let g:indentLine_char = '│'
 let g:indentLine_enabled = 1
 let g:indentLine_color_term = 240
 let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '·'
+" Set the displayed characters for indentation
+" The normal vim way doesn't work for some reason
+"set listchars=tab:·\i,trail:·
+"set list
 
 
 """""""""""""""""""""""""
