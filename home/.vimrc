@@ -1,15 +1,15 @@
 set nocompatible " Fixes old Vi bugs
 filetype off
 
-so .vim/vimrc/vundle.vim
+so ~/.vim/vimrc/vundle.vim
 
 filetype plugin indent on
 
 
-so .vim/vimrc/keymap.vim
-so .vim/vimrc/ui.vim
-so .vim/vimrc/indentation.vim
-so .vim/vimrc/plugin-config.vim
+so ~/.vim/vimrc/keymap.vim
+so ~/.vim/vimrc/ui.vim
+so ~/.vim/vimrc/indentation.vim
+so ~/.vim/vimrc/plugin-config.vim
 
 
 " YouCompleteMe Space+G go-to-definition
