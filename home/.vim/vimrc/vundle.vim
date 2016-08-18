@@ -29,6 +29,10 @@ Plugin 'ntpeters/vim-better-whitespace'
 " Showing of leading whitespace and indentation
 Plugin 'Yggdroot/indentLine'
 
+" Commenting
+Plugin 'scrooloose/nerdcommenter'
+
+
 """"""
 " Ruby
 """"""

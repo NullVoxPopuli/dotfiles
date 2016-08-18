@@ -29,10 +29,14 @@ map <F7> :resize +2<CR>
 map <S-F8> :vertical resize -10<CR>
 map <F8> :vertical resize -2<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Notes for myself, because holy cow, there are a lot of shortcuts
-" gt - switch tabs
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gt/gT - switch tabs (prev/next)
 " <C-w w> switch panes (randomly?)
-"
+" :m # - moves line below the specified line number
+" :#,#m # - moves line range to line below specified number
+" :m +# to move it # lines up
 
 " Live Moving (Up and Down)
 " Set to control (<C-k> : up, <C-j> : down)
@@ -46,3 +50,21 @@ vmap <C-<Down>> <Plug>MoveBlockDown
 " Exit insert mode upon arrow key navigation
 inoremap <silent> <Up> <ESC><Up>
 inoremap <silent> <Down> <ESC><Down>
+
+" Make home got to the first non-whitespace character on the line
+:imap <Home> <Esc>^i
+map <Home> ^
+
+" Shift Home goes to the beginning of the line
+:imap <S-<Home>> <Esc>0i
+map <S-<Home>> 0
+
+
+""""""""""""""
+" Commenting
+""""""""""""""
+" https://github.com/scrooloose/nerdcommenter
+" 'cc comments out line or selection
+" 'c<space> toggles comment
+map <leader>/   <plug>NERDCommenterToggle
+

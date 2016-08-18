@@ -30,5 +30,9 @@ fi
 
 export NVM_DIR="$HOME/.nvm"
 
+# http://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
+# Prevents Ctrl+s and Ctrl+q from haulting vim sessions
+stty -ixon
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
