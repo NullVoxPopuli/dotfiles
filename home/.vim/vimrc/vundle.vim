@@ -10,7 +10,8 @@ Plugin 'dracula/vim'
 
 " Git Commands from Vim
 Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'vim-airline/vim-airline'
+
 " File / Project Browsing
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdtree-git-plugin'
