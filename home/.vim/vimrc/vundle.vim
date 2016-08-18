@@ -6,6 +6,7 @@ call vundle#begin()
 """""""""
 " Themes
 Plugin 'tyrannicaltoucan/vim-deep-space'
+Plugin 'dracula/vim'
 
 " Git Commands from Vim
 Plugin 'tpope/vim-fugitive'
