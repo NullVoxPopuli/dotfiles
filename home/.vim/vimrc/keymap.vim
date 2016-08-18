@@ -68,3 +68,9 @@ map <S-<Home>> 0
 " 'c<space> toggles comment
 map <leader>/   <plug>NERDCommenterToggle
 
+
+"""""""""""""
+" Ctrl-P
+""""""""""""
+" remap to control t because t is more natural on DVorak
+let g:ctrlp_map = '<c-t>'
