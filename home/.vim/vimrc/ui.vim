@@ -27,7 +27,6 @@ set smartindent
 " turn off smart indentation when pasting
 set pastetoggle=<F2>
 
-
 set encoding=utf-8
 set splitright
 set foldmethod=indent
@@ -35,12 +34,8 @@ set foldlevel=99
 " highlight the cursor line
 set cursorline
 
-
 set showmode "show the current mode (Insert, Visual...)
 set mouse=a " use mouse for everything
-" Doesn't work with mouse=a
-" set mousemodel=popup " make a menu popup on right click
-
 
 " set the title of the window to the filename
 set title
@@ -48,6 +43,12 @@ set titlestring=%f%(\ [%M]%)
 
 " highlight the terms
 set hlsearch
+
+
+" Autoload reload files when they have changed on the disk
+set autoread
+
+
 
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.

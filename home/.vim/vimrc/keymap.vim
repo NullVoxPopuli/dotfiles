@@ -74,3 +74,7 @@ map <leader>/   <plug>NERDCommenterToggle
 """"""""""""
 " remap to control t because t is more natural on DVorak
 let g:ctrlp_map = '<c-t>'
+
+" Sensible Indentation with Tab!
+vmap <TAB> >gv
+vmap <S-TAB> <gv

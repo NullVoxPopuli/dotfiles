@@ -47,3 +47,15 @@ let g:NERDTrimTrailingWhitespace = 1
 " vim-arline
 """"""""""""""
 let g:airline_powerline_fonts = 1
+
+
+
+" YouCompleteMe Space+G go-to-definition
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
+""""""""""""""""
+" Syntastic
+"""""""""""""""
+let g:syntastic_ruby_rubocop_exec = exepath(ruby) exepath(rubocop)

@@ -34,6 +34,8 @@ Plugin 'Yggdroot/indentLine'
 " Commenting
 Plugin 'scrooloose/nerdcommenter'
 
+" Syntax Checking
+Plugin 'scrooloose/syntastic'
 
 """"""
 " Ruby

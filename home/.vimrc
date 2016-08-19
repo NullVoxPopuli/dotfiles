@@ -5,16 +5,10 @@ so ~/.vim/vimrc/vundle.vim
 
 filetype plugin indent on
 
-
 so ~/.vim/vimrc/keymap.vim
 so ~/.vim/vimrc/ui.vim
 so ~/.vim/vimrc/indentation.vim
 so ~/.vim/vimrc/plugin-config.vim
-
-
-" YouCompleteMe Space+G go-to-definition
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
 """"""""""""""""""""""
