@@ -78,3 +78,10 @@ let g:ctrlp_map = '<c-t>'
 " Sensible Indentation with Tab!
 vmap <TAB> >gv
 vmap <S-TAB> <gv
+
+" Auto-Correct Ruby
+map <leader>r :!rubocop -a % <CR>
+
+" Save, cause habits
+map <C-s> :w<CR>
+:imap <C-s> <Esc>:w<CR>

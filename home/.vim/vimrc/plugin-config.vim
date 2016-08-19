@@ -58,4 +58,4 @@ map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """"""""""""""""
 " Syntastic
 """""""""""""""
-let g:syntastic_ruby_rubocop_exec = exepath(ruby) exepath(rubocop)
+let g:syntastic_ruby_checkers = ['rubocop']
