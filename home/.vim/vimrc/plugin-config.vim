@@ -49,8 +49,9 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:airline_powerline_fonts = 1
 
 
-
+""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe Space+G go-to-definition
+""""""""""""""""""""""""""""""""""""""""
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -59,3 +60,16 @@ map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Syntastic
 """""""""""""""
 let g:syntastic_ruby_checkers = ['rubocop']
+
+"""""""""
+" CtrlP
+"""""""""
+" Some projects weren't getting all their files indexed,
+" This allows all files to be indexed.
+" (This will probably kill vim if this accidentally gets
+"  ran on the home directory)
+let g:ctrlp_max_files=0
+
+" Do not index folders we are never going to care about
+" NOTE: the regex OR operator needs to be escaped
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
