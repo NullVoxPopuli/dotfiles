@@ -53,8 +53,8 @@
   's':   'tree-view:open-selected-entry-right'
   'c':   'core:move-up'
   't':   'core:move-down'
-  'h':   'core:move-left'
-  'n':   'core:move-right'
+  'h':   'tree-view:collapse-directory'
+  'n':   'tree-view:open-selected-entry'
 
 
 'atom-workspace atom-text-editor':
