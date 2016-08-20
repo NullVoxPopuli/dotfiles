@@ -29,24 +29,39 @@
 #
 # NOTE: CAPS LOCK should be mapped to Control
 #
+
+###############################################
+# To not forget the joy of NERDTree's shortcuts
+###############################################
+# Tree View
+# ctrl+\         toggle tree view
+# alt+\          toggle focus
+# shift-a        add folder
+# a              add file
+# d              duplicate
+# ctrl+shift+c   copy full path
+# ctrl+shift+\   reveal active file
+# F2 or m        move
+'.tree-view':
+  'd d': 'tree-view:remove'
+  'y':   'tree-view:copy'
+  'p':   'tree-view:paste'
+  'x':   'tree-view:cut'
+  'a f': 'tree-view:add-file'
+  'a d': 'tree-view:add-folder'
+  'i':   'tree-view:open-selected-entry-down'
+  's':   'tree-view:open-selected-entry-right'
+  'c':   'core:move-up'
+  't':   'core:move-down'
+  'h':   'core:move-left'
+  'n':   'core:move-right'
+
+
 'atom-workspace atom-text-editor':
   ###############################################
   # Search and handy macro-y things
   ##############################################
   # alt-enter converts search results into selections
-
-  ###############################################
-  # To not forget the joy of NERDTree's shortcuts
-  ###############################################
-  # Tree View
-  # ctrl+\         toggle tree view
-  # alt+\          toggle focus
-  # shift-a        add folder
-  # a              add file
-  # d              duplicate
-  # ctrl+shift+c   copy full path
-  # ctrl+shift+\   reveal active file
-  # F2+m           move
 
   ###################################
   # Pane Navigation
