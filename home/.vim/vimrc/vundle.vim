@@ -7,6 +7,7 @@ call vundle#begin()
 " Themes
 Plugin 'tyrannicaltoucan/vim-deep-space'
 Plugin 'dracula/vim'
+Plugin 'rakr/vim-one'
 
 " Git Commands from Vim
 Plugin 'tpope/vim-fugitive'
@@ -25,6 +26,7 @@ Plugin 'terryma/vim-multiple-cursors'
 
 " Fuzzy File Finder
 Plugin 'kien/ctrlp.vim'
+
 " White space highlighter
 Plugin 'ntpeters/vim-better-whitespace'
 
@@ -37,12 +39,16 @@ Plugin 'scrooloose/nerdcommenter'
 " Syntax Checking
 Plugin 'scrooloose/syntastic'
 
+" Auto-complete
+Plugin 'Valloric/YouCompleteMe'
+
 """"""
 " Ruby
 """"""
 Bundle 'vim-ruby/vim-ruby'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-rails'
 
 """"""""""""
 " Javascript

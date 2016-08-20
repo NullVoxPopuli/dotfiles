@@ -5,6 +5,7 @@ so ~/.vim/vimrc/vundle.vim
 
 filetype plugin indent on
 
+so ~/.vim/vimrc/session.vim
 so ~/.vim/vimrc/keymap.vim
 so ~/.vim/vimrc/ui.vim
 so ~/.vim/vimrc/indentation.vim

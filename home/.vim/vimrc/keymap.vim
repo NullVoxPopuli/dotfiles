@@ -13,6 +13,14 @@
 " back slash
 let mapleader = "'"
 
+" Use Semicolon instead of colon for commands
+" Two less keystrokes
+nnoremap ; :
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
 " Nerd Tree-Specfic Window Management
 nmap <C-c> <plug>NERDTreeMapOpenVSplit <CR>
 nmap <leader>nt <plug>NERDTreeTabsToggle<CR>
@@ -52,11 +60,11 @@ inoremap <silent> <Up> <ESC><Up>
 inoremap <silent> <Down> <ESC><Down>
 
 " Make home got to the first non-whitespace character on the line
-:imap <Home> <Esc>^i
+imap <Home> <Esc>^i
 map <Home> ^
 
 " Shift Home goes to the beginning of the line
-:imap <S-<Home>> <Esc>0i
+imap <S-<Home>> <Esc>0i
 map <S-<Home>> 0
 
 
@@ -71,7 +79,7 @@ map <leader>/   <plug>NERDCommenterToggle
 
 """""""""""""
 " Ctrl-P
-""""""""""""
+"""""""""""""
 " remap to control t because t is more natural on DVorak
 let g:ctrlp_map = '<c-t>'
 
@@ -84,4 +92,10 @@ map <leader>r :!rubocop -a % <CR>
 
 " Save, cause habits
 map <C-s> :w<CR>
-:imap <C-s> <Esc>:w<CR>
+imap <C-s> <Esc>:w<CR>
+
+" Quit EVERYTHING - (Triggers session save)
+nmap <C-q> :qa<CR>
+
+
+
