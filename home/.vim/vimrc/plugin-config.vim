@@ -72,4 +72,4 @@ let g:ctrlp_max_files=0
 
 " Do not index folders we are never going to care about
 " NOTE: the regex OR operator needs to be escaped
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'

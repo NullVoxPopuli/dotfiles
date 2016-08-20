@@ -55,8 +55,7 @@ Plugin 'mxw/vim-jsx'
 "Ember
 Plugin 'dsawardekar/ember.vim'
 Plugin 'nono/vim-handlebars'
-Bundle 'yalesov/vim-emblem'
-
+Plugin 'yalesov/vim-emblem'
 
 """""""
 " Other
