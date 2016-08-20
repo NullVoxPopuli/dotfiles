@@ -27,29 +27,65 @@
 # See: https://gist.github.com/BinaryMuse/621bf3e66a66876e4d78
 #      - (Handy Shortcuts)
 #
+# NOTE: CAPS LOCK should be mapped to Control
+#
 'atom-workspace atom-text-editor':
-  'ctrl alt-down':   'pane:split-down-and-move-active-item'
-  'ctrl alt-left':   'pane:split-left-and-move-active-item'
-  'ctrl alt-right':  'pane:split-right-and-move-active-item'
-  'ctrl alt-up':     'pane:split-up-and-move-active-item'
-  'ctrl-shift-up':   'editor:add-selection-above'
-  'ctrl-shift-down': 'editor:add-selection-below'
+  ###############################################
+  # Search and handy macro-y things
+  ##############################################
   # alt-enter converts search results into selections
+
+  ###############################################
+  # To not forget the joy of NERDTree's shortcuts
+  ###############################################
+  # Tree View
+  # ctrl+\         toggle tree view
+  # alt+\          toggle focus
+  # shift-a        add folder
+  # a              add file
+  # d              duplicate
+  # ctrl+shift+c   copy full path
+  # ctrl+shift+\   reveal active file
+  # F2+m           move
+
+  ###################################
+  # Pane Navigation
+  ###################################
 
   # ctrl+k + ctrl+direction navigates panes
   # but that's too many keystrokes, therefore:
-  'alt-left':        'window:focus-pane-on-left'
-  'alt-down':        'window:focus-pane-below'
-  'alt-right':       'window:focus-pane-on-right'
-  'alt-up':          'window:focus-pane-above'
+  # with dvorak's chtn (Querty ijkl), instead of arrows
+  'alt-h': 'window:focus-pane-on-left'
+  'alt-t': 'window:focus-pane-below'
+  'alt-n': 'window:focus-pane-on-right'
+  'alt-c': 'window:focus-pane-above'
 
   # pane moving
-  'alt-shift-left':  'window:move-active-item-to-pane-on-left'
-  'alt-shift-right': 'window:move-active-item-to-pane-on-right'
-  'alt-shift-up':    'window:move-active-item-to-pane-above'
-  'alt-shift-down':  'window:move-active-item-to-pane-below'
+  'alt-shift-h': 'window:move-active-item-to-pane-on-left'
+  'alt-shift-n': 'window:move-active-item-to-pane-on-right'
+  'alt-shift-c': 'window:move-active-item-to-pane-above'
+  'alt-shift-t': 'window:move-active-item-to-pane-below'
 
+  # Multiple Cursors (adding / subtracting)
+  'ctrl-shift-c':   'editor:add-selection-above'
+  'ctrl-shift-t': 'editor:add-selection-below'
+
+  # Pane Splitting
+  'ctrl alt-t':   'pane:split-down-and-copy-active-item'
+  'ctrl alt-h':   'pane:split-left-and-copy-active-item'
+  'ctrl alt-n':  'pane:split-right-and-copy-active-item'
+  'ctrl alt-c':     'pane:split-up-and-copy-active-item'
+
+
+#############################################################
 # reset / clear default keybindings, cause we don't like them
+#############################################################
 'atom-workspace atom-text-editor:not([mini])':
-  'alt-shift-down': 'native!'
-  'alt-shift-up': 'native!'
+  'alt-shift-h': 'native!'
+  'alt-shift-n': 'native!'
+  'alt-shift-t': 'native!'
+  'alt-shift-c': 'native!'
+  'ctrl-shift-c': 'native!'
+  'ctrl-shift-h': 'native!'
+  'ctrl-shift-t': 'native!'
+  'ctrl-shift-n': 'native!'
