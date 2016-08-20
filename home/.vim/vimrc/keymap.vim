@@ -97,5 +97,8 @@ imap <C-s> <Esc>:w<CR>
 " Quit EVERYTHING - (Triggers session save)
 nmap <C-q> :qa<CR>
 
-
-
+"""""""""""""""""""""""
+" Indentation Fixing
+"""""""""""""""""""""""
+nmap <leader><Tab><Space> :set expandtab <CR>:retab<CR>
+nmap <leader><Space><Tab> :set noexpandtab<CR>:retab!<CR>

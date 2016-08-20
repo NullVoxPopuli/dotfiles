@@ -42,6 +42,9 @@ Plugin 'scrooloose/syntastic'
 " Auto-complete
 Plugin 'Valloric/YouCompleteMe'
 
+" Auto-Closing (,{,[,",'
+" Plugin 'Raimondi/delimitMate'
+
 """"""
 " Ruby
 """"""
