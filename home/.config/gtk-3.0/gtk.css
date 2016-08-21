@@ -1,0 +1,42 @@
+
+@define-color bg-grey #222;
+@define-color active-grey #333;
+@define-color border-grey #555;
+
+TerminalWindow .notebook {
+  border: 0;
+  padding: 0;
+  color: #eee;
+  background-color: shade(@active-grey, 1);
+}
+
+TerminalWindow .notebook tab:active {
+  border: 1px solid @border-grey;
+  background-color: shade(@active-grey, 1);
+}
+
+TerminalWindow .notebook tab {
+  background-color: shade(@bg-grey, 1);
+}
+
+TerminalWindow .notebook .button,
+TerminalWindow .notebook .button:active {
+    padding: 2 2 2 10;
+    background-image: none;
+    border: 0;
+}
+
+
+
+
+
+/* make the titlebars smaller */
+.header-bar.default-decoration {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.header-bar.default-decoration .button.titlebutton {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
