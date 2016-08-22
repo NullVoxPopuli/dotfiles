@@ -20,6 +20,13 @@
 @tab-background-color: @tab-bar-background-color;
 @tab-height: 2em;
 
+// hide scrollbars
+body /deep/ ::-webkit-scrollbar {
+  &-track, &-corner, &-thumb {
+    display: none !important;
+  }
+}
+
 // style the background color of the tree view
 .tree-view {
   // background-color: whitesmoke;
