@@ -19,6 +19,9 @@
 @tab-bar-background-color: #111;
 @tab-background-color: @tab-bar-background-color;
 @tab-height: 2em;
+@blue: #61afef;
+@green: #98c379;
+@magenta: #c678dd;
 
 // hide scrollbars
 body /deep/ ::-webkit-scrollbar {
@@ -53,7 +56,35 @@ atom-text-editor {
   // color: white;
   // background-color: hsl(180, 24%, 12%);
   background-color: @background-color;
+
+  &.vim-mode {
+    &:before {
+      padding: 0 5px;
+      z-index: 1000000000;
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: black;
+      font-weight: bold;
+      text-transform: uppercase;
+      // border: 1px solid white;
+    }
+    &.insert-mode:before {
+      content: 'insert';
+      background: @blue;
+    }
+    &.normal-mode:before {
+      content: 'normal';
+      background: @green;
+    }
+    &.visual-mode:before {
+      content: 'visual';
+      background: @magenta;
+    }
+  }
 }
+
+
 
 // To style other content in the text editor's shadow DOM, use the ::shadow expression
 atom-text-editor::shadow .cursor {
