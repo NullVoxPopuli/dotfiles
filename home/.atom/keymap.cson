@@ -38,8 +38,21 @@
   'h':   'core:move-left'
   'n':   'core:move-right'
 
+  # Project Navigation
+  'ctrl-t': 'fuzzy-finder:toggle-file-finder'
+
   # Tree View Toggle
-  '\\':   'tree-view:toggle-focus'
+  '\\':     'tree-view:toggle-focus'
+  # Show the current file in the tree
+  '\' l': 'tree-view:reveal-active-file'
+
+  # Tab Navigation
+  'r': 'pane:show-previous-item'
+  'l': 'pane:show-next-item'
+
+  # Word Navigation
+  'b': 'editor:move-to-beginning-of-word'
+  'm': 'editor:move-to-end-of-word'
 
   # shortcut for : (so you don't have to type shift)
   ';': 'ex-mode:open'
