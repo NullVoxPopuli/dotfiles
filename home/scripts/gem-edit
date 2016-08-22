@@ -1,0 +1,2 @@
+#!/bin/bash
+atom $(bundle show $1)
