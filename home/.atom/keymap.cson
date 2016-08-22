@@ -31,15 +31,19 @@
 #
 # '.vim-mode.insert-mode':
 
-# Character Navigation
 'atom-text-editor.vim-mode:not(.insert-mode)':
+  # Character Navigation
   'c':   'core:move-up'
   't':   'core:move-down'
   'h':   'core:move-left'
   'n':   'core:move-right'
 
-'atom-text-editor.vim-mode.normal-mode':
-  ';': 'ex-mode:open' # shortcut for : (so you don't have to type shift)
+  # Tree View Toggle
+  '\\':   'tree-view:toggle-focus'
+
+  # shortcut for : (so you don't have to type shift)
+  ';': 'ex-mode:open'
+
 
 ###############################################
 # To not forget the joy of NERDTree's shortcuts
@@ -66,6 +70,7 @@
   't':   'core:move-down'
   'h':   'tree-view:collapse-directory'
   'n':   'tree-view:open-selected-entry'
+  '\\':  'tree-view:toggle-focus'
 
 
 'atom-workspace atom-text-editor':
