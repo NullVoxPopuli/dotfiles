@@ -1,0 +1,93 @@
+/*
+ * Your Stylesheet
+ *
+ * This stylesheet is loaded when Atom starts up and is reloaded automatically
+ * when it is changed and saved.
+ *
+ * Add your own CSS or Less to fully customize Atom.
+ * If you are unfamiliar with Less, you can read more about it here:
+ * http://lesscss.org
+ */
+
+
+/*
+ * Examples
+ * (To see them, uncomment and save)
+ */
+
+// style the background color of the tree view
+.tree-view {
+  // background-color: whitesmoke;
+  .directory {
+    .name {
+      // color: #61afef;
+
+      &:before {
+        // color: #9da5b4
+      }
+    }
+  }
+  .file {
+    .name {
+      // color: #636d83;
+    }
+  }
+}
+
+// style the background and foreground colors on the atom-text-editor-element itself
+atom-text-editor {
+  // color: white;
+  // background-color: hsl(180, 24%, 12%);
+}
+
+// To style other content in the text editor's shadow DOM, use the ::shadow expression
+atom-text-editor::shadow .cursor {
+  // border-color: red;
+}
+
+// Stop fucking blinking!
+atom-text-editor::shadow .cursors .cursor { opacity: 100; }
+
+// Thinner Line Gutter
+.editor .gutter, atom-text-editor::shadow .gutter {
+  .line-numbers {
+    // width: 2em;
+    min-width: 1em;
+    font-size: 1em;
+    overflow: hidden;
+    .line-number {
+      // width: 0px;
+      // color: #839496;
+    }
+  }
+}
+
+// Thinner Tabs
+.tab-bar {
+  height: 2em;
+  padding: 0;
+
+  .tab {
+    // top: 2px; line-height: 25px;
+    line-height: 2em;
+
+    &.active {
+      height: 25px;
+
+      &:before {
+        height: 25px;
+      }
+    }
+
+    &:before {
+      width: .2em;
+    }
+
+    .close-icon {
+      line-height: 2em;
+    }
+
+    .title {
+    }
+  }
+}
