@@ -29,6 +29,17 @@
 #
 # NOTE: CAPS LOCK should be mapped to Control
 #
+# '.vim-mode.insert-mode':
+
+# Character Navigation
+'atom-text-editor.vim-mode:not(.insert-mode)':
+  'c':   'core:move-up'
+  't':   'core:move-down'
+  'h':   'core:move-left'
+  'n':   'core:move-right'
+
+'atom-text-editor.vim-mode.normal-mode':
+  ';': 'ex-mode:open' # shortcut for : (so you don't have to type shift)
 
 ###############################################
 # To not forget the joy of NERDTree's shortcuts
