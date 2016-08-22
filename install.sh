@@ -16,3 +16,8 @@ cp home/scripts ~/ -R
 cp home/.bash_profile ~/
 cp home/.tmux.conf ~/
 cp home/.vimrc ~/
+
+####################
+# sync Atom Packages
+####################
+apm stars --install
