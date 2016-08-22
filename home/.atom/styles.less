@@ -15,9 +15,16 @@
  * (To see them, uncomment and save)
  */
 
+@background-color: #222;
+@tab-bar-background-color: #111;
+@tab-background-color: @tab-bar-background-color;
+@tab-height: 2em;
+
 // style the background color of the tree view
 .tree-view {
   // background-color: whitesmoke;
+  background-color: @background-color;
+
   .directory {
     .name {
       // color: #61afef;
@@ -25,7 +32,7 @@
       &:before {
         // color: #9da5b4
       }
-    }
+      }
   }
   .file {
     .name {
@@ -38,6 +45,7 @@
 atom-text-editor {
   // color: white;
   // background-color: hsl(180, 24%, 12%);
+  background-color: @background-color;
 }
 
 // To style other content in the text editor's shadow DOM, use the ::shadow expression
@@ -57,19 +65,20 @@ atom-text-editor::shadow .cursors .cursor { opacity: 100; }
     overflow: hidden;
     .line-number {
       // width: 0px;
-      // color: #839496;
+      color: #839496;
     }
   }
 }
 
 // Thinner Tabs
 .tab-bar {
-  height: 2em;
+  height: @tab-height;
   padding: 0;
+  background-color: @tab-bar-background-color;
 
   .tab {
     // top: 2px; line-height: 25px;
-    line-height: 2em;
+    line-height: @tab-height;
 
     &.active {
       height: 25px;
@@ -79,19 +88,24 @@ atom-text-editor::shadow .cursors .cursor { opacity: 100; }
       }
     }
 
+    &:after {
+      background-image: none;
+    }
+
     &:before {
       width: .2em;
     }
 
     .close-icon {
-      line-height: 2em;
+      line-height: @tab-height;
     }
 
     .title {
+      background-color: @tab-background-color;
     }
   }
 }
 
 atom-panel-container.footer {
-  height: 2em;
+  height: @tab-height;
 }
