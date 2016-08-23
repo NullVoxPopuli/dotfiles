@@ -29,11 +29,56 @@
 #
 # NOTE: CAPS LOCK should be mapped to Control
 #
-'atom-text-editor.vim-mode.insert-mode':
+'atom-workspace':
+  # Close Pane
+  'ctrl-\'': 'core:close'
+
+'atom-workspace, atom-text-editor':
+  ###############################################
+  # Search and handy macro-y things
+  ##############################################
+  # alt-enter converts search results into selections
+
+  ###################################
+  # Pane Navigation
+  ###################################
+
+  # ctrl+k + ctrl+direction navigates panes
+  # but that's too many keystrokes, therefore:
+  # with dvorak's chtn (Querty ijkl), instead of arrows
+  'alt-h': 'window:focus-pane-on-left'
+  'alt-t': 'window:focus-pane-below'
+  'alt-n': 'window:focus-pane-on-right'
+  'alt-c': 'window:focus-pane-above'
+
+  # pane moving
+  'alt-shift-h': 'window:move-active-item-to-pane-on-left'
+  'alt-shift-n': 'window:move-active-item-to-pane-on-right'
+  'alt-shift-c': 'window:move-active-item-to-pane-above'
+  'alt-shift-t': 'window:move-active-item-to-pane-below'
+
+  # pane sizing
+  'ctrl-n': 'pane:increase-size'
+  'ctrl-h': 'pane:decrease-size'
+
+  # Multiple Cursors (adding / subtracting)
+  'ctrl-shift-c':   'editor:add-selection-above'
+  'ctrl-shift-t': 'editor:add-selection-below'
+
+  # Pane Splitting
+  'ctrl alt-t':   'pane:split-down-and-copy-active-item'
+  'ctrl alt-h':   'pane:split-left-and-copy-active-item'
+  'ctrl alt-n':  'pane:split-right-and-copy-active-item'
+  'ctrl alt-c':     'pane:split-up-and-copy-active-item'
+
+#####################################################
+# VIM MODE PLUS!!!
+#####################################################
+'atom-text-editor.vim-mode-plus.insert-mode':
   # Close pane. This was originally delete to beginning of word
   'ctrl-w': 'core:close'
 
-'atom-text-editor.vim-mode:not(.insert-mode)':
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
   # Character Navigation
   'c':   'core:move-up'
   't':   'core:move-down'
@@ -96,44 +141,6 @@
   'n':   'tree-view:open-selected-entry'
   '\\':  'tree-view:toggle-focus'
 
-
-'atom-workspace atom-text-editor':
-  ###############################################
-  # Search and handy macro-y things
-  ##############################################
-  # alt-enter converts search results into selections
-
-  ###################################
-  # Pane Navigation
-  ###################################
-
-  # ctrl+k + ctrl+direction navigates panes
-  # but that's too many keystrokes, therefore:
-  # with dvorak's chtn (Querty ijkl), instead of arrows
-  'alt-h': 'window:focus-pane-on-left'
-  'alt-t': 'window:focus-pane-below'
-  'alt-n': 'window:focus-pane-on-right'
-  'alt-c': 'window:focus-pane-above'
-
-  # pane moving
-  'alt-shift-h': 'window:move-active-item-to-pane-on-left'
-  'alt-shift-n': 'window:move-active-item-to-pane-on-right'
-  'alt-shift-c': 'window:move-active-item-to-pane-above'
-  'alt-shift-t': 'window:move-active-item-to-pane-below'
-
-  # pane sizing
-  'ctrl-n': 'pane:increase-size'
-  'ctrl-h': 'pane:decrease-size'
-
-  # Multiple Cursors (adding / subtracting)
-  'ctrl-shift-c':   'editor:add-selection-above'
-  'ctrl-shift-t': 'editor:add-selection-below'
-
-  # Pane Splitting
-  'ctrl alt-t':   'pane:split-down-and-copy-active-item'
-  'ctrl alt-h':   'pane:split-left-and-copy-active-item'
-  'ctrl alt-n':  'pane:split-right-and-copy-active-item'
-  'ctrl alt-c':     'pane:split-up-and-copy-active-item'
 
 
 #############################################################
