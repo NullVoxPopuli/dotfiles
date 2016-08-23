@@ -60,6 +60,7 @@
   'r': 'pane:show-previous-item'
   'l': 'pane:show-next-item'
 
+
   # Word Navigation
   'b': 'editor:move-to-beginning-of-word'
   'm': 'editor:move-to-end-of-word'
@@ -119,6 +120,10 @@
   'alt-shift-n': 'window:move-active-item-to-pane-on-right'
   'alt-shift-c': 'window:move-active-item-to-pane-above'
   'alt-shift-t': 'window:move-active-item-to-pane-below'
+
+  # pane sizing
+  'ctrl-n': 'pane:increase-size'
+  'ctrl-h': 'pane:decrease-size'
 
   # Multiple Cursors (adding / subtracting)
   'ctrl-shift-c':   'editor:add-selection-above'
