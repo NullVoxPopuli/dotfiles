@@ -4,7 +4,7 @@
   'aligner-scss',
   'atom-beautify'
   'atom-handlebars'
-  'autocomplete-html-entities'
+  'autoclose-html'
   'autocomplete-ruby'
   'blame'
   'change-case'
