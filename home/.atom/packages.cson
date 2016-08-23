@@ -1,6 +1,7 @@
 'packages': [
   'aligner'
   'aligner-ruby'
+  'aligner-scss',
   'atom-beautify'
   'atom-handlebars'
   'autocomplete-html-entities'
@@ -13,6 +14,7 @@
   'git-history'
   'language-emblem'
   'language-handlebars'
+  'language-javascript-jsx'
   'language-slim'
   'linter'
   'linter-jscs'
@@ -21,6 +23,7 @@
   'linter-slim'
   'merge-conflicts'
   'rubocop-auto-correct'
+  'scroll-percentage'
   'tree-view-git-status'
   'vim-mode'
 ]

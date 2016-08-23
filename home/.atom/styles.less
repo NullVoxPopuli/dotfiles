@@ -82,6 +82,29 @@ atom-text-editor {
       background: @magenta;
     }
   }
+
+  &.is-focused {
+    &:after {
+      content: ' ';
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      height: 1px;
+      background-color: @blue;
+      z-index: 1000;
+    }
+
+    &.insert-mode:after {
+      background: @blue;
+    }
+    &.normal-mode:after {
+      background: @green;
+    }
+    &.visual-mode:after {
+      background: @magenta;
+    }
+  }
 }
 
 

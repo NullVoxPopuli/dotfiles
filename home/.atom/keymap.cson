@@ -29,7 +29,9 @@
 #
 # NOTE: CAPS LOCK should be mapped to Control
 #
-# '.vim-mode.insert-mode':
+'atom-text-editor.vim-mode.insert-mode':
+  # Close pane. This was originally delete to beginning of word
+  'ctrl-w': 'core:close'
 
 'atom-text-editor.vim-mode:not(.insert-mode)':
   # Character Navigation
@@ -37,6 +39,14 @@
   't':   'core:move-down'
   'h':   'core:move-left'
   'n':   'core:move-right'
+
+  # Word Navigation
+  'shift-n': 'editor:move-to-end-of-word'
+  'shift-h': 'editor:move-to-beginning-of-word'
+
+  # Line Navigation
+  '\' n': 'editor:move-to-end-of-screen-line'
+  '\' h': 'editor:move-to-first-character-of-line'
 
   # Project Navigation
   'ctrl-t': 'fuzzy-finder:toggle-file-finder'
