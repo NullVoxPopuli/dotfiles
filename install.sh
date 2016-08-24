@@ -9,7 +9,6 @@ cat home/.config/dconf/user.d/* | dconf load /
 ###########################
 # Copy home directory stuff
 ###########################
-mkdir ~/.atom
 cp home/.atom/* ~/.atom -R
 cp home/.i3 ~/ -R
 cp home/.vim ~/ -R
@@ -19,6 +18,6 @@ cp home/.tmux.conf ~/
 cp home/.vimrc ~/
 
 ####################
-# sync Atom Packages
+# sync Atom
 ####################
-apm install package-sync
+./install/atom.sh
