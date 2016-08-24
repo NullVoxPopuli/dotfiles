@@ -29,5 +29,6 @@
   "linter-ruby": {}
   "one-dark-ui":
     layoutMode: "Compact"
+    tabSizing: "Minimum"
   welcome:
     showOnStartup: false
