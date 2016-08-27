@@ -29,6 +29,7 @@
 #
 # NOTE: CAPS LOCK should be mapped to Control
 #
+
 'atom-workspace':
   # Close Pane
   'ctrl-\'': 'core:close'
@@ -66,18 +67,76 @@
   'ctrl-shift-t': 'editor:add-selection-below'
 
   # Pane Splitting
-  'ctrl alt-t':   'pane:split-down-and-copy-active-item'
-  'ctrl alt-h':   'pane:split-left-and-copy-active-item'
+  'ctrl alt-t':  'pane:split-down-and-copy-active-item'
+  'ctrl alt-h':  'pane:split-left-and-copy-active-item'
   'ctrl alt-n':  'pane:split-right-and-copy-active-item'
-  'ctrl alt-c':     'pane:split-up-and-copy-active-item'
+  'ctrl alt-c':  'pane:split-up-and-copy-active-item'
 
 #####################################################
 # VIM MODE PLUS!!!
 #####################################################
-'atom-text-editor.vim-mode-plus.insert-mode':
-  # Close pane. This was originally delete to beginning of word
-  'ctrl-w': 'core:close'
+'atom-workspace atom-text-editor:not([mini]), atom-text-editor.vim-mode-plus':
+  # Deleting - because the delete key is too far away, and mac laptops don't have one
+  'ctrl-d':       'core:delete'
+  'ctrl-shift-d': 'editor:delete-to-end-of-word'
+  'alt-shift-d':  'editor:delete-line'
 
+  # Enter Visual Mode
+  'ctrl-j': 'vim-mode-plus:activate-characterwise-visual-mode'
+  # Enter Normal Mode
+  'ctrl-u': 'vim-mode-plus:activate-normal-mode'
+  # Enter Insert Mode
+  'ctrl-i': 'vim-mode-plus:activate-insert-mode'
+
+##############################################
+################ INSERT MODE #################
+'atom-text-editor.vim-mode-plus.insert-mode':
+  # Copy - because for some reason, this was bound to something else
+  'ctrl-c': 'core:copy'
+
+  # Exit Insert Mode - Escape is too far away.
+  'ctrl-u': 'vim-mode-plus:activate-normal-mode'
+
+##############################################
+################ VISUAL MODE #################
+'atom-text-editor.vim-mode-plus.visual-mode':
+  # Exit Visual Mode - Escape is too far away.
+  'ctrl-u': 'vim-mode-plus:activate-normal-mode'
+  # Enter Insert Mode
+  'ctrl-i': 'vim-mode-plus:activate-insert-mode'
+
+  # select the entire block with the same indentation
+  'i i': 'vim-mode-plus:inner-indentation'
+
+  # select the entire block within the current fold-level
+  'i f': 'vim-mode-plus:inner-fold'
+
+  # Select outer wrapping characters
+  'o s': 'vim-mode-plus:a-any-pair'
+  'o q': 'vim-mode-plus:a-any-quote'
+  'o {': 'vim-mode-plus:a-curly-bracket'
+  'o }': 'vim-mode-plus:a-curly-bracket'
+  'o [': 'vim-mode-plus:a-square-bracket'
+  'o ]': 'vim-mode-plus:a-square-bracket'
+  'o <': 'vim-mode-plus:a-angle-bracket'
+  'o >': 'vim-mode-plus:a-angle-bracket'
+  'o (': 'vim-mode-plus:a-parenthesis'
+  'o )': 'vim-mode-plus:a-parenthesis'
+
+  # Select inside wrapping characters
+  'i s': 'vim-mode-plus:inner-any-pair'
+  'i q': 'vim-mode-plus:inner-any-quote'
+  'i {': 'vim-mode-plus:inner-curly-bracket'
+  'i }': 'vim-mode-plus:inner-curly-bracket'
+  'i [': 'vim-mode-plus:inner-square-bracket'
+  'i ]': 'vim-mode-plus:inner-square-bracket'
+  'i <': 'vim-mode-plus:inner-angle-bracket'
+  'i >': 'vim-mode-plus:inner-angle-bracket'
+  'i (': 'vim-mode-plus:inner-parenthesis'
+  'i )': 'vim-mode-plus:inner-parenthesis'
+
+##############################################
+############### NOT INSERT MODE ##############
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
   # Character Navigation
   'c':   'core:move-up'
@@ -85,9 +144,17 @@
   'h':   'core:move-left'
   'n':   'core:move-right'
 
+  # Character Selection
+  'shift-c': 'core:select-up'
+  'shift-h': 'core:select-left'
+  'shift-n': 'core:select-right'
+  'shift-t': 'core:select-down'
+
   # Word Navigation
-  'shift-n': 'editor:move-to-end-of-word'
-  'shift-h': 'editor:move-to-beginning-of-word'
+  'm':       'editor:move-to-next-subword-boundary'
+  'b':       'editor:move-to-previous-subword-boundary'
+  'shift-m': 'editor:select-to-next-subword-boundary'
+  'shift-b': 'editor:select-to-previous-subword-boundary'
 
   # Line Navigation
   '\' n': 'editor:move-to-end-of-screen-line'
@@ -105,13 +172,12 @@
   'r': 'pane:show-previous-item'
   'l': 'pane:show-next-item'
 
-
-  # Word Navigation
-  'b': 'editor:move-to-beginning-of-word'
-  'm': 'editor:move-to-end-of-word'
-
   # shortcut for : (so you don't have to type shift)
   ';': 'ex-mode:open'
+
+  # Because vim-search is actually kinda lame
+  '/':       'find-and-replace:show'
+  'ctrl-/':  'project-find:show'
 
 
 ###############################################
