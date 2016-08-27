@@ -15,7 +15,7 @@
  * (To see them, uncomment and save)
  */
 
-@background-color: #222;
+@background-color: #191919;
 @tab-bar-background-color: #111;
 @tab-background-color: @tab-bar-background-color;
 @tab-height: 2em;
@@ -67,7 +67,6 @@ atom-text-editor {
       color: black;
       font-weight: bold;
       text-transform: uppercase;
-      // border: 1px solid white;
     }
     &.insert-mode:before {
       content: 'insert';
@@ -84,25 +83,42 @@ atom-text-editor {
   }
 
   &.is-focused {
+    // Because, why not?
+    @keyframes slidebar {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
+    }
+
     &:after {
       content: ' ';
       position: absolute;
       top: 0px;
-      left: 0px;
+      // left: 0px;
       right: 0px;
+      width: 0;;
       height: 1px;
-      background-color: @blue;
       z-index: 1000;
+      animation-name: slidebar;
+      animation-duration: 0.5s;
+      animation-timing-function: ease;;
     }
 
     &.insert-mode:after {
       background: @blue;
+      width: 100%;
     }
     &.normal-mode:after {
       background: @green;
+      width: 100%;
     }
     &.visual-mode:after {
       background: @magenta;
+      width: 100%;
     }
   }
 }
@@ -111,11 +127,12 @@ atom-text-editor {
 
 // To style other content in the text editor's shadow DOM, use the ::shadow expression
 atom-text-editor::shadow .cursor {
-  // border-color: red;
+  border-color: @blue;
 }
 
-// Stop fucking blinking!
-atom-text-editor::shadow .cursors .cursor { opacity: 100; }
+// The cursor (blinks by default)
+atom-text-editor::shadow .cursors .cursor {
+}
 
 // Thinner Line Gutter
 .editor .gutter, atom-text-editor::shadow .gutter {
