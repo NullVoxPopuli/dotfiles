@@ -134,6 +134,14 @@ atom-text-editor::shadow .cursor {
 atom-text-editor::shadow .cursors .cursor {
 }
 
+atom-text-editor::shadow .trailing-whitespace {
+  background-color: rgba(255, 0,0, 0.2);
+
+  &.invisible-character {
+    color: gray;
+  }
+}
+
 // Thinner Line Gutter
 .editor .gutter, atom-text-editor::shadow .gutter {
   .line-numbers {
