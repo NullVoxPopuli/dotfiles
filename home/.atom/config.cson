@@ -1,19 +1,7 @@
 "*":
-  "aligner-ruby": {}
-  "atom-beautify":
-    general:
-      _analyticsUserId: "18424183-ca74-4a29-a264-61cce8fc6fa7"
   core:
     autoHideMenuBar: true
     automaticallyUpdate: false
-    disabledPackages: [
-      "language-ember-script"
-      "atom-emblem"
-      "es6-javascript"
-      "linter-ruby"
-      "linter-scss-lint"
-      "move-panes"
-    ]
   editor:
     fontFamily: "DejaVu Sans Mono"
     fontSize: 13
@@ -21,12 +9,9 @@
     showIndentGuide: true
     showInvisibles: true
     zoomFontWhenCtrlScrolling: false
-  "exception-reporting":
-    userId: "083ea2df-f816-ca42-389c-32ad23e9320f"
   linter:
     showErrorPanel: false
   "linter-rubocop": {}
-  "linter-ruby": {}
   "one-dark-ui":
     layoutMode: "Compact"
     tabSizing: "Minimum"
