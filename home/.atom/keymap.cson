@@ -33,6 +33,7 @@
 'atom-workspace':
   # Close Pane
   'ctrl-\'': 'core:close'
+  'ctrl-alt-\'': 'tabs:close-all-tabs'
 
 'atom-workspace, atom-text-editor':
   ###############################################
