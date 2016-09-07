@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Usage:
+#   pg-restore-from-backup rails_development path/to/file.dump
+db=$1
+backup=$2
+user=${3:-$USER}
+host=${4:-localhost}
+
+pg_restore --verbose --clean --no-acl --no-owner -h $host -U $user -d $db $backup
