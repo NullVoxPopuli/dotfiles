@@ -180,6 +180,17 @@
   '/':       'find-and-replace:show'
   'ctrl-/':  'project-find:show'
 
+##############################################################################
+# vim-mode-plus overrides (because I want these commands to work in every mode)
+##############################################################################
+'atom-text-editor.vim-mode-plus, atom-text-editor.vim-mode-plus-input':
+  # ctrl-c should *always* copy
+  'ctrl-c': 'core:copy'
+
+'atom-text-editor.vim-mode-plus.normal-mode, atom-text-editor.vim-mode-plus.visual-mode':
+  # ctrl-v should *always* paste
+  'ctrl-v': 'core:paste'
+
 
 ###############################################
 # To not forget the joy of NERDTree's shortcuts
