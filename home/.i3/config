@@ -172,6 +172,11 @@ bar {
   position top
 }
 
+# Don't have window focus follow the mouse.
+# Because when I'm typing I often flick the cursor away...
+focus_follows_mouse no
+
+
 # Removes the titlebars from windows
 new_window 1pixel
 
