@@ -18,3 +18,14 @@ selector = 'atom-text-editor.vim-mode-plus:not(.normal-mode)'
 
 atom.commands.add selector, 'blur', ->
   atom.commands.dispatch(this, toNormalMode)
+
+######################################################
+# Allow Ctrl +/- to change the font size of everything
+# (Not just the panes, but the trees and tabs, too)
+######################################################
+# set initial value
+document.documentElement.style.fontSize = atom.config.get('editor.fontSize') + 'px'
+
+# update value
+atom.config.onDidChange 'editor.fontSize', ({newValue}) ->
+  document.documentElement.style.fontSize = newValue + 'px'
