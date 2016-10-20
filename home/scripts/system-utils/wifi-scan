@@ -1,3 +1,3 @@
 #!/bin/bash
-columns=${1:-ssid,bssid,mode,chan,freq,rate,signal,bars,security}
+columns=${1:-active,ssid,bssid,mode,chan,freq,rate,signal,bars,security}
 nmcli -f $columns -p d wifi list
