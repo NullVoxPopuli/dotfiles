@@ -22,6 +22,7 @@
 @blue: #61afef;
 @green: #98c379;
 @magenta: #c678dd;
+@line-number-color: #839496;
 
 // hide scrollbars
 body /deep/ ::-webkit-scrollbar {
@@ -50,7 +51,21 @@ body /deep/ ::-webkit-scrollbar {
     }
   }
 }
-
+atom-pane-resize-handle {
+  // background-color: black;
+  //
+  // &.horizontal {
+  //   border-left: 1px solid black;
+  //   width: 8px !important;
+  //   margin: 0 !important;
+  // }
+  // &.vertical {
+  //   border-top: 1px solid black;
+  //   height: 8px !important;
+  //   margin: 0 !important;
+  // }
+  // // border-right: 1px solid black;
+}
 // style the background and foreground colors on the atom-text-editor-element itself
 atom-text-editor {
   // color: white;
@@ -149,11 +164,11 @@ atom-text-editor::shadow .trailing-whitespace {
     min-width: 1em;
     font-size: 1em;
     overflow: hidden;
-    border-left: 1px solid #333;
-    border-right: 1px solid #333;
+    border-left: 1px solid darken(@line-number-color, 40%);
+    border-right: 1px solid darken(@line-number-color, 40%);
     .line-number {
       // width: 0px;
-      color: #839496;
+      color: @line-number-color;
     }
   }
 }
@@ -169,10 +184,10 @@ atom-text-editor::shadow .trailing-whitespace {
     line-height: @tab-height;
 
     &.active {
-      height: 25px;
+      height: 2em;
 
       &:before {
-        height: 25px;
+        height: 2em;
       }
     }
 
@@ -196,4 +211,17 @@ atom-text-editor::shadow .trailing-whitespace {
 
 atom-panel-container.footer {
   height: @tab-height;
+}
+
+// guides for folders
+li.directory.entry.list-nested-item.collapsed.selected::before{
+  border-left: 1px solid red;
+}
+li.directory.entry.list-nested-item.expanded.selected::before{
+  border-left: 1px solid red;
+}
+.tree-view {
+  li.directory.expanded .list-item, .list-tree {
+    border-left: 1px dashed #323232;
+  }
 }
