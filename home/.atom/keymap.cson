@@ -34,12 +34,17 @@
   # Close Pane
   'ctrl-\'': 'core:close'
   'ctrl-alt-\'': 'tabs:close-all-tabs'
+  # Ember Pods - related files
+  'ctrl-p': 'ember-tabs:open-file-pane'
 
 'atom-workspace, atom-text-editor':
   ###############################################
   # Search and handy macro-y things
   ##############################################
   # alt-enter converts search results into selections
+  'f11': 'atom-ctags:go-to-declaration'#'goto:declaration'
+  'f10': 'symbols-view:toggle-file-symbols'#'goto:file-symbol'
+  'f9': 'goto:project-symbol'
 
   ###################################
   # Pane Navigation
