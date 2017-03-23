@@ -1,0 +1,5 @@
+#!/bin/bash
+diffAgainstBranch=${1:-master}
+currentBranch=$(git symbolic-ref HEAD | sed 's!refs\/heads\/!!')
+echo "Comparing your current branch, ${currentBranch}, to ${diffAgainstBranch}"
+git diff ${diffAgainstBranch}...${currentBranch} --stat --color
