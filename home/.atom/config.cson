@@ -1,19 +1,52 @@
 "*":
+  "aligner-ruby": {}
+  "atom-beautify":
+    general:
+      _analyticsUserId: "18424183-ca74-4a29-a264-61cce8fc6fa7"
+  "atom-ctags":
+    autoBuildTagsWhenActive: true
   core:
     autoHideMenuBar: true
-    automaticallyUpdate: false
+    disabledPackages: [
+      "language-ember-script"
+      "atom-emblem"
+      "es6-javascript"
+      "linter-ruby"
+      "linter-scss-lint"
+      "move-panes"
+      "autocomplete"
+      "autocomplete-snippets"
+      "goto-definition"
+      "go-to-definition-rails"
+      "atom-ctags"
+      "autocomplete-ruby"
+      "Handlebars"
+    ]
+    telemetryConsent: "no"
+    warnOnLargeFileLimit: 1
   editor:
     fontFamily: "DejaVu Sans Mono"
-    fontSize: 13
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
     zoomFontWhenCtrlScrolling: false
-  linter:
-    showErrorPanel: false
+  "ember-tabs": {}
+  "exception-reporting":
+    userId: "083ea2df-f816-ca42-389c-32ad23e9320f"
+  "fuzzy-finder":
+    ignoredNames: [
+      "node_modules"
+    ]
+    searchAllPanes: true
+  linter: {}
+  "linter-eslint":
+    globalNodePath: "/home/lprestonsegoiii/.nvm/versions/node/v6.2.2"
+    useGlobalEslint: true
   "linter-rubocop": {}
+  "linter-ruby": {}
   "one-dark-ui":
     layoutMode: "Compact"
     tabSizing: "Minimum"
+  "rubocop-auto-correct": {}
   welcome:
     showOnStartup: false
