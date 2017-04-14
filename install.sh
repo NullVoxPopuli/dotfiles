@@ -20,4 +20,5 @@ cp home/.vimrc ~/
 ####################
 # sync Atom
 ####################
-./install/atom.sh
+# apm install
+# ./install/atom.sh
