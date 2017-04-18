@@ -1,0 +1,70 @@
+#!/bin/bash
+#
+# USAGE:
+# autosquash develop "new commit message"
+#
+rebaseAgainstBranch=${1:-develop}
+numberOfCommits=$(git rev-list --count HEAD ^$rebaseAgainstBranch)
+currentBranch=$(git symbolic-ref HEAD | sed 's!refs\/heads\/!!')
+currentCommit=$(git rev-parse HEAD)
+baseCommit=$(git rev-parse HEAD~$numberOfCommits)
+
+read -r -d '' warningMessage <<-EOF
+  !!! WARNING !!!
+  You are about to squash $numberOfCommits commits!
+
+  Please verify that that you want to squash all commits between
+      current: $currentCommit
+               $currentBranch
+      and
+
+      base:    $baseCommit
+               $rebaseAgainstBranch
+
+  Confirm? (Y|N)
+EOF
+
+while true; do
+    read -p "$warningMessage" yn
+    case $yn in
+        [Yy]* ) make install; break;;
+        [Nn]* ) exit 0;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo "Squashing ${numberOfCommits} commits..."
+
+# Inspiration from:
+# http://stackoverflow.com/a/24018435/356849
+#get number of commits to squash
+squashCount=$numberOfCommits
+
+#get the commit message
+shift
+commitMsg=$@
+
+#regular expression to verify that squash number is an integer
+regex='^[0-9]+$'
+
+echo "---------------------------------"
+echo "Will squash $squashCount commits"
+echo "Commit message will be '$commitMsg'"
+
+echo "...validating input"
+if ! [[ $squashCount =~ $regex ]]
+then
+    echo "Squash count must be an integer."
+elif [ -z "$commitMsg" ]
+then
+    echo "Invalid commit message.  Make sure string is not empty"
+else
+    echo "...input looks good"
+    echo "...proceeding to squash"
+    git reset --soft HEAD~$squashCount
+    git commit -m "$commitMsg"
+    echo "...done"
+fi
+
+echo
+exit 0
