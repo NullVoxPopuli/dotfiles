@@ -8,6 +8,8 @@ numberOfCommits=$(git rev-list --count HEAD ^$rebaseAgainstBranch)
 currentBranch=$(git symbolic-ref HEAD | sed 's!refs\/heads\/!!')
 currentCommit=$(git rev-parse HEAD)
 baseCommit=$(git rev-parse HEAD~$numberOfCommits)
+currentDiff=$(git diff $rebaseAgainstBranch...HEAD --shortstat)
+
 
 read -r -d '' warningMessage <<-EOF
   !!! WARNING !!!
@@ -20,6 +22,8 @@ read -r -d '' warningMessage <<-EOF
 
       base:    $baseCommit
                $rebaseAgainstBranch
+
+  $currentDiff
 
   Confirm? (Y|N)
 EOF
@@ -61,9 +65,18 @@ then
 else
     echo "...input looks good"
     echo "...proceeding to squash"
+
+    # THE DANGEROUS COMMANDS
     git reset --soft HEAD~$squashCount
     git commit -m "$commitMsg"
+
     echo "...done"
+
+    newCurrentDiff=$(git diff $rebaseAgainstBranch...HEAD --shortstat)
+
+    echo "Diff Stats:"
+    echo "Before: $currentDiff"
+    echo " After: $newCurrentDiff"
 fi
 
 echo
