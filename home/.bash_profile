@@ -14,12 +14,18 @@
 # handy aliases
 alias ll="ls -l"
 alias la="ls -la"
-alias ccat='$HOME/scripts/vimcat'
 
 # Git
+alias gc='git checkout'
 alias gs='git status'
+alias gl='git log'
 alias gd='git diff'
+alias gbs='git branch-status'
+alias gb='git branch'
 alias gls='git log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative'
+
+# Python
+alias gmusic='cd ~/Development/etkirsch/gmusic && python gmusic.py'
 
 # Ruby
 alias be='bundle exec'
@@ -27,12 +33,18 @@ alias be='bundle exec'
 # Docker
 alias docko="docker-compose"
 alias docker-stop-all="docker stop $(docker ps -a -q)"
-alias docker-clean='docker rm -v $(docker ps -a -q -f status=exited) && docker volume rm $(docker volume ls -qf dangling=true)'
+alias docker-clean='\
+  docker rm -v $(docker ps -a -q -f status=exited) && \
+  docker volume rm $(docker volume ls -qf dangling=true)'
+
 alias docker-destroy='\
   sudo docker kill $(docker ps -q); \
   sudo docker rm $(docker ps -a -q); \
   sudo docker rmi $(docker images -q -f dangling=true); \
-  sudo docker rmi $(docker images -q -f) -f;'
+  sudo docker rmi $(docker images -q -f) -f; \
+  sudo docker volume rm $(docker volume ls -q)'
+
+alias ccat='$HOME/scripts/vimcat'
 
 # Clipboard
 alias setclip='xclip -selection c'
