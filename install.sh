@@ -1,3 +1,18 @@
+#####################
+# Install Common Deps
+#####################
+sudo apt install \
+  git vim curl xclip \
+  npm gnupg gparted gufw \
+  qt4-qmake qt5-qmake libxslt-dev libxml2-dev \
+  veromix audacity clementine \
+  gimp kdenline vlc \
+  filezilla etherape gnome \
+  libdbus-glib-1-dev \
+  i3 \
+  libappindicator1 \
+  lm-sensors
+
 ###############################################
 # Load Ubuntu/Gnome Configuration + KeyMappings
 ###############################################
