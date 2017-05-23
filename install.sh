@@ -14,6 +14,21 @@ sudo apt install \
   fonts-font-awesome \
   lm-sensors
 
+#######################
+# Install Atom Packages
+#######################
+apm install \
+  aligner aligner-ruby aligner-scss aligner-javascript \
+  autoclose-html \
+  file-icons \
+  git-time-machine blame tree-view-git-status \
+  change-case ember-tabs\
+  atom-handlebars language-emblem language-slim language-javascript-jsx \
+  linter linter-sass-lint linter-eslint linter-ruby \
+  scroll-percentage \ 
+  vim-mode-plus \
+  pigments
+
 ###############################################
 # Load Ubuntu/Gnome Configuration + KeyMappings
 ###############################################
