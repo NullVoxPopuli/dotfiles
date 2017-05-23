@@ -168,8 +168,20 @@ bindsym $mod+u mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  status_command i3status
+  font pango:DejaVu Sans Mono, Icons 8
+
+  status_command /home/lprestonsegoiii/.i3/i3status-rust/target/release/i3status-rs /home/lprestonsegoiii/.i3/i3status-rust.json --icons awesome --theme solarized-dark
+
   position top
+  colors {
+    separator #666666
+    background #222222
+    statusline #dddddd
+    focused_workspace #0088CC #0088CC #ffffff
+    active_workspace #333333 #333333 #ffffff
+    inactive_workspace #333333 #333333 #888888
+    urgent_workspace #2f343a #900000 #ffffff
+  }
 }
 
 # Don't have window focus follow the mouse.

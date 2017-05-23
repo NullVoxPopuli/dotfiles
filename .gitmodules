@@ -2,3 +2,7 @@
 	path = home/.vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
 	branch = master
+[submodule "home/.i3/i3status-rust"]
+	path = home/.i3/i3status-rust
+	url = https://github.com/greshake/i3status-rust.git
+	branch = master
