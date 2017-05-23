@@ -11,6 +11,7 @@ sudo apt install \
   libdbus-glib-1-dev \
   i3 \
   libappindicator1 \
+  fonts-font-awesome \
   lm-sensors
 
 ###############################################
