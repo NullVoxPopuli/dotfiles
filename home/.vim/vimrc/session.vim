@@ -18,9 +18,9 @@ syntax on
 endfunction
 
 " Save session on quitting Vim
-autocmd VimLeave * NERDTreeTabsClose
-autocmd VimLeave * call SaveSess()
+" autocmd VimLeave * NERDTreeTabsClose
+" autocmd VimLeave * call SaveSess()
 
 " Restore session on starting Vim
-autocmd VimEnter * call RestoreSess()
+" autocmd VimEnter * call RestoreSess()
 " NERDTree is loaded in plugin-config.vim
