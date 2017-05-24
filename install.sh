@@ -27,6 +27,7 @@ apm install \
   linter linter-sass-lint linter-eslint linter-ruby \
   scroll-percentage \ 
   vim-mode-plus \
+  scrot \
   pigments
 
 ###############################################
