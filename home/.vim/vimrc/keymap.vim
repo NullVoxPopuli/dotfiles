@@ -37,6 +37,11 @@ map <F7> :resize +2<CR>
 map <S-F8> :vertical resize -10<CR>
 map <F8> :vertical resize -2<CR>
 
+
+" Tab-Completion?
+imap <Tab> <C-P>
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Notes for myself, because holy cow, there are a lot of shortcuts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
