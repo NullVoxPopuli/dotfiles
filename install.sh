@@ -24,7 +24,7 @@ apm install \
   file-icons \
   git-time-machine blame tree-view-git-status \
   change-case ember-tabs\
-  atom-handlebars language-emblem language-slim language-javascript-jsx \
+  atom-handlebars language-emblem language-slim react \
   linter linter-sass-lint linter-eslint linter-ruby \
   scroll-percentage \ 
   vim-mode-plus \
