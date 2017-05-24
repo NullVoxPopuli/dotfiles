@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'vim-syntastic/syntastic'
 
 """""""""""""""""
 " File Navigation
