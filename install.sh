@@ -12,6 +12,7 @@ sudo apt install \
   i3 \
   libappindicator1 \
   fonts-font-awesome \
+  scrot \
   lm-sensors
 
 #######################
@@ -27,7 +28,6 @@ apm install \
   linter linter-sass-lint linter-eslint linter-ruby \
   scroll-percentage \ 
   vim-mode-plus \
-  scrot \
   pigments
 
 ###############################################
