@@ -2,10 +2,12 @@
 function __current_ruby_ps1 {
 	local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
 	[ "$gemset" != "" ] && gemset="@$gemset"
-	local version=$(echo $MY_RUBY_HOME | awk -F'-' '{print $2}')
+
+  local version=$(ruby --version | awk -F' ' '{print $2}')
 	[ "$version" == "1.8.7" ] && version=""
-	local full="$version$gemset"
-	[ "$full" != "" ] && echo "💎  $full"
+
+  local full="$version$gemset"
+	[ "$full" != "" ] && echo "💎 $full"
 }
 
 function __current_node_ps1 {

@@ -1,6 +1,8 @@
- # Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
- # This loads nvm
+# Load the Ruby Loader
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
+# This loads nvm
 [[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
 # allows git usage in PS1
 [[ -s "$HOME/scripts/bash-support/git-prompt.sh" ]] && source "$HOME/scripts/bash-support/git-prompt.sh"
@@ -70,3 +72,8 @@ stty -ixon
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+### Cargo / Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+
