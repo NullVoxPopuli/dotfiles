@@ -8,6 +8,15 @@
 " <A-...> Alt
 " <D-...> command (moc only) super?
 
+" I use DVorak... So vim is a little harder... yay.
+" This maps the querty keys to the equiv dvorak for home position
+" This notation is: <dvorak><querty>
+" H - Left, K - Up, L - Right, J - Down
+" I prefer WASD-inspired: h-left, t-down, n-right, c-up
+" The querty equiv :      j       k       l        i
+" h doesn't need to change
+set langmap=tj,ck,nl,jc,kv,bn
+
 
 " Use Single quote for the <leader> key, cause it's closer than the default
 " back slash
@@ -54,12 +63,20 @@ imap <Tab> <C-P>
 " :m # - moves line below the specified line number
 " :#,#m # - moves line range to line below specified number
 " :m +# to move it # lines up
+" o - new line below
+" shift o - new line above
 
 " Live Moving (Up and Down)
-" Set to control (<C-k> : up, <C-j> : down)
-let g:move_key_modifier = 'C'
-vmap <C-<Up>> <Plug>MoveBlockUp
-vmap <C-<Down>> <Plug>MoveBlockDown
+" Set to control (<A-k> : up, <A-j> : down)
+let g:move_key_modifier = 'A'
+
+nnoremap <A-t> :m .+1<CR>==
+nnoremap <A-c> :m .-2<CR>==
+inoremap <A-t> <Esc>:m .+1<CR>==gi
+inoremap <A-c> <Esc>:m .-2<CR>==gi
+vnoremap <A-t> :m '>+1<CR>gv=gv
+vnoremap <A-c> :m '<-2<CR>gv=gv
+
 
 """""""""""""
 " Navigation
