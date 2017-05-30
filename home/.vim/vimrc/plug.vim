@@ -10,11 +10,16 @@ Plug 'vim-syntastic/syntastic'
 """""""""""""""""
 " File Navigation
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Installs fzf"
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 """"""""""""
 " Appearance
 "Plug 'Yggdroot/indentLine'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
 
 " Syntaxes
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }

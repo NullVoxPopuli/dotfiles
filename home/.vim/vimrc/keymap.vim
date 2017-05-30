@@ -22,9 +22,13 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Nerd Tree-Specfic Window Management
+" Toggle Nerd Tree
+nmap <leader><BSlash> :NERDTreeToggle <CR>
 nmap <C-c> <plug>NERDTreeMapOpenVSplit <CR>
 nmap <leader>nt <plug>NERDTreeTabsToggle<CR>
-nmap <leader>nn :NERDTreeToggle <CR>
+" Toggle focus to Nerd Tree
+nmap <leader>' :NERDTree <CR>
+
 " s - splits to the right
 " o - splits below
 
@@ -83,10 +87,10 @@ map <leader>/   <plug>NERDCommenterToggle
 
 
 """""""""""""
-" Ctrl-P
+" File Finding
 """""""""""""
-" remap to control t because t is more natural on DVorak
-let g:ctrlp_map = '<c-t>'
+nmap <C-t> :Files<cr>
+
 
 " Sensible Indentation with Tab!
 vmap <TAB> >gv
@@ -99,8 +103,10 @@ map <leader>r :!rubocop -a % <CR>
 map <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>
 
+" Quit one pane"
+nmap <leader>w :q<CR>
 " Quit EVERYTHING - (Triggers session save)
-nmap <C-q> :qa<CR>
+nmap <leader>q :qa<CR>
 
 """""""""""""""""""""""
 " Indentation Fixing

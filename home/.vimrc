@@ -1,7 +1,7 @@
 set nocompatible " Fixes old Vi bugs
 filetype off
 
-so ~/.vim/vimrc/vundle.vim
+so ~/.vim/vimrc/plug.vim
 
 filetype plugin indent on
 
