@@ -1,0 +1,1 @@
+nvidia-settings -q GPUCoreTemp | grep -m1 GPU | perl -ne 'print  if /: (\d+)\./'
