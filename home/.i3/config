@@ -22,6 +22,10 @@ set $alt Mod1
 # Set the caps lock key to control
 exec setxkbmap -option ctrl:nocaps
 
+# i3 can't seem to scale images correctly on startup
+# Since we never look at it anyway... solid color!
+exec --no-startup-id xsetroot -solid "#222222"
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -170,7 +174,11 @@ bindsym $mod+u mode "resize"
 bar {
   font pango:DejaVu Sans Mono, Icons 8
 
-  status_command /home/lprestonsegoiii/.i3/i3status-rust/target/release/i3status-rs /home/lprestonsegoiii/.i3/i3status-rust.json --icons awesome --theme solarized-dark
+  status_command /home/lprestonsegoiii/.i3/i3status-rust/target/release/i3status-rs \
+    /home/lprestonsegoiii/.i3/i3status-rust.json \
+    --icons awesome \
+    --theme /home/lprestonsegoiii/.i3/i3status-rust-theme.json
+  #status_command i3status
 
   position top
   colors {
@@ -207,3 +215,6 @@ bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 exec xrandr --dpi 96
+# In order to force a monitor configuration on start
+# exec --no-startup-id xrandr --output DVI-D-0 --auto --left-of DVI-I-1
+
