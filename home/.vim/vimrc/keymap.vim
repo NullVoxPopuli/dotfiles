@@ -36,7 +36,7 @@ nmap <leader><BSlash> :NERDTreeToggle <CR>
 nmap <C-c> <plug>NERDTreeMapOpenVSplit <CR>
 nmap <leader>nt <plug>NERDTreeTabsToggle<CR>
 " Toggle focus to Nerd Tree
-nmap <leader>' :NERDTree <CR>
+nmap <leader>l :NERDTreeFind<CR>
 
 " s - splits to the right
 " o - splits below
