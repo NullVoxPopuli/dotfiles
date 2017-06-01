@@ -13,30 +13,61 @@
 " This notation is: <dvorak><querty>
 " H - Left, K - Up, L - Right, J - Down
 " I prefer WASD-inspired: h-left, t-down, n-right, c-up
-" The querty equiv :      j       k       l        i
-" h doesn't need to change
-set langmap=tj,ck,nl,jc,kv,bn
+" The vim equiv    :      h       j       l        k
+" The querty wasd  :      j       k       l        i
+" NOTE: h doesn't get remapped. It _happens_ to be in the right spot
+" NOTE: the 4th and onward mappings are fixing what the first 3 break
+" The downside to using n for right, is that dvorak-n is query-l,
+set langmap=tj,ck,nl,jc,kv,ln
 
+" Henceforth, anytime I want to use a dovark key, I must instead specify,
+"             and promise to NOTE in the map, indicating the weird:
+"             t => j
+"             c => k
+"             n => l
+"             j => c
+"             k => v
+"             l => n
+"
 
 " Use Single quote for the <leader> key, cause it's closer than the default
 " back slash
+noremap ' <NOP>
 let mapleader = "'"
 
 " Use Semicolon instead of colon for commands
 " Two less keystrokes
 nnoremap ; :
 
+
+"""""""""""""""""""""""""""""""
+" Pane Switching
+""""""""""""""""""""""""""""""
+nnoremap <A-h> <C-w>h
+nnoremap <A-t> <C-w>t
+nnoremap <A-n> <C-w>n
+nnoremap <A-c> <C-w>c
+
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
+""""""""""""""""""""""""""""""""""""""
 " Nerd Tree-Specfic Window Management
+"""""""""""""""""""""""""""""""""""""
+" o: preview
+" t: open in new tab
+" T: open in new tab silently
+" i: open split
+" gi: preview split
+" s: open vsplit
+" gs: preview vsplit
+
+
 " Toggle Nerd Tree
 nmap <leader><BSlash> :NERDTreeToggle <CR>
-nmap <C-c> <plug>NERDTreeMapOpenVSplit <CR>
-nmap <leader>nt <plug>NERDTreeTabsToggle<CR>
 " Toggle focus to Nerd Tree
-nmap <leader>l :NERDTreeFind<CR>
+nmap <leader>n :NERDTreeFind<CR>
 
 " s - splits to the right
 " o - splits below
@@ -52,7 +83,7 @@ map <F8> :vertical resize -2<CR>
 
 
 " Tab-Completion?
-imap <Tab> <C-P>
+" imap <Tab> <C-P>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -68,14 +99,8 @@ imap <Tab> <C-P>
 
 " Live Moving (Up and Down)
 " Set to control (<A-k> : up, <A-j> : down)
-let g:move_key_modifier = 'A'
-
-nnoremap <A-t> :m .+1<CR>==
-nnoremap <A-c> :m .-2<CR>==
 inoremap <A-t> <Esc>:m .+1<CR>==gi
 inoremap <A-c> <Esc>:m .-2<CR>==gi
-vnoremap <A-t> :m '>+1<CR>gv=gv
-vnoremap <A-c> :m '<-2<CR>gv=gv
 
 
 """""""""""""

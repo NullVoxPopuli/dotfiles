@@ -26,8 +26,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }
 "Plug 'joukevandermaas/vim-ember-hbs', { 'for': ['html.handlebars'] }
 
+""""""""""""
+" Behavior
+Plug 'tpope/vim-surround'
+
+
 " Sensible Configuration
 " https://github.com/tpope/vim-sensible#features
+" TODO: what does this do, and do I still need it?
 Plug 'tpope/vim-sensible'
 
 
