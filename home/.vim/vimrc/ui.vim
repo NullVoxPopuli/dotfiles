@@ -2,27 +2,19 @@
 " UI Settings
 """""""""""""""""""""""""""""""""""""""""""
 syntax on
-set laststatus=2
+set laststatus=2      " Always Displays the status line
 set number						" Enables Line numbers
+set relativenumber    " Relative Line Numbers - Useful for commands
 set t_Co=256					" 256 Terminal Colors
+set ruler		          " Always show current position
 
 " Colors / Theme
 set background=dark				" Dark mode
-" colorscheme deep-space
-" color dracula
-
 colorscheme onedark
+let g:rehash256 = 1 " Makes the theme recalculate colors to fit in 256colorspace
 
-let g:rehash256 = 1
-
-set ruler			" Always show current position
-
-" The first setting tells vim to use "autoindent" (that is, use the current
-" line's indent level to set the indent level of new lines). The second makes
-" vim attempt to intelligently guess the indent level of any new line based
-" on the previous line.
-set autoindent
-set smartindent
+set autoindent   " Use current indentation level for new linens
+set smartindent  " Try to guess indentation based on previous line
 
 " turn off smart indentation when pasting
 set pastetoggle=<F2>
@@ -31,8 +23,8 @@ set encoding=utf-8
 set splitright
 set foldmethod=indent
 set foldlevel=99
-" highlight the cursor line
-set cursorline
+
+set cursorline " highlight the cursor line
 
 set showmode "show the current mode (Insert, Visual...)
 set mouse=a " use mouse for everything
@@ -47,8 +39,6 @@ set hlsearch
 
 " Autoload reload files when they have changed on the disk
 set autoread
-
-
 
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
