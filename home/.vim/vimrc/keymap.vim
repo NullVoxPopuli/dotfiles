@@ -166,3 +166,9 @@ nmap <leader>q :qa<CR>
 """""""""""""""""""""""
 nmap <leader><Tab><Space> :set expandtab <CR>:retab<CR>
 nmap <leader><Space><Tab> :set noexpandtab<CR>:retab!<CR>
+
+
+""""""""""""""""""""""
+" Git
+"""""""""""""""""""""
+nmap <leader>gb :Gblame<CR>
