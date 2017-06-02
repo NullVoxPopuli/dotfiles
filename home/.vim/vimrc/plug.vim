@@ -23,6 +23,7 @@ Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }
 " Behavior
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale' " async linting
+Plug 'tpope/vim-fugitive' " Git tools (blame)
 
 """""""""""""
 " Code Style
