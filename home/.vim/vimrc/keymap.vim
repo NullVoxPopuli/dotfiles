@@ -48,6 +48,16 @@ nnoremap <A-t> <C-w>t
 nnoremap <A-n> <C-w>n
 nnoremap <A-c> <C-w>c
 
+" Pane Re-Sizing
+map <S-F5> :vertical resize +10<CR>
+map <F5> :vertical resize +2<CR>
+map <S-F6> :resize -10<CR>
+map <F6> :resize -2<CR>
+map <S-F7> :resize +10<CR>
+map <F7> :resize +2<CR>
+map <S-F8> :vertical resize -10<CR>
+map <F8> :vertical resize -2<CR>
+
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>

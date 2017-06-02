@@ -15,6 +15,14 @@ sudo apt install \
   scrot \
   lm-sensors
 
+# Vim Deps
+sudo apt install silversearcher-ag
+
+# Vim 8
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt update
+sudo apt install -y vim
+
 #######################
 # Install Atom Packages
 #######################
@@ -26,7 +34,7 @@ apm install \
   change-case ember-tabs\
   atom-handlebars language-emblem language-slim react \
   linter linter-sass-lint linter-eslint linter-ruby \
-  scroll-percentage \ 
+  scroll-percentage \
   vim-mode-plus \
   pigments
 
