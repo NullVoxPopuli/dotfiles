@@ -141,7 +141,8 @@ map <leader>/   <plug>NERDCommenterToggle
 """""""""""""
 " File Finding
 """""""""""""
-nmap <C-t> :Files<cr>
+nmap <C-t> :Files<CR>
+nmap <C-f> :Ag<CR>
 
 
 " Sensible Indentation with Tab!
