@@ -1,12 +1,13 @@
 #####################
 # Install Common Deps
 #####################
-sudo apt install \
+# veromix \
+sudo apt install -y \
   git vim curl xclip \
   npm gnupg gparted gufw \
   qt4-qmake qt5-qmake libxslt-dev libxml2-dev \
-  veromix audacity clementine \
-  gimp kdenline vlc \
+  audacity clementine \
+  gimp kdenlive vlc \
   filezilla etherape gnome \
   libdbus-glib-1-dev \
   i3 \
