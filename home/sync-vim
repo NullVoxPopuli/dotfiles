@@ -2,17 +2,26 @@
 
 command=$1
 
-case command in
-  to-machine)
+case $command in
+  machine)
     cp ./.vim/autoload ~/.vim/ -R
     cp ./.vim/colors ~/.vim/ -R
     cp ./.vim/vimrc ~/.vim/ -R
     cp .vimrc ~/
-  ;;
-  to-repo)
+    mkdir -p ~/.vim/_backup
+    mkdir -p ~/.vim/_temp
+    ;;
+  repo)
     cp ~/.vimrc ./
     cp ~/.vim/autoload ./.vim/ -R
     cp ~/.vim/colors ./.vim/ -R
     cp ~/.vim/vimrc ./.vim/ -R
-  ;;
+    ;;
+  *)
+    echo "command not recognized"
+    echo "please provide either"
+    echo "  repo"
+    echo "   or"
+    echo "  machine"
+   ;;
 esac
