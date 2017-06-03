@@ -60,3 +60,13 @@ endif
 
 set backupdir=~/.vim/_backup//    " where to put backup files.
 set directory=~/.vim/_temp//      " where to put swap files.
+
+
+" Scrolling
+set scrolloff=3                   " minimum lines to keep above and below cursor
+
+" allow undo history to persist after closing buffer
+if has('persistent_undo')
+  set undodir=~/.vim/_undo
+  set undofile
+end

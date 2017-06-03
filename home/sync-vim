@@ -10,6 +10,7 @@ case $command in
     cp .vimrc ~/
     mkdir -p ~/.vim/_backup
     mkdir -p ~/.vim/_temp
+    mkdir -p ~/.vim/_undo
     ;;
   repo)
     cp ~/.vimrc ./
