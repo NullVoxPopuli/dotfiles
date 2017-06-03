@@ -1,0 +1,18 @@
+#!/bin/bash
+
+command=$1
+
+case command in
+  to-machine)
+    cp ./.vim/autoload ~/.vim/autoload -R
+    cp ./.vim/colors ~/.vim/colors -R
+    cp ./.vim/vimrc ~/.vim/vimrc -R
+    cp .vimrc ~/
+  ;;
+  to-repo)
+    cp ~/.vimrc ./
+    cp ~/.vim/autoload ./.vim/autoload -R
+    cp ~/.vim/colors ./.vim/colors -R
+    cp ~/.vim/vimrc ./.vim/vimrc -R
+  ;;
+esac
