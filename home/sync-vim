@@ -4,15 +4,15 @@ command=$1
 
 case command in
   to-machine)
-    cp ./.vim/autoload ~/.vim/autoload -R
-    cp ./.vim/colors ~/.vim/colors -R
-    cp ./.vim/vimrc ~/.vim/vimrc -R
+    cp ./.vim/autoload ~/.vim/ -R
+    cp ./.vim/colors ~/.vim/ -R
+    cp ./.vim/vimrc ~/.vim/ -R
     cp .vimrc ~/
   ;;
   to-repo)
     cp ~/.vimrc ./
-    cp ~/.vim/autoload ./.vim/autoload -R
-    cp ~/.vim/colors ./.vim/colors -R
-    cp ~/.vim/vimrc ./.vim/vimrc -R
+    cp ~/.vim/autoload ./.vim/ -R
+    cp ~/.vim/colors ./.vim/ -R
+    cp ~/.vim/vimrc ./.vim/ -R
   ;;
 esac

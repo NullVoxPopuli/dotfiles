@@ -18,6 +18,8 @@ Plug 'vim-airline/vim-airline'
 
 " Syntaxes
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }
+Plug 'yalesov/vim-emblem'
+Plug 'digitaltoad/vim-pug'
 
 """"""""""""
 " Behavior
