@@ -28,7 +28,7 @@ set langmap=tj,ck,nl,jc,kv,ln
 "             j => c
 "             k => v
 "             l => n
-"
+
 
 " Use Single quote for the <leader> key, cause it's closer than the default
 " back slash
@@ -47,6 +47,12 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-t> <C-w>t
 nnoremap <A-n> <C-w>n
 nnoremap <A-c> <C-w>c
+
+" Pane Creating
+nmap <leader>cc :leftabove new<CR>
+nmap <leader>hh :leftabove vnew<CR>
+nmap <leader>tt :rightbelow new<CR>
+nmap <leader>nn :rightbelow vnew<CR>
 
 " Pane Re-Sizing
 map <S-F5> :vertical resize +10<CR>
@@ -81,15 +87,6 @@ nmap <leader>n :NERDTreeFind<CR>
 
 " s - splits to the right
 " o - splits below
-
-map <S-i> :vertical resize +10<CR>
-map <C-<S-i>> :vertical resize +2<CR>
-map <S-F6> :resize -10<CR>
-map <S-F7> :resize +10<CR>
-map <F6> :resize -2<CR>
-map <F7> :resize +2<CR>
-map <S-F8> :vertical resize -10<CR>
-map <F8> :vertical resize -2<CR>
 
 
 " Tab-Completion?
@@ -135,7 +132,9 @@ map <S-<Home>> 0
 " https://github.com/scrooloose/nerdcommenter
 " 'cc comments out line or selection
 " 'c<space> toggles comment
-map <leader>/   <plug>NERDCommenterToggle
+" map <C-=> <plug>NERDCommenterToggle<CR>
+
+"nmap <C-/> <Plug>NERDCommenterToggle('n', 'Toggle')<CR>
 
 
 """""""""""""

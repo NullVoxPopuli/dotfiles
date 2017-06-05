@@ -25,17 +25,16 @@ set foldmethod=indent
 set foldlevel=99
 
 set cursorline " highlight the cursor line
-
-set showmode "show the current mode (Insert, Visual...)
-set mouse=a " use mouse for everything
+set showmode   " show the current mode (Insert, Visual...)
+set mouse=a    " use mouse for everything
 
 " set the title of the window to the filename
 set title
 set titlestring=%f%(\ [%M]%)
 
-" highlight the terms
-set hlsearch
-
+set hlsearch  " highlight search terms
+set list      " show whitespace
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:· " set whitespace chars
 
 " Autoload reload files when they have changed on the disk
 set autoread

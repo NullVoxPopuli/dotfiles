@@ -24,8 +24,9 @@ Plug 'digitaltoad/vim-pug'
 """"""""""""
 " Behavior
 Plug 'tpope/vim-surround'
-Plug 'w0rp/ale' " async linting
-Plug 'tpope/vim-fugitive' " Git tools (blame)
+Plug 'w0rp/ale'                 " async linting
+Plug 'tpope/vim-fugitive'       " Git tools (blame)
+
 
 """""""""""""
 " Code Style
@@ -98,6 +99,8 @@ autocmd VimEnter * wincmd p
 """""""""""""""""""""""""""
 " scrooloose/nerdcommenter
 """"""""""""""""""""""""""
+let g:NERDCreateDefaultMappings = 0  " No Defaults, define everything in keymap.vim
+
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
