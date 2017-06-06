@@ -32,8 +32,9 @@ set langmap=tj,ck,nl,jc,kv,ln
 
 " Use Single quote for the <leader> key, cause it's closer than the default
 " back slash
-noremap ' <NOP>
-let mapleader = "'"
+noremap <unique> ' <NOP>
+let mapleader = "\'"
+let maplocalleader = "\'"
 
 " Use Semicolon instead of colon for commands
 " Two less keystrokes
@@ -49,10 +50,10 @@ nnoremap <A-n> <C-w>n
 nnoremap <A-c> <C-w>c
 
 " Pane Creating
-nmap <leader>cc :leftabove new<CR>
-nmap <leader>hh :leftabove vnew<CR>
-nmap <leader>tt :rightbelow new<CR>
-nmap <leader>nn :rightbelow vnew<CR>
+nmap <leader><A-c> :leftabove new<CR>
+nmap <leader><A-h> :leftabove vnew<CR>
+nmap <leader><A-t> :rightbelow new<CR>
+nmap <leader><A-n> :rightbelow vnew<CR>
 
 " Pane Re-Sizing
 map <S-F5> :vertical resize +10<CR>
