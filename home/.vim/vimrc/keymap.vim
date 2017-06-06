@@ -114,10 +114,6 @@ inoremap <A-c> <Esc>:m .-2<CR>==gi
 """""""""""""
 " Navigation
 """""""""""""
-" Exit insert mode upon arrow key navigation
-inoremap <silent> <Up> <ESC><Up>
-inoremap <silent> <Down> <ESC><Down>
-
 " Make home got to the first non-whitespace character on the line
 imap <Home> <Esc>^i
 map <Home> ^

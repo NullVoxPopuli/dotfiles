@@ -34,7 +34,7 @@ set titlestring=%f%(\ [%M]%)
 
 set hlsearch  " highlight search terms
 set list      " show whitespace
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:· " set whitespace chars
+set listchars=eol:¬,tab:>·,extends:>,precedes:<,space:· " set whitespace chars
 
 " Autoload reload files when they have changed on the disk
 set autoread
@@ -62,7 +62,7 @@ set directory=~/.vim/_temp//      " where to put swap files.
 
 
 " Scrolling
-set scrolloff=3                   " minimum lines to keep above and below cursor
+set scrolloff=9                   " minimum lines to keep above and below cursor
 
 " allow undo history to persist after closing buffer
 if has('persistent_undo')
