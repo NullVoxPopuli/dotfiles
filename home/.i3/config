@@ -19,9 +19,6 @@ set $mod Mod4
 # Mod1 is the alt key
 set $alt Mod1
 
-# Set the caps lock key to control
-exec setxkbmap -option ctrl:nocaps
-
 # i3 can't seem to scale images correctly on startup
 # Since we never look at it anyway... solid color!
 exec --no-startup-id xsetroot -solid "#222222"
@@ -108,6 +105,16 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+
+mode "moveit" {
+    bindsym c move up 20px
+    bindsym h move left 20px
+    bindsym t move down 20px
+    bindsym n move right 20px
+    bindsym Return mode "default"
+}
+
+bindsym Mod4+m focus floating; mode "moveit"
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -198,7 +205,11 @@ focus_follows_mouse no
 
 
 # Removes the titlebars from windows
-new_window 1pixel
+new_window pixel 1
+
+#                       border  backgr  text    indic     childborder
+client.focused          #0000FF #285577 #ffffff #2e9ef4   #6666ff
+
 
 # Turn off edge scrolling
 exec synclient HorizEdgeScroll=0 VertEdgeScroll=0
@@ -217,4 +228,12 @@ bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 exec xrandr --dpi 96
 # In order to force a monitor configuration on start
 # exec --no-startup-id xrandr --output DVI-D-0 --auto --left-of DVI-I-1
+
+# Set the caps lock key to control
+exec --no-startup-id setxkbmap -option ctrl:nocaps
+bindsym F12 exec setxkbmap -option ctrl:nocaps
+# F11 is fullscreen
+bindsym F10 exec /home/lprestonsegoiii/scripts/monitor-switch-display-port
+bindsym F9 exec /home/lprestonsegoiii/scripts/monitor-switch-hdmi
+
 
