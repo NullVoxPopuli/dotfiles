@@ -14,6 +14,10 @@ source /usr/local/share/chruby/auto.sh
 [[ -s "$HOME/scripts/bash-support/ps1.sh" ]] && source "$HOME/scripts/bash-support/ps1.sh"
 
 # handy aliases
+eval `dircolors -b`
+alias ls='ls --color=auto'
+alias dir='ls --color=auto --format=vertical'
+alias vdir='ls --color=auto --format=long'
 alias ll="ls -l"
 alias la="ls -la"
 
@@ -88,4 +92,3 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,.gem,vendor/gems,bower_components}/*" 2> /dev/null'
 bind -x '"\C-p": vim $(fzf);'
-

@@ -72,21 +72,3 @@ custom_bash_prompt(){
 }
 
 custom_bash_prompt
-
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
-# If running interactively, then:
-if [ "$PS1" ]; then
-
-	# don't put duplicate lines in the history. See bash(1) for more options
-	# export HISTCONTROL=ignoredups
-
-	# enable color support of ls and also add handy aliases
-	eval `dircolors -b`
-	alias ls='ls --color=auto'
-	alias dir='ls --color=auto --format=vertical'
-	alias vdir='ls --color=auto --format=long'
-
-fi;
