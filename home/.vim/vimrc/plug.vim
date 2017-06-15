@@ -20,6 +20,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }
 Plug 'yalesov/vim-emblem'
 Plug 'digitaltoad/vim-pug'
+Plug 'pangloss/vim-javascript'   " Better than default js highlighting
+Plug 'othree/es.next.syntax.vim' " ES6/7/Next
+Plug 'mxw/vim-jsx'               " JSX
 
 """"""""""""
 " Behavior
@@ -61,10 +64,11 @@ autocmd BufWritePre * StripWhitespace
 """""""""
 " ripgrep
 """""""""
-let g:rg_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-  \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
-  \ -g "!{.git,node_modules,vendor}/*" '
+let fzf_exclude=$FZF_EXCLUDE
+let fzf_exclude_arg="-g \"!{". fzf_exclude . "}/*\""
+let fzf_config="--column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color \"always\""
+
+let g:rg_command = "rg " . fzf_config . " " . fzf_exclude_arg
 
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 

@@ -6,7 +6,7 @@
 " <C-...> Control
 " <M-...> Alt
 " <A-...> Alt
-" <D-...> command (moc only) super?
+" <D-...> command (mac only) super?
 
 " I use DVorak... So vim is a little harder... yay.
 " This maps the querty keys to the equiv dvorak for home position
@@ -89,7 +89,6 @@ nmap <leader>n :NERDTreeFind<CR>
 " s - splits to the right
 " o - splits below
 
-
 " Tab-Completion?
 " imap <Tab> <C-P>
 
@@ -154,6 +153,7 @@ imap <C-s> <Esc>:w<CR>
 
 " Quit one pane"
 nmap <leader>w :q<CR>
+
 " Quit EVERYTHING - (Triggers session save)
 nmap <leader>q :qa<CR>
 

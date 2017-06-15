@@ -93,6 +93,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_EXCLUDE=".git,node_modules,.gem,vendor/gems,bower_components,tmp"
+export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow -g \"!{$FZF_EXCLUDE}/*\" 2> /dev/null"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,.gem,vendor/gems,bower_components}/*" 2> /dev/null'
 bind -x '"\C-p": vim $(fzf);'
