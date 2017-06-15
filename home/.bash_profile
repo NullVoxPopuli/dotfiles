@@ -41,7 +41,11 @@ alias docko="docker-compose"
 alias docker-stop-all="docker stop $(docker ps -a -q)"
 alias docker-clean='\
   docker rm -v $(docker ps -a -q -f status=exited) && \
-  docker volume rm $(docker volume ls -qf dangling=true)'
+  docker volume rm $(docker volume ls -qf dangling=true); \
+  docker rm $(docker ps -a -q); \
+  docker rmi $(docker images -q -f dangling=true); \
+  docker rmi $(docker images -q -f) -f; \
+  docker volume rm $(docker volume ls -q)'
 
 alias docker-destroy='\
   sudo docker kill $(docker ps -q); \
