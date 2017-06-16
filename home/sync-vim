@@ -3,6 +3,10 @@
 command=$1
 
 case $command in
+  link-nvim)
+    ln -s ~/.vim ~/.config/nvim
+    ln -s ~/.vimrc ~/.config/nvim/init.vim
+    ;;
   machine)
     cp ./.vim/autoload ~/.vim/ -R
     cp ./.vim/colors ~/.vim/ -R
