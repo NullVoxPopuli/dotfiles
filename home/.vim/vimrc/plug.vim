@@ -13,8 +13,10 @@ Plug 'junegunn/fzf.vim'
 
 """"""""""""
 " Appearance
-Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-gitgutter'  " Git Info in the gutter
+Plug 'vim-airline/vim-airline' " Status Line on the bottom of buffers
+" Requires custom font... :-(
+" Plug 'ryanoasis/vim-devicons'  " File Icons
 
 " Syntaxes
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }

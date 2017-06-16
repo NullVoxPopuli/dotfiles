@@ -12,6 +12,7 @@ set ruler		          " Always show current position
 set background=dark				" Dark mode
 colorscheme onedark
 let g:rehash256 = 1 " Makes the theme recalculate colors to fit in 256colorspace
+let g:airline_powerline_fonts = 1
 
 set autoindent   " Use current indentation level for new linens
 set smartindent  " Try to guess indentation based on previous line
@@ -38,6 +39,13 @@ set listchars=eol:¬,tab:>·,extends:>,precedes:<,space:· " set whitespace char
 
 " Autoload reload files when they have changed on the disk
 set autoread
+
+"""""""""""""""
+" Code Folding
+" TODO: foldmethod=syntax for known syntaxes
+set foldmethod=indent " fold based on indentation
+set nofoldenable      " don't open a file with folds, display the whole thing
+
 
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
