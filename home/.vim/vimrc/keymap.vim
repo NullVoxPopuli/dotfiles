@@ -152,10 +152,10 @@ map <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>
 
 " Quit one pane"
-nmap <leader>w :q<CR>
+nmap <leader>, :q<CR>
 
 " Quit EVERYTHING - (Triggers session save)
-nmap <leader>q :qa<CR>
+nmap <leader>. :qa<CR>
 
 """""""""""""""""""""""
 " Indentation Fixing
