@@ -1,13 +1,17 @@
 
 function __current_ruby_ps1 {
-	local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
-	[ "$gemset" != "" ] && gemset="@$gemset"
+  local ruby_exists=$(which ruby)
 
-  local version=$(ruby --version | awk -F' ' '{print $2}')
-	[ "$version" == "1.8.7" ] && version=""
+  if [  -n "$ruby_exists" ]; then
+    local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
+    [ "$gemset" != "" ] && gemset="@$gemset"
 
-  local full="$version$gemset"
-	[ "$full" != "" ] && echo "💎 $full"
+    local version=$(ruby --version | awk -F' ' '{print $2}')
+    [ "$version" == "1.8.7" ] && version=""
+
+    local full="$version$gemset"
+    [ "$full" != "" ] && echo "💎 $full"
+  fi
 }
 
 function __current_node_ps1 {
