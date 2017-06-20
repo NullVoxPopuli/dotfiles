@@ -31,7 +31,15 @@ Plug 'mxw/vim-jsx'               " JSX
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'                 " async linting
 Plug 'tpope/vim-fugitive'       " Git tools (blame)
-Plug 'maralla/completor.vim', { 'for': ['javascript'] }    " Auto-Complete
+
+" Auto-Complete
+Plug 'maralla/completor.vim', { 'for': ['javascript'] }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  "Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+  Plug 'fishbullet/deoplete-ruby'
+endif
+
 
 """""""""""""
 " Code Style
@@ -44,7 +52,9 @@ Plug 'ntpeters/vim-better-whitespace'
 " Sensible Configuration
 " https://github.com/tpope/vim-sensible#features
 " TODO: what does this do, and do I still need it?
-Plug 'tpope/vim-sensible'
+if !has('nvim')
+  Plug 'tpope/vim-sensible'
+endif
 
 call plug#end()
 
@@ -62,6 +72,8 @@ let g:ale_sign_column_always = 1
 " Auto Complete
 let g:completor_node_binary = '/home/lprestonsegoiii/.nvm/versions/node/v8.1.2/bin/node'
 let g:completor_auto_trigger = 0
+let g:deoplete#enable_at_startup = 1
+
 
 """"""""""""""""""""""""""""""""""""""
 " Vim Better Whitespace Configuration
