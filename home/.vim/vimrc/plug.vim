@@ -31,7 +31,7 @@ Plug 'mxw/vim-jsx'               " JSX
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'                 " async linting
 Plug 'tpope/vim-fugitive'       " Git tools (blame)
-Plug 'maralla/completor.vim'    " Auto-Complete
+Plug 'maralla/completor.vim', { 'for': ['javascript'] }    " Auto-Complete
 
 """""""""""""
 " Code Style
