@@ -31,7 +31,7 @@ Plug 'mxw/vim-jsx'               " JSX
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'                 " async linting
 Plug 'tpope/vim-fugitive'       " Git tools (blame)
-
+Plug 'maralla/completor.vim'    " Auto-Complete
 
 """""""""""""
 " Code Style
@@ -57,6 +57,11 @@ call plug#end()
 """"""""""""""""""
 " ALE Linting
 let g:ale_sign_column_always = 1
+
+"""""""""""""""""
+" Auto Complete
+let g:completor_node_binary = '/home/lprestonsegoiii/.nvm/versions/node/v8.1.2/bin/node'
+let g:completor_auto_trigger = 0
 
 """"""""""""""""""""""""""""""""""""""
 " Vim Better Whitespace Configuration

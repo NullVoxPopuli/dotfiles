@@ -91,6 +91,10 @@ nmap <leader>n :NERDTreeFind<CR>
 
 " Tab-Completion?
 " imap <Tab> <C-P>
+" TODO: find a way to call a function for this.....
+" <Plug>CompletorTrigger
+inoremap <C-@> <C-n>
+"nnoremap <C-@> <Plug>CompletorTrigger
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
