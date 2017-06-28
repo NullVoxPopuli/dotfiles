@@ -19,6 +19,16 @@ selector = 'atom-text-editor.vim-mode-plus:not(.normal-mode)'
 atom.commands.add selector, 'blur', ->
   atom.commands.dispatch(this, toNormalMode)
 
+####################################
+# Switch to normal mode after saving
+####################################
+coreSave = 'core:save'
+atom.commands.add 'atom-text-editor',
+  'custom:save-and-go-to-normal-mode', (event) ->
+    editor = @getModel()
+    atom.commands.dispatch(this, coreSave)
+    atom.commands.dispatch(this, toNormalMode)
+
 ######################################################
 # Allow Ctrl +/- to change the font size of everything
 # (Not just the panes, but the trees and tabs, too)

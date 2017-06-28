@@ -72,11 +72,6 @@
   'ctrl-shift-c':   'editor:add-selection-above'
   'ctrl-shift-t': 'editor:add-selection-below'
 
-  # Pane Splitting
-  '\' alt-t':  'pane:split-down'
-  '\' alt-h':  'pane:split-left'
-  '\' alt-n':  'pane:split-right'
-  '\' alt-c':  'pane:split-up'
 
 #####################################################
 # VIM MODE PLUS!!!
@@ -85,7 +80,10 @@
   # Deleting - because the delete key is too far away, and mac laptops don't have one
   'ctrl-d':       'core:delete'
   'ctrl-shift-d': 'editor:delete-to-end-of-word'
-  'alt-shift-d':  'editor:delete-line'
+  'alt-shift-d':  'editor:delete-line' # also d d
+
+  # Save, then exit to Normal Mode
+  'ctrl-s': 'custom:save-and-go-to-normal-mode'
 
   # Enter Visual Mode
   'ctrl-j': 'vim-mode-plus:activate-characterwise-visual-mode'
@@ -93,6 +91,18 @@
   'ctrl-u': 'vim-mode-plus:activate-normal-mode'
   # Enter Insert Mode
   'ctrl-i': 'vim-mode-plus:activate-insert-mode'
+
+##############################################
+################ NORMAL MODE #################
+'atom-text-editor.vim-mode-plus.normal-mode':
+  '\'+c': 'editor:move-line-up'
+  '\'+t': 'editor:move-line-down'
+
+  # Pane Splitting
+  '\' alt-t':  'pane:split-down'
+  '\' alt-h':  'pane:split-left'
+  '\' alt-n':  'pane:split-right'
+  '\' alt-c':  'pane:split-up'
 
 ##############################################
 ################ INSERT MODE #################
