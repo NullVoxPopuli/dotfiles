@@ -58,12 +58,6 @@
   'alt-n': 'window:focus-pane-on-right'
   'alt-c': 'window:focus-pane-above'
 
-  # pane moving
-  'alt-shift-h': 'window:move-active-item-to-pane-on-left'
-  'alt-shift-n': 'window:move-active-item-to-pane-on-right'
-  'alt-shift-c': 'window:move-active-item-to-pane-above'
-  'alt-shift-t': 'window:move-active-item-to-pane-below'
-
   # pane sizing
   'ctrl-n': 'pane:increase-size'
   'ctrl-h': 'pane:decrease-size'
@@ -103,6 +97,14 @@
   '\' alt-h':  'pane:split-left'
   '\' alt-n':  'pane:split-right'
   '\' alt-c':  'pane:split-up'
+
+
+  # pane moving
+  '\' shift-h': 'window:move-active-item-to-pane-on-left'
+  '\' shift-n': 'window:move-active-item-to-pane-on-right'
+  '\' shift-c': 'window:move-active-item-to-pane-above'
+  '\' shift-t': 'window:move-active-item-to-pane-below'
+
 
 ##############################################
 ################ INSERT MODE #################
