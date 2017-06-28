@@ -73,10 +73,10 @@
   'ctrl-shift-t': 'editor:add-selection-below'
 
   # Pane Splitting
-  'ctrl alt-t':  'pane:split-down-and-copy-active-item'
-  'ctrl alt-h':  'pane:split-left-and-copy-active-item'
-  'ctrl alt-n':  'pane:split-right-and-copy-active-item'
-  'ctrl alt-c':  'pane:split-up-and-copy-active-item'
+  '\' alt-t':  'pane:split-down'
+  '\' alt-h':  'pane:split-left'
+  '\' alt-n':  'pane:split-right'
+  '\' alt-c':  'pane:split-up'
 
 #####################################################
 # VIM MODE PLUS!!!
