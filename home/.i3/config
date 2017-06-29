@@ -181,11 +181,9 @@ bindsym $mod+u mode "resize"
 bar {
   font pango: Droid Sans Mono for Powerline, Font Awesome 8
 
-  status_command /home/lprestonsegoiii/.i3/i3status-rust/target/release/i3status-rs \
-    /home/lprestonsegoiii/.i3/i3status-rust.json \
-    --icons awesome \
-    --theme /home/lprestonsegoiii/.i3/i3status-rust-theme.json
-  #status_command i3status
+  #status_command /home/lprestonsegoiii/.i3/i3status-rust/target/release/i3status-rs \
+  #  /home/lprestonsegoiii/.i3/i3status-rust.toml
+  status_command i3status
 
   position top
   colors {
@@ -233,7 +231,7 @@ exec xrandr --dpi 96
 exec --no-startup-id setxkbmap -option ctrl:nocaps
 bindsym F12 exec setxkbmap -option ctrl:nocaps
 # F11 is fullscreen
-bindsym F10 exec /home/lprestonsegoiii/scripts/monitor-switch-display-port
-bindsym F9 exec /home/lprestonsegoiii/scripts/monitor-switch-hdmi
+bindsym F2 exec /home/lprestonsegoiii/scripts/displayport-switch
+bindsym F3 exec /home/lprestonsegoiii/scripts/hdmi-switch
 
 
