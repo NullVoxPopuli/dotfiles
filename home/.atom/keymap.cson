@@ -86,11 +86,6 @@
   # Enter Insert Mode
   'ctrl-i': 'vim-mode-plus:activate-insert-mode'
 
-###################################################
-################ Pending Operation ################
-'atom-text-editor.vim-mode-plus.operator-pending-mode.surround-pending':
-  's': 'vim-mode-plus:inner-current-line'
-
 ##############################################
 ################ NORMAL MODE #################
 'atom-text-editor.vim-mode-plus.normal-mode':
@@ -110,14 +105,6 @@
   '\' shift-c': 'window:move-active-item-to-pane-above'
   '\' shift-t': 'window:move-active-item-to-pane-below'
 
-  # Surround
-  'y s': 'vim-mode-plus:surround'
-
-  'd s': 'vim-mode-plus:delete-surround-any-pair'
-  'd S': 'vim-mode-plus:delete-surround'
-
-  'c s': 'vim-mode-plus:change-surround-any-pair'
-  'c S': 'vim-mode-plus:change-surround'
 
 ##############################################
 ################ INSERT MODE #################
@@ -131,9 +118,6 @@
 ##############################################
 ################ VISUAL MODE #################
 'atom-text-editor.vim-mode-plus.visual-mode':
-  # Surround
-  'S': 'vim-mode-plus:surround'
-
   # Exit Visual Mode - Escape is too far away.
   'ctrl-u': 'vim-mode-plus:activate-normal-mode'
   # Enter Insert Mode
@@ -198,7 +182,7 @@
   'ctrl-t': 'fuzzy-finder:toggle-file-finder'
 
   # Tree View Toggle
-  'ctrl+\\':     'tree-view:toggle-focus'
+  '\' /':     'tree-view:toggle-focus'
   '\' \\':   'tree-view:toggle'
 
   # Show the current file in the tree
@@ -252,7 +236,7 @@
   't':   'core:move-down'
   'h':   'tree-view:collapse-directory'
   'n':   'tree-view:open-selected-entry'
-  '\\':  'tree-view:toggle-focus'
+  '\' /':  'tree-view:toggle-focus'
 
 
 
