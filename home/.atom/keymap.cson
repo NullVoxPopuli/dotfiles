@@ -198,7 +198,9 @@
   'ctrl-t': 'fuzzy-finder:toggle-file-finder'
 
   # Tree View Toggle
-  '\\':     'tree-view:toggle-focus'
+  'ctrl+\\':     'tree-view:toggle-focus'
+  '\' \\':   'tree-view:toggle'
+
   # Show the current file in the tree
   '\' l': 'tree-view:reveal-active-file'
 
