@@ -39,6 +39,16 @@ apm install \
   vim-mode-plus \
   pigments
 
+######################################################
+# Setup the trash to be outside of the home directory
+# http://dev-notes.eu/2016/07/delete-files-in-atom-under-ubuntu-16-04/
+#####################################################
+# Create a Trash directory (with some subdirectories) in root
+sudo mkdir -p /.Trash-1000/{expunged,files,info}
+
+# Give ownership of this to your user:
+sudo chown -R $USER /.Trash-1000
+
 ###############################################
 # Load Ubuntu/Gnome Configuration + KeyMappings
 ###############################################
