@@ -42,6 +42,7 @@
   # Search and handy macro-y things
   ##############################################
   # alt-enter converts search results into selections
+  'alt-/': 'intentions:show'
   'f11': 'atom-ctags:go-to-declaration'#'goto:declaration'
   'f10': 'symbols-view:toggle-file-symbols'#'goto:file-symbol'
   'f9': 'goto:project-symbol'
@@ -244,6 +245,7 @@
 # reset / clear default keybindings, cause we don't like them
 #############################################################
 'atom-workspace atom-text-editor:not([mini])':
+  # 'alt-enter': 'native!'
   'alt-shift-h': 'native!'
   'alt-shift-n': 'native!'
   'alt-shift-t': 'native!'

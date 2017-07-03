@@ -31,6 +31,7 @@ Plug 'mxw/vim-jsx'               " JSX
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'                 " async linting
 Plug 'tpope/vim-fugitive'       " Git tools (blame)
+Plug 'terryma/vim-multiple-cursors' " Multiple Cursors (sublime/atom)
 
 " Auto-Complete
 Plug 'maralla/completor.vim', { 'for': ['javascript'] }
@@ -73,6 +74,17 @@ let g:ale_sign_column_always = 1
 let g:completor_node_binary = '/home/lprestonsegoiii/.nvm/versions/node/v8.1.2/bin/node'
 let g:completor_auto_trigger = 0
 let g:deoplete#enable_at_startup = 1
+
+
+"""""""""""""""""""
+" Multiple Cursors
+" NOTE: plugins need to expose functions for customizing commands,
+"       rather than hackily setting them globally....
+let g:multi_cursor_use_default_mapping=0
+"let g:multi_cursor_next_key='<C-]'
+"let g:multi_cursor_prev_key='<C-[>'
+"let g:multi_cursor_skip_key='<C-x>'
+"let g:multi_cursor_quit_key='<Esc>'
 
 
 """"""""""""""""""""""""""""""""""""""

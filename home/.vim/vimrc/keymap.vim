@@ -126,6 +126,13 @@ imap <S-<Home>> <Esc>0i
 map <S-<Home>> 0
 
 
+""""""""""""""""""
+" Multiple Cursors
+""""""""""""""""""
+"nnoremap <silent> <M-j> :MultipleCursorsFind <C-R>/<CR>
+"vnoremap <silent> <M-j> :MultipleCursorsFind <C-R>/<CR>
+
+
 """"""""""""""
 " Commenting
 """"""""""""""
@@ -135,7 +142,8 @@ map <S-<Home>> 0
 " map <C-=> <plug>NERDCommenterToggle<CR>
 
 "nmap <C-/> <Plug>NERDCommenterToggle('n', 'Toggle')<CR>
-
+" map <leader><C-a> <Plug>NERDCommenterToggle
+" noremap / <Plug>NERDCommenterInsert
 
 """""""""""""
 " File Finding

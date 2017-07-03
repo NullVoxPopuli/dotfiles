@@ -16,8 +16,9 @@
 toNormalMode = 'vim-mode-plus:reset-normal-mode'
 selector = 'atom-text-editor.vim-mode-plus:not(.normal-mode)'
 
-atom.commands.add selector, 'blur', ->
-  atom.commands.dispatch(this, toNormalMode)
+# Can't enable this, or search -> multi-cursor doesn't work
+# atom.commands.add selector, 'blur', ->
+#   atom.commands.dispatch(this, toNormalMode)
 
 ####################################
 # Switch to normal mode after saving
