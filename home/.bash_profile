@@ -15,11 +15,11 @@ source /usr/local/share/chruby/auto.sh
 
 # handy aliases
 eval `dircolors -b`
-alias ls='ls --color=auto'
-alias dir='ls --color=auto --format=vertical'
-alias vdir='ls --color=auto --format=long'
-alias ll="ls -l"
-alias la="ls -la"
+alias ls='ls --color=auto -h'
+alias dir='ls --color=auto --format=vertical -h'
+alias vdir='ls --color=auto --format=long -h'
+alias ll="ls -lh"
+alias la="ls -lah"
 
 # Git
 alias gc='git checkout'
