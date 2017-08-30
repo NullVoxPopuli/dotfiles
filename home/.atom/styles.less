@@ -37,6 +37,12 @@ body /deep/ ::-webkit-scrollbar {
 .tree-view {
   // background-color: whitesmoke;
   background-color: @background-color;
+  .full-menu {
+    // hide top shadow
+    margin-top: -10px;
+    padding-top: 10px;
+    box-shadow: inset 0px 5px 10px rgba(0,0,0,0.5);
+  }
 
   .directory {
     .name {
