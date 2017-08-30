@@ -195,19 +195,26 @@ atom-text-editor::shadow .trailing-whitespace {
 }
 
 // Thinner Line Gutter
-.editor .gutter, atom-text-editor::shadow .gutter {
+.editor .gutter, atom-text-editor::shadow .gutter,
+.editor .gutter-container {
   .line-numbers {
     min-width: 1em;
     font-size: 1em;
     overflow: hidden;
-    border-left: 1px solid darken(@line-number-color, 40%);
-    border-right: 1px solid darken(@line-number-color, 40%);
+    border-left: 1px dashed darken(@line-number-color, 35%);
+    border-right: 1px dashed darken(@line-number-color, 40%);
     .line-number {
       // width: 0px;
       color: @line-number-color;
     }
   }
 }
+
+// differentiate the decorators from the text area
+.editor .gutter .custom-decorations {
+  background: darken(@background-color, 1%);
+}
+
 
 // Thinner Tabs
 .tab-bar {
