@@ -37,7 +37,7 @@ apm install \
   linter linter-sass-lint linter-eslint linter-ruby \
   scroll-percentage \
   vim-mode-plus \
-  pigments
+  highlight-column
 
 ######################################################
 # Setup the trash to be outside of the home directory
