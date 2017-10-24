@@ -1,0 +1,53 @@
+#!/bin/bash
+path="$PWD/$1"
+info=$(file $1)
+
+# regular colors
+K="\033[0;30m"    # black
+R="\033[0;31m"    # red
+G="\033[0;32m"    # green
+Y="\033[0;33m"    # yellow
+B="\033[0;34m"    # blue
+M="\033[0;35m"    # magenta
+C="\033[0;36m"    # cyan
+W="\033[0;37m"    # white
+
+defaultColor="$W"
+
+dneMsg='Cannot nuke non-existent data!'
+confirmMsg='Are you sure you want do nuke this?'
+
+function confirm() {
+  read -r -d '' question <<-EOF
+  Confirm? (Y|N)
+EOF
+
+  while true; do
+    read -p "$question" answer
+    case $answer in
+        [Yy]* )
+          return 1
+          ;;
+        [Nn]* )
+          return 0
+          ;;
+        * )
+          echo "Please answer yes or no.";;
+    esac
+  done
+}
+
+if [ ! -e $path ]; then
+  echo -e "$Y$dneMsg$defaultColor"
+  exit 1
+fi
+
+echo -e "$Y$confirmMsg\n\t$C$path\n\t$info$W"
+
+confirm
+if [ $? -eq 1 ]; then
+  echo -e "$R !!! NUKING (gently) !!! $W"
+  rm -rf $path
+else
+  echo "It lives..."
+fi
