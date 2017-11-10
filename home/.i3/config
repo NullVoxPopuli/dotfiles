@@ -59,7 +59,8 @@ bindsym $mod+e exec dmenu_run
 bindsym $mod+l exec i3lock
 
 # Screenshots!
-bindsym --release $mod+z exec scrot -s
+bindsym --release $mod+z exec escrotum -s -C
+bindsym --release $mod+shift+z exec escrotum -s "screenshot-%Y-%m-%d-%H%M%S_\$wx\$h.png"
 
 # File Browsing!
 bindsym $mod+minus exec nautilus --no-desktop
@@ -233,5 +234,3 @@ bindsym F12 exec setxkbmap -option ctrl:nocaps
 # F11 is fullscreen
 bindsym F2 exec /home/lprestonsegoiii/scripts/displayport-switch
 bindsym F3 exec /home/lprestonsegoiii/scripts/hdmi-switch
-
-

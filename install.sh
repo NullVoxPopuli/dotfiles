@@ -16,6 +16,9 @@ sudo apt install -y \
   scrot \
   lm-sensors
 
+# Screenshot to clipboard
+sudo pip install escrotum
+
 # Vim Deps
 sudo apt install silversearcher-ag
 
