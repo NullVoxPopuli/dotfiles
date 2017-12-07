@@ -1,0 +1,6 @@
+#!/bin/bash
+
+file="${1}"
+[[ -s "${file}" ]] || { echo "is not valid"; }
+[[ -d "${file}" ]] && { echo "is a directory"; }
+[[ -f "${file}" ]] && { echo "is a file"; }

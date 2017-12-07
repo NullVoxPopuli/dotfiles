@@ -1,0 +1,11 @@
+#!/bin/bash
+git for-each-ref \
+  --sort=-committerdate refs/heads/ \
+  --format="\
+    (%(color:green)%(committerdate:relative)%(color:reset)); \
+    %(color:red)%(objectname:short)%(color:reset); \
+    %(committername); \
+    %(HEAD) %(color:yellow)%(refname:short)%(color:reset); \
+    %(contents:subject)" \
+  | tr -d '\011' \
+  | column -s ";" -t
