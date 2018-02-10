@@ -42,10 +42,13 @@
   # Search and handy macro-y things
   ##############################################
   # alt-enter converts search results into selections
-  'alt-/': 'intentions:show'
+  'ctrl-b': 'intentions:show'
+  # 'alt-enter': 'custom:search-to-cursors'
+  # 'alt-/': 'custom:search-to-cursors'
   'f11': 'atom-ctags:go-to-declaration'#'goto:declaration'
   'f10': 'symbols-view:toggle-file-symbols'#'goto:file-symbol'
   'f9': 'goto:project-symbol'
+
 
   ###################################
   # Pane Navigation
@@ -92,6 +95,8 @@
 'atom-text-editor.vim-mode-plus.normal-mode':
   '\'+c': 'editor:move-line-up'
   '\'+t': 'editor:move-line-down'
+
+  '\' u': 'color-picker:open'
 
   # Pane Splitting
   '\' alt-t':  'pane:split-down'
@@ -198,7 +203,6 @@
 
   # Because vim-search is actually kinda lame
   '/':       'find-and-replace:show'
-  'ctrl-/':  'project-find:show'
 
 ##############################################################################
 # vim-mode-plus overrides (because I want these commands to work in every mode)
@@ -243,6 +247,8 @@
 
 #############################################################
 # reset / clear default keybindings, cause we don't like them
+'.platform-win32, .platform-linux':
+  'alt': 'abort!'
 #############################################################
 'atom-workspace atom-text-editor:not([mini])':
   # 'alt-enter': 'native!'

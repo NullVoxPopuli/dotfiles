@@ -5,8 +5,16 @@
       _analyticsUserId: "18424183-ca74-4a29-a264-61cce8fc6fa7"
   "atom-ctags":
     autoBuildTagsWhenActive: true
+  "atom-ide-ui":
+    hyperclick:
+      linuxTriggerKeys: "shiftKey,altKey"
+      win32TriggerKeys: "metaKey"
+    use: {}
+  "color-picker":
+    preferredFormat: "HEX"
   core:
     autoHideMenuBar: true
+    debugLSP: true
     disabledPackages: [
       "language-ember-script"
       "atom-emblem"
@@ -15,17 +23,62 @@
       "linter-scss-lint"
       "move-panes"
       "autocomplete"
-      "autocomplete-snippets"
       "goto-definition"
       "go-to-definition-rails"
       "atom-ctags"
       "autocomplete-ruby"
       "Handlebars"
+      "highlight-line"
+      "linter-eslint"
+      "language-javascript"
+      "react"
+      "atom-fuzzy-grep"
+      "git-diff-details"
+      "github"
+      "wrap-guide"
+      "welcome"
+      "open-on-github"
+      "metrics"
+      "linter"
+      "pigments"
+      "ide-python"
+      "omnisharp-atom"
+      "python-tools"
+      "react-redux-atom-snippets"
+      "ide-yaml"
+      "language-docker"
+      "language-ember"
+      "ide-rust"
+      "atom-typescript"
     ]
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "desktop.ini"
+      "node_modules"
+      "vendor/gems"
+      "vendor/cache"
+    ]
+    packagesWithKeymapsDisabled: [
+      "color-picker"
+      "highlight-line"
+      "git-diff-details"
+      "node-debugger"
+    ]
+    restorePreviousWindowsOnStart: "no"
     telemetryConsent: "no"
+    themes: [
+      "pristine-ui"
+      "one-dark-syntax"
+    ]
     warnOnLargeFileLimit: 1
   editor:
     fontFamily: "DejaVu Sans Mono"
+    fontSize: 19
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -38,15 +91,49 @@
       "node_modules"
     ]
     searchAllPanes: true
+  "git-diff-details":
+    enableSyntaxHighlighting: true
+  "highlight-column":
+    opacity: 0.1
+  "highlight-line":
+    enableBackgroundColor: false
+    enableSelectionBorder: true
+    enableUnderline: true
+  "ide-java":
+    javaHome: "/usr/lib/jvm/java-1.8.0-openjdk-amd64"
+  "ide-ruby":
+    dockerPath: "/usr/bin/docker"
+    lintLevel: "0"
+  "ide-typescript":
+    javascriptSupport: false
+  "language-babel":
+    allowLocalOverride: true
   linter: {}
   "linter-eslint":
-    globalNodePath: "/home/lprestonsegoiii/.nvm/versions/node/v6.2.2"
+    globalNodePath: "/home/lprestonsegoiii/.nvm/versions/node/v8.1.2"
     useGlobalEslint: true
   "linter-rubocop": {}
   "linter-ruby": {}
+  "linter-ui-default": {}
+  "node-debugger":
+    debugPort: 9229
   "one-dark-ui":
-    layoutMode: "Compact"
     tabSizing: "Minimum"
+  perfectionist:
+    indentSize: 2
+  "relative-numbers": {}
   "rubocop-auto-correct": {}
+  "split-diff":
+    diffWords: true
+    ignoreWhitespace: true
+    leftEditorColor: "red"
+    rightEditorColor: "green"
+    scrollSyncType: "Vertical + Horizontal"
+  "vim-mode-plus":
+    clearMultipleCursorsOnEscapeInsertMode: true
+  wakatime:
+    apikey: "Saved in your ~/.wakatime.cfg file"
   welcome:
     showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false

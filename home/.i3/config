@@ -23,6 +23,10 @@ set $alt Mod1
 # Since we never look at it anyway... solid color!
 exec --no-startup-id xsetroot -solid "#222222"
 
+# Have a way to configure connections
+exec --no-startup-id nm-applet
+exec --no-startup-id volumeicon
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
