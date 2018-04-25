@@ -131,28 +131,28 @@ bindsym $mod+a focus parent
 # Window Management / Movement
 ##################################
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
+bindsym $mod+1 workspace 1: Web
+bindsym $mod+2 workspace 2: Work
+bindsym $mod+3 workspace 3: Work
+bindsym $mod+4 workspace 4: Work
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+9 workspace 9: Side Project
+bindsym $mod+0 workspace 10: Side Project
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+1 move container to workspace 1: Web
+bindsym $mod+Shift+2 move container to workspace 2: Work
+bindsym $mod+Shift+3 move container to workspace 3: Work
+bindsym $mod+Shift+4 move container to workspace 4: Work
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+9 move container to workspace 9: Side Project
+bindsym $mod+Shift+0 move container to workspace 10: Side Project
 
 # reload the configuration file
 bindsym $mod+Shift+r reload
@@ -210,8 +210,10 @@ focus_follows_mouse no
 # Removes the titlebars from windows
 new_window pixel 1
 
-#                       border  backgr  text    indic     childborder
-client.focused          #0000FF #285577 #ffffff #2e9ef4   #6666ff
+#                       border   backgr   text     indic
+client.focused          #00ff00  #7B1FA2  #ffffff  #0000f
+client.unfocused        #333333  #222222  #888888  #292d2e
+
 
 
 # Turn off edge scrolling
@@ -220,6 +222,9 @@ exec synclient HorizEdgeScroll=0 VertEdgeScroll=0
 # Disable Tap-To-Click (1 finger, 2 finger, 3 finger)
 exec synclient TapButton1=0 TapButton2=0 TapButton3=0
 exec synclient MaxTapTime=0
+
+# Enable Horizontal Scrolling
+exec synclient HorizTwoFingerScroll=1
 
 #########################################
 # Volume Control (ALSA - uses media keys)
