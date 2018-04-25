@@ -25,6 +25,7 @@
 @green: #98c379;
 @magenta: #c678dd;
 @line-number-color: #839496;
+@drag-handle-color: #333;
 
 // hide scrollbars
 body /deep/ ::-webkit-scrollbar {
@@ -103,6 +104,10 @@ atom-pane {
 
 }
 
+atom-panel.modal:after {
+  opacity: 0.4;
+}
+
 // style the background and foreground colors on the atom-text-editor-element itself
 atom-text-editor {
   // color: white;
@@ -173,7 +178,18 @@ atom-text-editor {
       width: 100%;
     }
   }
+
+  // .gutter-container {
+  //   border-left: 1px solid @drag-handle-color !important;
+  // }
 }
+
+// .atom-dock-resize-handle-resizable, atom-pane-resize-handle {
+//   &:before {
+//
+//     background: @drag-handle-color;
+//   }
+// }
 
 
 
