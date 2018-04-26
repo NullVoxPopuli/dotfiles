@@ -66,6 +66,9 @@ bindsym $mod+l exec i3lock
 bindsym --release $mod+z exec escrotum -s -C
 bindsym --release $mod+shift+z exec escrotum -s "screenshot-%Y-%m-%d-%H%M%S_\$wx\$h.png"
 
+# Gnome-Settings
+bindsym --release $mod+shift+comma exec gnome-control-center
+
 # File Browsing!
 bindsym $mod+minus exec nautilus --no-desktop
 
@@ -243,3 +246,11 @@ bindsym F12 exec setxkbmap -option ctrl:nocaps
 # F11 is fullscreen
 bindsym F2 exec /home/lprestonsegoiii/scripts/displayport-switch
 bindsym F3 exec /home/lprestonsegoiii/scripts/hdmi-switch
+
+
+
+# Gnome (Desktop Environment) Integration
+# https://github.com/51v4n/i3-gnome/wiki/Tips-&-Tricks
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+
