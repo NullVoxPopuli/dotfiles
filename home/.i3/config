@@ -60,7 +60,8 @@ bindsym $mod+e exec dmenu_run
 # Configured to Ctrl+Alt+Space
 
 # Lock screen
-bindsym $mod+l exec i3lock
+# bindsym $mod+l exec i3lock
+bindsym $mod+l exec gnome-screensaver-command --lock
 
 # Screenshots!
 bindsym --release $mod+z exec escrotum -s -C
@@ -253,4 +254,5 @@ bindsym F3 exec /home/lprestonsegoiii/scripts/hdmi-switch
 # https://github.com/51v4n/i3-gnome/wiki/Tips-&-Tricks
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
