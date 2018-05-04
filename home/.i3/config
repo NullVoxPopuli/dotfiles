@@ -193,24 +193,30 @@ bar {
   #status_command /home/lprestonsegoiii/.i3/i3status-rust/target/release/i3status-rs \
   #  /home/lprestonsegoiii/.i3/i3status-rust.toml
   # https://github.com/tobi-wan-kenobi/bumblebee-status
+  #
+  # https://www.googleplaymusicdesktopplayer.com/#!
   status_command python3 ~/.i3/bumblebee-status/bumblebee-status \
     -m \
+      gpmdp \
+      getcrypto \
       publicip \
       nic \
-      getcrypto \
       disk:root \
       uptime \
       amixer \
       pasource \
+      bluetooth \
       layout \
       datetime \
       battery \
     -p \
+      amixer.left-click="gnome-control-center sound" \
+      disk.left-click="nautilus /home/lprestonsegoiii" \
       nic.exclude="lo,virbr,docker,vboxnet,veth,br-b8d9a3203d9f,br-804c172a9843,br-19f5a495122b" \
       getcrypto.geteth="1" \
       getcrypto.getbtc="1" \
       getcrypto.getltc="0" \
-    -t solarized-powerline \
+    -t gruvbox-powerline \
     --debug
 
   # default
