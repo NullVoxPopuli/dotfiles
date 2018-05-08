@@ -61,7 +61,11 @@ bindsym $mod+e exec dmenu_run
 
 # Lock screen
 # bindsym $mod+l exec i3lock
-bindsym $mod+l exec gnome-screensaver-command --lock
+# bindsym $mod+l exec gnome-screensaver-command --lock
+bindsym $mod+l exec ~/scripts/i3-lock-custom
+# Auto lock after 10 minutes
+exec --no-startup-id xautolock -locker "~/scripts/i3-lock-custom" -time 10 -detectsleep -notify 10
+
 
 # Screenshots!
 bindsym --release $mod+z exec escrotum -s -C

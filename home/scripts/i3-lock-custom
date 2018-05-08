@@ -1,0 +1,27 @@
+#!/bin/bash
+revert() {
+  rm /tmp/*screen*.png
+  xset dpms 0 0 0
+}
+
+trap revert HUP INT TERM
+
+xset +dpms dpms 0 0 5
+scrot -d 0 /tmp/locking_screen.png
+
+# Pure Blur -- pretty slow
+# convert -blur 0x8 /tmp/locking_screen.png /tmp/screen_blur.png
+
+# Gaussian Blur + resize -- less slow
+# convert /tmp/locking_screen.png -filter Gaussian -resize 25% -define filter:sigman=2.5 -resize 400% /tmp/screen_blur.png
+
+# Pure Resize
+convert -scale 5% /tmp/locking_screen.png /tmp/screen_blur.png
+convert -scale 2000% /tmp/screen_blur.png /tmp/screen_blur.png
+
+# Zergo Logo in the center
+convert -composite /tmp/screen_blur.png ~/scripts/zerg_purple.png -gravity center -geometry -20x200 /tmp/screen.png
+
+i3lock -i /tmp/screen.png
+
+revert
