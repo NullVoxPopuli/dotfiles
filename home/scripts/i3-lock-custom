@@ -1,27 +1,28 @@
 #!/bin/bash
-revert() {
-  rm /tmp/*screen*.png
-  xset dpms 0 0 0
-}
+# https://www.reddit.com/r/i3wm/comments/8hpjb6/i3_lock_screen/dyojibp/?context=3&utm_content=context&utm_medium=message&utm_source=reddit&utm_name=frontpage
 
-trap revert HUP INT TERM
+# https://www.reddit.com/r/unixporn/comments/3358vu/i3lock_unixpornworthy_lock_screen/
+temp_file="/tmp/screen.png"
+icon="$HOME/scripts/zerg_purple.png"
+blur_factor=6
+lock_blur_factor=0
+screen_size="$(xdpyinfo | awk '/dimensions/{print $2}')"
+wallpaper="$(gsettings get org.gnome.desktop.background picture-uri | sed -e 's/file:\/\///g')"
+width="$(echo $screen_size | cut -d 'x' -f 1)"
+height="$(echo $screen_size | cut -d 'x' -f 2)"
+pixelate=12
 
-xset +dpms dpms 0 0 5
-scrot -d 0 /tmp/locking_screen.png
+# https://www.reddit.com/r/unixporn/comments/4yj29e/i3lock_simple_blur_script/
+  # pixelated:
+  # scale=iw/$pixelate:ih/$pixelate,scale=$pixelate*iw:$pixelate*ih:flags=neighbor
+  # blur:
+  # boxblur=$blur_factor:$blur_factor
+  ffmpeg -f x11grab \
+    -video_size "$screen_size" \
+    -y -i $DISPLAY -i $icon \
+    -filter_complex "scale=iw/$pixelate:ih/$pixelate,scale=$pixelate*iw:$pixelate*ih:flags=neighbor,overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2,boxblur=$lock_blur_factor:$lock_blur_factor" \
+    -vframes 1 $temp_file
 
-# Pure Blur -- pretty slow
-# convert -blur 0x8 /tmp/locking_screen.png /tmp/screen_blur.png
 
-# Gaussian Blur + resize -- less slow
-# convert /tmp/locking_screen.png -filter Gaussian -resize 25% -define filter:sigman=2.5 -resize 400% /tmp/screen_blur.png
-
-# Pure Resize
-convert -scale 5% /tmp/locking_screen.png /tmp/screen_blur.png
-convert -scale 2000% /tmp/screen_blur.png /tmp/screen_blur.png
-
-# Zergo Logo in the center
-convert -composite /tmp/screen_blur.png ~/scripts/zerg_purple.png -gravity center -geometry -20x200 /tmp/screen.png
-
-i3lock -i /tmp/screen.png
-
-revert
+i3lock --ignore-empty-password --image=$temp_file
+rm $temp_file
