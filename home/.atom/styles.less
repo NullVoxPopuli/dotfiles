@@ -218,7 +218,9 @@ atom-text-editor::shadow .trailing-whitespace {
 // Cursor Highlights
 // Vertical
 atom-text-editor .highlight-column, atom-text-editor .editor.highlight-column {
-  background-color: @highlight-color !important;
+  background-color: lighten(@background-color, 5%) !important;
+  opacity: 1 !important;
+  mix-blend-mode: lighten;
 }
 // Horizontal
 atom-text-editor .cursor-line {
@@ -315,4 +317,22 @@ li.directory.entry.list-nested-item.expanded.selected::before{
   li.directory.expanded .list-item, .list-tree {
     border-left: 1px dashed #323232;
   }
+}
+
+
+
+// Syntax
+
+.syntax--variable.syntax--other.syntax--object {
+  color: #abb2bf; // white-grey
+}
+.syntax--variable.syntax--other.syntax--object.syntax--property {
+  color: @blue;
+}
+.syntax--variable.syntax--other.syntax--readwrite {
+  color: #abb2bf; // white-grey
+}
+
+.syntax--variable.syntax--other {
+  color: #e06c75; // red
 }
