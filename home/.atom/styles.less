@@ -14,9 +14,12 @@
  * Examples
  * (To see them, uncomment and save)
  */
-
-@background-color: #191919;
+@background-color: #151519;
+// @background-color: #303035;
+// @background-color: rgb(39, 42, 53);
 // #282c34;
+
+@highlight-color: #aaaaaa;
 
 @tab-bar-background-color: #222;
 @tab-background-color: @tab-bar-background-color;
@@ -210,6 +213,31 @@ atom-text-editor::shadow .trailing-whitespace {
   }
 }
 
+// Cursor Highlights
+// Vertical
+atom-text-editor .highlight-column, atom-text-editor .editor.highlight-column {
+  background-color: @highlight-color !important;
+}
+// Horizontal
+atom-text-editor .cursor-line {
+  background-color: darken(@highlight-color, 55%);
+}
+
+atom-text-editor.vim-mode-plus.normal-mode.is-focused .cursor,
+atom-text-editor.vim-mode-plus.visual-mode.is-focused .cursor,
+atom-text-editor.vim-mode-plus.operator-pending-mode.is-focused .cursor,
+atom-text-editor.vim-mode-plus.insert-mode.replace.is-focused .cursor,
+atom-text-editor.vim-mode-plus.normal-mode.vim-mode-plus-input-focused .cursor,
+atom-text-editor.vim-mode-plus.visual-mode.vim-mode-plus-input-focused .cursor,
+atom-text-editor.vim-mode-plus.operator-pending-mode.vim-mode-plus-input-focused .cursor,
+atom-text-editor.vim-mode-plus.insert-mode.replace.vim-mode-plus-input-focused .cursor,
+atom-text-editor.vim-mode-plus.normal-mode.vim-mode-plus-search-input-focused .cursor,
+atom-text-editor.vim-mode-plus.visual-mode.vim-mode-plus-search-input-focused .cursor,
+atom-text-editor.vim-mode-plus.operator-pending-mode.vim-mode-plus-search-input-focused .cursor,
+atom-text-editor.vim-mode-plus.insert-mode.replace.vim-mode-plus-search-input-focused .cursor {
+  background-color: lighten(@highlight-color, 10%) !important;
+}
+
 // Thinner Line Gutter
 .editor .gutter, atom-text-editor::shadow .gutter,
 .editor .gutter-container {
@@ -217,6 +245,7 @@ atom-text-editor::shadow .trailing-whitespace {
     min-width: 1em;
     font-size: 1em;
     overflow: hidden;
+    background-color: @background-color;
     border-left: 1px dashed darken(@line-number-color, 35%);
     border-right: 1px dashed darken(@line-number-color, 40%);
     .line-number {
