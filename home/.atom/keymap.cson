@@ -76,9 +76,9 @@
 #####################################################
 'atom-workspace atom-text-editor:not([mini]), atom-text-editor.vim-mode-plus':
   # Deleting - because the delete key is too far away, and mac laptops don't have one
-  'ctrl-d':       'core:delete'
-  'ctrl-shift-d': 'editor:delete-to-end-of-word'
-  'alt-shift-d':  'editor:delete-line' # also d d
+  # 'ctrl-d':       'core:delete'
+  # 'ctrl-shift-d': 'editor:delete-to-end-of-word'
+  # 'alt-shift-d':  'editor:delete-line' # also d d
 
   # Save, then exit to Normal Mode
   'ctrl-s': 'custom:save-and-go-to-normal-mode'
@@ -121,6 +121,9 @@
   # Exit Insert Mode - Escape is too far away.
   'ctrl-u': 'vim-mode-plus:activate-normal-mode'
 
+  # select next / prev occurance
+  'ctrl-]': 'vim-mode-plus:select-occurance'
+
 ##############################################
 ################ VISUAL MODE #################
 'atom-text-editor.vim-mode-plus.visual-mode':
@@ -134,6 +137,10 @@
 
   # select the entire block within the current fold-level
   'i f': 'vim-mode-plus:inner-fold'
+
+  # select next / prev occurance
+  # '\' u': 'vim-mode-plus:select-occurance'
+  # '\' i,': 'find-and-replace:find-previous-selected'
 
   # Select outer wrapping characters
   'o s': 'vim-mode-plus:a-any-pair'
@@ -179,6 +186,9 @@
   'b':       'editor:move-to-previous-subword-boundary'
   'shift-m': 'editor:select-to-next-subword-boundary'
   'shift-b': 'editor:select-to-previous-subword-boundary'
+
+  'ctrl-d': 'find-and-replace:select-next'
+  'shift-ctrl-d': 'find-and-replace:select-all'
 
   # Line Navigation
   '\' n': 'editor:move-to-end-of-screen-line'
