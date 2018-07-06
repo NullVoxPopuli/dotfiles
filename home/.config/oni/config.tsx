@@ -15,25 +15,11 @@ export const activate = (oni: Oni.Plugin.Api) => {
     const leader = "'";
 
     ///////////////////////////////
-    // Variables stolen from:
-    // https://github.com/onivim/oni/blob/master/browser/src/Input/KeyBindings.ts
+    // Variables
     const { editors, input, menu } = oni;
 
-    const isVisualMode = () => editors.activeEditor.mode === "visual"
-    const isNormalMode = () => editors.activeEditor.mode === "normal"
-    const isInsertMode = () => editors.activeEditor.mode === 'insert'
-    const isNotInsertMode = () => !isInsertMode();
-
-    const isInsertOrCommandMode = () => (isInsertMode() || editors.activeEditor.mode === "cmdline_normal")
-
-    const oniWithSidebar = oni as Oni.Plugin.Api & ISidebar
-    const isExplorerActive = () =>
-        oniWithSidebar.sidebar.activeEntryId === "oni.sidebar.explorer" &&
-        oniWithSidebar.sidebar.isFocused &&
-        !isInsertOrCommandMode() &&
-        !isMenuOpen()
-
-    const isMenuOpen = () => menu.isMenuOpen()
+    //////////////////////////////
+    // Oni Configuration
 
     /////////////////////////////////////
     // Actual Key bindings here
@@ -65,6 +51,36 @@ export const activate = (oni: Oni.Plugin.Api) => {
 
 }
 
+function buildHelpers(oni) {
+    // https://github.com/onivim/oni/blob/master/browser/src/Input/KeyBindings.ts
+    const { editors, input, menu } = oni;
+
+    const isVisualMode = () => editors.activeEditor.mode === "visual"
+    const isNormalMode = () => editors.activeEditor.mode === "normal"
+    const isInsertMode = () => editors.activeEditor.mode === 'insert'
+    const isNotInsertMode = () => !isInsertMode();
+
+    const isInsertOrCommandMode = () => (
+        isInsertMode() || editors.activeEditor.mode === "cmdline_normal"
+    );
+
+    const isMenuOpen = () => menu.isMenuOpen()
+    const oniWithSidebar = oni as Oni.Plugin.Api & ISidebar
+    const isExplorerActive = () =>
+        oniWithSidebar.sidebar.activeEntryId === "oni.sidebar.explorer" &&
+        oniWithSidebar.sidebar.isFocused &&
+        !isInsertOrCommandMode() &&
+        !isMenuOpen()
+
+
+    return {
+        isVisualMode, isNormalMode, isInsertMode, isNotInsertMode,
+        isInsertOrCommandMode,
+        isExplorerActive,
+        isMenuOpen
+    };
+}
+
 export const deactivate = (oni: Oni.Plugin.Api) => {
     console.log("config deactivated")
 }
@@ -72,7 +88,9 @@ export const deactivate = (oni: Oni.Plugin.Api) => {
 export const configuration = {
     //add custom config here, such as
 
+
     //"oni.useDefaultConfig": true,
+    "oni.loadInitVim": true,
     "oni.bookmarks": ["~/Development"],
     //"oni.loadInitVim": false,
     "oni.exclude": [

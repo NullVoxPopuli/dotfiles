@@ -42,6 +42,7 @@ nnoremap <A-h> <C-w><C-h>
 nnoremap <A-t> <C-w><C-j>
 nnoremap <A-n> <C-w><C-l>
 
+" Swap: Ctrl+W R
 " Resizing
 " Ctrl+w _ max out height of current split
 " Ctrl+w | max out width of current split

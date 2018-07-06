@@ -3,6 +3,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Syntax / Theme
   Plug 'https://github.com/joshdick/onedark.vim.git'
 
+  " Editor
+  Plug 'https://github.com/editorconfig/editorconfig-vim.git'
+
   " Syntax Support
   Plug 'https://github.com/joukevandermaas/vim-ember-hbs.git'
   Plug 'https://github.com/leafgarland/typescript-vim.git'
