@@ -36,26 +36,6 @@ export const activate = (oni: Oni.Plugin.Api) => {
     const isMenuOpen = () => menu.isMenuOpen()
 
     /////////////////////////////////////
-    // Configure the underlying neovim
-    const vimrc = (cmd: string) => editors.activeEditor.neovim.command(cmd);
-    
-    // use a leader key that is easier to reach for DVorak
-    vimrc(`let mapleader = "${leader}"`);
-    vimrc(`let maplocaleader = "${leader}"`);
-
-    // use Semicolon instead of colon for commands. Less keystrokes
-    vimrc(`nnoremap ; :`);
-
-    // swap navigation keys for more ergonomic navigation
-    // querty: h j k l -- left down up right (inline)
-    // dvorak: h t c n -- left down up right (WASD)
-    //
-    // consider http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/
-    // 
-    
-
-
-    /////////////////////////////////////
     // Actual Key bindings here
     // starting with general / global-ish keybindings
     input.unbind("<c-t>")
@@ -63,9 +43,9 @@ export const activate = (oni: Oni.Plugin.Api) => {
 
 
     // Sidebar Management
-    input.bind(`${leader}l`, 'sidebar.toggle')
-    input.bind(`${leader}n`, 'sidebar.increaseWidth')
-    input.bind(`${leader}h`, 'sidebar.decreaseWidth')
+    input.bind(`${leader}/`, 'sidebar.toggle')
+    input.bind(`${leader}+`, 'sidebar.increaseWidth')
+    input.bind(`${leader}-`, 'sidebar.decreaseWidth')
 
     /////////////////////////////////////////
     // Window / Buffer Management / Navigation
