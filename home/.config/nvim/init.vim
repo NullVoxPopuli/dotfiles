@@ -1,19 +1,48 @@
 " Don't care about compatibility
 set nocompatible
-
+""""""""""""""""""""
 " Plugins
+""""""""""""""""""""
 call plug#begin('~/.local/share/nvim/plugged')
+  """""""""""""""""
   " Syntax / Theme
-  Plug 'https://github.com/joshdick/onedark.vim.git'
+  Plug 'joshdick/onedark.vim'
 
+  """""""""""""""""
   " Editor
+  """""""""""""""""
+  Plug 'ntpeters/vim-better-whitespace'
+  autocmd BufWritePre * StripWhitespace
+
+  " Finding
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+  Plug 'scrooloose/nerdtree'
 
-  Plug 'https://github.com/editorconfig/editorconfig-vim.git'
-  Plug 'https://github.com/Shougo/deoplete.nvim.git', { 'do': ':UpdateRemotePlugins' }
+  let NERDTreeShowHidden=1 " This also ignores .gitignore
+  let NERDTreeIgnore=['.git$[[dir]]', '.swp']
+  let NERDTreeAutoDeleteBuffer = 1
+  let NERDTreeMinimalUI = 1
+  let NERDTreeDirArrows = 1
+
+  " Working with code
+  Plug 'tpope/vim-surround'
+  Plug 'scrooloose/nerdcommenter'
+
+  let g:NERDCreateDefaultMappings = 0   " No defaults
+  let g:NERDSpaceDelims = 1             " add spaces after comment delimeters
+  let g:NERDCompactSexyComs = 1         " use compact syntax for prettified multi-line
+  let g:NERDCommentEmptyLines = 1       " allow commenting and inverting empty lines
+  let g:NERDTrimTrailingWhitespace = 1  " enable trimming of trailing whitespace when uncommenting
+
+
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
 
+
+  """"""""""""""""""
+  " Status
   Plug 'airblade/vim-gitgutter'
   Plug 'vim-airline/vim-airline'
   let g:airline_powerline_fonts = 1
@@ -26,18 +55,30 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:airline#extensions#tabline#left_sep = ' '
   let g:airline#extensions#tabline#left_alt_sep = '|'
 
+  """""""""""""""""""""
   " Syntax Support
-  Plug 'https://github.com/joukevandermaas/vim-ember-hbs.git'
-  Plug 'https://github.com/mhartington/nvim-typescript.git', { 'do': './install.sh' }
-  Plug 'https://github.com/leafgarland/typescript-vim.git'
+  Plug 'joukevandermaas/vim-ember-hbs'
+  Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+  Plug 'leafgarland/typescript-vim'
 
+  """"""""""""""""""""""
   " Helpin with VIM
-  Plug 'https://github.com/takac/vim-hardtime.git'
+  Plug 'takac/vim-hardtime'
   let g:list_of_insert_keys = []
   let g:hardtime_timeout = 1500
   let g:hardtime_showmsg = 1
 
 call plug#end()
+
+""""""""""""""""""""""""""""""""
+"
+" End plugin config
+"
+" ------------------------------
+"
+" Begin editor settings
+"
+""""""""""""""""""""""""""""""""
 
 
 " True Colors (tm)

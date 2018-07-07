@@ -11,9 +11,9 @@ nnoremap ; :
 " dvorak: h t c n -- left down up right (WASD)
 " querty: j k i l -- left down up right (WASD)
 "
-" NOTE: h doesn't need to be re-mapped, because it happens to be 
+" NOTE: h doesn't need to be re-mapped, because it happens to be
 "       in the right spot for right-hand dvorak wasd
-"       
+"
 " consider http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/
 
 """""""""""""""""""
@@ -32,7 +32,8 @@ nmap <leader>. :qa<CR>
 " Search
 nmap <C-t> :Files<CR>
 nmap <C-f> :Ag<CR>
-
+nmap <leader><BSlash> :NERDTreeToggle<CR>
+nmap <leader>l :NerdTreeFind<CR>
 
 """"""""""""""""""
 " Pane Management
