@@ -25,6 +25,14 @@ imap <C-s> <ESC>:w<CR>
 " Quit
 nmap <leader>, :q<CR>
 nmap <leader>. :qa<CR>
+" Line Navigation
+"  {num}+ {num}-
+"  find way to map the + command to =, because I don't want to hit shift
+
+" Search
+nmap <C-t> :Files<CR>
+nmap <C-f> :Ag<CR>
+
 
 """"""""""""""""""
 " Pane Management

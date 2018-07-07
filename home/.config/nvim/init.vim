@@ -1,13 +1,25 @@
+" Don't care about compatibility
+set nocompatible
+
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
   " Syntax / Theme
   Plug 'https://github.com/joshdick/onedark.vim.git'
 
   " Editor
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+
   Plug 'https://github.com/editorconfig/editorconfig-vim.git'
+  Plug 'https://github.com/Shougo/deoplete.nvim.git', { 'do': ':UpdateRemotePlugins' }
+  let g:deoplete#enable_at_startup = 1
+
+  Plug 'airblade/vim-gitgutter'
+  Plug 'vim-airline/vim-airline'
 
   " Syntax Support
   Plug 'https://github.com/joukevandermaas/vim-ember-hbs.git'
+  Plug 'https://github.com/mhartington/nvim-typescript.git', { 'do': './install.sh' }
   Plug 'https://github.com/leafgarland/typescript-vim.git'
 
   " Helpin with VIM
