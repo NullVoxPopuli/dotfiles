@@ -33,7 +33,7 @@ nmap <leader>. :qa<CR>
 nmap <C-t> :Files<CR>
 nmap <C-f> :Ag<CR>
 nmap <leader><BSlash> :NERDTreeToggle<CR>
-nmap <leader>l :NerdTreeFind<CR>
+nmap <leader>l :NERDTreeFind<CR>
 
 """"""""""""""""""
 " Pane Management
