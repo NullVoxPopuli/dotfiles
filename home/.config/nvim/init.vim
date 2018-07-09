@@ -60,6 +60,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'joukevandermaas/vim-ember-hbs'
   Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
   Plug 'leafgarland/typescript-vim'
+  Plug 'mxw/vim-jsx'
+  let g:jsx_ext_required = 1
 
   """"""""""""""""""""""
   " Helpin with VIM
