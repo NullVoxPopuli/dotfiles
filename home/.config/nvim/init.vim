@@ -28,15 +28,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Working with code
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
-  " Plug 'scrooloose/nerdcommenter'
-
-  let g:NERDCreateDefaultMappings = 0   " No defaults
-  let g:NERDSpaceDelims = 1             " add spaces after comment delimeters
-  let g:NERDCompactSexyComs = 1         " use compact syntax for prettified multi-line
-  let g:NERDCommentEmptyLines = 1       " allow commenting and inverting empty lines
-  let g:NERDTrimTrailingWhitespace = 1  " enable trimming of trailing whitespace when uncommenting
-
-
   Plug 'editorconfig/editorconfig-vim'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
