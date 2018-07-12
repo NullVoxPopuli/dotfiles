@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ -z "${1}" ] || [ "$1" == "1" ] || [ "$1" == "1.0" ]; then
+    # set scaling to 1.0
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
+    gsettings set org.gnome.desktop.interface cursor-size 24
+    gsettings set com.ubuntu.user-interface scale-factor "{'VGA-1': 8, 'HDMI-0': 8, 'HDMI-1': 8}"
+    echo "Set Scale factor: 1.0"; notify-send "Scale Factor" "1.0"
+elif [ "$1" == "1.25" ]; then
+    # set scaling to 1.25
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+    gsettings set org.gnome.desktop.interface cursor-size 30
+    gsettings set com.ubuntu.user-interface scale-factor "{'VGA-1': 8, 'HDMI-0': 8, 'HDMI-1': 10}"
+    echo "Set Scale factor: 1.25"; notify-send "Scale Factor" "1.25"
+elif [ "$1" == "1.5" ]; then
+    # set scaling to 1.5
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+    gsettings set org.gnome.desktop.interface cursor-size 36
+    gsettings set com.ubuntu.user-interface scale-factor "{'VGA-1': 8, 'HDMI-0': 8, 'HDMI-1': 12}"
+    echo "Set Scale factor: 1.5"; notify-send "Scale Factor" "1.5"
+else
+    echo "ERROR: Something went wrong!"; notify-send "Scale Factor" "ERROR: Something went wrong!"
+fi
+
+exit

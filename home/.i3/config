@@ -56,7 +56,7 @@ bindsym $alt+F4 kill
 
 # start dmenu (a program launcher)
 bindsym $mod+e exec dmenu_run
-# I Prefer Albert https://github.com/ManuelSchneid3r/albert
+
 # Configured to Ctrl+Alt+Space
 
 # Lock screen
@@ -80,7 +80,7 @@ bindsym $mod+minus exec nautilus --no-desktop
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 
 #####################################
@@ -201,7 +201,6 @@ bar {
   # https://www.googleplaymusicdesktopplayer.com/#!
   status_command python3 ~/.i3/bumblebee-status/bumblebee-status \
     -m \
-      gpmdp \
       getcrypto \
       publicip \
       nic \
@@ -271,15 +270,15 @@ bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 exec xrandr --dpi 96
+bindsym $mod+F3 exec ~/scripts/dpiset 1
+bindsym $mod+F2 exec ~/scripts/dpiset 1.5
 # In order to force a monitor configuration on start
 # exec --no-startup-id xrandr --output DVI-D-0 --auto --left-of DVI-I-1
 
 # Set the caps lock key to control
-exec --no-startup-id setxkbmap -option ctrl:nocaps
-bindsym F12 exec setxkbmap -option ctrl:nocaps
+exec --no-startup-id setxkbmap -option ctrl:swapcaps
+bindsym F12 exec setxkbmap -option ctrl:swapcaps
 # F11 is fullscreen
-bindsym F2 exec /home/lprestonsegoiii/scripts/displayport-switch
-bindsym F3 exec /home/lprestonsegoiii/scripts/hdmi-switch
 
 
 
@@ -288,4 +287,4 @@ bindsym F3 exec /home/lprestonsegoiii/scripts/hdmi-switch
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec_always --no-startup-id gnome-power-manager
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
+exec --no-startup-id gnome-flashback
