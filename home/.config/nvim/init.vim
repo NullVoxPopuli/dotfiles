@@ -27,7 +27,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Working with code
   Plug 'tpope/vim-surround'
-  Plug 'scrooloose/nerdcommenter'
+  Plug 'tpope/vim-commentary'
+  " Plug 'scrooloose/nerdcommenter'
 
   let g:NERDCreateDefaultMappings = 0   " No defaults
   let g:NERDSpaceDelims = 1             " add spaces after comment delimeters
@@ -114,7 +115,12 @@ set relativenumber   " relative line numbers
 set backspace=indent,eol,start  " backspace everywhere
 
 set autoindent   " Use current indentation level for new linens
-set smartindent  " Try to guess indentation based on previous line
+" set smartindent  " Try to guess indentation based on previous line
+
+" Default indentation - editorconfig should override these
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 " turn off smart indentation when pasting
 " set pastetoggle=<F2>

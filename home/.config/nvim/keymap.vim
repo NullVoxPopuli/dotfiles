@@ -1,4 +1,4 @@
-" use a leader key that is easier to reach for dvorak
+
 noremap <unique> ' <NOP>
 let mapleader = "\'"
 let maplocalleader = "\'"
@@ -59,6 +59,12 @@ nnoremap <A-n> <C-w><C-l>
 " Ctrl+W o close every window but current
 
 
+"""""""""""""""""""""
+" Working with Code
+"""""""""""""""""""""
+" NOTE: C-_ is the same as C-/
+" gc in visual mode
+map <C-_> gcc
 
 
 """"""""""""""""""
