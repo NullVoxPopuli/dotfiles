@@ -66,6 +66,9 @@ nnoremap <A-n> <C-w><C-l>
 " gc in visual mode
 map <C-_> gcc
 
+" Suggestion
+inoremap <C-Space> <C-x><C-o>
+
 
 """"""""""""""""""
 " Utility

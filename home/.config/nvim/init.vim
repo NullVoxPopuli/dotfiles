@@ -11,6 +11,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   """""""""""""""""
   " Editor
   """""""""""""""""
+  " Plug 'ryanoasis/vim-devicons'
   Plug 'ntpeters/vim-better-whitespace'
   autocmd BufWritePre * StripWhitespace
 
@@ -18,9 +19,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'scrooloose/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
 
-  let NERDTreeShowHidden=1 " This also ignores .gitignore
-  let NERDTreeIgnore=['.git$[[dir]]', '.swp']
+  let NERDTreeShowHidden=0 " This also ignores .gitignore
+  let NERDTreeIgnore=['.git$[[dir]]', '.swp', 'dist', 'tmp', 'node_modules', 'obj', 'bin', 'bower_components']
   let NERDTreeAutoDeleteBuffer = 1
   let NERDTreeMinimalUI = 1
   let NERDTreeDirArrows = 1
@@ -29,6 +31,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
   Plug 'editorconfig/editorconfig-vim'
+  Plug 'w0rp/ale'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
 
@@ -49,6 +52,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   """""""""""""""""""""
   " Syntax Support
+  Plug 'OmniSharp/omnisharp-vim'
+  let g:OmniSharp_server_path = '/home/lprestonsegoiii/Applications/omnisharp-x64/run'
+  let g:OmniSharp_server_type = 'roslyn'
+  let g:OmniSharp_timeout = 5
+
+
   Plug 'joukevandermaas/vim-ember-hbs'
   Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
   Plug 'leafgarland/typescript-vim'
@@ -90,6 +99,7 @@ let g:ariline_theme='onedark'
 """""""""""""""""""""""""
 syntax on
 set encoding=utf-8
+set guifont=DejaVu\ Sans\ Mono
 
 set mouse=a          " use mouse for everything
 set showmode         " show the current mode (Insert, Visual...)
