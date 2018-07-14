@@ -166,6 +166,10 @@ set title
 set titlestring=%f%(\ [%M]%)
 
 
+:function TabsToSpaces()
+:  set tabstop=2 shiftwidth=2 expandtab
+:  retab
+:endfunction
 
 
 """""""""""""""""""""""""""""""
