@@ -51,6 +51,16 @@ nnoremap <A-h> <C-w><C-h>
 nnoremap <A-t> <C-w><C-j>
 nnoremap <A-n> <C-w><C-l>
 
+" Resizing Panes
+" increase / decrease width or the "vertical split"
+nnoremap <C-k> :vertical resize -10<CR>
+nnoremap <C-j> :vertical resize +10<CR>
+
+" increase / decrease height or the "horizontal split"
+nnoremap <C-e> :resize -10<CR>
+nnoremap <C-u> :resize +10<CR>
+
+
 " Swap: Ctrl+W R
 " Resizing
 " Ctrl+w _ max out height of current split
@@ -68,7 +78,10 @@ map <C-_> gcc
 
 " Suggestion
 inoremap <C-Space> <C-x><C-o>
-
+" imap <silent><expr> <TAB>
+"             \ pumvisible() ? "\<C-n>" :
+"             \ "\<TAB>" :
+"             \ deoplete#mappings#manual_complete()
 
 """"""""""""""""""
 " Utility
