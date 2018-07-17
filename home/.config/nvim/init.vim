@@ -28,6 +28,14 @@ call plug#begin('~/.local/share/nvim/plugged')
   let NERDTreeDirArrows = 1
 
   " Working with code
+  Plug 'jiangmiao/auto-pairs'
+  let g:AutoPairsFlyMode = 1
+  " M-b jumps back
+  let g:AutoPairsShortcutJump = ''
+  let g:AutoPairsShortcutFastWrap = ''
+
+
+
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
   Plug 'editorconfig/editorconfig-vim'
@@ -176,3 +184,4 @@ set titlestring=%f%(\ [%M]%)
 " Finally, load the keymap....
 """""""""""""""""""""""""""""""
 so ~/.config/nvim/keymap.vim
+so ~/.config/nvim/oni-config.vim
