@@ -29,6 +29,10 @@ nmap <leader>. :qa<CR>
 "  {num}+ {num}-
 "  find way to map the + command to =, because I don't want to hit shift
 
+" Copy / Paste out / into vim
+noremap <leader>y "+y
+noremap <leader>p "+p
+
 " Search
 nmap <C-t> :Files<CR>
 nmap <C-f> :Ag<CR>
