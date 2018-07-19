@@ -81,11 +81,7 @@ nnoremap <C-u> :resize +10<CR>
 map <C-_> gcc
 
 " Suggestion
-inoremap <C-Space> <C-x><C-o>
-" imap <silent><expr> <TAB>
-"             \ pumvisible() ? "\<C-n>" :
-"             \ "\<TAB>" :
-"             \ deoplete#mappings#manual_complete()
+inoremap <silent><expr> <C-Space> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 
 """"""""""""""""""
 " Utility

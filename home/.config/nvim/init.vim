@@ -11,7 +11,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   """""""""""""""""
   " Editor
   """""""""""""""""
-  " Plug 'ryanoasis/vim-devicons'
   Plug 'ntpeters/vim-better-whitespace'
   autocmd BufWritePre * StripWhitespace
 
@@ -44,6 +43,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'w0rp/ale'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
+  " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
 
 
   """"""""""""""""""
@@ -57,8 +58,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   endif
   let g:airline_symbols.space = "\ua0"
   let g:airline#extensions#tabline#enabled = 1
-  " let g:airline#extensions#tabline#left_sep = ' '
-  " let g:airline#extensions#tabline#left_alt_sep = '|'
 
   """""""""""""""""""""
   " Syntax Support
@@ -71,7 +70,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'joukevandermaas/vim-ember-hbs'
   Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
   Plug 'HerringtonDarkholme/yats.vim'
-  " Plug 'leafgarland/typescript-vim'
   Plug 'mxw/vim-jsx'
   let g:jsx_ext_required = 1
 
@@ -146,7 +144,7 @@ set listchars=eol:¬,tab:>·,extends:>,precedes:<,space:·
 set autoread   " Autoload reload files when they have changed on the disk
 
 " Scrolling
-set scrolloff=9  " minimum lines to keep above and below cursor
+set scrolloff=3  " minimum lines to keep above and below cursor
 
 " Backup and Temp
 set backupdir=~/.vim/_backup/    " where to put backup files.
@@ -162,6 +160,7 @@ end
 " Panes / Buffers
 """"""""""""""""""""
 set splitright
+set equalalways noequalalways " prevents splits from all auto-adjusting horizontally when one closes
 
 
 """"""""""""""""""""
