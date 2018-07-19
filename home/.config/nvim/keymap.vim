@@ -44,10 +44,10 @@ nmap <leader>l :NERDTreeFind<CR>
 """"""""""""""""""
 
 " Creating Panes
-nmap <leader>c :leftabove new<CR>
-nmap <leader>h :leftabove vnew<CR>
-nmap <leader>t :rightbelow new<CR>
-nmap <leader>n :rightbelow vnew<CR>
+nnoremap <leader>c :leftabove new<CR>
+nnoremap <leader>h :leftabove vnew<CR>
+nnoremap <leader>t :rightbelow new<CR>
+nnoremap <leader>n :rightbelow vnew<CR>
 
 " Switching Panes
 nnoremap <A-c> <C-w><C-k>

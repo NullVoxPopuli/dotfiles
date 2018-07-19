@@ -28,6 +28,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   let NERDTreeDirArrows = 1
 
   " Working with code
+
+
   Plug 'jiangmiao/auto-pairs'
   let g:AutoPairsFlyMode = 1
   " M-b jumps back
@@ -55,8 +57,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   endif
   let g:airline_symbols.space = "\ua0"
   let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
+  " let g:airline#extensions#tabline#left_sep = ' '
+  " let g:airline#extensions#tabline#left_alt_sep = '|'
 
   """""""""""""""""""""
   " Syntax Support
@@ -68,7 +70,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   Plug 'joukevandermaas/vim-ember-hbs'
   Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
-  Plug 'leafgarland/typescript-vim'
+  Plug 'HerringtonDarkholme/yats.vim'
+  " Plug 'leafgarland/typescript-vim'
   Plug 'mxw/vim-jsx'
   let g:jsx_ext_required = 1
 
