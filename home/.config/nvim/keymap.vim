@@ -38,6 +38,7 @@ nmap <C-t> :Files<CR>
 nmap <C-f> :Ag<CR>
 nmap <leader><BSlash> :NERDTreeToggle<CR>
 nmap <leader>l :NERDTreeFind<CR>
+nnoremap <silent> <CR> :noh<CR><CR>
 
 """"""""""""""""""
 " Pane Management
@@ -82,6 +83,13 @@ map <C-_> gcc
 
 " Suggestion
 inoremap <silent><expr> <C-Space> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+
+
+" C# / F# (Omnisharp)
+" https://github.com/OmniSharp/omnisharp-vim#example-vimrc
+autocmd FileType cs nnoremap <buffer> <leader>gd :OmniSharpGotoDefinition<CR>
+autocmd FileType cs nnoremap <buffer> <leader>fx :OmniSharpFixUsings<CR>
+autocmd FileType cs nnoremap <buffer> <leader><space> :OmniSharpGetCodeActions<CR>
 
 """"""""""""""""""
 " Utility
