@@ -27,8 +27,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   let NERDTreeDirArrows = 1
 
   " Working with code
-
-
   Plug 'jiangmiao/auto-pairs'
   let g:AutoPairsFlyMode = 1
   " M-b jumps back
@@ -43,9 +41,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'w0rp/ale'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
-  " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-
-
 
   """"""""""""""""""
   " Status
@@ -58,10 +53,13 @@ call plug#begin('~/.local/share/nvim/plugged')
   endif
   let g:airline_symbols.space = "\ua0"
   let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
   """""""""""""""""""""
   " Syntax Support
   Plug 'OmniSharp/omnisharp-vim'
+  Plug 'chr4/nginx.vim'
+  Plug 'OrangeT/vim-csharp'
   let g:OmniSharp_server_path = '/home/lprestonsegoiii/Applications/omnisharp-x64/run'
   let g:OmniSharp_server_type = 'roslyn'
   let g:OmniSharp_timeout = 5
@@ -69,6 +67,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   Plug 'joukevandermaas/vim-ember-hbs'
   Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+  Plug 'maxmellon/vim-jsx-pretty'
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'mxw/vim-jsx'
   let g:jsx_ext_required = 1
@@ -180,6 +179,12 @@ set titlestring=%f%(\ [%M]%)
 :  set tabstop=2 shiftwidth=2 expandtab
 :  retab
 :endfunction
+
+
+" Manual Syntaxes / Filetypes
+autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
+" The typescript filetype breaks on attributes with backticks
+" autocmd BufEnter *.tsx set filetype=typescript
 
 
 """""""""""""""""""""""""""""""
