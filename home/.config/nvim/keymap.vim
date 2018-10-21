@@ -44,7 +44,7 @@ nnoremap <silent> <CR> :noh<CR><CR>
 " Pane Management
 """"""""""""""""""
 " Convert Pane to Terminal
-nnoremap <C-t> :terminal<CR>
+nnoremap <C-y> :terminal<CR>
 
 " Creating Panes
 nnoremap <leader>c :leftabove new<CR>
