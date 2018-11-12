@@ -69,7 +69,7 @@ exec --no-startup-id xautolock -locker "~/scripts/i3-lock-custom" -time 10 -dete
 
 # Screenshots!
 bindsym --release $mod+z exec escrotum -s -C
-bindsym --release $mod+shift+z exec escrotum -s "screenshot-%Y-%m-%d-%H%M%S_\$wx\$h.png"
+bindsym --release $mod+shift+z exec flameshot gui
 
 # Gnome-Settings
 bindsym --release $mod+shift+comma exec gnome-control-center
