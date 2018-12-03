@@ -1,0 +1,8 @@
+#!/bin/bash
+min=${1:-800MHz}
+max=${2:-2000MHz}
+
+echo "sudo cpupower frequency-set --governor powersave --min $min --max $max"
+sudo cpupower frequency-set --governor powersave --min $min --max $max
+
+cpufreq-info | grep current
