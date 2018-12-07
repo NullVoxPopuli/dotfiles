@@ -11,7 +11,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   """""""""""""""""
   " Editor
   """""""""""""""""
-  Plug 'vim-scripts/RltvNmbr.vim'
   Plug 'ntpeters/vim-better-whitespace'
   autocmd BufWritePre * StripWhitespace
 
@@ -120,8 +119,7 @@ set cursorcolumn     " highlight the current columnm
 set ruler            " show current position
 
 set number           " line numbers
-" set relativenumber " relative line numbers -- instead handled by
-" vimscripts/RltvNmbr
+set relativenumber   " relative line numbers
 
 set backspace=indent,eol,start  " backspace everywhere
 
@@ -187,7 +185,6 @@ set titlestring=%f%(\ [%M]%)
 autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
 " The typescript filetype breaks on attributes with backticks
 " autocmd BufEnter *.tsx set filetype=typescript
-autocmd BufNewFile,BufRead * RltvNmbr
 
 
 """""""""""""""""""""""""""""""
