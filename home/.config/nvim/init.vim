@@ -11,6 +11,11 @@ call plug#begin('~/.local/share/nvim/plugged')
   """""""""""""""""
   " Editor
   """""""""""""""""
+
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  let g:prettier#exec_cmd_async = 1
+  let g:prettier#autoformat = 0
+
   Plug 'ntpeters/vim-better-whitespace'
   autocmd BufWritePre * StripWhitespace
 
