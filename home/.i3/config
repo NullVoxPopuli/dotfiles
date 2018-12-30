@@ -216,7 +216,7 @@ bar {
       amixer.left-click="gnome-control-center sound" \
       datetime.format="%Y-%m-%d %H:%M:%S (%I:%M:%S %p)" \
       disk.left-click="nautilus /home/lprestonsegoiii" \
-      nic.exclude="lo,virbr,docker,vboxnet,veth,br-b8d9a3203d9f,br-804c172a9843,br-19f5a495122b" \
+      nic.exclude="lo,virbr,docker,vboxnet,veth,br-" \
       getcrypto.geteth="1" \
       getcrypto.getbtc="1" \
       getcrypto.getltc="0" \
