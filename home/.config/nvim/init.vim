@@ -69,6 +69,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:OmniSharp_server_type = 'roslyn'
   let g:OmniSharp_timeout = 5
 
+  Plug 'leafgarland/typescript-vim'
+  let g:typescript_indent_disable = 1
+
 
   Plug 'joukevandermaas/vim-ember-hbs'
   Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
