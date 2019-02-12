@@ -87,6 +87,12 @@ map <C-_> gcc
 inoremap <silent><expr> <C-Space> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 
 
+" Typescript (nvim-typescript)
+" https://github.com/mhartington/nvim-typescript
+autocmd FileType ts,tsx,typescript,typescript.tsx nnoremap <buffer> <leader>gd :TSDef<CR>
+autocmd FileType ts,tsx,typescript,typescript.tsx nnoremap <buffer> <leader>ti :TSImport<CR>
+
+
 " C# / F# (Omnisharp)
 " https://github.com/OmniSharp/omnisharp-vim#example-vimrc
 autocmd FileType cs nnoremap <buffer> <leader>gd :OmniSharpGotoDefinition<CR>
