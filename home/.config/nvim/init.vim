@@ -110,7 +110,7 @@ set termguicolors
 """""""""""""""""""""""""
 set background=dark
 colorscheme onedark
-let g:ariline_theme='onedark'
+let g:airline_theme='onedark'
 
 """""""""""""""""""""""""
 " Editor
