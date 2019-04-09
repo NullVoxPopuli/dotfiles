@@ -156,12 +156,12 @@ set autoread   " Autoload reload files when they have changed on the disk
 set scrolloff=3  " minimum lines to keep above and below cursor
 
 " Backup and Temp
-set backupdir=~/.vim/_backup/    " where to put backup files.
-set directory=~/.vim/_temp/      " where to put swap files.
+set backupdir=~/.local/share/nvim/_backup/    " where to put backup files.
+set directory=~/.local/share/nvim/_temp/      " where to put swap files.
 
 " allow undo history to persist after closing buffer
 if has('persistent_undo')
-  set undodir=~/.vim/_undo
+  set undodir=~/.local/share/nvim/_undo
   set undofile
 end
 
