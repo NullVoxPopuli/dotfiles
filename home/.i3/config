@@ -192,7 +192,7 @@ bindsym $mod+u mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  font pango: Droid Sans Mono for Powerline, Font Awesome 8
+  font pango: DejaVu Sans Mono for Powerline 9
 
   #status_command /home/lprestonsegoiii/.i3/i3status-rust/target/release/i3status-rs \
   #  /home/lprestonsegoiii/.i3/i3status-rust.toml
@@ -201,7 +201,7 @@ bar {
   # https://www.googleplaymusicdesktopplayer.com/#!
   status_command python3 ~/.i3/bumblebee-status/bumblebee-status \
     -m \
-      getcrypto \
+      nvidiagpu \
       publicip \
       nic \
       disk:root \
@@ -220,8 +220,7 @@ bar {
       getcrypto.geteth="1" \
       getcrypto.getbtc="1" \
       getcrypto.getltc="0" \
-    -t gruvbox-powerline \
-    --debug
+    -t gruvbox-powerline
 
   # default
   # status_command i3status
@@ -270,14 +269,14 @@ bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 exec xrandr --dpi 96
-bindsym $mod+F3 exec ~/scripts/dpiset 1
-bindsym $mod+F2 exec ~/scripts/dpiset 1.5
+# bindsym $mod+F3 exec ~/scripts/dpiset 1
+# bindsym $mod+F2 exec ~/scripts/dpiset 1.5
 # In order to force a monitor configuration on start
 # exec --no-startup-id xrandr --output DVI-D-0 --auto --left-of DVI-I-1
 
 # Set the caps lock key to control
-exec --no-startup-id setxkbmap -option ctrl:swapcaps
-bindsym F12 exec setxkbmap -option ctrl:swapcaps
+# exec --no-startup-id setxkbmap -option ctrl:swapcaps
+# bindsym F12 exec setxkbmap -option ctrl:swapcaps
 # F11 is fullscreen
 
 
