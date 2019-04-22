@@ -72,6 +72,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Typescript syntax highlighting
   Plug 'leafgarland/typescript-vim'
   let g:typescript_indent_disable = 1
+  Plug 'peitalin/vim-jsx-typescript'
 
 
   Plug 'joukevandermaas/vim-ember-hbs'
@@ -195,7 +196,13 @@ set titlestring=%f%(\ [%M]%)
 autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
 " The typescript filetype breaks on attributes with backticks
 " autocmd BufEnter *.tsx set filetype=typescript
+:function SetTSXConfig()
+:  set filetype=typescript.tsx
+:
+:  hi tsxCloseString guifg=#59ACE5
+:endfunction
 
+autocmd BufNewFile,BufRead *.tsx,*.jsx :call SetTSXConfig()
 
 """""""""""""""""""""""""""""""
 " Finally, load the keymap....
