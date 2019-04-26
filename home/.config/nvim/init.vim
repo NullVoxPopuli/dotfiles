@@ -1,4 +1,6 @@
 " Don't care about compatibility
+" More info:
+" https://stackoverflow.com/questions/5845557/in-a-vimrc-is-set-nocompatible-completely-useless
 set nocompatible
 
 " Actual config split out here
