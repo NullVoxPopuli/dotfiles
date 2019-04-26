@@ -21,7 +21,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'Xuyuanp/nerdtree-git-plugin'
 
   let NERDTreeShowHidden=0 " This also ignores .gitignore
-  let NERDTreeIgnore=['.git$[[dir]]', '.swp', 'dist', 'tmp', 'node_modules', 'obj', 'bin', 'bower_components']
+  let NERDTreeIgnore=['.git$[[dir]]', '.swp', 'dist', 'tmp', 'node_modules', 'obj', 'bin', 'bower_components', '.pnp']
   let NERDTreeAutoDeleteBuffer = 1
   let NERDTreeMinimalUI = 1
   let NERDTreeDirArrows = 1
@@ -66,7 +66,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Typescript syntax highlighting
   Plug 'leafgarland/typescript-vim'
-  let g:typescript_indent_disable = 1
+  " let g:typescript_indent_disable = 1
 
 
   Plug 'joukevandermaas/vim-ember-hbs'

@@ -86,6 +86,8 @@ map <C-_> gcc
 " Suggestion
 inoremap <silent><expr> <C-Space> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 
+" Expand the Status Message
+nnoremap <leader>b :call SyntasticToggle()<CR>
 
 " Typescript (nvim-typescript)
 " https://github.com/mhartington/nvim-typescript
