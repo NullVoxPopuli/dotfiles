@@ -1,0 +1,3 @@
+#!/bin/bash
+
+smem -t -k -c pss -P $1 | tail -n 1
