@@ -62,6 +62,11 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
 
+  " Integrations
+  let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+  let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+
+
 
   """"""""""""""""""
   " Status
