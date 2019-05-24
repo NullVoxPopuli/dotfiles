@@ -15,6 +15,8 @@ syntax on
 set encoding=utf-8
 set guifont=DejaVu\ Sans\ Mono
 
+set cmdheight=1      " under statusline messages
+
 set mouse=a          " use mouse for everything
 set showmode         " show the current mode (Insert, Visual...)
 set laststatus=2     " Always display status line
@@ -29,7 +31,7 @@ set relativenumber   " relative line numbers
 
 set backspace=indent,eol,start  " backspace everywhere
 
-set autoindent   " Use current indentation level for new linens
+set autoindent   " Use current indentation level for new lines
 " set smartindent  " Try to guess indentation based on previous line
 
 " Default indentation - editorconfig should override these

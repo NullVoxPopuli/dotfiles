@@ -37,10 +37,31 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
+
   Plug 'editorconfig/editorconfig-vim'
+
+  " Linting
   Plug 'w0rp/ale'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  let g:deoplete#enable_at_startup = 1
+
+  " Intellisense
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " let g:deoplete#enable_at_startup = 1
+
+  """"""""""""""""""""
+  " Language Servers
+  "
+  " Debugging:
+  "   node -e 'console.log(path.join(os.tmpdir(), "coc-nvim.log"))'
+  """"""""""""""""""""
+  Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': './install.sh' }
+  " Note: Installing these via plug prevents auto-update
+  Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+
 
   """"""""""""""""""
   " Status
@@ -57,30 +78,28 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   """""""""""""""""""""
   " Syntax Support
-  Plug 'OmniSharp/omnisharp-vim'
+
+  " .net language server and highlighting support
+  " Plug 'OmniSharp/omnisharp-vim'
+  " Plug 'OrangeT/vim-csharp'
+  " let g:OmniSharp_server_path = '/home/lprestonsegoiii/Applications/omnisharp-x64/run'
+  " let g:OmniSharp_server_type = 'roslyn'
+  " let g:OmniSharp_timeout = 5
+
+  " nginax highlighting
   Plug 'chr4/nginx.vim'
-  Plug 'OrangeT/vim-csharp'
-  let g:OmniSharp_server_path = '/home/lprestonsegoiii/Applications/omnisharp-x64/run'
-  let g:OmniSharp_server_type = 'roslyn'
-  let g:OmniSharp_timeout = 5
 
   " Typescript syntax highlighting
   Plug 'leafgarland/typescript-vim'
   " let g:typescript_indent_disable = 1
 
 
+  " Ember template highlighting
   Plug 'joukevandermaas/vim-ember-hbs'
   " Typscript language server
-  Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+  " Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
   " Additional jsx highlighting
   Plug 'maxmellon/vim-jsx-pretty'
   let g:vim_jsx_pretty_colorful_config = 1
-
-  """"""""""""""""""""""
-  " Helpin with VIM
-  Plug 'takac/vim-hardtime'
-  let g:list_of_insert_keys = []
-  let g:hardtime_timeout = 1500
-  let g:hardtime_showmsg = 1
 
 call plug#end()
