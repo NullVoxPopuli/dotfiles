@@ -54,19 +54,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   "   node -e 'console.log(path.join(os.tmpdir(), "coc-nvim.log"))'
   """"""""""""""""""""
   Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': './install.sh' }
-  " Note: Installing these via plug prevents auto-update
-  Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
-
-  " Integrations
-  let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-  let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-
-
 
   """"""""""""""""""
   " Status

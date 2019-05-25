@@ -73,11 +73,11 @@ set equalalways noequalalways " prevents splits from all auto-adjusting horizont
 """"""""""""""""""""
 " Code Management
 """"""""""""""""""""
-set foldmethod=indent " fold based on indentation
+set foldmethod=indent "" fold based on indentation
 set foldlevel=99
-set nofoldenable      " don't open a file with folds, display the whole thing
+set nofoldenable      "" don't open a file with folds, display the whole thing
+set signcolumn=yes    "" always show the signcolumn
 
-
-" set the title of the window to the filename
+"" set the title of the window to the filename
 set title
 set titlestring=%f%(\ [%M]%)

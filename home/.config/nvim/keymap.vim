@@ -83,23 +83,6 @@ nnoremap <C-u> :resize +10<CR>
 " gc in visual mode
 map <C-_> gcc
 
-" Suggestion UX
-" inoremap <silent><expr> <C-Space>
-" 			\ pumvisible() ? "\<C-n>" :
-"       \ coc#refresh()
-"
-" https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#improve-completion-experience
-" Navigation
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Use enter to confirm completion
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Close preview window when completion is done.
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-
 
 " Expand the Status Message
 nnoremap <leader>b :call SyntasticToggle()<CR>
