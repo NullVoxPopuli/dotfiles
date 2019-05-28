@@ -87,11 +87,6 @@ map <C-_> gcc
 " Expand the Status Message
 nnoremap <leader>b :call SyntasticToggle()<CR>
 
-" Typescript (nvim-typescript)
-" https://github.com/mhartington/nvim-typescript
-autocmd FileType ts,tsx,typescript,typescript.tsx nnoremap <buffer> <leader>gd :TSDef<CR>
-autocmd FileType ts,tsx,typescript,typescript.tsx nnoremap <buffer> <leader>ti :TSImport<CR>
-
 
 " C# / F# (Omnisharp)
 " https://github.com/OmniSharp/omnisharp-vim#example-vimrc
