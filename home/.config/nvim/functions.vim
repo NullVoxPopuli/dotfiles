@@ -25,7 +25,7 @@ endfunction
 
 " The typescript filetype breaks on attributes with backticks
 :function SetTSXConfig()
-:  set filetype=typescript
+:  set filetype=typescript.tsx
 :endfunction
 
 
