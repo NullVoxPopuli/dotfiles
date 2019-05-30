@@ -20,6 +20,9 @@ nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
+
+"" Remap for code action
+nmap <leader>ga <Plug>(coc-codeaction)
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 " Remap for format selected region

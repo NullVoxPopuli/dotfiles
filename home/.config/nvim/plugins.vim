@@ -42,10 +42,20 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Linting
   Plug 'w0rp/ale'
+  let g:ale_sign_error = '✘'
+  let g:ale_sign_warning = '⚠'
+  let g:ale_linters = {
+  \   'javascript': ['eslint'],
+  \   'typescript': ['eslint'],
+  \   'typescript.tsx': ['eslint'],
+  \}
 
-  " Intellisense
-  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  " let g:deoplete#enable_at_startup = 1
+  let g:ale_fixers = {
+  \   'javascript': ['eslint'],
+  \   'typescript': ['eslint'],
+  \   'typescript.tsx': ['eslint'],
+  \}
+  let g:ale_sign_column_always = 1
 
   """"""""""""""""""""
   " Language Servers
@@ -56,7 +66,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': './install.sh' }
 
   """"""""""""""""""
-  " Status
+  "" Status
+  """"""""""""""""""
   Plug 'airblade/vim-gitgutter'
   Plug 'vim-airline/vim-airline'
   let g:airline_powerline_fonts = 1
@@ -78,18 +89,13 @@ call plug#begin('~/.local/share/nvim/plugged')
   " let g:OmniSharp_server_type = 'roslyn'
   " let g:OmniSharp_timeout = 5
 
-  " nginax highlighting
+  " nginx highlighting
   Plug 'chr4/nginx.vim'
 
   " Typescript syntax highlighting
   Plug 'leafgarland/typescript-vim'
-  " let g:typescript_indent_disable = 1
-
-
   " Ember template highlighting
   Plug 'joukevandermaas/vim-ember-hbs'
-  " Typscript language server
-  " Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
   " Additional jsx highlighting
   Plug 'maxmellon/vim-jsx-pretty'
   let g:vim_jsx_pretty_colorful_config = 1

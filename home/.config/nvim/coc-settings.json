@@ -1,8 +1,16 @@
 // edit this file by doing :CocConfig after coc.nvim is installed
 {
+  // A E S T H E T I C
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.infoSign": "ⓘ",
+
+  // worthless sources when language-server is present
   "coc.source.buffer.enable": false,
   "coc.source.file.enable": false,
   "coc.source.around.enable": false,
+
+  // custom language server stuff
   "languageserver": {
     "ember": {
       // local, absolute path to start-server.js from unstable-language-server
