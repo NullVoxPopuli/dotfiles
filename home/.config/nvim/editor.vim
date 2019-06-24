@@ -63,6 +63,12 @@ if has('persistent_undo')
   set undofile
 end
 
+""""""""""""""
+" Spell Checker
+""""""""""""""
+set spellfile=~/.local/share/nvim/spell/en_us.utf-8.add
+
+
 """"""""""""""""""""
 " Panes / Buffers
 """"""""""""""""""""

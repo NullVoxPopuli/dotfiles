@@ -75,6 +75,10 @@ nnoremap <C-u> :resize +10<CR>
 " Ctrl+w = normalize all splits
 " Ctrl+W o close every window but current
 
+""""""""""""""""""""
+" Spell Checking
+""""""""""""""""""""
+nnoremap <F2> :setlocal spell! spelllang=en_us<CR>
 
 """""""""""""""""""""
 " Working with Code
