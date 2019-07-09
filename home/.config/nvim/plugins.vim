@@ -20,8 +20,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
 
-  let NERDTreeShowHidden=0 " This also ignores .gitignore
-  let NERDTreeIgnore=['.git$[[dir]]', '.swp', 'dist', 'tmp', 'node_modules', 'obj', 'bin', 'bower_components', '.pnp']
+  let NERDTreeShowHidden=1 " This also ignores .gitignore
+  let NERDTreeIgnore=['.git$[[dir]]', '.swp', 'dist', 'tmp', 'node_modules', 'bower_components', '.pnp']
   let NERDTreeAutoDeleteBuffer = 1
   let NERDTreeMinimalUI = 1
   let NERDTreeDirArrows = 1
