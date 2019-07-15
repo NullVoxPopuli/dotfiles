@@ -60,12 +60,12 @@ nnoremap <A-n> <C-w><C-l>
 
 " Resizing Panes
 " increase / decrease width or the "vertical split"
-nnoremap <C-k> :vertical resize -10<CR>
-nnoremap <C-j> :vertical resize +10<CR>
+nnoremap <S-h> :vertical resize -10<CR>
+nnoremap <S-n> :vertical resize +10<CR>
 
 " increase / decrease height or the "horizontal split"
-nnoremap <C-e> :resize -10<CR>
-nnoremap <C-u> :resize +10<CR>
+nnoremap <S-t> :resize -10<CR>
+nnoremap <S-c> :resize +10<CR>
 
 
 " Swap: Ctrl+W R
@@ -86,6 +86,10 @@ nnoremap <F2> :setlocal spell! spelllang=en_us<CR>
 " NOTE: C-_ is the same as C-/
 " gc in visual mode
 map <C-_> gcc
+
+" Move Lines Up/Down
+nnoremap <C-j> :move+1<CR>
+nnoremap <C-k> :move-2<CR>
 
 
 " Expand the Status Message
