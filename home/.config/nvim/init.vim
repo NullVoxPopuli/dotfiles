@@ -12,4 +12,7 @@ so ~/.config/nvim/coc.vim
 
 " Manual Syntaxes / Filetypes
 autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
-autocmd BufNewFile,BufRead *.tsx,*.jsx :call SetTSXConfig()
+autocmd BufNewFile,BufRead *.tsx,*.jsx setfiletype typescript.tsx
+
+" Batch'd Setup / Config Scripts
+call EnableTemplateLiteralColors()

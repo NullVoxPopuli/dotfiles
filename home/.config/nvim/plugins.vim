@@ -33,8 +33,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:AutoPairsShortcutJump = ''
   let g:AutoPairsShortcutFastWrap = ''
 
-
-
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
 
@@ -100,4 +98,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'maxmellon/vim-jsx-pretty'
   let g:vim_jsx_pretty_colorful_config = 1
 
+  " Nested syntax highlighting
+  " needed for js/ts named template literals
+  " and markdown.
+  Plug 'Quramy/vim-js-pretty-template'
+
 call plug#end()
+
