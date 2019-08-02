@@ -4,7 +4,8 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-html',
   \ 'coc-vimlsp',
-  \ 'coc-highlight'
+  \ 'coc-highlight',
+  \ 'coc-ember'
 \ ]
 
 "" Integrations

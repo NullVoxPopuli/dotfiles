@@ -10,26 +10,4 @@
   "coc.source.file.enable": false,
   "coc.source.around.enable": false,
 
-  // custom language server stuff
-  "languageserver": {
-    "ember": {
-      // local, absolute path to start-server.js from unstable-language-server
-      "module": "/home/lprestonsegoiii/Development/OpenSource/ember-language-server/lib/start-server.js",
-      "args": ["--node-ipc"],
-      "filetypes": [
-        "hbs",
-        "html.handlebars",
-        "handlebars",
-        "typescript",
-        "javascript"
-      ],
-      "rootPatterns": ["ember-cli-build.js"],
-      "requireRootPattern": true,
-      "trace.server": "verbose",
-      // Used for debugging
-      //"execArgv": ["--nolazy", "--inspect-brk=8045"],
-      "initializationOptions": {},
-      "settings": {}
-    }
-  }
 }
