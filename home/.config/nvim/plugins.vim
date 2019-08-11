@@ -33,6 +33,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:AutoPairsShortcutJump = ''
   let g:AutoPairsShortcutFastWrap = ''
 
+  " Plug 'terryma/vim-multiple-cursors'
+  " let g:multi_cursor_use_default_mapping=0
+
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
 
@@ -46,12 +49,14 @@ call plug#begin('~/.local/share/nvim/plugged')
   \   'javascript': ['eslint'],
   \   'typescript': ['eslint'],
   \   'typescript.tsx': ['eslint'],
+  \   'html.handlebars': ['prettier', 'ember-template-lint'],
   \}
 
   let g:ale_fixers = {
   \   'javascript': ['eslint'],
   \   'typescript': ['eslint'],
   \   'typescript.tsx': ['eslint'],
+  \   'html.handlebars': ['prettier'],
   \}
   let g:ale_sign_column_always = 1
 
@@ -61,7 +66,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Debugging:
   "   node -e 'console.log(path.join(os.tmpdir(), "coc-nvim.log"))'
   """"""""""""""""""""
-  Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': './install.sh' }
+  " Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': './install.sh' }
+  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
   """"""""""""""""""
   "" Status
@@ -92,11 +98,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Typescript syntax highlighting
   Plug 'leafgarland/typescript-vim'
+  " Plug 'HerringtonDarkholme/yats.vim'
   " Ember template highlighting
   Plug 'joukevandermaas/vim-ember-hbs'
   " Additional jsx highlighting
-  Plug 'maxmellon/vim-jsx-pretty'
-  let g:vim_jsx_pretty_colorful_config = 1
+  " Plug 'maxmellon/vim-jsx-pretty'
+  " let g:vim_jsx_pretty_colorful_config = 1
 
   " Nested syntax highlighting
   " needed for js/ts named template literals

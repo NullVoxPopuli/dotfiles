@@ -92,6 +92,17 @@ nnoremap <C-j> :move+1<CR>
 nnoremap <C-k> :move-2<CR>
 
 
+" " vim-multiple-cursors keymap
+" let g:multi_cursor_start_word_key      = '<C-Enter>'
+" let g:multi_cursor_select_all_word_key = '<A-Enter>'
+" let g:multi_cursor_start_key           = 'g<C-Enter>'
+" let g:multi_cursor_select_all_key      = 'g<A-Enter>'
+" let g:multi_cursor_next_key            = '<C-Enter>'
+" let g:multi_cursor_prev_key            = '<C-Shift-Enter>'
+" " let g:multi_cursor_skip_key            = '<C-x>'
+" let g:multi_cursor_quit_key            = '<Esc>'
+
+
 " Expand the Status Message
 nnoremap <leader>b :call SyntasticToggle()<CR>
 
