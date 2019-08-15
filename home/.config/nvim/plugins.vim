@@ -96,6 +96,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   " nginx highlighting
   Plug 'chr4/nginx.vim'
 
+  " CSS
+  " Plug 'amadeus/vim-css'
+  Plug 'stephenway/postcss.vim'
+
   " Typescript syntax highlighting
   Plug 'leafgarland/typescript-vim'
   " Plug 'HerringtonDarkholme/yats.vim'

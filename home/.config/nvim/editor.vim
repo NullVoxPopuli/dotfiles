@@ -38,6 +38,7 @@ set autoindent   " Use current indentation level for new lines
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set linebreak " breaks lines on words instead of in the middle of a word
 
 " turn off smart indentation when pasting
 " set pastetoggle=<F2>
