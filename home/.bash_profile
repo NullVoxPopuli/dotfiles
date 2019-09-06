@@ -1,9 +1,3 @@
-# Load the Ruby Loader
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-
-# This loads nvm
-[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
 # allows git usage in PS1
 [[ -s "$HOME/scripts/bash-support/git-prompt.sh" ]] && source "$HOME/scripts/bash-support/git-prompt.sh"
 # Extend our path, include scripts, etc
@@ -28,6 +22,7 @@ alias vdir='ls --color=auto --format=long -h'
 alias ll="ls -lh"
 alias la="ls -lah"
 alias ng="nuke-gently"
+alias dotfiles='cd $HOME/Development/NullVoxPopuli/dotfiles'
 
 # Git
 alias gc='git checkout'
@@ -38,34 +33,11 @@ alias gbs='git branch-status'
 alias gb='git branch'
 alias gls='git log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative'
 alias gia='git add --patch'
+alias g-reset-master="git fetch origin && get checkout master && git reset origin/master --hard"
 alias herpderp='ember'
-
-# Python
-alias gmusic='cd ~/Development/etkirsch/gmusic && python gmusic.py'
-alias http-local-server='python -m SimpleHTTPServer 19876'
-
-
-# Ruby
-alias be='bundle exec'
 
 # Docker
 alias docko="docker-compose"
-alias docker-stop-all="docker stop \$(docker ps -a -q)"
-alias docker-clean="\
-  docker rmi \$(docker images --format '{{.Repository}}:{{.Tag}}'); \
-  docker rm -v \$(docker ps -a -q -f status=exited); \
-  docker volume rm \$(docker volume ls -qf dangling=true); \
-  docker rm \$(docker ps -a -q); \
-  docker rmi \$(docker images -q -f dangling=true); \
-  docker rmi \$(docker images -q -f) -f; \
-  docker volume rm \$(docker volume ls -q) \
-  docker network rm \$(docker network ls -q)"
-
-alias docker-destroy='\
-  docker kill $(docker ps -q); \
-  docker-clean;'
-
-alias ccat='$HOME/scripts/vimcat'
 
 # Clipboard
 alias setclip='xclip -selection c'
@@ -113,6 +85,8 @@ export FZF_ALT_C_COMMAND="bfs -type d -nohidden"
 
 bind -x '"\C-p": vim $(fzf);'
 
-#export JAVA_HOME=/usr/lib/jvm/default-java
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
-alias mvn="~/Applications/apache-maven-3.5.3/bin/mvn"
+
+export VOLTA_HOME="$HOME/.volta"
+[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
+
+export PATH="$VOLTA_HOME/bin:$PATH"
