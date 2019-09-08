@@ -93,6 +93,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   " let g:OmniSharp_server_type = 'roslyn'
   " let g:OmniSharp_timeout = 5
 
+  Plug 'cespare/vim-toml'
+
   " nginx highlighting
   Plug 'chr4/nginx.vim'
 
