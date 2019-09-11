@@ -6,17 +6,15 @@ call plug#begin('~/.local/share/nvim/plugged')
   """""""""""""""""
   " Editor
   """""""""""""""""
-
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  let g:prettier#exec_cmd_async = 1
-  let g:prettier#autoformat = 0
-
   Plug 'ntpeters/vim-better-whitespace'
   autocmd BufWritePre * StripWhitespace
 
-  " Finding
+  " File / Project Finding
+
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+
+  " File Tree Browser
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -41,32 +39,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   Plug 'editorconfig/editorconfig-vim'
 
-  " Linting
-  Plug 'w0rp/ale'
-  let g:ale_sign_error = '✘'
-  let g:ale_sign_warning = '⚠'
-  let g:ale_linters = {
-  \   'javascript': ['eslint'],
-  \   'typescript': ['eslint'],
-  \   'typescript.tsx': ['eslint'],
-  \   'html.handlebars': ['prettier', 'ember-template-lint'],
-  \}
-
-  let g:ale_fixers = {
-  \   'javascript': ['eslint'],
-  \   'typescript': ['eslint'],
-  \   'typescript.tsx': ['eslint'],
-  \   'html.handlebars': ['prettier'],
-  \}
-  let g:ale_sign_column_always = 1
-
   """"""""""""""""""""
   " Language Servers
   "
   " Debugging:
   "   node -e 'console.log(path.join(os.tmpdir(), "coc-nvim.log"))'
   """"""""""""""""""""
-  " Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': './install.sh' }
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
   """"""""""""""""""

@@ -23,6 +23,7 @@ curl https://get.volta.sh | bash
 sudo apt install silversearcher-ag
 pip install neovim
 pip3 install neovim
+pip3 install --user pynvim
 
 # vim-plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \

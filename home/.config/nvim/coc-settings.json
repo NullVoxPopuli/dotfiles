@@ -10,4 +10,10 @@
   "coc.source.file.enable": false,
   "coc.source.around.enable": false,
 
+  // Linting
+  "eslint.quiet": true,
+  "eslint.packageManager": "yarn",
+  "eslint.filetypes": ["javascript", "json", "typescript"],
+  "eslint.autoFix": true
+
 }

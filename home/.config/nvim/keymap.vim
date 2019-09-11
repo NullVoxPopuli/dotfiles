@@ -41,7 +41,7 @@ nmap <leader>l :NERDTreeFind<CR>
 nnoremap <silent> <CR> :noh<CR><CR>
 
 """"""""""""""""""
-" Pane Management
+" Pane Managemen'
 """"""""""""""""""
 " Convert Pane to Terminal
 nnoremap <C-y> :terminal<CR>
