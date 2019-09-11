@@ -29,6 +29,7 @@ nmap <leader>ga <Plug>(coc-codeaction)
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 " Remap for format selected region
+nmap <leader>ff :CocCommand eslint.executeAutofix<CR>
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 
