@@ -80,11 +80,18 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Plug 'amadeus/vim-css'
   Plug 'stephenway/postcss.vim'
 
-  " Typescript syntax highlighting
+  " Typescript syntax
   Plug 'leafgarland/typescript-vim'
+
+  " JavaScript Syntax
+  Plug 'pangloss/vim-javascript'
+  let g:javascript_plugin_jsdoc = 1
+
+
   " Plug 'HerringtonDarkholme/yats.vim'
   " Ember template highlighting
   Plug 'joukevandermaas/vim-ember-hbs'
+
   " Additional jsx highlighting
   " Plug 'maxmellon/vim-jsx-pretty'
   " let g:vim_jsx_pretty_colorful_config = 1
