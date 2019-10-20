@@ -80,6 +80,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Plug 'amadeus/vim-css'
   Plug 'stephenway/postcss.vim'
 
+  " Elixir
+  Plug 'elixir-editors/vim-elixir'
+
   " Typescript syntax
   Plug 'leafgarland/typescript-vim'
 
