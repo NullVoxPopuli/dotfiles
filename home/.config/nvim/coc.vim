@@ -7,7 +7,8 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-vimlsp',
   \ 'coc-highlight',
-  \ 'coc-ember'
+  \ 'coc-ember',
+  \ 'coc-elixir'
 \ ]
 
 "" Integrations
