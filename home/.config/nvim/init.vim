@@ -14,6 +14,7 @@ so ~/.config/nvim/coc.vim
 autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
 autocmd BufNewFile,BufRead *.tsx,*.jsx setfiletype typescript.tsx
 autocmd FileType javascript setlocal foldmethod=syntax
+autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " Batch'd Setup / Config Scripts
 call EnableTemplateLiteralColors()

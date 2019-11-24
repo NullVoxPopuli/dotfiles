@@ -39,6 +39,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   Plug 'editorconfig/editorconfig-vim'
 
+  " Git Conflict highlighting
+  Plug 'rhysd/conflict-marker.vim'
+
   """"""""""""""""""""
   " Language Servers
   "
@@ -71,14 +74,20 @@ call plug#begin('~/.local/share/nvim/plugged')
   " let g:OmniSharp_server_type = 'roslyn'
   " let g:OmniSharp_timeout = 5
 
-  Plug 'cespare/vim-toml'
-
-  " nginx highlighting
-  Plug 'chr4/nginx.vim'
+  " Syntax not needed, because provided by polyglot
+  "
+  " toml: cespare/vim-toml
+  " json5: GutenYe/json5.vim
+  " josn: elzr/vim-json
+  " nginx: chr4/nginx.vim
+  Plug 'sheerun/vim-polyglot'
+  " handled below
+  let g:polyglot_disabled = ['css', 'ts', 'typescript', 'js', 'javascript', 'hbs', 'json']
 
   " CSS
   " Plug 'amadeus/vim-css'
-  Plug 'stephenway/postcss.vim'
+  " Plug 'stephenway/postcss.vim'
+  Plug 'alexlafroscia/postcss-syntax.vim'
 
   " Elixir
   Plug 'elixir-editors/vim-elixir'
