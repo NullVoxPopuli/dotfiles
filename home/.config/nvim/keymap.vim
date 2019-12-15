@@ -47,6 +47,7 @@ nnoremap <silent> <CR> :noh<CR><CR>
 nnoremap <C-y> :terminal<CR>
 
 " Creating Panes
+" chtn = up, left, down, right
 nnoremap <leader>c :leftabove new<CR>
 nnoremap <leader>h :leftabove vnew<CR>
 nnoremap <leader>t :rightbelow new<CR>
