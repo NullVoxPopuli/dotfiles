@@ -33,6 +33,7 @@ alias gbs='git branch-status'
 alias gb='git branch'
 alias gls='git log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative'
 alias gia='git add --patch'
+alias gp='git push --follow-tags --atomic'
 alias g-reset-master="git fetch origin && git checkout master && git reset origin/master --hard"
 alias herpderp='ember'
 
