@@ -3,76 +3,42 @@
 #####################
 # veromix \
 sudo apt install -y \
-  git vim curl xclip \
-  npm gnupg gparted gufw \
-  qt4-qmake qt5-qmake libxslt-dev libxml2-dev \
+  git curl xclip \
+  gparted gufw \
+  build-essential \
   audacity clementine \
   gimp kdenlive vlc \
-  filezilla etherape gnome \
-  libdbus-glib-1-dev \
   i3 \
   libappindicator1 \
-  fonts-font-awesome \
-  scrot \
-  lm-sensors
+  fonts-font-awesome fonts-powerline \
+  python3-pip python-pip
 
 # Screenshot to clipboard
 sudo pip install escrotum
 
+# Volta / node manager
+curl https://get.volta.sh | bash
+
 # Vim Deps
 sudo apt install silversearcher-ag
+pip install neovim
+pip3 install neovim
+pip3 install --user pynvim
 
-# Vim 8
-sudo add-apt-repository ppa:jonathonf/vim
-sudo apt update
-sudo apt install -y vim
+# vim-plug
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-#######################
-# Install Atom Packages
-#######################
-apm install \
-  aligner aligner-ruby aligner-scss aligner-javascript \
-  autoclose-html \
-  file-icons \
-  git-time-machine blame tree-view-git-status \
-  change-case ember-tabs\
-  atom-handlebars language-emblem language-slim react \
-  linter linter-sass-lint linter-eslint linter-ruby \
-  scroll-percentage \
-  vim-mode-plus \
-  highlight-column
-
-######################################################
-# Setup the trash to be outside of the home directory
-# http://dev-notes.eu/2016/07/delete-files-in-atom-under-ubuntu-16-04/
-#####################################################
-# Create a Trash directory (with some subdirectories) in root
-sudo mkdir -p /.Trash-1000/{expunged,files,info}
-
-# Give ownership of this to your user:
-sudo chown -R $USER /.Trash-1000
+mkdir -p ~/.local/share/nvim/_backup
+mkdir -p ~/.local/share/nvim/_temp
+mkdir -p ~/.local/share/nvim/_undo
+mkdir -p ~/.local/share/nvim/spell
 
 ###############################################
 # Load Ubuntu/Gnome Configuration + KeyMappings
 ###############################################
-cat home/.config/dconf/user.d/* | dconf load /
+# cat home/.config/dconf/user.d/* | dconf load /
 
 # NOTE: to export dconf settings:
 # dconf dump / > ~/.config/dconf/user.d/everything.conf
 
-###########################
-# Copy home directory stuff
-###########################
-cp home/.atom/* ~/.atom -R
-cp home/.i3 ~/ -R
-cp home/.vim ~/ -R
-cp home/scripts ~/ -R
-cp home/.bash_profile ~/
-cp home/.tmux.conf ~/
-cp home/.vimrc ~/
-
-####################
-# sync Atom
-####################
-# apm install
-# ./install/atom.sh

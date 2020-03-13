@@ -41,12 +41,13 @@ nmap <leader>l :NERDTreeFind<CR>
 nnoremap <silent> <CR> :noh<CR><CR>
 
 """"""""""""""""""
-" Pane Management
+" Pane Managemen'
 """"""""""""""""""
 " Convert Pane to Terminal
 nnoremap <C-y> :terminal<CR>
 
 " Creating Panes
+" chtn = up, left, down, right
 nnoremap <leader>c :leftabove new<CR>
 nnoremap <leader>h :leftabove vnew<CR>
 nnoremap <leader>t :rightbelow new<CR>
@@ -90,6 +91,9 @@ map <C-_> gcc
 " Move Lines Up/Down
 nnoremap <C-j> :move+1<CR>
 nnoremap <C-k> :move-2<CR>
+
+" Autofix via ALE
+nnoremap <leader>af :ALEFix<CR>
 
 
 " " vim-multiple-cursors keymap

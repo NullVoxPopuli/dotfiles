@@ -1,0 +1,24 @@
+#!/bin/bash
+
+current_branch=$(gbranch)
+
+
+read -r -d '' warningMessage <<-EOF
+  !!! WARNING !!!
+  You are about to force-push to $current_branch via:
+
+    git push origin $current_branch --force-with-lease
+
+  Confirm? (Y|N)
+EOF
+
+while true; do
+    read -p "$warningMessage" yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit 0;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+git push origin $current_branch --force-with-lease

@@ -1,12 +1,14 @@
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-css',
+  \ 'coc-eslint',
   \ 'coc-prettier',
   \ 'coc-json',
   \ 'coc-html',
   \ 'coc-vimlsp',
   \ 'coc-highlight',
-  \ 'coc-ember'
+  \ 'coc-ember',
+  \ 'coc-elixir'
 \ ]
 
 "" Integrations
@@ -14,9 +16,11 @@ let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_er
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 
+
 "" Hot Keys
 nnoremap <silent> <space>c :<C-u>CocList commands<cr>
 inoremap <silent><expr> <c-space> coc#refresh()
+
 " Remap keys for gotos
 nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
@@ -24,10 +28,12 @@ nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
 
 "" Remap for code action
+nmap <leader><space> :call CocAction('doHover')<CR>
 nmap <leader>ga <Plug>(coc-codeaction)
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 " Remap for format selected region
+nmap <leader>ff :CocCommand eslint.executeAutofix<CR>
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 

@@ -6,17 +6,15 @@ call plug#begin('~/.local/share/nvim/plugged')
   """""""""""""""""
   " Editor
   """""""""""""""""
-
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  let g:prettier#exec_cmd_async = 1
-  let g:prettier#autoformat = 0
-
   Plug 'ntpeters/vim-better-whitespace'
   autocmd BufWritePre * StripWhitespace
 
-  " Finding
+  " File / Project Finding
+
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+
+  " File Tree Browser
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -41,24 +39,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   Plug 'editorconfig/editorconfig-vim'
 
-  " Linting
-  Plug 'w0rp/ale'
-  let g:ale_sign_error = '✘'
-  let g:ale_sign_warning = '⚠'
-  let g:ale_linters = {
-  \   'javascript': ['eslint'],
-  \   'typescript': ['eslint'],
-  \   'typescript.tsx': ['eslint'],
-  \   'html.handlebars': ['prettier', 'ember-template-lint'],
-  \}
-
-  let g:ale_fixers = {
-  \   'javascript': ['eslint'],
-  \   'typescript': ['eslint'],
-  \   'typescript.tsx': ['eslint'],
-  \   'html.handlebars': ['prettier'],
-  \}
-  let g:ale_sign_column_always = 1
+  " Git Conflict highlighting
+  Plug 'rhysd/conflict-marker.vim'
 
   """"""""""""""""""""
   " Language Servers
@@ -66,7 +48,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Debugging:
   "   node -e 'console.log(path.join(os.tmpdir(), "coc-nvim.log"))'
   """"""""""""""""""""
-  " Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': './install.sh' }
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
   """"""""""""""""""
@@ -93,18 +74,36 @@ call plug#begin('~/.local/share/nvim/plugged')
   " let g:OmniSharp_server_type = 'roslyn'
   " let g:OmniSharp_timeout = 5
 
-  " nginx highlighting
-  Plug 'chr4/nginx.vim'
+  " Syntax not needed, because provided by polyglot
+  "
+  " toml: cespare/vim-toml
+  " json5: GutenYe/json5.vim
+  " josn: elzr/vim-json
+  " nginx: chr4/nginx.vim
+  Plug 'sheerun/vim-polyglot'
+  " handled below
+  let g:polyglot_disabled = ['css', 'ts', 'typescript', 'js', 'javascript', 'hbs', 'json']
 
   " CSS
   " Plug 'amadeus/vim-css'
-  Plug 'stephenway/postcss.vim'
+  " Plug 'stephenway/postcss.vim'
+  Plug 'alexlafroscia/postcss-syntax.vim'
 
-  " Typescript syntax highlighting
+  " Elixir
+  Plug 'elixir-editors/vim-elixir'
+
+  " Typescript syntax
   Plug 'leafgarland/typescript-vim'
+
+  " JavaScript Syntax
+  Plug 'pangloss/vim-javascript'
+  let g:javascript_plugin_jsdoc = 1
+
+
   " Plug 'HerringtonDarkholme/yats.vim'
   " Ember template highlighting
   Plug 'joukevandermaas/vim-ember-hbs'
+
   " Additional jsx highlighting
   " Plug 'maxmellon/vim-jsx-pretty'
   " let g:vim_jsx_pretty_colorful_config = 1
