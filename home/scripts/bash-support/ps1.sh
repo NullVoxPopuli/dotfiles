@@ -66,7 +66,7 @@ custom_bash_prompt(){
 	export PS1="$PS1$G\$(__current_node_ps1)"
 
 	# current ruby
-	export PS1="$PS1$R\$(__current_ruby_ps1)"
+	# export PS1="$PS1$R\$(__current_ruby_ps1)"
 
 	# current git branch
 	export PS1="$PS1$Y\$(__git_ps1) "

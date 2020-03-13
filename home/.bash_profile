@@ -1,9 +1,3 @@
-# Load the Ruby Loader
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-
-# This loads nvm
-[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
 # allows git usage in PS1
 [[ -s "$HOME/scripts/bash-support/git-prompt.sh" ]] && source "$HOME/scripts/bash-support/git-prompt.sh"
 # Extend our path, include scripts, etc
@@ -116,3 +110,9 @@ bind -x '"\C-p": vim $(fzf);'
 #export JAVA_HOME=/usr/lib/jvm/default-java
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 alias mvn="~/Applications/apache-maven-3.5.3/bin/mvn"
+
+export VOLTA_HOME="$HOME/.volta"
+[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
+
+export PATH="$VOLTA_HOME/bin:$PATH"
+
