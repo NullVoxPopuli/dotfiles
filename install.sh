@@ -33,6 +33,16 @@ mkdir -p ~/.local/share/nvim/_backup
 mkdir -p ~/.local/share/nvim/_temp
 mkdir -p ~/.local/share/nvim/_undo
 mkdir -p ~/.local/share/nvim/spell
+mkdir -p ~/.config/
+
+ln -s ./home/Applications ~/Applications
+ln -s ./home/scripts ~/scripts
+ln -s ./home/.themes ~/.themes
+ln -s ./home/.bash_profile ~/.bash_profile
+ln -s ./home/.config/nvim ~/.config/nvim
+
+echo "Symlinking ~/Application/nvim.appimage to /usr/bin/nvim . Will need sudo."
+sudo ln -s ~/Applications/nvim.appimage /usr/bin/nvim
 
 ###############################################
 # Load Ubuntu/Gnome Configuration + KeyMappings

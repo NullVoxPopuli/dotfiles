@@ -10,6 +10,9 @@
 # Apps (these are really just aliases, though, and don't augment the PATH
 [[ -s "$HOME/Applications/paths.sh" ]] && source "$HOME/Applications/paths.sh"
 
+export EDITOR=nvim
+
+
 # handy aliases
 # shopt -s direxpand
 shopt -s expand_aliases
