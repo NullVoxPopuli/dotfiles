@@ -35,11 +35,17 @@ mkdir -p ~/.local/share/nvim/_undo
 mkdir -p ~/.local/share/nvim/spell
 mkdir -p ~/.config/
 
-ln -s ./home/Applications ~/Applications
-ln -s ./home/scripts ~/scripts
-ln -s ./home/.themes ~/.themes
-ln -s ./home/.bash_profile ~/.bash_profile
-ln -s ./home/.config/nvim ~/.config/nvim
+rm -rf ~/Applications 
+rm -rf ~/scripts 
+rm -rf ~/.themes 
+rm -rf ~/.bash_profile 
+rm -rf ~/.config/nvim
+
+ln -s $PWD/home/Applications ~/Applications
+ln -s $PWD/home/scripts ~/scripts
+ln -s $PWD/home/.themes ~/.themes
+ln -s $PWD/home/.bash_profile ~/.bash_profile
+ln -s $PWD/home/.config/nvim ~/.config/nvim
 
 echo "Symlinking ~/Application/nvim.appimage to /usr/bin/nvim . Will need sudo."
 sudo ln -s ~/Applications/nvim.appimage /usr/bin/nvim
