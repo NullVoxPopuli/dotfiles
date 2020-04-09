@@ -16,6 +16,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:ctrlsf_auto_focus = {
       \ 'at': 'start',
       \ }
+  let g:ctrlsf_extra_backend_args = {
+      \ 'rg': '--hidden',
+      \ }
 
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
