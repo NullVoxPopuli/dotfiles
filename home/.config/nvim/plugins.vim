@@ -11,8 +11,15 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " File / Project Finding
 
+  Plug 'dyng/ctrlsf.vim'
+  let g:ctrlsf_default_root = 'cwd'
+  let g:ctrlsf_auto_focus = {
+      \ 'at': 'start',
+      \ }
+
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.6, 'border': 'rounded' } }
 
   " File Tree Browser
   Plug 'scrooloose/nerdtree'

@@ -34,8 +34,18 @@ noremap <leader>y "+y
 noremap <leader>p "+p
 
 " Search
+"
+" https://github.com/dyng/ctrlsf.vim#key-maps
+" Enter - Open
+" <C-O> - Open, but horizontal split
+" O - Open, but leaze the search results
+" q - quit
+nmap <C-f> <Plug>CtrlSFPrompt
+vmap <C-f> <Plug>CtrlSFVwordExec
+"
+"""
 nmap <C-t> :Files<CR>
-nmap <C-f> :Ag<CR>
+" nmap <C-f> :Ag<CR>
 nmap <leader><BSlash> :NERDTreeToggle<CR>
 nmap <leader>l :NERDTreeFind<CR>
 nnoremap <silent> <CR> :noh<CR><CR>
