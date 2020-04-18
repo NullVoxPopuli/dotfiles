@@ -1,0 +1,23 @@
+# Text/base
+gtk-color-scheme = "text_color:#2e3436\nbase_color:#FFFFFF"
+# Foreground/background
+gtk-color-scheme = "fg_color:#2e3436\nbg_color:#ededed"
+# Selected foreground/background
+gtk-color-scheme = "selected_fg_color:#FFFFFF\nselected_bg_color:#6988A6"
+# Titlebar foreground/background
+gtk-color-scheme = "titlebar_fg_color:#2e3436\ntitlebar_bg_color:#ededed"
+# Tooltip colors
+gtk-color-scheme = "tooltip_fg_color:#efefef\ntooltip_bg_color:#3c3c3c"
+# Links
+gtk-color-scheme = "link_color:#7a7e7f\nvisited_link_color:#E040FB"
+# Menus
+gtk-color-scheme = "menu_color:#fafafa"
+
+# Set GTK settings
+gtk-auto-mnemonics              = 1
+gtk-primary-button-warps-slider = 1
+
+# And hand over the control to the theme files
+include "main.rc"
+include "apps.rc"
+include "hacks.rc"
