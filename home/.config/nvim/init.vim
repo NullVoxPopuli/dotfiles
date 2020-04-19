@@ -15,5 +15,8 @@ autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
 autocmd BufNewFile,BufRead *.tsx,*.jsx setfiletype typescript.tsx
 autocmd FileType javascript setlocal foldmethod=syntax
 
+" Autosave after 'updatetime'
+autocmd CursorHold * wa
+
 " Batch'd Setup / Config Scripts
 call EnableTemplateLiteralColors()
