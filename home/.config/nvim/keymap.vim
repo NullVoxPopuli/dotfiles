@@ -96,7 +96,11 @@ nnoremap <F2> :setlocal spell! spelllang=en_us<CR>
 """""""""""""""""""""
 " NOTE: C-_ is the same as C-/
 " gc in visual mode
+" for commenting
 map <C-_> gcc
+
+" Recursively unfold
+nnoremap <leader>z zczA
 
 " Move Lines Up/Down
 nnoremap <C-j> :move+1<CR>
