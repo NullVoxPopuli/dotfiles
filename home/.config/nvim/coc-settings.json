@@ -10,6 +10,9 @@
   "coc.source.file.enable": false,
   "coc.source.around.enable": false,
 
+  // coc-actions config
+  "coc-actions.hideCursor": false,
+
   // Linting
   "eslint.quiet": true,
   "eslint.packageManager": "yarn",
