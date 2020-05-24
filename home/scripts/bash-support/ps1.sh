@@ -34,7 +34,9 @@ custom_bash_prompt(){
 	local EMW="\[\033[1;37m\]"
 
 	# username@hostname
-	export PS1="$EMM\u$EMG@$EMC\h "
+	# export PS1="$EMM\u$EMG@$EMC\h "
+  # username
+	export PS1="$EMM\u$EMG "
 
 	# ip address
 	# export PS1="$PS1$C\$(__ip_address_ps1) "

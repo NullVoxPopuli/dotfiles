@@ -11,6 +11,7 @@ source "$HOME/scripts/bash-support/ps1.sh"
 [[ -s "$HOME/Applications/paths.sh" ]] && source "$HOME/Applications/paths.sh"
 
 export EDITOR=nvim
+export PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"'
 
 # handy aliases
 shopt -s expand_aliases
