@@ -140,27 +140,27 @@ bindsym $mod+a focus parent
 ##################################
 # switch to workspace
 bindsym $mod+1 workspace 1: Web
-bindsym $mod+2 workspace 2: Work
+bindsym $mod+2 workspace 2: FalTest
 bindsym $mod+3 workspace 3: Work
 bindsym $mod+4 workspace 4: Work
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9: Side Project
-bindsym $mod+0 workspace 10: Side Project
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10: Daemons, Servers, etc
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1: Web
-bindsym $mod+Shift+2 move container to workspace 2: Work
+bindsym $mod+Shift+2 move container to workspace 2: FalTest
 bindsym $mod+Shift+3 move container to workspace 3: Work
 bindsym $mod+Shift+4 move container to workspace 4: Work
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9: Side Project
-bindsym $mod+Shift+0 move container to workspace 10: Side Project
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10: Daemons, Servers, etc
 
 # reload the configuration file
 bindsym $mod+Shift+r reload
@@ -202,14 +202,12 @@ bar {
   # https://www.googleplaymusicdesktopplayer.com/#!
   status_command python3 ~/.i3/bumblebee-status/bumblebee-status \
     -m \
-      nvidiagpu \
       publicip \
       nic \
       disk:root \
       uptime \
       amixer \
       pasource \
-      bluetooth \
       layout \
       datetime \
       battery \
@@ -218,9 +216,6 @@ bar {
       datetime.format="%Y-%m-%d %H:%M:%S (%I:%M:%S %p)" \
       disk.left-click="nautilus /home/lprestonsegoiii" \
       nic.exclude="lo,virbr,docker,vboxnet,veth,br-" \
-      getcrypto.geteth="1" \
-      getcrypto.getbtc="1" \
-      getcrypto.getltc="0" \
     -t gruvbox-powerline
 
   # default
@@ -288,3 +283,13 @@ exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec_always --no-startup-id gnome-power-manager
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id gnome-flashback
+
+############################
+# Always floating windows
+# Use i3-get-window-criteria to click on a window to figure out what goes in the []
+#
+# FalTest
+for_window [title="data:, - Google Chrome"] floating enable
+for_window [title="data:, - Google Chrome"] move to workspace "2: FalTest"
+for_window [title="data:, - Google Chrome"] resize set 1024 768
+

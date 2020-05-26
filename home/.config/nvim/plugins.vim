@@ -44,6 +44,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Plug 'terryma/vim-multiple-cursors'
   " let g:multi_cursor_use_default_mapping=0
 
+  Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
 
@@ -73,6 +74,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:airline_symbols.space = "\ua0"
   let g:airline#extensions#tabline#enabled = 0
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+  let g:airline#extensions#branch#enabled=0
 
   """""""""""""""""""""
   " Syntax Support
@@ -84,31 +86,30 @@ call plug#begin('~/.local/share/nvim/plugged')
   " let g:OmniSharp_server_type = 'roslyn'
   " let g:OmniSharp_timeout = 5
 
-  " Syntax not needed, because provided by polyglot
-  "
-  " toml: cespare/vim-toml
-  " json5: GutenYe/json5.vim
-  " josn: elzr/vim-json
-  " nginx: chr4/nginx.vim
+  " Plug 'cespare/vim-toml'
+
   Plug 'sheerun/vim-polyglot'
   " handled below
-  let g:polyglot_disabled = ['css', 'ts', 'typescript', 'js', 'javascript', 'hbs', 'json']
+  " let g:polyglot_disabled = ['css', 'ts', 'typescript', 'hbs', 'json']
+
+  " nginx highlighting
+  Plug 'chr4/nginx.vim'
 
   " CSS
   " Plug 'amadeus/vim-css'
   " Plug 'stephenway/postcss.vim'
-  Plug 'alexlafroscia/postcss-syntax.vim'
-
-  " Elixir
-  Plug 'elixir-editors/vim-elixir'
 
   " Typescript syntax
-  Plug 'leafgarland/typescript-vim'
+  " Plug 'leafgarland/typescript-vim'
+  " Plug 'HerringtonDarkholme/yats.vim'
 
   " JavaScript Syntax
-  Plug 'pangloss/vim-javascript'
-  let g:javascript_plugin_jsdoc = 1
+  " Plug 'pangloss/vim-javascript'
+  " let g:javascript_plugin_jsdoc = 1
 
+
+  " Vue
+  " Plug 'posva/vim-vue'
 
   " Plug 'HerringtonDarkholme/yats.vim'
   " Ember template highlighting
