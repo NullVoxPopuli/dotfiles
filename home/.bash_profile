@@ -31,11 +31,14 @@ alias gs='git status'
 alias gl='git log'
 alias gd='git diff'
 alias gbs='git branch-status'
-alias gb='git branch'
+alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+
 alias gls='git log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative'
 alias gia='git add --patch'
 alias gp='git push --follow-tags --atomic'
 alias g-reset-master="git fetch origin && git checkout master && git reset origin/master --hard"
+alias ggraph='git log master --graph --format="%C(auto) %h %s"'
+
 alias herpderp='ember'
 
 # Docker
