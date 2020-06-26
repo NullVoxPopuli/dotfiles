@@ -24,16 +24,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'junegunn/fzf.vim'
   let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.6, 'border': 'rounded' } }
 
-  " File Tree Browser
-  Plug 'scrooloose/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-
-  let NERDTreeShowHidden=1 " This also ignores .gitignore
-  let NERDTreeIgnore=['.git$[[dir]]', '.swp', 'dist', 'tmp', 'node_modules', 'bower_components', '.pnp']
-  let NERDTreeAutoDeleteBuffer = 1
-  let NERDTreeMinimalUI = 1
-  let NERDTreeDirArrows = 1
-
   " Working with code
   Plug 'jiangmiao/auto-pairs'
   let g:AutoPairsFlyMode = 1

@@ -1,5 +1,6 @@
 let g:coc_global_extensions = [
   \ 'coc-actions',
+  \ 'coc-explorer',
   \ 'coc-tsserver',
   \ 'coc-css',
   \ 'coc-eslint',
@@ -15,6 +16,12 @@ let g:coc_global_extensions = [
 "" Integrations
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+
+let g:coc_explorer_global_presets = {
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   }
+\ }
 
 
 

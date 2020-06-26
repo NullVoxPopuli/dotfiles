@@ -13,6 +13,20 @@
   // coc-actions config
   "coc-actions.hideCursor": false,
 
+  // explorer config
+  "explorer.autoExpandMaxDepth": 1,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.file.showHiddenFiles": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.file.hiddenRules": {
+    "extensions": ["git", "swp"],
+    "filenames": [],
+    "patternMatches": ["^node_modules"]
+  },
+  "explorer.keyMappings": {
+    "<cr>": ["expandable?", ["expanded?", "collapse", "expand"], "open"]
+  },
+
   // coc-tsserver config
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
 

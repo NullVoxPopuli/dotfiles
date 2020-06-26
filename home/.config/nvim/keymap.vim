@@ -46,8 +46,9 @@ vmap <C-f> <Plug>CtrlSFVwordExec
 """
 nmap <C-t> :Files<CR>
 " nmap <C-f> :Ag<CR>
-nmap <leader><BSlash> :NERDTreeToggle<CR>
-nmap <leader>l :NERDTreeFind<CR>
+nmap <leader><BSlash> :CocCommand explorer --toggle --preset simplify<CR>
+nmap <leader>l :CocCommand explorer --no-toggle<CR>
+
 nnoremap <silent> <CR> :noh<CR><CR>
 
 """"""""""""""""""

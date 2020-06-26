@@ -13,7 +13,7 @@ let g:airline_theme='onedark'
 """""""""""""""""""""""""
 syntax on
 set encoding=utf-8
-set guifont=DejaVu\ Sans\ Mono
+set guifont=DejaVu\ Sans\ Mono\ Nerd\ Font\ Complete
 
 set cmdheight=1      " under statusline messages
 
