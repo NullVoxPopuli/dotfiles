@@ -4,13 +4,16 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-css',
   \ 'coc-eslint',
+  \ 'coc-markdownlint',
   \ 'coc-prettier',
   \ 'coc-json',
   \ 'coc-html',
   \ 'coc-vimlsp',
   \ 'coc-highlight',
   \ 'coc-ember',
-  \ 'coc-elixir'
+  \ 'coc-elixir',
+  \ 'coc-fsharp',
+  \ 'coc-yaml'
 \ ]
 
 "" Integrations
