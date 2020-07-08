@@ -36,3 +36,10 @@ function EnableTemplateLiteralColors()
   " compat with leafgarland/typescript-vim
   autocmd FileType typescript syn clear foldBraces
 endfunction
+
+" Hide sections on the right for inactive window, same as we do for the left sections
+function! PatchInactiveStatusLine(...)
+  call setwinvar(a:2.winnr, 'airline_section_z', '')
+  call setwinvar(a:2.winnr, 'airline_section_y', '')
+endfunction
+call airline#add_inactive_statusline_func('PatchInactiveStatusLine')
