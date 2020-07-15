@@ -15,6 +15,9 @@ autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
 autocmd BufNewFile,BufRead *.tsx,*.jsx setfiletype typescript.tsx
 autocmd FileType javascript setlocal foldmethod=syntax
 
+" tsconfig.json is actually jsonc, help TypeScript set the correct filetype
+autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+
 " Autosave after 'updatetime'
 autocmd CursorHold * wa
 
