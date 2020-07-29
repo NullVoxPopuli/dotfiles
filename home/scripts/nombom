@@ -16,10 +16,9 @@ fi
 # The package.json specifies globs as workspace matches
 # This works well for bash as bash will expand the globs
 # to a full list.
-WORKSPACES=$(cat ./package.json | jq -r '.workspaces.packages[]?')
-
-# convert to an array
-declare -a WORKSPACES_LIST=($WORKSPACES)
+#
+# NOTE: wrapping in an extra () converts the output to on Array
+WORKSPACES=($(cat ./package.json | jq -r '.workspaces.packages[]?'))
 
 function sneaky_delete() {
   local target=$1
@@ -27,9 +26,12 @@ function sneaky_delete() {
 
   # rsync is faster than rm -rf
   # https://serverfault.com/questions/183821/rm-on-a-directory-with-millions-of-files/328305#328305
-  rsync -a --delete "$grave/" $target
+  rsync -a --delete "$grave/" "$target"
 }
 
-for target in "${WORKSPACES_LIST[@]}"; do
+# root node_modules is not in a workspace
+sneaky_delete "./node_modules"
+
+for target in "${WORKSPACES[@]}"; do
   sneaky_delete "$target/node_modules"
 done
