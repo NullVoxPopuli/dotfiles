@@ -19,23 +19,17 @@ fi
 WORKSPACES=$(cat ./package.json | jq -r '.workspaces.packages[]?')
 
 # convert to an array
-declare -a WORKSPACES_LIST=($WORKESPACES)
+declare -a WORKSPACES_LIST=($WORKSPACES)
 
-function background_delete() {
+function sneaky_delete() {
   local target=$1
   local grave=$(mktemp -d -t node_modules-XXXXXXXXX)
 
   # rsync is faster than rm -rf
   # https://serverfault.com/questions/183821/rm-on-a-directory-with-millions-of-files/328305#328305
-  nice rsync -a --delete "$grave/" $target &
+  rsync -a --delete "$grave/" $target
 }
 
 for target in "${WORKSPACES_LIST[@]}"; do
-  background_delete "$target/node_modules"
+  sneaky_delete "$target/node_modules"
 done
-
-# removes background jobs from current shell,
-# allowing you to close the shell, and node_modules
-# will still be deleted
-disown &> /dev/null
-
