@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Required dependencies:
+# - jq
+
+# Helpful documentation / tutorials
+# - https://linuxhint.com/bash_loop_list_strings/
+# - https://linuxize.com/post/bash-check-if-file-exists/
+# - https://www.tldp.org/LDP/abs/html/declareref.html
+
+if [[ ! -e ./package.json ]]; then
+  echo "No package.json found in current directory. Is this a JS Project?" >&2
+  exit 1
+fi
+
+# The package.json specifies globs as workspace matches
+# This works well for bash as bash will expand the globs
+# to a full list.
+WORKSPACES=$(cat ./package.json | jq -r '.workspaces.packages[]?')
+
+# convert to an array
+declare -a WORKSPACES_LIST=($WORKESPACES)
+
+function background_delete() {
+  local target=$1
+  local grave=$(mktemp -d -t node_modules-XXXXXXXXX)
+
+  # rsync is faster than rm -rf
+  # https://serverfault.com/questions/183821/rm-on-a-directory-with-millions-of-files/328305#328305
+  nice rsync -a --delete "$grave/" $target &
+}
+
+for target in "${WORKSPACES_LIST[@]}"; do
+  background_delete "$target/node_modules"
+done
+
+# removes background jobs from current shell,
+# allowing you to close the shell, and node_modules
+# will still be deleted
+disown &> /dev/null
+
