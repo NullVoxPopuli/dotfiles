@@ -48,7 +48,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Debugging:
   "   node -e 'console.log(path.join(os.tmpdir(), "coc-nvim.log"))'
   """"""""""""""""""""
-  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   """"""""""""""""""
   "" Status
@@ -82,7 +82,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   " nginx: chr4/nginx.vim
   Plug 'sheerun/vim-polyglot'
   " handled below
-  let g:polyglot_disabled = ['css', 'ts', 'typescript', 'js', 'javascript', 'hbs', 'json']
+  " let g:polyglot_disabled = ['css', 'ts', 'typescript', 'js', 'javascript', 'hbs', 'json']
+  let g:polyglot_disabled = ['css', 'js', 'javascript', 'hbs', 'json']
+  set re=0
 
   " CSS
   " Plug 'amadeus/vim-css'
@@ -93,7 +95,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'elixir-editors/vim-elixir'
 
   " Typescript syntax
-  Plug 'leafgarland/typescript-vim'
+  " Plug 'leafgarland/typescript-vim'
 
   " JavaScript Syntax
   Plug 'pangloss/vim-javascript'
