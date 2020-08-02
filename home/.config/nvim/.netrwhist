@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/home/lprestonsegoiii/Development/NullVoxPopuli/ember.js'
-let g:netrw_dirhist_2='/home/lprestonsegoiii/Development/NullVoxPopuli/doctor-who-thirteen-game-ai/doctor-who-ai'
-let g:netrw_dirhist_1='/home/lprestonsegoiii/Development/NullVoxPopuli/dotfiles/home/.themes/Telinkrin-Buttons-Right-Gn-3.32 no-shadows'

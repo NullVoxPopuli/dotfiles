@@ -55,6 +55,11 @@ set autoread   " Autoload reload files when they have changed on the disk
 set scrolloff=3  " minimum lines to keep above and below cursor
 
 " Backup and Temp
+silent !mkdir ~/.local/share/nvim/_backup/ > /dev/null 2>&1
+silent !mkdir ~/.local/share/nvim/_temp/ > /dev/null 2>&1
+silent !mkdir ~/.local/share/nvim/_undo/ > /dev/null 2>&1
+silent !mkdir ~/.local/share/nvim/spell/ > /dev/null 2>&1
+
 set backupdir=~/.local/share/nvim/_backup/    " where to put backup files.
 set directory=~/.local/share/nvim/_temp/      " where to put swap files.
 
