@@ -1,0 +1,49 @@
+#!/bin/bash
+
+
+function statsFor {
+  ext=$1
+  echo ""
+  echo "Stats For $ext"
+  echo ""
+
+  FILES=($(ag -g "$ext" \
+    --ignore-dir="vendor" \
+    --ignore-dir="public" \
+    --ignore-dir="dist" \
+    --ignore-dir="node_modules" \
+    --ignore-dir=".git" \
+    --ignore-dir="concat-stats-for" \
+    --ignore="*.png" \
+    --ignore="*.json" \
+    --ignore="*page-objects*" \
+    --ignore="*helpers*"))
+
+  numfile="$ext.txt"
+
+  rm $numfile 2>/dev/null
+
+  for f in "${FILES[@]}"; do
+    if [ -f $f ]; then
+      lines=$(cat $f | wc -l)
+
+      # if [ $lines -ge 10 ]; then
+      #   if [ $lines -le 15 ]; then
+      #     echo $f
+      #   fi
+      # fi
+
+      if [ $lines -ge 10 ]; then
+        echo "$lines" >> $numfile
+      fi
+    fi
+  done
+
+  # https://github.com/nferraz/st
+  st --count --sum --q1 --q3 --mean --median --max $numfile
+}
+
+statsFor ".js$"
+statsFor ".hbs$"
+statsFor ".ts$"
+statsFor ".scss$"
