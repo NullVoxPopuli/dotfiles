@@ -85,6 +85,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   " let g:polyglot_disabled = ['css', 'ts', 'typescript', 'js', 'javascript', 'hbs', 'json']
   let g:polyglot_disabled = ['css', 'js', 'javascript', 'hbs', 'json']
   set re=0
+  " Polyglot Markdown provided by: https://github.com/plasticboy/vim-markdown
+  let g:vim_markdown_fenced_languages = ['js=javascript', 'ts=typescript', 'hbs=html.handlebars', 'bash=sh']
 
   " CSS
   " Plug 'amadeus/vim-css'
