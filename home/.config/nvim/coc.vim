@@ -1,4 +1,7 @@
 let g:coc_global_extensions = [
+  \ 'coc-spell-checker',
+  \ 'coc-conventional',
+  \ 'coc-tailwindcss',
   \ 'coc-actions',
   \ 'coc-explorer',
   \ 'coc-tsserver',
@@ -11,6 +14,7 @@ let g:coc_global_extensions = [
   \ 'coc-vimlsp',
   \ 'coc-highlight',
   \ 'coc-ember',
+  \ 'coc-stylelintplus',
   \ 'coc-elixir',
   \ 'coc-fsharp',
   \ 'coc-yaml'

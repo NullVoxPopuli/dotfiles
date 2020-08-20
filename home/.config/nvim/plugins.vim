@@ -6,6 +6,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   """""""""""""""""
   " Editor
   """""""""""""""""
+  Plug 'etdev/vim-hexcolor'
   Plug 'ntpeters/vim-better-whitespace'
   autocmd BufWritePre * StripWhitespace
 
@@ -41,6 +42,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Git Conflict highlighting
   Plug 'rhysd/conflict-marker.vim'
+  Plug 'tpope/vim-fugitive'
+  Plug 'christoomey/vim-conflicted'
+
+  " https://github.com/christoomey/vim-conflicted
+  " Requires Additional out-of-vim configuration
+  let g:diffget_local_map = 'gl'
+  let g:diffget_upstream_map = 'gu'
+  set stl+=%{ConflictedVersion()}
 
   """"""""""""""""""""
   " Language Servers

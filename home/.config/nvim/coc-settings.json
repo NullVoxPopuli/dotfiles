@@ -30,9 +30,17 @@
   // coc-tsserver config
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
 
+  // coc-tailwindcss config
+  "tailwindCSS.headwind.runOnSave": false,
+
   // Linting
   "eslint.quiet": true,
   "eslint.packageManager": "yarn",
   "eslint.filetypes": ["javascript", "json", "typescript"],
-  "eslint.autoFix": true
+  "eslint.autoFix": true,
+
+  // Linting (CSS) -- handled by coc-stylelintplus
+  "css.validate": false,
+  "scss.validate": false
+
 }

@@ -108,8 +108,10 @@ nnoremap <C-j> :move+1<CR>
 nnoremap <C-k> :move-2<CR>
 
 " Autofix via ALE
-nnoremap <leader>af :ALEFix<CR>
+" nnoremap <leader>af :ALEFix<CR>
 
+" vim-conflicted
+nnoremap <leader>gm :GitNextConflict<CR>
 
 " " vim-multiple-cursors keymap
 " let g:multi_cursor_start_word_key      = '<C-Enter>'
