@@ -39,6 +39,10 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set linebreak " breaks lines on words instead of in the middle of a word
+set breakindent " wrapping of lines is indented
+let &showbreak='⇢ ' " the wrapped part of a line is indented a bit
+
+
 
 " turn off smart indentation when pasting
 " set pastetoggle=<F2>
