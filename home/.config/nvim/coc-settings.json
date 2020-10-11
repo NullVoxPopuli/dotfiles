@@ -41,6 +41,9 @@
 
   // Linting (CSS) -- handled by coc-stylelintplus
   "css.validate": false,
-  "scss.validate": false
+  "scss.validate": false,
+  "cSpell.userWords": [
+    "nullvoxpopuli"
+  ]
 
 }
