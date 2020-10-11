@@ -1,11 +1,20 @@
-# allows git usage in PS1
-source "$HOME/scripts/bash-support/git-prompt.sh"
+# Prompt by starship
+# https://starship.rs/guide/#%F0%9F%9A%80-installation
+if ! [ -x "$(command -v starship)" ]; then
+  echo "Running external script. Be careful."
+  curl -fsSL https://starship.rs/install.sh | bash
+fi
+
 # Extend our path, include scripts, etc
 source "$HOME/scripts/bash-support/paths.sh"
 # allows having the current command running as the title of your terminal window
 source "$HOME/scripts/bash-support/current-command.sh"
-# custom PS1, configure by commenting out PS1= lines
-source "$HOME/scripts/bash-support/ps1.sh"
+
+# For use without Starship
+# # custom PS1, configure by commenting out PS1= lines
+# source "$HOME/scripts/bash-support/ps1.sh"
+# # allows git usage in PS1
+# source "$HOME/scripts/bash-support/git-prompt.sh"
 
 # Apps (these are really just aliases, though, and don't augment the PATH
 [[ -s "$HOME/Applications/paths.sh" ]] && source "$HOME/Applications/paths.sh"
@@ -76,3 +85,5 @@ bind -x '"\C-p": vim $(fzf);'
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+eval "$(starship init bash)"
