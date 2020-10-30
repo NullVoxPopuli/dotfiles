@@ -61,6 +61,8 @@
   "eslint.packageManager": "yarn",
   "eslint.filetypes": ["javascript", "json", "typescript"],
   "eslint.autoFix": true,
+  // Not technically linting... shhhh
+  "prettier.eslintIntegration": true,
 
   // Git - integration with vim-gitgutter
   "git.addedSign.hlGroup": "GitGutterAdd",
