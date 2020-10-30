@@ -62,11 +62,20 @@
   "eslint.filetypes": ["javascript", "json", "typescript"],
   "eslint.autoFix": true,
 
+  // Git - integration with vim-gitgutter
+  "git.addedSign.hlGroup": "GitGutterAdd",
+  "git.changedSign.hlGroup": "GitGutterChange",
+  "git.removedSign.hlGroup": "GitGutterDelete",
+  "git.topRemovedSign.hlGroup": "GitGutterDelete",
+  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+
   // Linting (CSS) -- handled by coc-stylelintplus
   "css.validate": false,
   "scss.validate": false,
   "cSpell.userWords": [
-    "nullvoxpopuli"
+    "nullvoxpopuli",
+    "crowdstrike",
+    "htmlbars",
+    "qunit"
   ]
-
 }
