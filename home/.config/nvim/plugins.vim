@@ -14,6 +14,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   Plug 'dyng/ctrlsf.vim'
   let g:ctrlsf_default_root = 'cwd'
+  let g:ctrlsf_auto_preview = 1
   let g:ctrlsf_auto_focus = {
       \ 'at': 'start',
       \ }
@@ -41,15 +42,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'editorconfig/editorconfig-vim'
 
   " Git Conflict highlighting
-  Plug 'rhysd/conflict-marker.vim'
   Plug 'tpope/vim-fugitive'
-  Plug 'christoomey/vim-conflicted'
-
-  " https://github.com/christoomey/vim-conflicted
-  " Requires Additional out-of-vim configuration
-  let g:diffget_local_map = 'gl'
-  let g:diffget_upstream_map = 'gu'
-  set stl+=%{ConflictedVersion()}
 
   """"""""""""""""""""
   " Language Servers
@@ -69,9 +62,30 @@ call plug#begin('~/.local/share/nvim/plugged')
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif
-  let g:airline_symbols.space = "\ua0"
   let g:airline#extensions#tabline#enabled = 0
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+  let g:airline#extensions#branch#enabled = 0
+
+  " Configuration
+  " A - display mode = flags
+  " B - version control
+  " C - file name
+  " X - file type
+  " Y - file encoding
+  " Z - current position
+  " ... addition stuff
+  " https://github.com/vim-airline/vim-airline#configurable-and-extensible
+  " function! AirlineInit()
+  "   let g:airline_section_a = airline#section#create(['mode'])
+  "   let g:airline_section_b = airline#section#create_left([])
+  "   let g:airline_section_c = airline#section#create(['%f'])
+  "   let g:airline_section_x = airline#section#create([''])
+  "   let g:airline_section_y = airline#section#create(['filetype'])
+  "   " let g:airline_section_z = airline#section#create(['percentage'])
+
+  " endfunction
+  " autocmd VimEnter * call AirlineInit()
+
 
   """""""""""""""""""""
   " Syntax Support

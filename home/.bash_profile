@@ -76,7 +76,7 @@ export PATH="$HOME/.pythons/Python-3.6.3/bin:$PATH"
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_EXCLUDE=".git,node_modules,.gem,vendor/gems,bower_components,tmp,dist,obj,bin"
-export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow -g \"!{$FZF_EXCLUDE}/*\" 2> /dev/null"
+export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow -g \"!tmp/\" -g \"!node_modules\" 2> /dev/null"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="bfs -type d -nohidden"
 

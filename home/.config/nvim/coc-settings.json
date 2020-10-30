@@ -5,6 +5,10 @@
   "diagnostic.warningSign": "⚠",
   "diagnostic.infoSign": "ⓘ",
 
+  // code lens
+  "codeLens.enable": true,
+  "els.codeLens.relatedFiles": true,
+
   // worthless sources when language-server is present
   "coc.source.buffer.enable": false,
   "coc.source.file.enable": false,
@@ -14,21 +18,40 @@
   "coc-actions.hideCursor": false,
 
   // explorer config
+  "explorer.position": "left",
   "explorer.autoExpandMaxDepth": 1,
   "explorer.icon.enableNerdfont": true,
   "explorer.file.showHiddenFiles": true,
+  // "explorer.openAction.strategy": "previousBuffer",
+  "explorer.file.autoReveal": true,
+  // File Info / size / created / etc
   "explorer.previewAction.onHover": false,
+  "explorer.toggle": true,
   "explorer.file.hiddenRules": {
     "extensions": ["git", "swp"],
     "filenames": [],
-    "patternMatches": ["^node_modules"]
+    "patternMatches": ["^node_modules", ".git", "tmp", "dist"]
   },
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "<cr>": ["expandable?", ["expanded?", "collapse", "expand"], "open"]
+  },
+  "explorer.sources": [
+    {
+      "name": "file",
+      "expand": true
+    }
+  ],
+  "explorer.presets": {
+    "simplify": {
+      "file-child-template": "[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]",
+
+      "reveal": "previousBuffer"
+    }
   },
 
   // coc-tsserver config
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
+  "tsserver.maxTsServerMemory": 8196,
 
   // coc-tailwindcss config
   "tailwindCSS.headwind.runOnSave": false,

@@ -1,4 +1,5 @@
 let g:coc_global_extensions = [
+  \ 'coc-git',
   \ 'coc-spell-checker',
   \ 'coc-conventional',
   \ 'coc-tailwindcss',
@@ -25,14 +26,6 @@ let g:coc_global_extensions = [
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
-let g:coc_explorer_global_presets = {
-\   'simplify': {
-\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   }
-\ }
-
-
-
 "" Hot Keys
 nnoremap <silent> <space>c :<C-u>CocList commands<cr>
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -45,6 +38,7 @@ nmap <silent> <leader>gr <Plug>(coc-references)
 
 "" Remap for code action
 nmap <leader><space> :call CocAction('doHover')<CR>
+nmap <leader>cl <Plug>(coc-codelens-action)
 
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort
@@ -63,7 +57,7 @@ nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<C
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 " Remap for format selected region
-nmap <leader>ff :CocCommand eslint.executeAutofix<CR>
+nmap <leader>ff <Plug>(coc-format)
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 
