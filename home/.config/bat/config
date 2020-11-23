@@ -1,0 +1,4 @@
+--theme="OneHalfDark"
+
+# Use HTML syntax for hbs files
+--map-syntax "*.hbs:HTML"
