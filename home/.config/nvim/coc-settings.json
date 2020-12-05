@@ -78,6 +78,7 @@
     "nullvoxpopuli",
     "crowdstrike",
     "htmlbars",
+    "mktemp",
     "qunit"
   ]
 }
