@@ -106,7 +106,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'sheerun/vim-polyglot'
   " handled below
   " let g:polyglot_disabled = ['css', 'ts', 'typescript', 'js', 'javascript', 'hbs', 'json']
-  let g:polyglot_disabled = ['css', 'js', 'javascript', 'hbs', 'json']
+  let g:polyglot_disabled = ['css', 'js', 'javascript', 'hbs']
   set re=0
   " Polyglot Markdown provided by: https://github.com/plasticboy/vim-markdown
   let g:vim_markdown_fenced_languages = ['js=javascript', 'ts=typescript', 'hbs=html.handlebars', 'bash=sh']
@@ -121,6 +121,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Typescript syntax
   " Plug 'leafgarland/typescript-vim'
+
+  " JSONc - JSON, but with comments
+  Plug 'neoclide/jsonc.vim'
 
   " JavaScript Syntax
   Plug 'pangloss/vim-javascript'

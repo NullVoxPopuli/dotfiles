@@ -6,7 +6,7 @@
   "diagnostic.infoSign": "ⓘ",
 
   // code lens
-  "codeLens.enable": true,
+  "codeLens.enable": false,
   "els.codeLens.relatedFiles": true,
 
   // worthless sources when language-server is present
