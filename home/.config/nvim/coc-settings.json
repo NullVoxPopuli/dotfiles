@@ -23,10 +23,10 @@
   "explorer.icon.enableNerdfont": true,
   "explorer.file.showHiddenFiles": true,
   // "explorer.openAction.strategy": "previousBuffer",
-  "explorer.file.autoReveal": true,
   // File Info / size / created / etc
   "explorer.previewAction.onHover": false,
   "explorer.toggle": true,
+  "explorer.file.autoReveal": true,
   "explorer.file.hiddenRules": {
     "extensions": ["git", "swp"],
     "filenames": [],
@@ -55,6 +55,11 @@
 
   // coc-tailwindcss config
   "tailwindCSS.headwind.runOnSave": false,
+  "tailwindCSS.htmlLanguages": [
+    "html.handlebars",
+    "html",
+    "markdown"
+  ],
 
   // Linting
   "eslint.quiet": true,
