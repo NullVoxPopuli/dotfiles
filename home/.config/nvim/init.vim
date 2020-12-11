@@ -20,7 +20,7 @@ autocmd FileType javascript setlocal foldmethod=syntax
 autocmd BufRead,BufNewFile tsconfig.json,tsconfig*.json set filetype=jsonc
 
 " Autosave after 'updatetime'
-autocmd CursorHold * wa
+" autocmd CursorHold * wa
 
 " Batch'd Setup / Config Scripts
 call EnableTemplateLiteralColors()
