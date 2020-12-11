@@ -103,10 +103,11 @@ call plug#begin('~/.local/share/nvim/plugged')
   " json5: GutenYe/json5.vim
   " josn: elzr/vim-json
   " nginx: chr4/nginx.vim
+  " the typescript package this uses isn't compat with jspretpml
   Plug 'sheerun/vim-polyglot'
   " handled below
   " let g:polyglot_disabled = ['css', 'ts', 'typescript', 'js', 'javascript', 'hbs', 'json']
-  let g:polyglot_disabled = ['css', 'js', 'javascript', 'hbs']
+  let g:polyglot_disabled = ['css', 'hbs', 'ts', 'typescript']
   set re=0
   " Polyglot Markdown provided by: https://github.com/plasticboy/vim-markdown
   let g:vim_markdown_fenced_languages = ['js=javascript', 'ts=typescript', 'hbs=html.handlebars', 'bash=sh']
@@ -120,14 +121,14 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'elixir-editors/vim-elixir'
 
   " Typescript syntax
-  " Plug 'leafgarland/typescript-vim'
+  Plug 'leafgarland/typescript-vim'
 
   " JSONc - JSON, but with comments
   Plug 'neoclide/jsonc.vim'
 
   " JavaScript Syntax
-  Plug 'pangloss/vim-javascript'
-  let g:javascript_plugin_jsdoc = 1
+  " Plug 'pangloss/vim-javascript'
+  " let g:javascript_plugin_jsdoc = 1
 
 
   " Plug 'HerringtonDarkholme/yats.vim'

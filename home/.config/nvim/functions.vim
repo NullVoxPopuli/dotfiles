@@ -29,13 +29,14 @@ endfunction
 function EnableTemplateLiteralColors()
   " list of named template literal tags and their syntax here
   call jspretmpl#register_tag('hbs', 'handlebars')
+  call jspretmpl#register_tag('hbs', 'html.handlebars')
 
   autocmd FileType javascript JsPreTmpl
   autocmd FileType typescript JsPreTmpl
 
   " compat with leafgarland/typescript-vim
   " not needed for yats, though
-  " autocmd FileType typescript syn clear foldBraces
+  autocmd FileType typescript syn clear foldBraces
 endfunction
 
 " Hide sections on the right for inactive window, same as we do for the left sections

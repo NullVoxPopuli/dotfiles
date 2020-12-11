@@ -85,5 +85,10 @@
     "htmlbars",
     "mktemp",
     "qunit"
-  ]
+  ],
+
+  // Shell
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  }
 }
