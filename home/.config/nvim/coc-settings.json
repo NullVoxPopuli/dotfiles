@@ -56,7 +56,7 @@
   // coc-tailwindcss config
   "tailwindCSS.headwind.runOnSave": false,
   "tailwindCSS.htmlLanguages": [
-    "html.handlebars",
+    "handlebars",
     "html",
     "markdown"
   ],

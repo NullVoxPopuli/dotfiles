@@ -4,9 +4,8 @@ let g:coc_global_extensions = [
   \ 'coc-git',
   \ 'coc-spell-checker',
   \ 'coc-conventional',
-  \ 'coc-tailwindcss',
-  \ 'coc-actions',
   \ 'coc-explorer',
+  \ 'coc-tailwindcss',
   \ 'coc-tsserver',
   \ 'coc-css',
   \ 'coc-eslint',
@@ -39,15 +38,17 @@ nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
 
 "" Remap for code action
-nmap <leader><space> :call CocAction('doHover')<CR>
+nmap <leader><space> :call CocActionAsync('doHover')<CR>
 nmap <leader>cl <Plug>(coc-codelens-action)
 
-" Remap for do codeAction of selected region
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+" <leader>aw for current word
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
 
 " <leader>a for the current selected range
 " <leader>aw for the current word

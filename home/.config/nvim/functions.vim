@@ -29,7 +29,7 @@ endfunction
 function EnableTemplateLiteralColors()
   " list of named template literal tags and their syntax here
   call jspretmpl#register_tag('hbs', 'handlebars')
-  call jspretmpl#register_tag('hbs', 'html.handlebars')
+  " call jspretmpl#register_tag('hbs', 'html.handlebars')
 
   autocmd FileType javascript JsPreTmpl
   autocmd FileType typescript JsPreTmpl
