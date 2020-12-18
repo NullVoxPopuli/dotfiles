@@ -18,6 +18,7 @@ autocmd FileType javascript setlocal foldmethod=syntax
 " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
 " autocmd BufRead,BufNewFile tsconfig.json,tsconfig*.json set syntax=json5
 autocmd BufRead,BufNewFile tsconfig.json,tsconfig*.json set filetype=jsonc
+autocmd BufRead,BufNewFile *.json5 set filetype=jsonc
 
 " Autosave after 'updatetime'
 " autocmd CursorHold * wa
