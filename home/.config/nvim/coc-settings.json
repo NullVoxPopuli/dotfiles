@@ -80,10 +80,11 @@
   "css.validate": false,
   "scss.validate": false,
   "cSpell.userWords": [
-    "nullvoxpopuli",
+    "Statechart",
     "crowdstrike",
     "htmlbars",
     "mktemp",
+    "nullvoxpopuli",
     "qunit"
   ],
 
