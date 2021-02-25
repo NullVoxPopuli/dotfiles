@@ -89,8 +89,10 @@ set equalalways noequalalways " prevents splits from all auto-adjusting horizont
 """"""""""""""""""""
 " Code Management
 """"""""""""""""""""
-set foldmethod=indent "" fold based on indentation
-set foldlevel=99
+" set foldmethod=indent "" fold based on indentation
+" set foldlevel=99
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable      "" don't open a file with folds, display the whole thing
 set signcolumn=yes    "" always show the signcolumn
 

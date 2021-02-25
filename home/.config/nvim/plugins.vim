@@ -90,59 +90,20 @@ call plug#begin('~/.local/share/nvim/plugged')
   """""""""""""""""""""
   " Syntax Support
 
-  " .net language server and highlighting support
-  " Plug 'OmniSharp/omnisharp-vim'
-  " Plug 'OrangeT/vim-csharp'
-  " let g:OmniSharp_server_path = '/home/lprestonsegoiii/Applications/omnisharp-x64/run'
-  " let g:OmniSharp_server_type = 'roslyn'
-  " let g:OmniSharp_timeout = 5
+    " The Future of syntax highlighting
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
-  " Syntax not needed, because provided by polyglot
-  "
-  " toml: cespare/vim-toml
-  " json5: GutenYe/json5.vim
-  " josn: elzr/vim-json
-  " nginx: chr4/nginx.vim
-  " the typescript package this uses isn't compat with jspretpml
-  Plug 'sheerun/vim-polyglot'
-  " handled below
-  " let g:polyglot_disabled = ['css', 'ts', 'typescript', 'js', 'javascript', 'hbs', 'json']
-  let g:polyglot_disabled = ['css', 'hbs', 'ts', 'typescript']
-  set re=0
-  " Polyglot Markdown provided by: https://github.com/plasticboy/vim-markdown
-  let g:vim_markdown_fenced_languages = ['js=javascript', 'ts=typescript', 'hbs=handlebars', 'bash=sh']
+    " Nested syntax highlighting
+    " needed for js/ts named template literals
+    " and markdown.
+    Plug 'Quramy/vim-js-pretty-template'
 
-  " CSS
-  " Plug 'amadeus/vim-css'
-  " Plug 'stephenway/postcss.vim'
-  Plug 'alexlafroscia/postcss-syntax.vim'
+    " TreeSitter doesn't yet have support for
+    " - markdown
+    " - ember
+    Plug 'joukevandermaas/vim-ember-hbs'
+    Plug 'plasticboy/vim-markdown'
 
-  " Elixir
-  Plug 'elixir-editors/vim-elixir'
-
-  " Typescript syntax
-  Plug 'leafgarland/typescript-vim'
-
-  " JSONc - JSON, but with comments
-  Plug 'neoclide/jsonc.vim'
-
-  " JavaScript Syntax
-  " Plug 'pangloss/vim-javascript'
-  " let g:javascript_plugin_jsdoc = 1
-
-
-  " Plug 'HerringtonDarkholme/yats.vim'
-  " Ember template highlighting
-  Plug 'joukevandermaas/vim-ember-hbs'
-
-  " Additional jsx highlighting
-  " Plug 'maxmellon/vim-jsx-pretty'
-  " let g:vim_jsx_pretty_colorful_config = 1
-
-  " Nested syntax highlighting
-  " needed for js/ts named template literals
-  " and markdown.
-  Plug 'Quramy/vim-js-pretty-template'
-
+    let g:vim_markdown_fenced_languages = ['js=javascript', 'ts=typescript', 'hbs=handlebars', 'bash=sh']
 call plug#end()
 

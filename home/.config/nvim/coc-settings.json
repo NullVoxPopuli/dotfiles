@@ -56,6 +56,7 @@
   // coc-tsserver config
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
   "tsserver.maxTsServerMemory": 8196,
+  "tsserver.enableJavascript": true,
 
   // coc-tailwindcss {{{
   "tailwindCSS.headwind.runOnSave": false,
