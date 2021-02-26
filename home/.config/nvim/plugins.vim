@@ -2,6 +2,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   """""""""""""""""
   " Syntax / Theme
   Plug 'joshdick/onedark.vim'
+  Plug 'sainnhe/edge'
 
   """""""""""""""""
   " Editor
@@ -92,6 +93,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     " The Future of syntax highlighting
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+    Plug 'nvim-treesitter/playground' " for debugging syntax / reporting bugs better
 
     " Nested syntax highlighting
     " needed for js/ts named template literals

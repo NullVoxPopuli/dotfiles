@@ -35,8 +35,8 @@ function EnableTemplateLiteralColors()
   autocmd FileType typescript JsPreTmpl
 
   " compat with leafgarland/typescript-vim
-  " not needed for yats, though
-  autocmd FileType typescript syn clear foldBraces
+  " not needed for yats or treesitter, though
+  " autocmd FileType typescript syn clear foldBraces
 endfunction
 
 " Hide sections on the right for inactive window, same as we do for the left sections
