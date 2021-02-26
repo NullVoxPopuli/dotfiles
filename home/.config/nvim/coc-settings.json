@@ -91,11 +91,13 @@
 
   // Spelling {{{
   "cSpell.userWords": [
+    "Klass",
     "Statechart",
     "crowdstrike",
     "htmlbars",
     "mktemp",
     "nullvoxpopuli",
+    "proxied",
     "qunit"
   ],
   // }}}
