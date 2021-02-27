@@ -10,6 +10,7 @@ so ~/.config/nvim/functions.vim
 so ~/.config/nvim/keymap.vim
 so ~/.config/nvim/coc.vim
 so ~/.config/nvim/treesitter.vim
+so ~/.config/nvim/theme.vim
 
 " Manual Syntaxes / Filetypes
 autocmd BufNewFile,BufRead *.hbs setfiletype handlebars

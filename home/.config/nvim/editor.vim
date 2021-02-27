@@ -1,17 +1,3 @@
-" True Colors (tm)
-set termguicolors
-
-"""""""""""""""""""""""""
-" UI / Aesthetics
-"""""""""""""""""""""""""
-set background=dark
-" colorscheme onedark
-" let g:airline_theme='onedark'
-let g:edge_style = 'neon'
-let g:edge_enable_italic = 1
-colorscheme edge
-let g:airline_theme='edge'
-
 """""""""""""""""""""""""
 " Editor
 """""""""""""""""""""""""
