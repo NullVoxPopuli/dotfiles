@@ -17,9 +17,6 @@
   "coc.source.around.enable": false,
   // }}}
 
-  // coc-actions config
-  "coc-actions.hideCursor": false,
-
   // coc-explorer {{{
   "explorer.position": "left",
   "explorer.autoExpandMaxDepth": 1,
@@ -92,7 +89,9 @@
   // Spelling {{{
   "cSpell.userWords": [
     "Klass",
+    "JSQR",
     "Statechart",
+    "backoff",
     "crowdstrike",
     "htmlbars",
     "mktemp",
