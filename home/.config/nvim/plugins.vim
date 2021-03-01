@@ -102,8 +102,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     " TreeSitter doesn't yet have support for
     " - markdown
-    " - ember
-    Plug 'joukevandermaas/vim-ember-hbs'
     Plug 'plasticboy/vim-markdown'
 
     let g:vim_markdown_fenced_languages = ['js=javascript', 'ts=typescript', 'hbs=handlebars', 'bash=sh']

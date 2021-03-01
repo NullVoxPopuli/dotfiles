@@ -28,11 +28,11 @@ endfunction
 " https://github.com/Quramy/vim-js-pretty-template
 function EnableTemplateLiteralColors()
   " list of named template literal tags and their syntax here
-  call jspretmpl#register_tag('hbs', 'handlebars')
+  " call jspretmpl#register_tag('hbs', 'handlebars')
   " call jspretmpl#register_tag('hbs', 'html.handlebars')
 
-  autocmd FileType javascript JsPreTmpl
-  autocmd FileType typescript JsPreTmpl
+  " autocmd FileType javascript JsPreTmpl
+  " autocmd FileType typescript JsPreTmpl
 
   " compat with leafgarland/typescript-vim
   " not needed for yats or treesitter, though

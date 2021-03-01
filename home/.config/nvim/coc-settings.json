@@ -88,8 +88,8 @@
 
   // Spelling {{{
   "cSpell.userWords": [
-    "Klass",
     "JSQR",
+    "Klass",
     "Statechart",
     "backoff",
     "crowdstrike",
@@ -97,7 +97,8 @@
     "mktemp",
     "nullvoxpopuli",
     "proxied",
-    "qunit"
+    "qunit",
+    "statecharts"
   ],
   // }}}
 
