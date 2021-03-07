@@ -22,9 +22,6 @@ autocmd FileType javascript setlocal foldmethod=syntax
 autocmd BufRead,BufNewFile tsconfig.json,tsconfig*.json set filetype=jsonc
 autocmd BufRead,BufNewFile *.json5 set filetype=jsonc
 
-" Syntax highlighting breaks sometimes...
-autocmd BufEnter * syntax sync fromstart
-
 " Autosave after 'updatetime'
 " autocmd CursorHold * wa
 
