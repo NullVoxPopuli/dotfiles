@@ -12,6 +12,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   autocmd BufWritePre * StripWhitespace
 
   " File / Project Finding
+  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  Plug 'kyazdani42/nvim-tree.lua'
+  let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'dist', 'tmp' ]
 
   Plug 'dyng/ctrlsf.vim'
   let g:ctrlsf_default_root = 'cwd'
@@ -28,14 +31,12 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.6, 'border': 'rounded' } }
 
   " Working with code
+  Plug 'norcalli/nvim-colorizer.lua'
   Plug 'jiangmiao/auto-pairs'
   let g:AutoPairsFlyMode = 1
   " M-b jumps back
   let g:AutoPairsShortcutJump = ''
   let g:AutoPairsShortcutFastWrap = ''
-
-  " Plug 'terryma/vim-multiple-cursors'
-  " let g:multi_cursor_use_default_mapping=0
 
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'

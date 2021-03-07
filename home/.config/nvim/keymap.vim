@@ -46,8 +46,8 @@ vmap <C-f> <Plug>CtrlSFVwordExec
 """
 nmap <C-t> :Files<CR>
 " nmap <C-f> :Ag<CR>
-nmap <leader><BSlash> :CocCommand explorer --toggle --preset simplify<CR>
-nmap <leader>l :CocCommand explorer --no-toggle<CR>
+nmap <leader><BSlash> :NvimTreeClose<CR>
+nmap <leader>l :NvimTreeFindFile<CR>
 
 nnoremap <silent> <CR> :noh<CR><CR>
 
@@ -127,10 +127,18 @@ nnoremap <leader>gm :GitNextConflict<CR>
 " Expand the Status Message
 nnoremap <leader>b :call SyntasticToggle()<CR>
 
-
 " C# / F# (Omnisharp)
 " https://github.com/OmniSharp/omnisharp-vim#example-vimrc
 autocmd FileType cs nnoremap <buffer> <leader>gd :OmniSharpGotoDefinition<CR>
 autocmd FileType cs nnoremap <buffer> <leader>fx :OmniSharpFixUsings<CR>
 autocmd FileType cs nnoremap <buffer> <leader><space> :OmniSharpGetCodeActions<CR>
 
+lua << EOF
+
+  local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+
+  vim.g.nvim_tree_bindings = {
+    ["<Tab>"] = tree_cb("preview")
+  }
+
+EOF
