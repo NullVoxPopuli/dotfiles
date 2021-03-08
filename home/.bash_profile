@@ -10,6 +10,9 @@ source "$HOME/scripts/bash-support/paths.sh"
 # allows having the current command running as the title of your terminal window
 source "$HOME/scripts/bash-support/current-command.sh"
 
+# Utilities, etc
+source "$HOME/shell/bash/npm.sh"
+
 # For use without Starship
 # # custom PS1, configure by commenting out PS1= lines
 # source "$HOME/scripts/bash-support/ps1.sh"
