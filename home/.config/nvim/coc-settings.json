@@ -5,6 +5,8 @@
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "⚠",
   "diagnostic.infoSign": "ⓘ",
+  "diagnostic.maxWindowHeight": 16,
+  "diagnostic.maxWindowWidth": 100,
 
   // code lens
   "codeLens.enable": false,
