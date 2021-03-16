@@ -6,5 +6,5 @@ if $GLIMMER_DEBUG == 'true'
   silent !(cd ~/Development/OpenSource/tree-sitter-glimmer && git pull)
   silent !mkdir -p ~/.config/nvim/queries/glimmer
   silent !ln -s ~/Development/OpenSource/tree-sitter-glimmer/queries/highlights.scm ~/.config/nvim/queries/glimmer
-  autocmd BufEnter *.hbs :TSUpdate glimmer <CR>
+  " autocmd BufEnter *.hbs TSUpdate glimmer <CR>
 endif
