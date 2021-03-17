@@ -14,6 +14,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   " File / Project Finding
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
+  let g:nvim_tree_width = 40
   let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'dist', 'tmp' ]
 
   Plug 'dyng/ctrlsf.vim'
@@ -93,16 +94,19 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Syntax Support
 
     " The Future of syntax highlighting
-    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }  " We recommend updating the parsers on update
+    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'nvim-treesitter/playground' " for debugging syntax / reporting bugs better
 
-    " Nested syntax highlighting
-    " needed for js/ts named template literals
-    " and markdown.
-    Plug 'Quramy/vim-js-pretty-template'
     " Fallback ember highlighting for when treesitter gets too experimental
-    Plug 'joukevandermaas/vim-ember-hbs'
+    if $GLIMMER_LEGACY == 'true'
+      " Plug 'joukevandermaas/vim-ember-hbs'
+      Plug 'NullVoxPopuli/vim-ember-hbs', { 'branch': 'minor-improvementns' }
+      Plug 'dylnmc/synstack.vim' " For debugging traditional syntax plugins
+    endif
 
+    " Nested syntax highlighting (normally provided by tree-sitter)
+    " needed for js/ts named template literals in markdown.
+    Plug 'Quramy/vim-js-pretty-template'
     " TreeSitter doesn't yet have support for
     " - markdown
     Plug 'plasticboy/vim-markdown'

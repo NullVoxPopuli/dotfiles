@@ -38,6 +38,7 @@
   "eslint.packageManager": "yarn",
   "eslint.filetypes": ["javascript", "json", "typescript"],
   "eslint.autoFix": true,
+  "eslint.format.enable": true,
   // Not technically linting... shhhh
   "prettier.eslintIntegration": true,
 
@@ -57,16 +58,22 @@
 
   // Spelling {{{
   "cSpell.userWords": [
+    "Cacheable",
+    "Changset",
+    "Containery",
     "JSQR",
     "Klass",
     "Statechart",
+    "Styleguide",
     "backoff",
+    "changeset's",
     "crowdstrike",
     "htmlbars",
     "mktemp",
     "nullvoxpopuli",
     "proxied",
     "qunit",
+    "reactivitiy",
     "statecharts"
   ],
   // }}}
