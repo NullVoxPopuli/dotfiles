@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
-    "javascript", "typescript", "glimmer", "tsx"
+    "javascript", "typescript", "glimmer", "tsx",
     "html", "jsdoc", "regex", "bash",
     "toml", "html", "json",
     "css", "lua"
