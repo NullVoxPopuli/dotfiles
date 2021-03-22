@@ -109,7 +109,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'Quramy/vim-js-pretty-template'
     " TreeSitter doesn't yet have support for
     " - markdown
-    if $MARKDONW != 'true'
+    if $MARKDOWN != 'true'
       Plug 'plasticboy/vim-markdown'
     endif
 
