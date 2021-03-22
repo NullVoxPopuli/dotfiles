@@ -94,7 +94,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Syntax Support
 
     " The Future of syntax highlighting
-    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+    Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'nvim-treesitter/playground' " for debugging syntax / reporting bugs better
 
     " Fallback ember highlighting for when treesitter gets too experimental
@@ -109,7 +109,9 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'Quramy/vim-js-pretty-template'
     " TreeSitter doesn't yet have support for
     " - markdown
-    Plug 'plasticboy/vim-markdown'
+    if $MARKDONW != 'true'
+      Plug 'plasticboy/vim-markdown'
+    endif
 
     let g:vim_markdown_fenced_languages = ['js=javascript', 'ts=typescript', 'hbs=handlebars', 'bash=sh']
 call plug#end()
