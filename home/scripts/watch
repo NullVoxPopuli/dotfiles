@@ -1,6 +1,10 @@
 #!/bin/bash
 #
 # Requires inotify-tools
+#
+# Usage:
+#
+#   watch "command to run"
 
 thing_to_do="$1"
 
