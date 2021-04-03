@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# Requires inotify-tools
+
+thing_to_do="$1"
+
+read -r -d '' warningMessage <<-EOF
+  !!! WARNING !!!
+
+  This script eval's whatever it is given.
+
+    $thing_to_do
+
+  Do you want to run this whenever inotify detects a change in
+  $PWD?
+
+  (Yy|Nn)
+EOF
+
+while true; do
+    read -p "$warningMessage" yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit 0;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+while inotifywait -qqre modify "$PWD"; do
+  eval $thing_to_do
+done
