@@ -7,6 +7,8 @@
 #
 #   markdown
 #   markdown README
+#   PORT=4200 markdown
+#   PORT=4200 markdown README
 #
 # You'll prompted with detected markdown files
 
@@ -24,11 +26,13 @@ if [ -z "$FILE" ]; then
   exit 1;
 fi
 
+port="${PORT:-1337}"
+
 read -r -d '' warningMessage <<-EOF
   Start markdown preview server?
 
     rendering $FILE
-    @ localhost:1337
+    @ localhost:$port
 
   Confirm? (Y|N)
 EOF
@@ -42,4 +46,8 @@ while true; do
     esac
 done
 
-npx livedown start $FILE --port 1337
+echo ""
+echo "$FILE is now live at localhost:$port"
+echo ""
+
+npx livedown start $FILE --port $port
