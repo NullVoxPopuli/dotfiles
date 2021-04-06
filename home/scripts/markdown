@@ -1,0 +1,45 @@
+#!/bin/bash
+#
+# Required dependencies
+#  - fzf
+#
+# Usage:
+#
+#   markdown
+#   markdown README
+#
+# You'll prompted with detected markdown files
+
+if [[ -n "$1" ]]; then
+  local QUERY="--query $1"
+fi
+
+function find_markdown() {
+  ag -g md
+}
+
+FILE=$(find_markdown | fzf -1 $QUERY)
+
+if [ -z "$FILE" ]; then
+  exit 1;
+fi
+
+read -r -d '' warningMessage <<-EOF
+  Start markdown preview server?
+
+    rendering $FILE
+    @ localhost:1337
+
+  Confirm? (Y|N)
+EOF
+
+while true; do
+    read -p "$warningMessage" yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit 0;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+npx livedown start $FILE --port 1337
