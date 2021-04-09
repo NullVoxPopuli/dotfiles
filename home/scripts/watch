@@ -30,6 +30,6 @@ while true; do
     esac
 done
 
-while inotifywait -qqre modify "$PWD"; do
+while inotifywait --exclude=.git -qqre modify "$PWD"; do
   eval $thing_to_do
 done
