@@ -40,6 +40,7 @@ rm -rf ~/scripts
 rm -rf ~/.themes
 rm -rf ~/.bash_profile
 rm -rf ~/.config/nvim
+rm -rf ~/.config/fish
 
 ln -s $PWD/home/Applications ~/Applications
 ln -s $PWD/home/scripts ~/scripts
@@ -47,6 +48,7 @@ ln -s $PWD/home/shell ~/shell
 ln -s $PWD/home/.themes ~/.themes
 ln -s $PWD/home/.bash_profile ~/.bash_profile
 ln -s $PWD/home/.config/nvim ~/.config/nvim
+ln -s $PWD/home/.config/fish ~/.config/fish
 ln -s $PWD/home/.config/starship.toml ~/.config/starship.toml
 
 echo "Symlinking ~/Application/nvim.appimage to /usr/bin/nvim . Will need sudo."

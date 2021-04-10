@@ -15,7 +15,7 @@ so ~/.config/nvim/theme.vim
 " Manual Syntaxes / Filetypes
 autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
 autocmd BufNewFile,BufRead *.tsx,*.gts setfiletype typescript.tsx
-autocmd BufNewFile,BufRead *.jsx,*.gjs setfiletype javascript
+autocmd BufNewFile,BufRead *.jsx,*.gjs setfiletype typescript.tsx
 " autocmd FileType javascript setlocal foldmethod=syntax
 
 " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
