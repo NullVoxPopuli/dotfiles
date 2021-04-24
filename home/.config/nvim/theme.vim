@@ -9,7 +9,6 @@ set background=dark
 "        Plug 'joshdick/onedark.vim'
 "
 " colorscheme onedark
-" let g:airline_theme='onedark'
 
 
 """"""""""""""""""""""""""
@@ -19,7 +18,6 @@ set background=dark
 let g:edge_style = 'neon'
 let g:edge_enable_italic = 1
 colorscheme edge
-let g:airline_theme='edge'
 
 " No theme has 100% of what I want.
 " Here is where I override the theme's settings

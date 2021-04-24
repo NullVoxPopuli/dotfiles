@@ -79,6 +79,10 @@ nnoremap <S-n> :vertical resize +10<CR>
 nnoremap <S-t> :resize -10<CR>
 nnoremap <S-c> :resize +10<CR>
 
+" New Tab
+nnoremap <C-p> :tabnew<CR>
+nnoremap <A-]> :BufferLineCycleNext<CR>
+nnoremap <A-[> :BufferLineCyclePrev<CR>
 
 " Swap: Ctrl+W R
 " Resizing

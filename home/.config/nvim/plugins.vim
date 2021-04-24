@@ -7,16 +7,16 @@ call plug#begin('~/.local/share/nvim/plugged')
   """""""""""""""""
   " Editor
   """""""""""""""""
-  Plug 'etdev/vim-hexcolor'
   Plug 'ntpeters/vim-better-whitespace'
   autocmd BufWritePre * StripWhitespace
 
   " File / Project Finding
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
-  Plug 'kyazdani42/nvim-tree.lua'
+  " Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'sindrets/nvim-tree.lua', { 'branch': 'feat/window-picker' }
   let g:nvim_tree_width = 40
   let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'dist', 'tmp' ]
-
+  Plug 'akinsho/nvim-bufferline.lua'
   Plug 'dyng/ctrlsf.vim'
   let g:ctrlsf_default_root = 'cwd'
   let g:ctrlsf_auto_preview = 1
@@ -59,36 +59,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   "" Status
   """"""""""""""""""
   Plug 'airblade/vim-gitgutter'
-  Plug 'vim-airline/vim-airline'
-  let g:airline_powerline_fonts = 1
-
-  if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-  endif
-  let g:airline#extensions#tabline#enabled = 0
-  let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-  let g:airline#extensions#branch#enabled = 0
-
-  " Configuration
-  " A - display mode = flags
-  " B - version control
-  " C - file name
-  " X - file type
-  " Y - file encoding
-  " Z - current position
-  " ... addition stuff
-  " https://github.com/vim-airline/vim-airline#configurable-and-extensible
-  " function! AirlineInit()
-  "   let g:airline_section_a = airline#section#create(['mode'])
-  "   let g:airline_section_b = airline#section#create_left([])
-  "   let g:airline_section_c = airline#section#create(['%f'])
-  "   let g:airline_section_x = airline#section#create([''])
-  "   let g:airline_section_y = airline#section#create(['filetype'])
-  "   " let g:airline_section_z = airline#section#create(['percentage'])
-
-  " endfunction
-  " autocmd VimEnter * call AirlineInit()
-
+  Plug 'hoob3rt/lualine.nvim'
 
   """""""""""""""""""""
   " Syntax Support

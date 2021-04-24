@@ -56,6 +56,8 @@ silent !mkdir ~/.local/share/nvim/spell/ > /dev/null 2>&1
 
 set backupdir=~/.local/share/nvim/_backup/    " where to put backup files.
 set directory=~/.local/share/nvim/_temp/      " where to put swap files.
+" Disable swap as it has never been useful to me
+set noswapfile
 
 " allow undo history to persist after closing buffer
 if has('persistent_undo')

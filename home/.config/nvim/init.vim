@@ -11,6 +11,8 @@ so ~/.config/nvim/keymap.vim
 so ~/.config/nvim/coc.vim
 so ~/.config/nvim/treesitter.vim
 so ~/.config/nvim/theme.vim
+lua require('plugin-config/bufferline')
+lua require('plugin-config/statusline')
 
 " Manual Syntaxes / Filetypes
 autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
