@@ -16,7 +16,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'sindrets/nvim-tree.lua', { 'branch': 'feat/window-picker' }
   let g:nvim_tree_width = 40
   let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'dist', 'tmp' ]
+  let g:nvim_tree_window_picker_chars = "aoeuidhtnsgcrld;qjkxbmwv"
+
   Plug 'akinsho/nvim-bufferline.lua'
+
   Plug 'dyng/ctrlsf.vim'
   let g:ctrlsf_default_root = 'cwd'
   let g:ctrlsf_auto_preview = 1
