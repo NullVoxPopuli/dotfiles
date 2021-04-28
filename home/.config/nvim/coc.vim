@@ -51,8 +51,18 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
+nmap <expr> <leader>ff CocHasProvider('format') ? "\<Plug>(coc-format)" : ":call BackUpFormatter()\<cr>"
+function! BackUpFormatter()
+  let ext = expand('%:e')
+  let theFile = expand('%:p')
+
+  if ext == "hbs"
+    echo system('ember-template-lint --fix ' . shellescape(theFile))
+    :e
+  endif
+endfunction
+
 " Remap for format selected region
-nmap <leader>ff <Plug>(coc-format)
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 

@@ -7,11 +7,12 @@ require('lualine').setup{
     -- section_separators = "",
   },
   extensions = { 'fzf', 'nvim-tree' },
+
   sections = {
     lualine_a = { {'mode', upper = true} },
     -- lualine_b = { {'branch', icon = ''} },
     lualine_b = { {'diff'} },
-    lualine_c = { {'filename', file_status = true, full_path = true, shorten = true} },
+    lualine_c = { {'filename', file_status = false, full_path = true, shorten = false, max_chars = 70 } },
     lualine_x = { 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location'  },
@@ -20,7 +21,7 @@ require('lualine').setup{
     lualine_a = {  },
     -- lualine_b = {  },
     lualine_b = { {'branch', icon = ''} },
-    lualine_c = { {'filename', file_status = true, full_path = true, shorten = true} },
+    lualine_c = { {'filename', file_status = true, full_path = true, shorten = false, max_chars = 100 } },
     lualine_x = {  },
     lualine_y = {  },
     lualine_z = {  }

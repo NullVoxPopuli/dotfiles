@@ -62,7 +62,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   "" Status
   """"""""""""""""""
   Plug 'airblade/vim-gitgutter'
-  Plug 'hoob3rt/lualine.nvim'
+  " Plug 'hoob3rt/lualine.nvim'
+  Plug 'NullVoxPopuli/lualine.nvim', { 'branch': 'add-max-chars-to-filename' }
 
   """""""""""""""""""""
   " Syntax Support
