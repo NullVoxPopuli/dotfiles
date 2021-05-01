@@ -24,6 +24,7 @@ source "$HOME/shell/bash/npm.sh"
 
 export EDITOR=nvim
 export PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"'
+export NODE_OPTIONS='--trace-warnings --unhandled-rejections=strict'
 
 # handy aliases
 shopt -s expand_aliases
