@@ -35,11 +35,14 @@ alias dir='ls --color=auto --format=vertical -h'
 alias vdir='ls --color=auto --format=long -h'
 alias ll="ls -lh"
 alias la="ls -lah"
-alias ng="nuke-gently"
 alias dotfiles='cd $HOME/Development/NullVoxPopuli/dotfiles'
+alias nuke="\
+  echo \"nukin' node_modules & declaration directories\" \
+  && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + \
+  && find . -name 'declarations' -type d -prune -exec rm -rf '{}' + \
+  "
 
 # Git
-alias gc='git checkout'
 alias gs='git status'
 alias gl="git log --graph --pretty=tformat:'%Cred%h%Creset - %<(100,trunc)%s%w(0,0,14)%+Cgreen(%cr) %Cblue<%aN>%Creset%C(auto)%w(0,0,14)%<(100,trunc)%+D%C(reset)'"
 alias gd='git diff'
@@ -47,10 +50,9 @@ alias ga="git add --patch"
 alias gbs='git branch-status'
 alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 
-alias gls='git log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative'
 alias gia='git add --patch'
-alias gp='git push --follow-tags --atomic'
-alias g-reset-master="git fetch origin && git checkout master && git reset origin/master --hard"
+alias gorigin="git branch -rl '*/HEAD' | rev | cut -d/ -f1 | rev"
+alias g-reset="git remote set-head origin -a && git fetch origin && git checkout \$(gorigin) && git reset origin/\$(gorigin) --hard"
 alias ggraph='git log master --graph --format="%C(auto) %h %s"'
 
 alias herpderp='ember'
