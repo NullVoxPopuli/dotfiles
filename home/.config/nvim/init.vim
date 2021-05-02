@@ -13,6 +13,7 @@ so ~/.config/nvim/treesitter.vim
 so ~/.config/nvim/theme.vim
 lua require('plugin-config/bufferline')
 lua require('plugin-config/statusline')
+lua require('plugin-config/colors')
 
 " Manual Syntaxes / Filetypes
 autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
