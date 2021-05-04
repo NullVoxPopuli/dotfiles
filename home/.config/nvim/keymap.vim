@@ -42,6 +42,16 @@ noremap <leader>p "+p
 " q - quit
 nmap <C-f> <Plug>CtrlSFPrompt
 vmap <C-f> <Plug>CtrlSFVwordExec
+
+" Highlight the current word under cursor
+"
+" NOTES:
+" - `"/' is the last search pattern register
+" - `let @/ =' is used to write in the "/" register, e.g. ` :let @/ = "foobar"'
+"
+" TODO: Is there an easier / built-in way?
+nnoremap <C-d> :let @/ = printf("\\<%s\\>", escape(expand('<cword>'), '/\'))<CR> :let &hlsearch = &hlsearch<CR>
+
 "
 """
 nmap <C-t> :Files<CR>

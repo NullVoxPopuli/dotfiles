@@ -63,7 +63,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   """"""""""""""""""
   Plug 'airblade/vim-gitgutter'
   " Plug 'hoob3rt/lualine.nvim'
-  Plug 'NullVoxPopuli/lualine.nvim', { 'branch': 'add-max-chars-to-filename' }
+  Plug 'NullVoxPopuli/lualine.nvim', { 'branch': 'dynamic-shortening' }
 
   """""""""""""""""""""
   " Syntax Support
@@ -84,7 +84,8 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'Quramy/vim-js-pretty-template'
     " TreeSitter doesn't yet have support for
     " - markdown
-    if $MARKDOWN != 'true'
+    if $MARKDOWN == 'true'
+      Plug 'NullVoxPopuli/vim-ember-hbs', { 'branch': 'minor-improvementns' }
       Plug 'plasticboy/vim-markdown'
     endif
 
