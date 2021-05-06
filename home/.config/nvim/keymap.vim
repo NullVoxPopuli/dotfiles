@@ -117,6 +117,9 @@ map <C-_> gcc
 " Recursively unfold
 nnoremap <leader>z zczA
 
+" Generate a GUID
+nnoremap <F1> "=trim(system('uuidgen'))<CR>p
+
 " Move Lines Up/Down
 nnoremap <C-j> :move+1<CR>
 nnoremap <C-k> :move-2<CR>
