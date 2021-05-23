@@ -1,4 +1,3 @@
-
 function latestPkgVer() {
   local result=$(yarn info $1 --json)
   echo ""
