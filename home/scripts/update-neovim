@@ -1,0 +1,38 @@
+#!/bin/bash
+
+helpers="$(dirname "${BASH_SOURCE[0]}")/-helpers"
+currentPath=$(which nvim)
+installPath="${currentPath:-/usr/bin/nvim}"
+url="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
+
+source "$helpers/colors.sh"
+
+read -r -d '' warningMsg << EOF
+  You are about to download from $url
+  once downloaded, the file will replace $installPath
+
+  You will be asked for sudo access to mv the file to $installPath
+EOF
+
+"$helpers/warning-prompt.sh" "$warningMsg"
+
+if [ "$?" == "1" ]; then
+  exit 1
+fi
+
+echo ""
+echo ""
+
+# remove any previous downloads
+rm nvim.appimage > /dev/null 2>&1
+
+set -e
+info "Downloading..."
+wget -q $url
+
+info "Making executable -- chmod +x"
+chmod +x nvim.appimage
+
+warn "Moving to $installPath"
+sudo mv nvim.appimage $installPath
+yay "Success!"
