@@ -45,6 +45,10 @@ set listchars=eol:¬,tab:>·,extends:>,precedes:<,space:·
 
 set autoread   " Autoload reload files when they have changed on the disk
 
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
 " Scrolling
 set scrolloff=3  " minimum lines to keep above and below cursor
 
