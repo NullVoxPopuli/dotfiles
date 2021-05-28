@@ -10,9 +10,6 @@ source "$HOME/scripts/bash-support/paths.sh"
 # allows having the current command running as the title of your terminal window
 source "$HOME/scripts/bash-support/current-command.sh"
 
-# Utilities, etc
-source "$HOME/shell/bash/npm.sh"
-
 # For use without Starship
 # # custom PS1, configure by commenting out PS1= lines
 # source "$HOME/scripts/bash-support/ps1.sh"
@@ -25,6 +22,12 @@ source "$HOME/shell/bash/npm.sh"
 export EDITOR=nvim
 export PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"'
 export NODE_OPTIONS='--trace-warnings --unhandled-rejections=strict'
+export GIT_PATHS="$HOME/Development/NullVoxPopuli:$HOME/Development/tmp:$HOME/Development/OpenSource:$HOME/Development/Work"
+export GG_PREFIX="$HOME/Development/"
+
+# Utilities, etc
+source "$HOME/shell/bash/npm.sh"
+source "$HOME/shell/bash/gg.sh"
 
 # handy aliases
 shopt -s expand_aliases

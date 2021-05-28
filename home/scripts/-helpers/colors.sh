@@ -36,3 +36,7 @@ function info() {
 function yay() {
   echo -e "$EMG$1$NC"
 }
+
+function error() {
+  echo -e "$EMR$1$NC"
+}
