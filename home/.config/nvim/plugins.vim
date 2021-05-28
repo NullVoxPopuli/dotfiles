@@ -12,8 +12,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " File / Project Finding
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
-  " Plug 'kyazdani42/nvim-tree.lua'
-  Plug 'sindrets/nvim-tree.lua', { 'branch': 'feat/window-picker' }
+  Plug 'kyazdani42/nvim-tree.lua'
   let g:nvim_tree_width = 40
   let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'dist', 'tmp' ]
   let g:nvim_tree_window_picker_chars = "aoeuidhtnsgcrld;qjkxbmwv"
@@ -63,7 +62,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   """"""""""""""""""
   Plug 'airblade/vim-gitgutter'
   " Plug 'hoob3rt/lualine.nvim'
-  Plug 'NullVoxPopuli/lualine.nvim', { 'branch': 'dynamic-shortening' }
+  Plug 'NullVoxPopuli/lualine.nvim', { 'branch': 'fix-estimated-with-calculation' }
 
   """""""""""""""""""""
   " Syntax Support
