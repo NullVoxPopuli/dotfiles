@@ -37,12 +37,12 @@ function gg() {
 
   # Validations {{{
 
-  if [[ -z "${GIT_PATHS}" ]]; then
+  if [[ -z "${GG_PATHS}" ]]; then
     error "environment variable, GIT_PATHS, is not set."
     error "set GIT_PATHS to paths that point to collections if git repos"
     error "example:"
     error '  GIT_PATHS="$HOME/Development/NullVoxPopuli:$HOME/Development/OpenSource:$HOME/Development/Work"'
-    exit 1
+    return
   fi
 
   # }}}
@@ -67,7 +67,7 @@ function gg() {
 
   if [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" != "true" ]]; then
     # Ask to choose a repo
-    IFS=':'; path_array=($GIT_PATHS); unset IFS;
+    PREV_IFS=$IFS; IFS=':'; path_array=($GG_PATHS); IFS=$PREV_IFS;
 
 
     function print_repos() {
@@ -87,9 +87,12 @@ function gg() {
       -1 \
       --with-nth=1 \
       $QUERY \
-      | cut -f2 \
     )
 
+    if [ "$selected_repo" == "" ]; then
+      echo "No repo selected"
+      return 0
+    fi
 
     cd "$PREFIX/$selected_repo"
 
@@ -99,23 +102,40 @@ function gg() {
   # }}}
 
 
-  return 1
-
   num_worktrees=$( git worktree list | wc -l )
 
   if [ "$num_worktrees" -gt "1" ]; then
     # Ask to choose a worktree
 
-    cd $selected_worktree
+    function print_worktrees() {
+      PREV_IFS=$IFS; IFS=$'\n'; full_worktrees=($(git worktree list)); IFS=$PREV_IFS;
+
+      for i in "${full_worktrees[@]}"; do
+        trimmed=$(echo $i | sed "s#$PREFIX##")
+        echo $trimmed
+      done
+    }
+
+    selected_worktree=$(print_worktrees | fzf \
+      -1 \
+      $QUERY \
+    )
+
+    selected_worktree=$(echo $selected_worktree | cut -f 1 -d ' ')
+
+    if [  "$selected_worktree" == "" ]; then
+      return 0
+    fi
+
+    cd "$PREFIX$selected_worktree"
 
     QUERY=""
   fi
 
-  workspace_config=$(cat package.json | jq '.workspaces')
+  package_path="$(pwd)/package.json"
+  workspace_config=$(cat $package_path | jq '.workspaces')
 
-  # num_workspaces=$(yarn workspaces --json info | jq '.data' -r | jq 'keys' | jq length)
-
-  if [[ "$workspace_config" == "null" ]]; then
+  if [ "$workspace_config" != "null" ]; then
     # Ask to choose a workspace
     selected_workspace=$(print_workspaces | fzf \
       -1 \
@@ -123,6 +143,10 @@ function gg() {
       $QUERY \
       | cut -f2 \
     )
+
+    if [ "$selected_workspace" == "" ]; then
+      return 0
+    fi
 
     cd $selected_workspace
 
