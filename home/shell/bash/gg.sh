@@ -53,6 +53,7 @@ function gg() {
 
   PREFIX="${GG_PREFIX:-$HOME}"
   SKIP_WORKTREES="false"
+  ESCAPE_REPO="false"
   QUERY=""
 
   search_text=$1
@@ -64,9 +65,17 @@ function gg() {
 
   for arg in "$@"
   do
-    if [ "$arg" == "--skip-worktrees" ]; then
-      SKIP_WORKTREES="true"
-    fi
+    case "$arg" in
+      --skip-worktrees)
+        SKIP_WORKTREES="true"
+        ;;
+      --escape)
+        ESCAPE_REPO="true"
+        ;;
+      *)
+        # ignore
+        ;;
+    esac
   done
 
   function print_workspaces() {
@@ -77,7 +86,9 @@ function gg() {
 
   # Select Repo {{{
 
-  if [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" != "true" ]]; then
+  is_in_repo=$(git rev-parse --is-inside-work-tree 2>/dev/null)
+
+  if [[ "$is_in_repo" != "true" || $ESCAPE_REPO == "true" ]]; then
     # Ask to choose a repo
     PREV_IFS=$IFS; IFS=':'; path_array=($GG_PATHS); IFS=$PREV_IFS;
 
@@ -153,6 +164,15 @@ function gg() {
 
   root_of_repo=$(git rev-parse --show-toplevel)
   package_path="$root_of_repo/package.json"
+
+  package_json_exists=$(cat $package_path 2>/dev/null)
+
+  if [ -z "$package_json_exists" ]; then
+    info "Current repo is not a JavaScript project"
+    info "To escape outside of this repo use 'ggo'"
+    return 1;
+  fi
+
   workspace_config=$(cat $package_path | jq '.workspaces')
 
   if [ "$workspace_config" != "null" ]; then
@@ -178,3 +198,4 @@ function gg() {
 }
 
 alias ggi="gg '' --skip-worktrees"
+alias ggo="gg '' --escape"
