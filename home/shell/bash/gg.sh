@@ -27,8 +27,10 @@
 #   2. Choose a worktree -- will be skipped if you have no worktrees
 #   3. Choose a sub-project -- will be skipped if you are already in one, or your repo is not a monorepo
 
-function gg() {
+# debug
+# set -ex
 
+function gg() {
   # Import Dependencies {{{
   helpers="$(dirname "${BASH_SOURCE[0]}")/../../scripts/-helpers"
 
@@ -50,12 +52,22 @@ function gg() {
   # Constants & Setup {{{
 
   PREFIX="${GG_PREFIX:-$HOME}"
+  SKIP_WORKTREES="false"
+  QUERY=""
 
   search_text=$1
 
   if [[ -n "$search_text" ]]; then
     QUERY="--query $search_text"
   fi
+
+
+  for arg in "$@"
+  do
+    if [ "$arg" == "--skip-worktrees" ]; then
+      SKIP_WORKTREES="true"
+    fi
+  done
 
   function print_workspaces() {
     yarn workspaces --json info --json | jq '.data' -r | jq 'map(.location) | .[]' -r
@@ -101,38 +113,46 @@ function gg() {
 
   # }}}
 
+  # Select Worktree {{{
 
-  num_worktrees=$( git worktree list | wc -l )
+  if [ "$SKIP_WORKTREES" == "false" ]; then
+    num_worktrees=$( git worktree list | wc -l )
 
-  if [ "$num_worktrees" -gt "1" ]; then
-    # Ask to choose a worktree
+    if [ "$num_worktrees" -gt "1" ]; then
+      # Ask to choose a worktree
 
-    function print_worktrees() {
-      PREV_IFS=$IFS; IFS=$'\n'; full_worktrees=($(git worktree list)); IFS=$PREV_IFS;
+      function print_worktrees() {
+        PREV_IFS=$IFS; IFS=$'\n'; full_worktrees=($(git worktree list)); IFS=$PREV_IFS;
 
-      for i in "${full_worktrees[@]}"; do
-        trimmed=$(echo $i | sed "s#$PREFIX##")
-        echo $trimmed
-      done
-    }
+        for i in "${full_worktrees[@]}"; do
+          trimmed=$(echo $i | sed "s#$PREFIX##")
+          echo $trimmed
+        done
+      }
 
-    selected_worktree=$(print_worktrees | fzf \
-      -1 \
-      $QUERY \
-    )
+      selected_worktree=$(print_worktrees | fzf \
+        -1 \
+        $QUERY \
+      )
 
-    selected_worktree=$(echo $selected_worktree | cut -f 1 -d ' ')
+      selected_worktree=$(echo $selected_worktree | cut -f 1 -d ' ')
 
-    if [  "$selected_worktree" == "" ]; then
-      return 0
+      if [  "$selected_worktree" == "" ]; then
+        return 0
+      fi
+
+      cd "$PREFIX$selected_worktree"
+
+      QUERY=""
     fi
-
-    cd "$PREFIX$selected_worktree"
-
-    QUERY=""
   fi
 
-  package_path="$(pwd)/package.json"
+  # }}}
+
+  # Select Workspace {{{
+
+  root_of_repo=$(git rev-parse --show-toplevel)
+  package_path="$root_of_repo/package.json"
   workspace_config=$(cat $package_path | jq '.workspaces')
 
   if [ "$workspace_config" != "null" ]; then
@@ -153,4 +173,8 @@ function gg() {
     QUERY=""
   fi
 
+  # }}}
+
 }
+
+alias ggi="gg '' --skip-worktrees"
