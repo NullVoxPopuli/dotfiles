@@ -51,13 +51,14 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
+nmap <F3> :call BackUpFormatter()<cr>
 nmap <expr> <leader>ff CocHasProvider('format') ? "\<Plug>(coc-format)" : ":call BackUpFormatter()\<cr>"
 function! BackUpFormatter()
   let ext = expand('%:e')
   let theFile = expand('%:p')
 
   if ext == "hbs"
-    echo system('ember-template-lint --fix ' . shellescape(theFile))
+    echo system('hbs-lint ' . shellescape(theFile))
     :e
   endif
 endfunction

@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+// must volta install ember-template-lint
+
+const { exec } = require('child_process');
+const path = require('path');
+
+const [,,filePath] = process.argv;
+
+(async () => {
+  let basePath = path.dirname(filePath);
+  let base = filePath.split(/(\/addon\/)|(\/app\/)/)[0];
+
+  await exec(
+    `ember-template-lint ${filePath} --fix`,
+    { cwd: base }
+  );
+
+})();
+
