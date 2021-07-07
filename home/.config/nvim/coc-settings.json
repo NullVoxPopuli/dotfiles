@@ -69,14 +69,20 @@
     "changeset's",
     "crowdstrike",
     "defrag",
+    "docfy",
     "execa",
+    "hljs",
     "htmlbars",
+    "investigatables",
     "mktemp",
     "nullvoxpopuli",
+    "overwatch",
     "proxied",
     "qunit",
     "reactivitiy",
-    "statecharts"
+    "sidenav",
+    "statecharts",
+    "xstate"
   ],
   // }}}
 

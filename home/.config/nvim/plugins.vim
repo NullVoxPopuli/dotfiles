@@ -17,8 +17,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'dist', 'tmp' ]
   let g:nvim_tree_window_picker_chars = "aoeuidhtnsgcrld;qjkxbmwv"
 
-  Plug 'akinsho/nvim-bufferline.lua'
-
   Plug 'dyng/ctrlsf.vim'
   let g:ctrlsf_default_root = 'cwd'
   let g:ctrlsf_auto_preview = 1
@@ -73,8 +71,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     " Fallback ember highlighting for when treesitter gets too experimental
     if $GLIMMER_LEGACY == 'true'
-      " Plug 'joukevandermaas/vim-ember-hbs'
-      Plug 'NullVoxPopuli/vim-ember-hbs', { 'branch': 'minor-improvementns' }
+      Plug 'joukevandermaas/vim-ember-hbs'
       Plug 'dylnmc/synstack.vim' " For debugging traditional syntax plugins
     endif
 
@@ -84,10 +81,10 @@ call plug#begin('~/.local/share/nvim/plugged')
     " TreeSitter doesn't yet have support for
     " - markdown
     if $MARKDOWN == 'true'
-      Plug 'NullVoxPopuli/vim-ember-hbs', { 'branch': 'minor-improvementns' }
+      Plug  'joukevandermaas/vim-ember-hbs'
       Plug 'plasticboy/vim-markdown'
     endif
 
-    let g:vim_markdown_fenced_languages = ['js=javascript', 'ts=typescript', 'hbs=handlebars', 'bash=sh']
+    let g:vim_markdown_fenced_languages = ['js=javascript', 'ts=typescript', 'hbs=handlebars', 'bash=sh', 'cjs=javascript', 'mjs=javascript']
 call plug#end()
 
