@@ -28,6 +28,7 @@ export GG_PREFIX="$HOME/Development/"
 # Utilities, etc
 source "$HOME/shell/bash/npm.sh"
 source "$HOME/shell/bash/gg.sh"
+source "$HOME/shell/bash/github-action-runner.sh"
 
 # handy aliases
 shopt -s expand_aliases
