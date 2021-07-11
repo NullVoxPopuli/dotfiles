@@ -4,11 +4,17 @@
 #    cat /tmp/error.dump.log | unme | setclip
 #
 input=$(</dev/stdin)
-original_dev="/home/$USER/Development/"
-dev="/✂️ /"
+original_dev="/home/$USER/Development"
+dev="/✂️/"
 original_tilde="/home/$USER/"
 tilde="🏠/"
 
 echo $to_remove
 
-echo "$input" | sed "s~$original_dev~$dev~g" | sed "s~$original_tilde~$tilde~g"
+echo "$input" \
+  | sed "s~$original_dev/NullVoxPopuli/~$dev~g" \
+  | sed "s~$original_dev/OpenSource/~$dev~g" \
+  | sed "s~$original_dev/Work/~$dev~g" \
+  | sed "s~$original_dev/tmp/~$dev~g" \
+  | sed "s~$original_dev/~$dev~g" \
+  | sed "s~$original_tilde~$tilde~g"
