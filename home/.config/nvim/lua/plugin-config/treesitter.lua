@@ -3,9 +3,11 @@ require'nvim-treesitter.configs'.setup {
     -- "markdown",
     "javascript", "typescript", "glimmer", "tsx",
     "html", "jsdoc", "regex", "bash",
-    "toml", "html", "json",
-    "css", "lua"
+    "toml", "html", "jsonc",
+    "css", "lua",
+    "commonlisp"
   },
+  ignore_install = { "json" },
   highlight = {
     enable = true,
   },

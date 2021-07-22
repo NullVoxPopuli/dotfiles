@@ -15,17 +15,23 @@ lua require('plugin-config/bufferline')
 lua require('plugin-config/statusline')
 lua require('plugin-config/colors')
 
-" Manual Syntaxes / Filetypes
-autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
-autocmd BufNewFile,BufRead *.tsx,*.gts setfiletype typescript.tsx
-autocmd BufNewFile,BufRead *.jsx,*.gjs setfiletype typescript.tsx
-" autocmd FileType javascript setlocal foldmethod=syntax
 
-" tsconfig.json is actually jsonc, help TypeScript set the correct filetype
-autocmd BufRead,BufNewFile *.json,*.json5 setfiletype jsonc
+augroup SyntaxAssignments
+  autocmd!
+
+  " Manual Syntaxes / Filetypes
+  autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
+  autocmd BufNewFile,BufRead *.tsx,*.gts setfiletype typescript.tsx
+  autocmd BufNewFile,BufRead *.jsx,*.gjs setfiletype typescript.tsx
+
+  " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
+  " Set everything to jsonc, cause it's easier
+  autocmd FileType json set filetype=jsonc
+augroup END
 
 " Autosave after 'updatetime'
 " autocmd CursorHold * wa
 
 " Batch'd Setup / Config Scripts
 call EnableTemplateLiteralColors()
+
