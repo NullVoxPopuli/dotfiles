@@ -16,6 +16,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:nvim_tree_width = 40
   let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'dist', 'tmp' ]
   let g:nvim_tree_window_picker_chars = "aoeuidhtnsgcrld;qjkxbmwv"
+  let g:nvim_tree_highlight_opened_files = 0 " breaks icon color
+  let g:nvim_tree_indent_markers = 1
+  let g:nvim_tree_add_trailing = 1
 
   Plug 'dyng/ctrlsf.vim'
   let g:ctrlsf_default_root = 'cwd'

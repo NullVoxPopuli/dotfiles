@@ -37,3 +37,7 @@ highlight! YellowSign guibg=#262836
 highlight! GreenSign guibg=#262836
 highlight! BlueSign guibg=#262836
 highlight! PurpleSign guibg=#262836
+
+" nvim-tree.lua
+" :help nvim_tree_highlight
+highlight NvimTreeIndentMarker guifg=#333333
