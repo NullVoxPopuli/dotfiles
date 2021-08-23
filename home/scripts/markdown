@@ -35,6 +35,8 @@ read -r -d '' warningMessage <<-EOF
     @ localhost:$port
 
   Confirm? (Y|N)
+
+  NOTE: to start with a custom port set \$PORT
 EOF
 
 while true; do
