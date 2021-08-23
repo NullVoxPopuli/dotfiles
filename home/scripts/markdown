@@ -34,9 +34,11 @@ read -r -d '' warningMessage <<-EOF
     rendering $FILE
     @ localhost:$port
 
+      to start with a custom port set \$PORT
+
   Confirm? (Y|N)
 
-  NOTE: to start with a custom port set \$PORT
+
 EOF
 
 while true; do
