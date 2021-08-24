@@ -71,9 +71,12 @@
     "defrag",
     "docfy",
     "execa",
+    "focusable",
+    "focusables",
     "hljs",
     "htmlbars",
     "investigatables",
+    "metas",
     "mktemp",
     "nullvoxpopuli",
     "overwatch",
@@ -82,6 +85,9 @@
     "reactivitiy",
     "sidenav",
     "statecharts",
+    "tabbable",
+    "triggerable",
+    "untabbable",
     "xstate"
   ],
   // }}}

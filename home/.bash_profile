@@ -29,6 +29,7 @@ export GG_PREFIX="$HOME/Development/"
 source "$HOME/shell/bash/npm.sh"
 source "$HOME/shell/bash/gg.sh"
 source "$HOME/shell/bash/github-action-runner.sh"
+source "$HOME/shell/bash/git.sh"
 
 # handy aliases
 shopt -s expand_aliases
@@ -52,7 +53,6 @@ alias gl="git log --graph --pretty=tformat:'%Cred%h%Creset - %<(100,trunc)%s%w(0
 alias gd='git diff'
 alias ga="git add --patch"
 alias gbs='git branch-status'
-alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 
 alias gia='git add --patch'
 alias gorigin="git branch -rl '*/HEAD' | rev | cut -d/ -f1 | rev"
