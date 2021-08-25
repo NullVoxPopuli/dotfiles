@@ -29,3 +29,19 @@ function gcr() {
 
   git checkout $selected_branch
 }
+
+function g-authoredBy() {
+  local author=$1
+  local time_ago=${2:-"1 day ago"}
+
+  git log \
+    --pretty="%H" \
+    --author="$author" \
+    --since="$(date --date "$time_ago")" \
+    | while read commit_hash; \
+      do git show --oneline --name-only $commit_hash \
+        | tail -n+2; \
+      done \
+    | sort \
+    | uniq
+}
