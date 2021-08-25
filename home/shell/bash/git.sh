@@ -14,7 +14,7 @@ function gb() {
     --count=${count:=30} \
   | column -t -s'|' \
   | tac \
-  | cut -c -$columns
+  | cut -c 1-$columns
 }
 
 # Interactive git checkout (recent branches)
