@@ -57,6 +57,7 @@ sudo ln -s ~/Applications/nvim.appimage /usr/bin/nvim
 ###############################################
 # Load Ubuntu/Gnome Configuration + KeyMappings
 ###############################################
+source ./configs.sh
 # cat home/.config/dconf/user.d/* | dconf load /
 
 # NOTE: to export dconf settings:
