@@ -14,7 +14,7 @@
 
 # Use fixed number of workspaces to simulate i3
 gsettings set org.gnome.mutter dynamic-workspaces false
-gsettings set org.gnome.desktop.wm.preferences num-workspaces 8
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 10
 
 # Dock-related hotkeys suck
 gsettings set org.gnome.shell.keybindings switch-to-application-1  []
@@ -50,6 +50,33 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7  "['<Super><S
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8  "['<Super><Shift>8']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9  "['<Super><Shift>9']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Super><Shift>0']"
+
+# Disable potentially problematic / accidental keybindings
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-last []
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up []
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down []
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left []
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right []
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up []
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down []
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left []
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right []
+
+# Launchers
+gsettings set org.gnome.settings-daemon.plugins.media-keys control-center "['<Super>backslash']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>minus']"
+
+# Screenshots, disabled for the most part, use flameshot instead
+gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot-clip []
+gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip []
+gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot []
+gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot []
+gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot []
+gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot-clip "['Print']"
+# Flameshot
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'flameshot gui'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Shift><Super>s'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'Interactive Screenshot'"
 
 
 # Tile Movement -- does this work?
