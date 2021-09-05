@@ -57,3 +57,8 @@ dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-left' "['<Super><Sh
 dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-right' "['<Super><Shift>n']"
 dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-up' "['<Super><Shift>c']"
 dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-down' "['<Super><Shift>t']"
+
+
+# Hide Icons -- can't have a messy desktop if there are no visible icons!
+# (this also fixes the remaining empty tile in pop-shell)
+gnome-extensions disable ding@rastersoft.com
