@@ -62,6 +62,9 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down []
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left []
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right []
 
+# Disable actually problematic keybindings
+gsettings set org.gnome.desktop.wm.keybindings minimize []
+
 # Launchers
 gsettings set org.gnome.settings-daemon.plugins.media-keys control-center "['<Super>backslash']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>minus']"
@@ -79,12 +82,38 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/cus
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'Interactive Screenshot'"
 
 
-# Tile Movement -- does this work?
-dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-left' "['<Super><Shift>h']"
-dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-right' "['<Super><Shift>n']"
-dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-up' "['<Super><Shift>c']"
-dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-down' "['<Super><Shift>t']"
+# pop-shell settings
+#
+# schema: https://github.com/pop-os/shell/blob/master/schemas/org.gnome.shell.extensions.pop-shell.gschema.xml
+dconf write '/org/gnome/shell/extensions/pop-shell/active-hint' "true"
+dconf write '/org/gnome/shell/extensions/pop-shell/hint-color-rgba' "'rgba(158,0,255,0.7)'"
+dconf write '/org/gnome/shell/extensions/pop-shell/smart-gaps' "true"
+dconf write '/org/gnome/shell/extensions/pop-shell/snap-to-grid' "true"
+dconf write '/org/gnome/shell/extensions/pop-shell/gap-inner' "1"
+dconf write '/org/gnome/shell/extensions/pop-shell/gap-outer' "1"
 
+# Enter Edit mode
+# o - toggle orientation (default)
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-enter' "['<Super>u']"
+# Focus Movement
+dconf write '/org/gnome/shell/extensions/pop-shell/focus-left' "['<Super>h']"
+dconf write '/org/gnome/shell/extensions/pop-shell/focus-right' "['<Super>n']"
+dconf write '/org/gnome/shell/extensions/pop-shell/focus-up' "['<Super>c']"
+dconf write '/org/gnome/shell/extensions/pop-shell/focus-down' "['<Super>t']"
+# Tile Movement -- requires "edit mode"
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-left' "['<Super>h']"
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-right' "['<Super>n']"
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-up' "['<Super>c']"
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-down' "['<Super>t']"
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-swap-left' "['<Super><Shift>h']"
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-swap-right' "['<Super><Shift>n']"
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-swap-up' "['<Super><Shift>c']"
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-swap-down' "['<Super><Shift>t']"
+# Tile Resizing -- requires "edit mode"
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-resize-left' "['h']"
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-resize-right' "['n']"
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-resize-up' "['c']"
+dconf write '/org/gnome/shell/extensions/pop-shell/tile-resize-down' "['t']"
 
 # Hide Icons -- can't have a messy desktop if there are no visible icons!
 # (this also fixes the remaining empty tile in pop-shell)
