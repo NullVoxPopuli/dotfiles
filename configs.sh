@@ -6,6 +6,12 @@
 # Use these extensions:
 #  https://extensions.gnome.org/extension/3851/workspaces-bar/
 #  https://extensions.gnome.org/extension/758/no-workspace-switcher-popup/
+#  https://extensions.gnome.org/extension/808/hide-workspace-thumbnails/
+#  https://extensions.gnome.org/extension/805/hide-dash/
+#
+# App Launcher:
+#  https://albertlauncher.github.io
+
 
 # To debug:
 # gsettings list-recursively | grep -F "<Super>" # all shortcuts that contain Super
@@ -64,10 +70,32 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right []
 
 # Disable actually problematic keybindings
 gsettings set org.gnome.desktop.wm.keybindings minimize []
+gsettings set org.gnome.desktop.wm.keybindings show-desktop []
 
 # Launchers
+gsettings set org.gnome.mutter overlay-key ""
 gsettings set org.gnome.settings-daemon.plugins.media-keys control-center "['<Super>backslash']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>minus']"
+
+keybindingKey=0
+function keybinding() {
+  keybindingKey=$((keybindingKey+1))
+
+  local name=$1
+  local command=$2
+  local binding=$3
+  local dconfPath="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$keybindingKey/"
+  local gsettingsPath="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding"
+  local fullPath="${gsettingsPath}:${dconfPath}"
+
+  gsettings set "${gsettingsPath}:${dconfPath}" name "'$name'"
+  gsettings set "${gsettingsPath}:${dconfPath}" binding "'$binding'"
+  gsettings set "${gsettingsPath}:${dconfPath}" command "'$command'"
+
+}
+
+keybinding 'App Launcher' 'albert toggle' '<Super>d'
+keybinding 'Interactive Screenshot' 'flameshot gui' '<Shift><Super>s'
 
 # Screenshots, disabled for the most part, use flameshot instead
 gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot-clip []
@@ -76,10 +104,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot []
 gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot []
 gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot []
 gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot-clip "['Print']"
-# Flameshot
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'flameshot gui'"
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Shift><Super>s'"
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'Interactive Screenshot'"
+
 
 
 # pop-shell settings
@@ -89,8 +114,9 @@ dconf write '/org/gnome/shell/extensions/pop-shell/active-hint' "true"
 dconf write '/org/gnome/shell/extensions/pop-shell/hint-color-rgba' "'rgba(158,0,255,0.7)'"
 dconf write '/org/gnome/shell/extensions/pop-shell/smart-gaps' "true"
 dconf write '/org/gnome/shell/extensions/pop-shell/snap-to-grid' "true"
-dconf write '/org/gnome/shell/extensions/pop-shell/gap-inner' "1"
-dconf write '/org/gnome/shell/extensions/pop-shell/gap-outer' "1"
+dconf write '/org/gnome/shell/extensions/pop-shell/gap-inner' 1
+dconf write '/org/gnome/shell/extensions/pop-shell/gap-outer' 1
+dconf write '/org/gnome/shell/extensions/pop-shell/toggle-floating' "['<Super>Space']"
 
 # Enter Edit mode
 # o - toggle orientation (default)
@@ -118,3 +144,7 @@ dconf write '/org/gnome/shell/extensions/pop-shell/tile-resize-down' "['t']"
 # Hide Icons -- can't have a messy desktop if there are no visible icons!
 # (this also fixes the remaining empty tile in pop-shell)
 gnome-extensions disable ding@rastersoft.com
+
+
+# Behaviors
+gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
