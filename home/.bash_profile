@@ -99,8 +99,6 @@ export FZF_ALT_C_COMMAND="bfs -type d -nohidden"
 
 bind -x '"\C-p": vim $(fzf);'
 
-
-
 eval "$(starship init bash)"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"

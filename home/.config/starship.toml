@@ -6,3 +6,13 @@ disabled = true
 
 [nodejs]
 disabled = true
+
+# this doesn't work well if you jump right into a folder within a repo..
+# but maybe that's fine for now
+[custom.git-remotes]
+command = """
+  git remote -v | grep fetch | sed "s/.fetch.//" | sed "s/^/  /" | column -t -s "$(printf '\t')"
+"""
+files = [".git/"]
+when = """ [ -d "$PWD/.git" ] """
+format = "[\n\n  $output \n](italic fg:#FAC29A)"

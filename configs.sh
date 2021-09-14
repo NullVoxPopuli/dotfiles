@@ -114,8 +114,8 @@ dconf write '/org/gnome/shell/extensions/pop-shell/active-hint' "true"
 dconf write '/org/gnome/shell/extensions/pop-shell/hint-color-rgba' "'rgba(158,0,255,0.7)'"
 dconf write '/org/gnome/shell/extensions/pop-shell/smart-gaps' "true"
 dconf write '/org/gnome/shell/extensions/pop-shell/snap-to-grid' "true"
-dconf write '/org/gnome/shell/extensions/pop-shell/gap-inner' 1
-dconf write '/org/gnome/shell/extensions/pop-shell/gap-outer' 1
+dconf write '/org/gnome/shell/extensions/pop-shell/gap-inner' 0
+dconf write '/org/gnome/shell/extensions/pop-shell/gap-outer' 0
 dconf write '/org/gnome/shell/extensions/pop-shell/toggle-floating' "['<Super>Space']"
 
 # Enter Edit mode
@@ -148,3 +148,4 @@ gnome-extensions disable ding@rastersoft.com
 
 # Behaviors
 gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
+gsettings set org.gnome.Terminal.Legacy.Settings headerbar false
