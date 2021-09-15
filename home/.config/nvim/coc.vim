@@ -11,6 +11,7 @@ let g:coc_global_extensions = [
   \ 'coc-tslint',
   \ 'coc-json',
   \ 'coc-html',
+  \ 'coc-lua',
   \ 'coc-vimlsp',
   \ 'coc-ember',
   \ 'coc-stylelintplus',

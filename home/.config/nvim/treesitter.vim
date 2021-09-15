@@ -1,5 +1,3 @@
-lua require('plugin-config/treesitter')
-
 if $GLIMMER_DEBUG == 'true'
   silent !mkdir -p ~/Development/OpenSource/
   silent !git clone git@github.com:alexlafroscia/tree-sitter-glimmer.git ~/Development/OpenSource/tree-sitter-glimmer

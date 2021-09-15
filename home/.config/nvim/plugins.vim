@@ -1,3 +1,13 @@
+lua require('plugins')
+
+" Automatically re-run PackerCompile when Packer Plugins change
+augroup packer_user_config
+  autocmd!
+  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+augroup end
+
+
+" vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
   """""""""""""""""
   " Syntax / Theme
@@ -35,7 +45,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.6, 'border': 'rounded' } }
 
   " Working with code
-  Plug 'norcalli/nvim-colorizer.lua'
   Plug 'jiangmiao/auto-pairs'
   let g:AutoPairsFlyMode = 1
   " M-b jumps back
@@ -62,15 +71,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   "" Status
   """"""""""""""""""
   Plug 'airblade/vim-gitgutter'
-  " Plug 'hoob3rt/lualine.nvim'
-  Plug 'NullVoxPopuli/lualine.nvim', { 'branch': 'fix-estimated-with-calculation' }
 
   """""""""""""""""""""
   " Syntax Support
-
-    " The Future of syntax highlighting
-    Plug 'nvim-treesitter/nvim-treesitter'
-    Plug 'nvim-treesitter/playground' " for debugging syntax / reporting bugs better
 
     " Fallback ember highlighting for when treesitter gets too experimental
     if $GLIMMER_LEGACY == 'true'
@@ -83,10 +86,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'Quramy/vim-js-pretty-template'
     " TreeSitter doesn't yet have support for
     " - markdown
-    if $MARKDOWN == 'true'
-      Plug  'joukevandermaas/vim-ember-hbs'
-      Plug 'plasticboy/vim-markdown'
-    endif
+    Plug 'plasticboy/vim-markdown'
 
     let g:vim_markdown_fenced_languages = ['js=javascript', 'ts=typescript', 'hbs=handlebars', 'bash=sh', 'cjs=javascript', 'mjs=javascript']
 call plug#end()

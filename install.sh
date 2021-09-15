@@ -29,6 +29,10 @@ pip3 install --user pynvim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# packer
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
 mkdir -p ~/.local/share/nvim/_backup
 mkdir -p ~/.local/share/nvim/_temp
 mkdir -p ~/.local/share/nvim/_undo
