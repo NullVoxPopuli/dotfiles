@@ -15,22 +15,12 @@ return require('packer').startup(function()
   -- NOTE: previously tried plugins
   --   twilight.nvim
   --     - loses highlights on dim
+  --   shade.nvim
+  --     - buggy, tries to dim buffer that doesn't exist
+  --     - previous opacity: 85
 
   -- colorize various color-like tokens in code
   use 'norcalli/nvim-colorizer.lua'
-
-  -- inactive buffer dimming
-  use { 'sunjon/shade.nvim', config = function()
-    require'shade'.setup({
-      overlay_opacity = 85,
-      opacity_step = 1,
-      keys = {
-        brightness_up    = '<C-Up>',
-        brightness_down  = '<C-Down>',
-        toggle           = '<Leader>s',
-      }
-    })
-  end}
 
   -- statusline
   use {
