@@ -30,16 +30,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:nvim_tree_indent_markers = 1
   let g:nvim_tree_add_trailing = 1
 
-  Plug 'dyng/ctrlsf.vim'
-  let g:ctrlsf_default_root = 'cwd'
-  let g:ctrlsf_auto_preview = 1
-  let g:ctrlsf_auto_focus = {
-      \ 'at': 'start',
-      \ }
-  let g:ctrlsf_extra_backend_args = {
-      \ 'rg': '--hidden',
-      \ }
-
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.6, 'border': 'rounded' } }

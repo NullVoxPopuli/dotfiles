@@ -22,6 +22,9 @@ return require('packer').startup(function()
   -- colorize various color-like tokens in code
   use 'norcalli/nvim-colorizer.lua'
 
+  -- Scripting Utilities
+  use 'nvim-lua/plenary.nvim'
+
   -- statusline
   use {
     'NullVoxPopuli/lualine.nvim',
@@ -92,6 +95,17 @@ return require('packer').startup(function()
           lint_events = {"BufWrite", "CursorHold"},
         },
       }
+    end
+  }
+
+
+  -- Project-wide Search, Find&Replace, with Regex!
+  use {
+    'windwp/nvim-spectre',
+    config = function()
+      require('spectre').setup({
+
+      })
     end
   }
 

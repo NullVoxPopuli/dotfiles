@@ -40,8 +40,14 @@ noremap <leader>p "+p
 " <C-O> - Open, but horizontal split
 " O - Open, but leaze the search results
 " q - quit
-nmap <C-f> <Plug>CtrlSFPrompt
-vmap <C-f> <Plug>CtrlSFVwordExec
+nnoremap <C-f> :lua require('spectre').open()<CR>
+
+"search current word
+nnoremap <leader>fw :lua require('spectre').open_visual({select_word=true})<CR>
+vnoremap <leader>f :lua require('spectre').open_visual()<CR>
+"  search in current file
+nnoremap <leader>fp viw:lua require('spectre').open_file_search()<cr>
+
 
 " Highlight the current word under cursor
 "
