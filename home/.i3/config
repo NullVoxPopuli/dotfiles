@@ -250,7 +250,8 @@ new_window pixel 1
 client.focused          #00ff00  #7B1FA2  #ffffff  #0000f
 client.unfocused        #333333  #222222  #888888  #292d2e
 
-
+# on high-res screens, the default 1px can still get lost
+for_window [class="^.*"] border pixel 3
 
 # Turn off edge scrolling
 exec synclient HorizEdgeScroll=0 VertEdgeScroll=0
