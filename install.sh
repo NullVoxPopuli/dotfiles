@@ -38,6 +38,7 @@ mkdir -p ~/.local/share/nvim/_temp
 mkdir -p ~/.local/share/nvim/_undo
 mkdir -p ~/.local/share/nvim/spell
 mkdir -p ~/.config/
+mkdir -p ~/.config/pop-shell/
 
 rm -rf ~/Applications
 rm -rf ~/scripts
@@ -54,6 +55,7 @@ ln -s $PWD/home/.bash_profile ~/.bash_profile
 ln -s $PWD/home/.config/nvim ~/.config/nvim
 ln -s $PWD/home/.config/fish ~/.config/fish
 ln -s $PWD/home/.config/starship.toml ~/.config/starship.toml
+ln -s $PWD/home/.config/pop-shell/config.json ~/.config/pop-shell/config.json
 
 echo "Symlinking ~/Application/nvim.appimage to /usr/bin/nvim . Will need sudo."
 sudo ln -s ~/Applications/nvim.appimage /usr/bin/nvim
