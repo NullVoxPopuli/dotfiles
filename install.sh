@@ -56,6 +56,7 @@ ln -s $PWD/home/.config/nvim ~/.config/nvim
 ln -s $PWD/home/.config/fish ~/.config/fish
 ln -s $PWD/home/.config/starship.toml ~/.config/starship.toml
 ln -s $PWD/home/.config/pop-shell/config.json ~/.config/pop-shell/config.json
+ln -s $PWD/home/.gitmessage ~/.gitmessage
 
 echo "Symlinking ~/Application/nvim.appimage to /usr/bin/nvim . Will need sudo."
 sudo ln -s ~/Applications/nvim.appimage /usr/bin/nvim

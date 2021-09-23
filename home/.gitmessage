@@ -1,0 +1,23 @@
+###########################################################
+# Subject: Concise message explaining what this commit does
+# See: https://www.conventionalcommits.org/
+# --------------------------------------------------------
+
+###########################################################
+# Body: Longer description to bring context to this commit
+# --------------------------------------------------------
+
+# Uncomment next line if this is a breaking change
+# --------------------------------------------------------
+# BREAKING CHANGE: <description / why breaking>
+
+# Why do we need this change?
+
+# How does this change solve that problem?
+
+# Is there anything else related to this change?
+
+###########################################################
+# Footer: What issues / tickets are related to this commit?
+# --------------------------------------------------------
+
