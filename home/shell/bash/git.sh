@@ -4,8 +4,7 @@
 # prints a nice formatted list of recent git branches
 function gb() {
   local count=$1;
-  local terminal=/dev/pts/1
-  local columns=$(stty -a <"$terminal" | grep -Po '(?<=columns )\d+')
+  local columns=$(tput cols)
 
   git for-each-ref \
     --sort=-committerdate refs/heads \
