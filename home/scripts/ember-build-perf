@@ -1,0 +1,112 @@
+#!/bin/bash
+#
+# Runs ember build -e production multiple times on two branches of an app
+#
+# Arguments:
+#  $1 - ssh git repo url
+#  $2 - upstream branch
+#  $3 - proposed branch
+#  $4 - sub-path to run ember build in
+#
+# Example:
+#
+#   ember-build-perf \
+#     git@github.com:NullVoxPopuli/limber.git \
+#     main \
+#     my-perf-improvements \
+#     ./frontend/
+#
+# Ref: `help set`
+#   -e  Exit immediately if a command exits with a non-zero status.
+#   -E  If set, the ERR trap is inherited by shell functions.
+set -Ee
+
+# Alias the args, because $# is hard to keep straight
+REPO=$1
+UPSTREAM_BRANCH=$2
+PROPOSED_BRANCH=$3
+APP_PATH=$4
+tmpdir=$(mktemp -d -t buildpertestXXXXXXXX)
+
+VARIANT_PROPOSED="proposed"
+VARIANT_UPSTREAM="upstream"
+
+# Ensure we aren't confused when things go wrong
+function cleanup()
+{
+  echo "Exiting and cleaning up..."
+  cd $PWD
+  rm -rf ${tmpdir}
+}
+
+function catch() {
+  echo "Error ocurred..."
+  cleanup
+}
+
+trap cleanup SIGINT SIGTERM EXIT
+trap catch ERR
+
+function prepare() {
+  local variant=$1
+  local branch=$2
+
+
+  echo "Preparing $variant with branch: $branch -- cloning to $tmpdir/$variant"
+
+  cd $tmpdir
+  git clone $REPO --branch $branch --single-branch --depth 1 --no-tags $variant
+  cd "$tmpdir/$variant"
+  yarn
+}
+
+# prepare in parallel, because this part isn't what we are measuring
+prepare "proposed" $PROPOSED_BRANCH &
+prepare "upstream" $UPSTREAM_BRANCH &
+wait
+
+function ember_build(){
+  time ember build -e production >/dev/null 2>&1
+}
+
+#######################################################
+## Need to warm up the build so caches go in to effect
+#######################################################
+echo "Warming up"
+
+# Intial build
+cd "$tmpdir/proposed/$APP_PATH"
+ember_build
+rm -rf dist
+
+cd "$tmpdir/upstream/$APP_PATH"
+ember_build
+rm -rf dist
+
+###############################
+## Actually begin the test
+###############################
+
+echo "Beginning test"
+
+echo "-----"
+echo "Proposed branch builds:"
+cd "$tmpdir/proposed/$APP_PATH"
+ember_build
+ember_build
+ember_build
+ember_build
+ember_build
+
+echo "Upstream branch builds:"
+cd "$tmpdir/upstream/$APP_PATH"
+ember_build
+ember_build
+ember_build
+ember_build
+ember_build
+
+echo "-----"
+
+# Cleanup
+
