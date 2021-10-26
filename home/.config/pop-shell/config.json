@@ -9,6 +9,16 @@
     },
     {
       "class": "Steam"
+    },
+    {
+      "class": "ocs-url"
+    },
+    {
+      "class": "gnome-terminal-server",
+      "title": "Preferences – Profile “Unnamed”"
+    },
+    {
+      "class": "gnome-control-center"
     }
   ],
   "skiptaskbarhidden": [],
