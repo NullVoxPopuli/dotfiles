@@ -109,4 +109,25 @@ return require('packer').startup(function()
     end
   }
 
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+
+      require'nvim-tree'.setup {
+        hijack_netrw = false,
+        view = {
+          width = 40,
+          mappings = {
+            list = {
+              { key = "<Tab>", cb = tree_cb("preview") }
+            }
+          }
+        }
+
+      }
+    end
+  }
+
 end)

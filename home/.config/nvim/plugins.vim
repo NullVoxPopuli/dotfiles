@@ -21,9 +21,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   autocmd BufWritePre * StripWhitespace
 
   " File / Project Finding
-  Plug 'kyazdani42/nvim-web-devicons' " for file icons
-  Plug 'kyazdani42/nvim-tree.lua'
-  let g:nvim_tree_width = 40
   let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'dist', 'tmp' ]
   let g:nvim_tree_window_picker_chars = "aoeuidhtnsgcrld;qjkxbmwv"
   let g:nvim_tree_highlight_opened_files = 0 " breaks icon color

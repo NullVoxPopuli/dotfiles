@@ -156,12 +156,3 @@ autocmd FileType cs nnoremap <buffer> <leader>gd :OmniSharpGotoDefinition<CR>
 autocmd FileType cs nnoremap <buffer> <leader>fx :OmniSharpFixUsings<CR>
 autocmd FileType cs nnoremap <buffer> <leader><space> :OmniSharpGetCodeActions<CR>
 
-lua << EOF
-
-  local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-
-  vim.g.nvim_tree_bindings = {
-    { key = "<Tab>", cb = tree_cb("preview") }
-  }
-
-EOF
