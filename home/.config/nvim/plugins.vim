@@ -21,7 +21,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   autocmd BufWritePre * StripWhitespace
 
   " File / Project Finding
-  let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'dist', 'tmp' ]
   let g:nvim_tree_window_picker_chars = "aoeuidhtnsgcrld;qjkxbmwv"
   let g:nvim_tree_highlight_opened_files = 0 " breaks icon color
   let g:nvim_tree_indent_markers = 1

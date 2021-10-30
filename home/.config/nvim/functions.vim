@@ -39,3 +39,11 @@ function EnableTemplateLiteralColors()
   " autocmd FileType typescript syn clear foldBraces
 endfunction
 
+
+function UpdateAll()
+ :PlugUpgrade
+ :PlugUpdate
+ :CocUpdate
+ :TSUpdate
+ :PackerSync
+endfunction

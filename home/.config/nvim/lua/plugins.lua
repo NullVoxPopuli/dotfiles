@@ -1,3 +1,4 @@
+-- Automatically install packer
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -115,10 +116,28 @@ return require('packer').startup(function()
     config = function()
       local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
+      -- https://github.com/kyazdani42/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt#L505
       require'nvim-tree'.setup {
-        hijack_netrw = false,
+        open_on_setup = false,
+        open_on_tab = false,
+
+        update_to_buf_dir = {
+          enable = false,
+          auto_open = false
+        },
+
+        filters = {
+          custom = { '.git', 'node_modules', '.cache', 'dist', 'tmp', 'declarations' }
+        },
+
+        diagnostics = {
+          -- lsp info
+          enable = true,
+        },
+
         view = {
           width = 40,
+          auto_resize = true,
           mappings = {
             list = {
               { key = "<Tab>", cb = tree_cb("preview") }
@@ -130,4 +149,11 @@ return require('packer').startup(function()
     end
   }
 
+
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)
