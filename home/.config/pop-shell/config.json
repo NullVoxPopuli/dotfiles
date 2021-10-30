@@ -19,6 +19,9 @@
     },
     {
       "class": "gnome-control-center"
+    },
+    {
+      "class": "update-manager"
     }
   ],
   "skiptaskbarhidden": [],
