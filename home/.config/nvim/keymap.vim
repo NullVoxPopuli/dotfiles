@@ -62,7 +62,7 @@ nnoremap <C-d> :let @/ = printf("\\<%s\\>", escape(expand('<cword>'), '/\'))<CR>
 """
 nmap <C-t> :Files<CR>
 " nmap <C-f> :Ag<CR>
-nmap <leader><BSlash> :NvimTreeClose<CR>
+nmap <leader><BSlash> :NvimTreeToggle<CR>
 nmap <leader>l :NvimTreeFindFile<CR>
 
 nnoremap <silent> <CR> :noh<CR><CR>
