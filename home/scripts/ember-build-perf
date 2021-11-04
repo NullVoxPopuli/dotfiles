@@ -6,7 +6,7 @@
 #  $1 - ssh git repo url
 #  $2 - upstream branch
 #  $3 - proposed branch
-#  $4 - sub-path to run ember build in
+#  $4 - [optional] sub-path to run ember build in
 #
 # Example:
 #
@@ -19,7 +19,8 @@
 # Ref: `help set`
 #   -e  Exit immediately if a command exits with a non-zero status.
 #   -E  If set, the ERR trap is inherited by shell functions.
-set -Ee
+#   -x  print code before executing
+set -e
 
 # Alias the args, because $# is hard to keep straight
 REPO=$1
@@ -41,7 +42,28 @@ function cleanup()
 
 function catch() {
   echo "Error ocurred..."
+
+  # echo "Just in case,"
+  # usage
   cleanup
+}
+
+function usage() {
+  echo ""
+  echo "Usage:"
+  echo ""
+  echo "  ember-build-perf git-ssh-url upstream-branch test-branch optional-app-path-in-repo"
+  echo ""
+  echo "Example:"
+  echo ""
+  echo "  ember-build-perf \\"
+  echo "    git@github.com:NullVoxPopuli/limber.git main perf-improvements frontend/"
+  echo ""
+  echo "Example:"
+  echo ""
+  echo "  ember-build-perf \\"
+  echo "    git@github.com:NullVoxPopuli/ember-website.git main esbuild-test"
+  echo ""
 }
 
 trap cleanup SIGINT SIGTERM EXIT
@@ -54,10 +76,20 @@ function prepare() {
 
   echo "Preparing $variant with branch: $branch -- cloning to $tmpdir/$variant"
 
+  mkdir -p $tmpdir
   cd $tmpdir
   git clone $REPO --branch $branch --single-branch --depth 1 --no-tags $variant
   cd "$tmpdir/$variant"
-  yarn
+
+  if [ -f "$tmpdir/$variant/yarn.lock" ]; then
+    echo "yarn detected"
+    yarn
+  fi
+
+  if [ -f "$tmpdir/$variant/package-lock.json" ]; then
+    echo "npm detected"
+    npm install
+  fi
 }
 
 # prepare in parallel, because this part isn't what we are measuring
@@ -66,13 +98,17 @@ prepare "upstream" $UPSTREAM_BRANCH &
 wait
 
 function ember_build(){
-  time ember build -e production >/dev/null 2>&1
+  # Redirecting output:
+  #  https://unix.stackexchange.com/a/563563
+  time ember build -e production 1> /dev/null
 }
 
 #######################################################
 ## Need to warm up the build so caches go in to effect
 #######################################################
 echo "Warming up"
+
+set -Ee
 
 # Intial build
 cd "$tmpdir/proposed/$APP_PATH"
