@@ -8,6 +8,9 @@
 #  $3 - proposed branch
 #  $4 - [optional] sub-path to run ember build in
 #
+#  -r - run prepare script after dep install
+#  -e - eval prepare script after dep install
+#
 # Example:
 #
 #   ember-build-perf \
@@ -29,6 +32,10 @@ PROPOSED_BRANCH=$3
 APP_PATH=$4
 tmpdir=$(mktemp -d -t buildpertestXXXXXXXX)
 
+NC='\033[0m' # No Color
+EMY="\033[1;33m"
+EMR="\033[1;31m"
+
 VARIANT_PROPOSED="proposed"
 VARIANT_UPSTREAM="upstream"
 
@@ -41,7 +48,7 @@ function cleanup()
 }
 
 function catch() {
-  echo "Error ocurred..."
+  echoRed "Error ocurred..."
 
   # echo "Just in case,"
   # usage
@@ -69,25 +76,36 @@ function usage() {
 trap cleanup SIGINT SIGTERM EXIT
 trap catch ERR
 
+echo $PREPARE_EVAL
+echo $PREPARE_SCRIPT
+
+function echoYellow() {
+  echo -e "${EMY}$1${NC}"
+}
+
+function echoRed() {
+  echo -e "${EMR}$1${NC}"
+}
+
 function prepare() {
   local variant=$1
   local branch=$2
 
 
-  echo "Preparing $variant with branch: $branch -- cloning to $tmpdir/$variant"
+  echoYellow "Preparing $variant with branch: $branch -- cloning to $tmpdir/$variant"
 
   mkdir -p $tmpdir
   cd $tmpdir
-  git clone $REPO --branch $branch --single-branch --depth 1 --no-tags $variant
+  git clone --quiet $REPO --branch $branch --single-branch --depth 1 --no-tags $variant
   cd "$tmpdir/$variant"
 
   if [ -f "$tmpdir/$variant/yarn.lock" ]; then
-    echo "yarn detected"
+    echoYellow "yarn detected"
     yarn
   fi
 
   if [ -f "$tmpdir/$variant/package-lock.json" ]; then
-    echo "npm detected"
+    echoYellow "npm detected"
     npm install
   fi
 }
@@ -106,7 +124,7 @@ function ember_build(){
 #######################################################
 ## Need to warm up the build so caches go in to effect
 #######################################################
-echo "Warming up"
+echoYellow "Warming up"
 
 set -Ee
 
@@ -123,10 +141,10 @@ rm -rf dist
 ## Actually begin the test
 ###############################
 
-echo "Beginning test"
+echoYellow "Beginning test"
 
 echo "-----"
-echo "Proposed branch builds:"
+echoYellow "Proposed branch builds:"
 cd "$tmpdir/proposed/$APP_PATH"
 ember_build
 ember_build
@@ -134,7 +152,7 @@ ember_build
 ember_build
 ember_build
 
-echo "Upstream branch builds:"
+echoYellow "Upstream branch builds:"
 cd "$tmpdir/upstream/$APP_PATH"
 ember_build
 ember_build
