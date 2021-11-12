@@ -1,9 +1,0 @@
-#!/bin/bash
-#
-# Usage:
-#  $ squash master
-#    will bring up the squash dialog with the number of commits you are ahead of master.
-rebaseAgainstBranch=${1:-master}
-numberOfCommits=$(git rev-list --count HEAD ^$rebaseAgainstBranch)
-echo "Squashing ${numberOfCommits} commits"
-git rebase -i HEAD~$numberOfCommits

@@ -44,3 +44,23 @@ function g-authoredBy() {
     | sort \
     | uniq
 }
+
+# Rebasing with less typing
+#
+# @examples
+#   smoosh
+#     - finds the point the branch started, and loads all those commits in interactive rebase
+#
+#   smoosh 2
+#     - interactive rebase over the 2 most recent commits
+function smoosh() {
+  function determineSmooshability() {
+    local sourceBranch=$()
+
+    git rev-list --count HEAD^$sourceBranch
+  }
+
+  local numCommitsToSmoosh=${1:-$(determineSmooshability)}
+
+  git rebase -i HEAD~$numCommitsToSmoosh
+}

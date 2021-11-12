@@ -1,3 +1,9 @@
+function DEBUG_NODE() {
+  export NODE_OPTIONS='--trace-warnings --unhandled-rejections=strict --inspect-brk'
+
+  eval $@
+}
+
 function latestPkgVer() {
   local result=$(yarn info $1 --json)
   echo ""
