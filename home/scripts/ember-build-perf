@@ -50,8 +50,8 @@ function cleanup()
 function catch() {
   echoRed "Error ocurred..."
 
-  # echo "Just in case,"
-  # usage
+  echo "Just in case,"
+  usage
   cleanup
 }
 
