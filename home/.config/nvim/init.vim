@@ -18,8 +18,10 @@ augroup SyntaxAssignments
 
   " Manual Syntaxes / Filetypes
   autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
-  autocmd BufNewFile,BufRead *.tsx,*.gts setfiletype typescript.tsx
-  autocmd BufNewFile,BufRead *.jsx,*.gjs setfiletype typescript.tsx
+  autocmd BufNewFile,BufRead *.gts setfiletype typescript.glimmer
+  autocmd BufNewFile,BufRead *.gjs setfiletype javascript.glimmer
+  autocmd BufNewFile,BufRead *.tsx setfiletype typescript.tsx
+  autocmd BufNewFile,BufRead *.jsx setfiletype typescript.tsx
   autocmd BufNewFile,BufRead *.json5 setfiletype jsonc
 
   " tsconfig.json is actually jsonc, help TypeScript set the correct filetype

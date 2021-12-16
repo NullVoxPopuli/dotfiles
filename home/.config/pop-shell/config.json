@@ -22,6 +22,12 @@
     },
     {
       "class": "update-manager"
+    },
+    {
+      "class": "check-new-release-gtk"
+    },
+    {
+      "class": "Impish"
     }
   ],
   "skiptaskbarhidden": [],

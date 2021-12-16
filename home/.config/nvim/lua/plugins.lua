@@ -26,6 +26,9 @@ return require('packer').startup(function()
   -- Scripting Utilities
   use 'nvim-lua/plenary.nvim'
 
+  --  ¯\_( ツ )_/¯
+  use { 'github/copilot.vim' }
+
   -- statusline
   use {
     'NullVoxPopuli/lualine.nvim',
@@ -83,18 +86,7 @@ return require('packer').startup(function()
         },
         highlight = {
           enable = true,
-        },
-        playground = {
-          enable = false,
-          disable = {},
-          updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-          persist_queries = false -- Whether the query persists across vim sessions
-        },
-        query_linter = {
-          enable = true,
-          use_virtual_text = true,
-          lint_events = {"BufWrite", "CursorHold"},
-        },
+        }
       }
     end
   }
