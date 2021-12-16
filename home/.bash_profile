@@ -53,6 +53,7 @@ alias gia='git add --patch'
 alias gorigin="git branch -rl '*/HEAD' | rev | cut -d/ -f1 | rev"
 alias g-reset="git remote set-head origin -a && git fetch origin && git checkout \$(gorigin) && git reset origin/\$(gorigin) --hard"
 alias ggraph='git log master --graph --format="%C(auto) %h %s"'
+alias idgaf="git checkout origin/\$(gorigin) \$(git diff --name-only --diff-filter=U --relative)"
 
 alias herpderp='ember'
 
