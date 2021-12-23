@@ -8,10 +8,18 @@ original_dev="/home/$USER/Development"
 dev="/✂️/"
 original_tilde="/home/$USER/"
 tilde="🏠/"
+repoPlaceholder="<repo>"
+projectPlaceholder="<project>"
 
-echo $to_remove
+
+if git rev-parse --git-dir > /dev/null 2>&1; then
+  gitRoot=$(git rev-parse --show-toplevel)
+  gitPath=$(echo $PWD | sed "s~$gitRoot~~g")
+fi
 
 echo "$input" \
+  | sed "s~$gitRoot~$repoPlaceholder~g" \
+  | sed "s~$gitPath~$projectPlaceholder~g" \
   | sed "s~$original_dev/NullVoxPopuli/~$dev~g" \
   | sed "s~$original_dev/OpenSource/~$dev~g" \
   | sed "s~$original_dev/Work/~$dev~g" \
