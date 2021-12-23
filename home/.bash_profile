@@ -36,6 +36,9 @@ eval `dircolors -b`
 alias ls='ls --color=auto -h'
 alias la="ls -lah"
 alias dotfiles='cd $HOME/Development/NullVoxPopuli/dotfiles'
+# for copying error outputs to github
+alias unme-clip="getclip | unme | setclip"
+# cleaning js+ts projects
 alias nuke="\
   echo \"nukin' node_modules & declaration directories\" \
   && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + \
