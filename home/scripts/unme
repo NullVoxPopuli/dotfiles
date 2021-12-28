@@ -17,9 +17,15 @@ if git rev-parse --git-dir > /dev/null 2>&1; then
   gitPath=$(echo $PWD | sed "s~$gitRoot~~g")
 fi
 
+if [ ! -z "$repoPlaceholder" ]; then
+  input="$(echo "$input" | sed "s~$gitRoot~$repoPlaceholder~g")"
+fi
+
+if [ ! -z "$projectPlaceholder" ]; then
+  input="$(echo "$input}" | sed "s~$gitRoot~$projectPlaceholder~g")"
+fi
+
 echo "$input" \
-  | sed "s~$gitRoot~$repoPlaceholder~g" \
-  | sed "s~$gitPath~$projectPlaceholder~g" \
   | sed "s~$original_dev/NullVoxPopuli/~$dev~g" \
   | sed "s~$original_dev/OpenSource/~$dev~g" \
   | sed "s~$original_dev/Work/~$dev~g" \
