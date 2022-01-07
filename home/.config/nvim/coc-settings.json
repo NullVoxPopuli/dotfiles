@@ -89,6 +89,7 @@
     "hljs",
     "htmlbars",
     "investigatables",
+    "jscodeshift",
     "metas",
     "mktemp",
     "nullvoxpopuli",

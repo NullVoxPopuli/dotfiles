@@ -8,7 +8,7 @@ sudo apt install -y \
   build-essential \
   audacity clementine \
   gimp kdenlive vlc \
-  i3 \
+  i3 exa \
   libappindicator1 \
   fonts-font-awesome fonts-powerline \
   python3-pip
