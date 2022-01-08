@@ -22,11 +22,11 @@ augroup SyntaxAssignments
   autocmd BufNewFile,BufRead *.gjs setfiletype javascript.glimmer
   autocmd BufNewFile,BufRead *.tsx setfiletype typescript.tsx
   autocmd BufNewFile,BufRead *.jsx setfiletype typescript.tsx
-  autocmd BufNewFile,BufRead *.json5 setfiletype jsonc
 
   " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
   " Set everything to jsonc, cause it's easier
   autocmd FileType json set filetype=jsonc
+  autocmd FileType json5 set filetype=jsonc
 augroup END
 
 " Autosave after 'updatetime'
