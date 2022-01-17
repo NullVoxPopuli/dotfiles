@@ -1,0 +1,44 @@
+#!/bin/bash
+#
+# Required dependencies
+#  - fzf
+#
+# Usage:
+#
+#   html
+#   html other/path
+#   PORT=4200 html
+#   PORT=4200 html other/path
+#
+# You'll prompted with detected markdown files
+
+port="${PORT:-1338}"
+target="${1:-$CWD}"
+
+read -r -d '' warningMessage <<-EOF
+  Start html preview server?
+
+    serving $target
+    @ localhost:$port
+
+      to start with a custom port set \$PORT
+
+  Confirm? (Y|N)
+
+
+EOF
+
+while true; do
+    read -p "$warningMessage" yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit 0;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo ""
+echo "http-server is starting to serve $target at localhost:$port"
+echo ""
+
+npx http-server $target --port $port --no-dotfiles -c-1 \
