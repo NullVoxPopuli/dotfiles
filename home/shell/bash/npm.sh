@@ -4,6 +4,10 @@ function DEBUG_NODE() {
   eval $@
 }
 
+function pscripts() {
+  cat package.json | jq '.scripts'
+}
+
 function latestPkgVer() {
   local result=$(yarn info $1 --json)
   echo ""
