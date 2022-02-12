@@ -28,6 +28,10 @@
     },
     {
       "class": "Impish"
+    },
+    {
+      "class": "firefox",
+      "title": "Extension: (MetaMask) - MetaMask Notification — Mozilla Firefox"
     }
   ],
   "skiptaskbarhidden": [],

@@ -27,7 +27,9 @@ return require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
 
   --  ¯\_( ツ )_/¯
-  use { 'github/copilot.vim' }
+  -- kinda broken -- overriding tab breaks everything
+  -- issues are disabled on the repo, no support
+  -- use { 'github/copilot.vim' }
 
   -- statusline
   use {
@@ -71,6 +73,8 @@ return require('packer').startup(function()
   use 'nvim-treesitter/playground' -- debugging / reporting bugs
   use {
     'nvim-treesitter/nvim-treesitter',
+    -- 'NullVoxPopuli/nvim-treesitter',
+    -- branch = 'support-template-tag-glimmer-embedded',
     config = function()
       require'nvim-treesitter.configs'.setup {
         ensure_installed = {

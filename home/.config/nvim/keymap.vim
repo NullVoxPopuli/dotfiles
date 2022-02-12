@@ -58,7 +58,6 @@ nnoremap <leader>fp viw:lua require('spectre').open_file_search()<cr>
 " TODO: Is there an easier / built-in way?
 nnoremap <C-d> :let @/ = printf("\\<%s\\>", escape(expand('<cword>'), '/\'))<CR> :let &hlsearch = &hlsearch<CR>
 
-"
 """
 nmap <C-t> :Files<CR>
 " nmap <C-f> :Ag<CR>
@@ -68,7 +67,7 @@ nmap <leader>l :NvimTreeFindFile<CR>
 nnoremap <silent> <CR> :noh<CR><CR>
 
 """"""""""""""""""
-" Pane Managemen'
+" Pane Management
 """"""""""""""""""
 " Convert Pane to Terminal
 nnoremap <C-y> :terminal<CR>
