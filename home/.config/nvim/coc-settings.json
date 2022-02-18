@@ -5,8 +5,6 @@
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "⚠",
   "diagnostic.infoSign": "ⓘ",
-  "diagnostic.maxWindowHeight": 16,
-  "diagnostic.maxWindowWidth": 100,
 
   // code lens
   "codeLens.enable": false,
@@ -29,18 +27,16 @@
   "tailwindCSS.htmlLanguages": [
     "handlebars",
     "html",
-    "markdown"
+    "markdown",
+    "typescript.glimmer",
+    "javascript.glimmer"
   ],
   // }}}
 
   // Linting {{{
   "eslint.quiet": true,
   "eslint.packageManager": "yarn",
-  "eslint.filetypes": ["javascript", "json", "typescript"],
-  "eslint.autoFix": true,
   "eslint.format.enable": true,
-  // Not technically linting... shhhh
-  "prettier.eslintIntegration": true,
 
   // Linting (CSS) -- handled by coc-stylelintplus
   "css.validate": false,

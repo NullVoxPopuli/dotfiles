@@ -59,7 +59,8 @@ nnoremap <leader>fp viw:lua require('spectre').open_file_search()<cr>
 nnoremap <C-d> :let @/ = printf("\\<%s\\>", escape(expand('<cword>'), '/\'))<CR> :let &hlsearch = &hlsearch<CR>
 
 """
-nmap <C-t> :Files<CR>
+nmap <C-t> :FzfLua files<CR>
+nmap <leader>gs :FzfLua git_status<CR>
 " nmap <C-f> :Ag<CR>
 nmap <leader><BSlash> :NvimTreeToggle<CR>
 nmap <leader>l :NvimTreeFindFile<CR>
@@ -118,6 +119,10 @@ nnoremap <F2> :setlocal spell! spelllang=en_us<CR>
 " gc in visual mode
 " for commenting
 map <C-_> gcc
+
+" GitHub Copilot
+" imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
+" let g:copilot_no_tab_map = v:true
 
 " Recursively unfold
 nnoremap <leader>z zczA

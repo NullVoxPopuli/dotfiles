@@ -12,24 +12,52 @@ end
 -- :PackerInstall
 -- :PackerUpdate
 -- :PackerSync
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- NOTE: previously tried plugins
   --   twilight.nvim
   --     - loses highlights on dim
   --   shade.nvim
   --     - buggy, tries to dim buffer that doesn't exist
   --     - previous opacity: 85
+  ----------------------
 
-  -- colorize various color-like tokens in code
-  use 'norcalli/nvim-colorizer.lua'
 
   -- Scripting Utilities
   use 'nvim-lua/plenary.nvim'
+
+  ----------------------
+  -- Syntax / Theme
+  ----------------------
+  use 'joshdick/onedark.vim'
+  use 'sainnhe/edge'
+
+  ----------------------
+  -- Editor Behavior
+  ----------------------
+  use 'tpope/vim-surround'
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-fugitive'
+  use 'ntpeters/vim-better-whitespace'
+  use 'editorconfig/editorconfig-vim'
+  use { 'junegunn/fzf', run = './install --bin', }
+  use {
+    'ibhagwan/fzf-lua',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+  }
+
+  ----------------------
+  -- Information
+  ----------------------
+  use 'airblade/vim-gitgutter'
+  -- colorize various color-like tokens in code
+  use 'norcalli/nvim-colorizer.lua'
+  use { 'neoclide/coc.nvim', branch = 'release' }
 
   --  ¯\_( ツ )_/¯
   -- kinda broken -- overriding tab breaks everything
   -- issues are disabled on the repo, no support
   -- use { 'github/copilot.vim' }
+
 
   -- statusline
   use {
@@ -69,12 +97,27 @@ return require('packer').startup(function()
     end
   }
 
+  ----------------------
   -- Syntax Highlighting
-  use 'nvim-treesitter/playground' -- debugging / reporting bugs
+  ----------------------
+  -- Tree-sitter markdown seems buggy and unmaintained
+  use 'plasticboy/vim-markdown'
   use {
-    'nvim-treesitter/nvim-treesitter',
-    -- 'NullVoxPopuli/nvim-treesitter',
+    'Quramy/vim-js-pretty-template',
+    setup = function()
+      -- Nested syntax highlighting (normally provided by tree-sitter)
+      -- needed for js/ts named template literals in markdown.
+      vim.g.vim_markdown_fenced_languages = {
+        'js=javascript', 'ts=typescript', 'hbs=handlebars', 'bash=sh', 'cjs=javascript', 'mjs=javascript'
+      }
+    end
+  }
+  -- use 'nvim-treesitter/playground' -- debugging / reporting bugs
+  use {
+    -- 'nvim-treesitter/nvim-treesitter',
+    'NullVoxPopuli/nvim-treesitter',
     -- branch = 'support-template-tag-glimmer-embedded',
+    branch = 'add-new-file-formats',
     config = function()
       require'nvim-treesitter.configs'.setup {
         ensure_installed = {
@@ -83,13 +126,32 @@ return require('packer').startup(function()
           "html", "jsdoc", "regex", "bash",
           "toml", "html", "jsonc",
           "css", "lua",
-          "commonlisp"
+          "commonlisp",
+          "c"
         },
         ignore_install = {
           "json" -- jsonc is better
         },
         highlight = {
           enable = true,
+        },
+        playground = {
+          enable = true,
+          disable = {},
+          updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+          persist_queries = false, -- Whether the query persists across vim sessions
+          keybindings = {
+            toggle_query_editor = 'o',
+            toggle_hl_groups = 'i',
+            toggle_injected_languages = 't',
+            toggle_anonymous_nodes = 'a',
+            toggle_language_display = 'I',
+            focus_language = 'f',
+            unfocus_language = 'F',
+            update = 'R',
+            goto_node = '<cr>',
+            show_help = '?',
+          },
         }
       }
     end
@@ -109,6 +171,12 @@ return require('packer').startup(function()
   use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
+    setup = function()
+      vim.g.nvim_tree_window_picker_chars = 'aoeuidhtnsgcrld;qjkxbmwv'
+      vim.g.nvim_tree_highlight_opened_files = 0 -- breaks icon color
+      vim.g.nvim_tree_indent_markers = 1
+      vim.g.nvim_tree_add_trailing = 1
+    end,
     config = function()
       local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 

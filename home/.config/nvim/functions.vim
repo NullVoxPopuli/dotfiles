@@ -23,26 +23,8 @@ endfunction
 :  retab
 :endfunction
 
-" Allow for named template literals to be highlighted
-" in a different syntax than the main buffer.
-" https://github.com/Quramy/vim-js-pretty-template
-function EnableTemplateLiteralColors()
-  " list of named template literal tags and their syntax here
-  call jspretmpl#register_tag('hbs', 'handlebars')
-  call jspretmpl#register_tag('hbs', 'html.handlebars')
-
-  " autocmd FileType javascript JsPreTmpl
-  " autocmd FileType typescript JsPreTmpl
-
-  " compat with leafgarland/typescript-vim
-  " not needed for yats or treesitter, though
-  " autocmd FileType typescript syn clear foldBraces
-endfunction
-
 
 function UpdateAll()
- :PlugUpgrade
- :PlugUpdate
  :CocUpdate
  :TSUpdate
  :PackerSync
