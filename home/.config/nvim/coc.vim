@@ -1,3 +1,5 @@
+" Removed tslint because it always runs
+" it'd be great if tslint only ran in tslint projects
 let g:coc_global_extensions = [
   \ 'coc-diagnostic',
   \ 'coc-sh',
@@ -8,7 +10,6 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-css',
   \ 'coc-eslint',
-  \ 'coc-tslint',
   \ 'coc-json',
   \ 'coc-html',
   \ 'coc-lua',

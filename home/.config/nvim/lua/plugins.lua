@@ -114,10 +114,7 @@ return require('packer').startup(function(use)
   }
   -- use 'nvim-treesitter/playground' -- debugging / reporting bugs
   use {
-    -- 'nvim-treesitter/nvim-treesitter',
-    'NullVoxPopuli/nvim-treesitter',
-    -- branch = 'support-template-tag-glimmer-embedded',
-    branch = 'add-new-file-formats',
+    'nvim-treesitter/nvim-treesitter',
     config = function()
       require'nvim-treesitter.configs'.setup {
         ensure_installed = {
@@ -136,7 +133,7 @@ return require('packer').startup(function(use)
           enable = true,
         },
         playground = {
-          enable = true,
+          enable = false,
           disable = {},
           updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
           persist_queries = false, -- Whether the query persists across vim sessions
