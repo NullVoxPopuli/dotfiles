@@ -38,20 +38,27 @@ return require('packer').startup(function(use)
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
   use 'ntpeters/vim-better-whitespace'
+  use 'windwp/nvim-autopairs'
   use 'editorconfig/editorconfig-vim'
   use { 'junegunn/fzf', run = './install --bin', }
   use {
     'ibhagwan/fzf-lua',
     requires = { 'kyazdani42/nvim-web-devicons' },
   }
+  -- how to get this to work?
+  use 'abecodes/tabout.nvim'
 
+  -- https://github.com/Pocco81/DAPInstall.nvim
+  -- use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   ----------------------
   -- Information
   ----------------------
+  use { 'neoclide/coc.nvim', branch = 'release' }
   use 'airblade/vim-gitgutter'
   -- colorize various color-like tokens in code
   use 'norcalli/nvim-colorizer.lua'
-  use { 'neoclide/coc.nvim', branch = 'release' }
+  -- tree-sitter plugin, colorizez brackets and parens
+  use 'p00f/nvim-ts-rainbow'
 
   --  ¯\_( ツ )_/¯
   -- kinda broken -- overriding tab breaks everything
@@ -112,6 +119,7 @@ return require('packer').startup(function(use)
       }
     end
   }
+  -- for developing highlights
   -- use 'nvim-treesitter/playground' -- debugging / reporting bugs
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -131,6 +139,10 @@ return require('packer').startup(function(use)
         },
         highlight = {
           enable = true,
+        },
+        rainbow = {
+          enable = true,
+          extended_mode = true,
         },
         playground = {
           enable = false,
@@ -218,3 +230,4 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+

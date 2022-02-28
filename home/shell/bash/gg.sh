@@ -199,3 +199,4 @@ function gg() {
 
 alias ggi="gg '' --skip-worktrees"
 alias ggo="gg '' --escape"
+alias ggr="gg '' --escape"

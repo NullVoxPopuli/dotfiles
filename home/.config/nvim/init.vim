@@ -11,6 +11,13 @@ so ~/.config/nvim/keymap.vim
 so ~/.config/nvim/coc.vim
 so ~/.config/nvim/theme.vim
 
+lua << EOF
+-- I don't think anything uses this yet
+--  vim.notify = require("notify")
+require('nvim-autopairs').setup{}
+EOF
+
+
 augroup ShouldBeDefaults
   autocmd!
   " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
