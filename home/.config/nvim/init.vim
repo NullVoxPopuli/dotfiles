@@ -31,4 +31,3 @@ augroup END
 
 " Autosave after 'updatetime'
 " autocmd CursorHold * wa
-
