@@ -47,7 +47,14 @@ require('packer').startup(function(use)
   use 'ntpeters/vim-better-whitespace'
   use 'windwp/nvim-autopairs'
   use 'editorconfig/editorconfig-vim'
-  use 'abecodes/tabout.nvim'
+  use {
+    'abecodes/tabout.nvim',
+    config = function()
+      require('tabout').setup {}
+    end,
+    wants = { 'nvim-treesitter' },
+    after = { 'coc.nvim' }
+  }
 
   -- https://github.com/Pocco81/DAPInstall.nvim
   -- use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
