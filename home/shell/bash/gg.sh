@@ -8,9 +8,11 @@
 #
 #     For jumping to a git repo anywhere on your system, because cd takes too long
 #
-# Requires: fzf, jq, yarn
+# Requires: fzf, jq, and yarn or pnpm
 #     npm workspaces are not supported because I don't use them
 #     due to bugs with npm's workspaces implementation
+#
+#     additionally, the workspace root must also be the git root.
 #
 # Requires: GIT_PATHS be set
 #     Example:
@@ -79,7 +81,47 @@ function gg() {
   done
 
   function print_workspaces() {
-    yarn workspaces --json info --json | jq '.data' -r | jq 'map(.location) | .[]' -r
+    root_of_repo=$(git rev-parse --show-toplevel)
+
+    yarnlock="$root_of_repo/yarn.lock"
+    pnpmlock="$root_of_repo/pnpm-lock.yaml"
+
+    if [ -f "$pnpmlock" ]; then
+      # See: https://github.com/pnpm/pnpm/issues/3398
+      #
+      # Line-by-line:
+      #   Remove version information
+      #   Remove the current directory
+      #   Remove empty lines
+      #   Remove leading slashes
+      pnpm ls -r --depth -1 --long --parseable \
+        | cut -f1 -d':' \
+        | sed "s~$root_of_repo~~g" \
+        | sed '/^[[:space:]]*$/d' \
+        | sed 's~^/~~g'
+    elif [ -f "$yarnlock" ]; then
+      yarn workspaces --json info --json | jq '.data' -r | jq 'map(.location) | .[]' -r
+    else
+      echo 'Unsupported workspaces tool.'
+      return 1;
+    fi
+  }
+
+  function has_workspaces() {
+    root_of_repo=$(git rev-parse --show-toplevel)
+
+    yarnlock="$root_of_repo/yarn.lock"
+    pnpm_file="$root_of_repo/pnpm-workspace.yaml"
+
+    if [ -f $pnpm_file ]; then
+      echo 'yes'
+    elif [ -f $yarnlock ]; then
+      echo "$(cat $package_path | jq '.workspaces')"
+    else
+      echo 'Unsupported workspaces tool.'
+    fi
+
+
   }
 
   # }}}
@@ -173,7 +215,7 @@ function gg() {
     return 1;
   fi
 
-  workspace_config=$(cat $package_path | jq '.workspaces')
+  workspace_config=has_workspaces
 
   if [ "$workspace_config" != "null" ]; then
     # Ask to choose a workspace
@@ -188,7 +230,14 @@ function gg() {
       return 0
     fi
 
-    cd $selected_workspace
+    if [[ "$selected_workspace" =~ $root_of_repo ]]; then
+      # workspace is full path
+      cd $selected_workspace
+    else
+      # workspace is relative to root
+      cd "$root_of_repo/$selected_workspace"
+    fi
+
 
     QUERY=""
   fi
