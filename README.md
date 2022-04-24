@@ -51,7 +51,7 @@ https://tldr.sh/
 https://github.com/jez/as-tree
 
 - no need to install -- download, unzip, drop in `~/Applications/`
-- example: `ag -g sh -l | as-tree` (e.g.: `get-paths | as-tree`)
+- example: `ag -g sh -l | as-tree` (ie: `get-paths | as-tree`)
 
 
 ## Tools to evaluate / keep an eye on
