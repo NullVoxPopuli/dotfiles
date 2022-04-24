@@ -2,15 +2,15 @@
 
 All the linux configuration things I use.
 
-## Neovim
+
+## Tools
+
+### IDE / Editor - neovim
 
 Have to install from here, because apt is out of date.
 https://github.com/neovim/neovim/releases/
 
 NOTE: fzf needs ripgrep installed: https://github.com/BurntSushi/ripgrep#installation
-
-
-## Tools
 
 ### Application Launching - Albert
 
