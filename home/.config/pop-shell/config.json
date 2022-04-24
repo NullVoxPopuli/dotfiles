@@ -32,6 +32,12 @@
     {
       "class": "firefox",
       "title": "Extension: (MetaMask) - MetaMask Notification — Mozilla Firefox"
+    },
+    {
+      "class": "X2GoAgent"
+    },
+    {
+      "class": "Nxplayer.bin"
     }
   ],
   "skiptaskbarhidden": [],

@@ -4,3 +4,9 @@
 .DS_Store
 .netrwhist
 packer_compiled.lua
+
+# Don't show new themes
+home/.themes
+
+# Don't show new local applications
+home/Applications
