@@ -12,7 +12,10 @@ sudo apt install -y \
   libappindicator1 \
   fonts-font-awesome fonts-powerline \
   python3-pip \
-  imagemagick
+  imagemagick \
+  exa bat
+
+sudo snap install dust
 
 # Screenshot to clipboard
 sudo pip install escrotum
