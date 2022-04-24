@@ -31,7 +31,7 @@ https://the.exa.website/
 https://github.com/sharkdp/bat
 
 
-## Tools to evaluate
+## Tools to evaluate / keep an eye on
 
 - https://github.com/jesseduffield/lazygit
   - why don't they support ubuntu anymore?
@@ -39,3 +39,6 @@ https://github.com/sharkdp/bat
 - https://github.com/jonas/tig/releases
   - only manual install
 
+- https://github.com/Wilfred/difftastic/releases
+  - only manual install
+  - perf issues

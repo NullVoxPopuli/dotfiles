@@ -35,8 +35,6 @@ source "$HOME/shell/bash/git.sh"
 shopt -s expand_aliases
 
 eval `dircolors -b`
-alias ls='exa -h'
-alias la="exa -lah"
 alias dotfiles='cd $HOME/Development/NullVoxPopuli/dotfiles'
 # for copying error outputs to github
 alias unme-clip="getclip | unme | setclip"
