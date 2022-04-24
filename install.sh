@@ -11,7 +11,8 @@ sudo apt install -y \
   i3 exa \
   libappindicator1 \
   fonts-font-awesome fonts-powerline \
-  python3-pip
+  python3-pip \
+  imagemagick
 
 # Screenshot to clipboard
 sudo pip install escrotum

@@ -38,6 +38,15 @@
     },
     {
       "class": "Nxplayer.bin"
+    },
+    {
+      "class": "gnome-tweaks"
+    },
+    {
+      "class": "albert"
+    },
+    {
+      "class": "org.gnome.Software"
     }
   ],
   "skiptaskbarhidden": [],
