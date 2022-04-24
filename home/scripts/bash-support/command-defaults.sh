@@ -13,6 +13,7 @@ alias cat="batcat"
 
 # Requires dust https://github.com/bootandy/dust
 # sudo snap install dust
+# or install deb from releases page
 #
 # to use old du, /user/bin/du -- which du
 alias du="dust"

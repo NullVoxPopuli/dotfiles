@@ -22,6 +22,10 @@ https://albertlauncher.github.io/
 
 https://github.com/sharkdp/hyperfine
 
+### File statistics - Tokei
+
+https://github.com/XAMPPRocky/tokei
+
 ### `ls`, but better
 
 https://the.exa.website/

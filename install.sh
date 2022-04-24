@@ -74,3 +74,9 @@ source ./configs.sh
 # NOTE: to export dconf settings:
 # dconf dump / > ~/.config/dconf/user.d/everything.conf
 
+
+
+###############################################
+# Setup Git
+###############################################
+source ./git-setup.sh
