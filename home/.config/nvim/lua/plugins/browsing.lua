@@ -3,9 +3,7 @@ return function(use)
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     setup = function()
-      vim.g.nvim_tree_window_picker_chars = 'aoeuidhtnsgcrld;qjkxbmwv'
       vim.g.nvim_tree_highlight_opened_files = 0 -- breaks icon color
-      vim.g.nvim_tree_indent_markers = 1
       vim.g.nvim_tree_add_trailing = 1
     end,
     config = function()
@@ -36,6 +34,20 @@ return function(use)
           mappings = {
             list = {
               { key = "<Tab>", cb = tree_cb("preview") }
+            }
+          }
+        },
+
+        renderer = {
+          indent_markers = {
+            enable = true
+          }
+        },
+
+        actions = {
+          open_file = {
+            window_picker = {
+              chars = "aoeuidhtnsgcrld;qjkxbmwv"
             }
           }
         }
