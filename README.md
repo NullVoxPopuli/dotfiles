@@ -26,6 +26,8 @@ https://github.com/sharkdp/hyperfine
 
 https://github.com/XAMPPRocky/tokei
 
+ - no need to install -- download, untar, drop in `~/Applications/`
+
 ### `ls`, but better
 
 https://the.exa.website/
