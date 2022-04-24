@@ -32,9 +32,21 @@ https://github.com/XAMPPRocky/tokei
 
 https://the.exa.website/
 
+`sudo apt install exa`
+
 ### `cat`, but better
 
 https://github.com/sharkdp/bat
+
+`sudo apt install bat`
+
+### `man`, but brief
+
+https://tldr.sh/
+
+- `volta install tldr`
+
+
 
 
 ## Tools to evaluate / keep an eye on
