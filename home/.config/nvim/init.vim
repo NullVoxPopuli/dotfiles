@@ -25,9 +25,15 @@ augroup ShouldBeDefaults
   autocmd FileType json set filetype=jsonc
   autocmd FileType json5 set filetype=jsonc
 
+  let g:coc_filetype_map = {
+    \ 'typescript.glimmer': 'glint',
+    \ 'javascript.glimmer': 'glint',
+    \ }
+
   " This should be a default
   autocmd BufWritePre * StripWhitespace
 augroup END
+
 
 " Autosave after 'updatetime'
 " autocmd CursorHold * wa
