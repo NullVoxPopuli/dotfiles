@@ -47,6 +47,9 @@
     },
     {
       "class": "org.gnome.Software"
+    },
+    {
+      "class": "Jammy"
     }
   ],
   "skiptaskbarhidden": [],

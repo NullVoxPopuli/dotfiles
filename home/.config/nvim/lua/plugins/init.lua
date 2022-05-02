@@ -81,22 +81,22 @@ require('packer').startup(function(use)
   end
 end)
 
--- require("nvim-lsp-installer").setup {
---   ensure_installed = {
---     "glint",
---     "html", "json", "yamlls", "cssls",
---     "tailwindcss",
---     "eslint", "graphql", "tsserver",
---     "sumneko_lua",
---     -- "elixirls", "rust_analyzer", "fsautocomplete",
---     "bashls", "dockerls",
---   },
---   automatic_installation = true,
---   ui = {
---     icons = {
---       server_installed = "✓",
---       server_pending = "➜",
---       server_uninstalled = "✗"
---     }
---   }
--- }
+require("nvim-lsp-installer").setup {
+  ensure_installed = {
+    "glint",
+    "html", "json", "yamlls", "cssls",
+    "tailwindcss",
+    "eslint", "graphql", "tsserver",
+    "sumneko_lua",
+    -- "elixirls", "rust_analyzer", "fsautocomplete",
+    "bashls", "dockerls",
+  },
+  automatic_installation = true,
+  ui = {
+    icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
+    }
+  }
+}
