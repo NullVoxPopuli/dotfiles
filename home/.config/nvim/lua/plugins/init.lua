@@ -15,6 +15,7 @@ end
 require('packer').startup(function(use)
   -- Plugins with too much config to have all in
   -- the same file
+  require('plugins.lsp')(use)
   require('plugins.highlighting')(use)
   require('plugins.statusline')(use)
   require('plugins.browsing')(use)
@@ -61,7 +62,6 @@ require('packer').startup(function(use)
   ----------------------
   -- Information
   ----------------------
-  use { 'neoclide/coc.nvim', branch = 'release' }
   use 'airblade/vim-gitgutter'
   -- colorize various color-like tokens in code
   use 'norcalli/nvim-colorizer.lua'
@@ -82,3 +82,14 @@ require('packer').startup(function(use)
   end
 end)
 
+require("nvim-lsp-installer").setup {
+  ensure_installed = { "eslint", "glint" },
+  automatic_installation = true,
+  ui = {
+    icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
+    }
+  }
+}
