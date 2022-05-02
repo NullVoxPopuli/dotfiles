@@ -59,7 +59,7 @@ nnoremap <leader>fp viw:lua require('spectre').open_file_search()<cr>
 nnoremap <C-d> :let @/ = printf("\\<%s\\>", escape(expand('<cword>'), '/\'))<CR> :let &hlsearch = &hlsearch<CR>
 
 """
-nmap <C-t> :FzfLua files<CR>
+nnoremap <C-t> :FzfLua files<CR>
 nmap <leader>gs :FzfLua git_status<CR>
 " nmap <C-f> :Ag<CR>
 nmap <leader><BSlash> :NvimTreeToggle<CR>
