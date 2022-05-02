@@ -47,6 +47,7 @@ alias nuke="\
   "
 
 # Git
+alias grt='cd $(git rev-parse --show-toplevel)'
 alias gs='git status'
 alias gl="git log --graph --pretty=tformat:'%Cred%h%Creset - %<(100,trunc)%s%w(0,0,14)%+Cgreen(%cr) %Cblue<%aN>%Creset%C(auto)%w(0,0,14)%<(100,trunc)%+D%C(reset)'"
 alias gd='git diff'
