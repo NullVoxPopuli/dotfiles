@@ -35,11 +35,16 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
+    -- Scroll up in docs
     ['<C-k>'] = cmp.mapping.scroll_docs(-4),
+    -- Scroll down in docs
     ['<C-j>'] = cmp.mapping.scroll_docs(4),
-    -- ['<C-Space>'] = cmp.mapping.complete(),
+
+    -- Same as the escape key
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- Selects next item in completion menu
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
           cmp.select_next_item()
@@ -47,6 +52,7 @@ cmp.setup({
           fallback()
       end
     end,
+    -- Selects previous item in completion menu
     ['<S-Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
