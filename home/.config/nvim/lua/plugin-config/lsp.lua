@@ -85,13 +85,17 @@ local on_attach = function(client, bufnr)
 
   vim.cmd([[nnoremap gd :lua vim.lsp.buf.definition()<CR>]])
   vim.cmd([[nnoremap <leader><Space> :lua vim.lsp.buf.hover()<CR>]])
-  vim.cmd([[nnoremap <leader>aw :lua vim.lsp.buf.code_action()<CR>]])
+  vim.cmd([[nnoremap <leader>a :lua vim.lsp.buf.code_action()<CR>]])
   vim.cmd([[nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>]])
 end
 
 local lsp = require('lspconfig')
 
 lsp['tsserver'].setup {
+  capabilities = capabilities,
+  on_attach = on_attach
+}
+lsp['eslint'].setup {
   capabilities = capabilities,
   on_attach = on_attach
 }
