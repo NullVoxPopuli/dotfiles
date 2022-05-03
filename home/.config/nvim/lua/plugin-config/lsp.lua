@@ -1,13 +1,35 @@
-require("nvim-lsp-installer").setup {
-  ensure_installed = {
-    "glint",
-    "html", "json", "yamlls", "cssls",
-    "tailwindcss",
-    "eslint", "graphql", "tsserver",
-    "sumneko_lua",
-    -- "elixirls", "rust_analyzer", "fsautocomplete",
-    "bashls", "dockerls",
+local servers = {
+  -- "glint",
+  "html",
+  -- "json",
+  "yamlls",
+  "cssls",
+  "tailwindcss",
+  "eslint",
+  "graphql",
+  "tsserver",
+  "sumneko_lua",
+  -- "elixirls",
+  -- "rust_analyzer",
+  -- "fsautocomplete",
+  "bashls",
+  "dockerls",
+}
+
+local configs = {
+  tsserver = {
+    format = { enable = false },
   },
+  eslint = {
+    format = { enable = true },
+    lintTask = {
+      enable = true
+    }
+  }
+}
+
+require("nvim-lsp-installer").setup {
+  ensure_installed = servers,
   automatic_installation = true,
   ui = {
     icons = {
@@ -77,27 +99,37 @@ cmp.setup({
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+local mega_on_attach = function(serverName)
+  local global_on_attach = function(client, bufnr)
+    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  vim.cmd([[nnoremap gd :lua vim.lsp.buf.definition()<CR>]])
-  vim.cmd([[nnoremap <leader><Space> :lua vim.lsp.buf.hover()<CR>]])
-  vim.cmd([[nnoremap <leader>a :lua vim.lsp.buf.code_action()<CR>]])
-  vim.cmd([[nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>]])
+    vim.cmd([[nnoremap gd :lua vim.lsp.buf.definition()<CR>]])
+    vim.cmd([[nnoremap <leader><Space> :lua vim.lsp.buf.hover()<CR>]])
+    vim.cmd([[nnoremap <leader>a :lua vim.lsp.buf.code_action()<CR>]])
+    vim.cmd([[nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>]])
+  end
+
+  return function(client, bufnr)
+    global_on_attach(client, bufnr)
+
+    if serverName == 'eslint' then
+      vim.cmd([[nnoremap <leader>ff :EslintFixAll<CR>]])
+    end
+  end
 end
 
 local lsp = require('lspconfig')
 
-lsp['tsserver'].setup {
-  capabilities = capabilities,
-  on_attach = on_attach
-}
-lsp['eslint'].setup {
-  capabilities = capabilities,
-  on_attach = on_attach
-}
+for _, serverName in ipairs(servers) do
+  local server = lsp[serverName]
 
-
+  if server then
+    server.setup({
+      capabilities = capabilities,
+      on_attach = mega_on_attach(serverName)
+    })
+  end
+end
