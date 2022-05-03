@@ -150,13 +150,3 @@ nnoremap <leader>gm :GitNextConflict<CR>
 " " let g:multi_cursor_skip_key            = '<C-x>'
 " let g:multi_cursor_quit_key            = '<Esc>'
 
-
-" Expand the Status Message
-nnoremap <leader>b :call SyntasticToggle()<CR>
-
-" C# / F# (Omnisharp)
-" https://github.com/OmniSharp/omnisharp-vim#example-vimrc
-autocmd FileType cs nnoremap <buffer> <leader>gd :OmniSharpGotoDefinition<CR>
-autocmd FileType cs nnoremap <buffer> <leader>fx :OmniSharpFixUsings<CR>
-autocmd FileType cs nnoremap <buffer> <leader><space> :OmniSharpGetCodeActions<CR>
-

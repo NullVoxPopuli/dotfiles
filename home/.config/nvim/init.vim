@@ -5,6 +5,7 @@ set nocompatible
 
 " Actual config split out here
 lua require('plugins')
+lua require('plugin-config')
 so ~/.config/nvim/editor.vim
 so ~/.config/nvim/functions.vim
 so ~/.config/nvim/keymap.vim
