@@ -26,8 +26,8 @@ augroup ShouldBeDefaults
   autocmd FileType json5 set filetype=jsonc
 
   let g:coc_filetype_map = {
-    \ 'typescript.glimmer': 'glint',
-    \ 'javascript.glimmer': 'glint',
+    \ 'typescript.glimmer': 'Glimmer TS',
+    \ 'javascript.glimmer': 'Glimmer JS',
     \ }
 
   " This should be a default
