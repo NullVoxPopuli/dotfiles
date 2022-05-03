@@ -20,6 +20,8 @@ require("nvim-lsp-installer").setup {
 
 local cmp = require'cmp'
 
+-- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#menu-type
+-- for later ^
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -88,6 +90,7 @@ lsp['tsserver'].setup {
   capabilities = capabilities,
   on_attach = on_attach
 }
+
 
 
 vim.cmd([[nnoremap gd :lua vim.lsp.buf.definition()<CR>]])
