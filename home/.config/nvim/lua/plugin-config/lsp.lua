@@ -83,20 +83,10 @@ local on_attach = function(client, bufnr)
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  local function map(mode, lhs, rhs, opts)
-    local options = { noremap = true }
-    if opts then
-      options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-  end
-
-  -- map('n', '<leader><space>', '<cmd>lua vim.lsp.buf.hover()<CR>')
   vim.cmd([[nnoremap gd :lua vim.lsp.buf.definition()<CR>]])
   vim.cmd([[nnoremap <leader><Space> :lua vim.lsp.buf.hover()<CR>]])
   vim.cmd([[nnoremap <leader>aw :lua vim.lsp.buf.code_action()<CR>]])
   vim.cmd([[nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>]])
-
 end
 
 local lsp = require('lspconfig')
