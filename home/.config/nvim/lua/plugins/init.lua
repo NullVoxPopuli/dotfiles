@@ -15,6 +15,7 @@ end
 require('packer').startup(function(use)
   -- Plugins with too much config to have all in
   -- the same file
+  require('plugins.lsp')(use)
   require('plugins.highlighting')(use)
   require('plugins.statusline')(use)
   require('plugins.browsing')(use)
@@ -52,8 +53,7 @@ require('packer').startup(function(use)
     config = function()
       require('tabout').setup {}
     end,
-    wants = { 'nvim-treesitter' },
-    after = { 'coc.nvim' }
+    wants = { 'nvim-treesitter' }
   }
 
   -- https://github.com/Pocco81/DAPInstall.nvim
@@ -61,8 +61,9 @@ require('packer').startup(function(use)
   ----------------------
   -- Information
   ----------------------
-  use { 'neoclide/coc.nvim', branch = 'release' }
   use 'airblade/vim-gitgutter'
+  -- Indentation indication
+  -- use "lukas-reineke/indent-blankline.nvim"
   -- colorize various color-like tokens in code
   use 'norcalli/nvim-colorizer.lua'
   -- tree-sitter plugin, colorizez brackets and parens

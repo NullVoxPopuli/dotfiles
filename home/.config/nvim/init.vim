@@ -5,10 +5,10 @@ set nocompatible
 
 " Actual config split out here
 lua require('plugins')
+lua require('plugin-config')
 so ~/.config/nvim/editor.vim
 so ~/.config/nvim/functions.vim
 so ~/.config/nvim/keymap.vim
-so ~/.config/nvim/coc.vim
 so ~/.config/nvim/theme.vim
 
 lua << EOF
@@ -24,11 +24,6 @@ augroup ShouldBeDefaults
   " Set everything to jsonc, cause it's easier
   autocmd FileType json set filetype=jsonc
   autocmd FileType json5 set filetype=jsonc
-
-  let g:coc_filetype_map = {
-    \ 'typescript.glimmer': 'Glimmer TS',
-    \ 'javascript.glimmer': 'Glimmer JS',
-    \ }
 
   " This should be a default
   autocmd BufWritePre * StripWhitespace

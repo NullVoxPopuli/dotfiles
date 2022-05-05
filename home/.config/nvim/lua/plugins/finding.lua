@@ -1,4 +1,4 @@
-return function(use) 
+return function(use)
   use { 'junegunn/fzf', run = './install --bin', }
   use {
     'ibhagwan/fzf-lua',

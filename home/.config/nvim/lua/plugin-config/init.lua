@@ -1,0 +1,2 @@
+require('plugin-config.lsp')
+
