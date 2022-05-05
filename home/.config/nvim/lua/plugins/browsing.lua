@@ -1,15 +1,4 @@
-local dvorak_keys = "aoeuidhtnsgcrld;qjkxbmwv"
-
 return function(use)
-  use {
-    'phaazon/hop.nvim',
-    branch = 'v1', -- optional but strongly recommended
-    config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      require'hop'.setup { keys = dvorak_keys }
-    end
-  }
-
   use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
@@ -58,7 +47,7 @@ return function(use)
         actions = {
           open_file = {
             window_picker = {
-              chars = dvorak_keys
+              chars = "aoeuidhtnsgcrld;qjkxbmwv"
             }
           }
         }

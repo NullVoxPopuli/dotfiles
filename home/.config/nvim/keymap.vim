@@ -59,7 +59,7 @@ nnoremap <leader>fp viw:lua require('spectre').open_file_search()<cr>
 nnoremap <C-d> :let @/ = printf("\\<%s\\>", escape(expand('<cword>'), '/\'))<CR> :let &hlsearch = &hlsearch<CR>
 
 """
-nnoremap <C-t> :FzfLua files<CR>
+nmap <C-t> :FzfLua files<CR>
 nmap <leader>gs :FzfLua git_status<CR>
 " nmap <C-f> :Ag<CR>
 nmap <leader><BSlash> :NvimTreeToggle<CR>
@@ -120,9 +120,6 @@ nnoremap <F2> :setlocal spell! spelllang=en_us<CR>
 " for commenting
 map <C-_> gcc
 
-" Jump anywhere - similar to vimium
-nnoremap <A-w> :HopWord<CR>
-
 " GitHub Copilot
 " imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
 " let g:copilot_no_tab_map = v:true
@@ -131,7 +128,7 @@ nnoremap <A-w> :HopWord<CR>
 nnoremap <leader>z zczA
 
 " Generate a GUID
-nnoremap <F1> "=trim(system('uuidgen'))<CR>
+nnoremap <F1> "=trim(system('uuidgen'))<CR>p
 
 " Move Lines Up/Down
 nnoremap <C-j> :move+1<CR>
@@ -152,4 +149,14 @@ nnoremap <leader>gm :GitNextConflict<CR>
 " let g:multi_cursor_prev_key            = '<C-Shift-Enter>'
 " " let g:multi_cursor_skip_key            = '<C-x>'
 " let g:multi_cursor_quit_key            = '<Esc>'
+
+
+" Expand the Status Message
+nnoremap <leader>b :call SyntasticToggle()<CR>
+
+" C# / F# (Omnisharp)
+" https://github.com/OmniSharp/omnisharp-vim#example-vimrc
+autocmd FileType cs nnoremap <buffer> <leader>gd :OmniSharpGotoDefinition<CR>
+autocmd FileType cs nnoremap <buffer> <leader>fx :OmniSharpFixUsings<CR>
+autocmd FileType cs nnoremap <buffer> <leader><space> :OmniSharpGetCodeActions<CR>
 
