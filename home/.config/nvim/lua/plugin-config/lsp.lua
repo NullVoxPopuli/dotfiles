@@ -1,34 +1,67 @@
-local configs = require 'lspconfig.configs'
-
 local servers = {
-  "glint",
+  --------------
+  -- Languages
   "html",
-  -- "json",
+  "jsonls",
   "yamlls",
   "cssls",
-  "tailwindcss",
-  "eslint",
-  "graphql",
-  "tsserver",
   "sumneko_lua",
+  "tsserver",
+  "bashls",
   -- "elixirls",
   -- "rust_analyzer",
   -- "fsautocomplete",
-  "bashls",
+
+  --------------
+  -- Frameworks
+  "ember",
+  "glint",
+
+  --------------
+  -- Tools
+  "graphql",
+  "tailwindcss",
+  "graphql",
   "dockerls",
+
+  --------------
+  -- Linting
+  "eslint",
 }
 
--- local _configs = {
---   tsserver = {
---     format = { enable = false },
---   },
---   eslint = {
---     format = { enable = true },
---     lintTask = {
---       enable = true
---     }
---   },
--- }
+---------------------------
+-- Settings and other available servers
+--  https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+---------------------------
+local mySettings = {
+  tsserver = {
+    format = { enable = false },
+  },
+  eslint = {
+    format = { enable = true },
+    lintTask = {
+      enable = true
+    },
+    codeAction = {
+      showDocumentation = true
+    }
+  },
+  sumneko_lua = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    }
+  }
+}
 
 require("nvim-lsp-installer").setup {
   ensure_installed = servers,
@@ -50,10 +83,7 @@ cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   window = {
@@ -89,10 +119,7 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    -- { name = 'vsnip' }, -- For vsnip users.
-    { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
+    { name = 'luasnip' },
   }, {
     { name = 'buffer' },
   })
@@ -109,24 +136,74 @@ for _, serverName in ipairs(servers) do
   if server then
     server.setup({
       capabilities = capabilities,
+      settings = mySettings[serverName],
       on_attach = function(client, bufnr)
         -- Helpers, Utilities, etc. (lua -> vim apis are verbose)
-        local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
         local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+        local function n(line) vim.cmd([[nnoremap ]] .. line) end
 
         buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-        -- Global keymaps
-        vim.cmd([[nnoremap gd :lua vim.lsp.buf.definition()<CR>]])
-        vim.cmd([[nnoremap <leader><Space> :lua vim.lsp.buf.hover()<CR>]])
-        vim.cmd([[nnoremap <leader>a :lua vim.lsp.buf.code_action()<CR>]])
-        vim.cmd([[nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>]])
+        -- Global keymaps (no-remap by default, cause... sanity)
+        n([[gD :lua vim.lsp.buf.declaration()<CR>]])
+        n([[gd :lua vim.lsp.buf.definition()<CR>]])
+        n([[gi :lua vim.lsp.buf.implementation()<CR>]])
+        n([[gt :lua vim.lsp.buf.type_definition()<CR>]])
+        n([[gr :lua vim.lsp.buf.references()<CR>]])
+        n([[<leader>ff :lua vim.lsp.buf.format({ async = true })<CR>]])
+
+        n([[<leader><Space> :lua vim.lsp.buf.hover()<CR>]])
+        n([[<leader>a :lua vim.lsp.buf.code_action()<CR>]])
+        n([[<leader>rn :lua vim.lsp.buf.rename()<CR>]])
 
         -- Server-specific things to do
         if serverName == 'eslint' then
-          vim.cmd([[nnoremap <leader>ff :EslintFixAll<CR>]])
+          n([[<leader>ff :EslintFixAll<CR>]])
         end
+
+        -- Show line diagnostics automatically in hover window
+        vim.api.nvim_create_autocmd("CursorHold", {
+          buffer = bufnr,
+          callback = function()
+            local opts = {
+              focusable = false,
+              close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+              border = 'rounded',
+              source = 'always',
+              prefix = ' ',
+              scope = 'cursor',
+            }
+            vim.diagnostic.open_float(nil, opts)
+          end
+        })
+
       end
     })
   end
 end
+
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '➢', -- Could be '●', '▎', 'x'
+    source = 'always'
+  }
+})
+
+-- Change diagnostic symbols in the sign column (gutter)
+-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#change-diagnostic-symbols-in-the-sign-column-gutter
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+vim.diagnostic.config({
+  -- virtual text makes things pretty claustrophobic
+  --  would be great to only turn on/off for certain diagnostics providers tho
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})
+
