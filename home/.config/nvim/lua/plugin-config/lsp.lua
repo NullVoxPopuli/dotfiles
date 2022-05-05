@@ -34,17 +34,8 @@ local servers = {
 --  https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ---------------------------
 local mySettings = {
-  tsserver = {
-    format = { enable = false },
-  },
   eslint = {
-    format = { enable = true },
-    lintTask = {
-      enable = true
-    },
-    codeAction = {
-      showDocumentation = true
-    }
+    format = true,
   },
   sumneko_lua = {
     Lua = {
@@ -150,7 +141,7 @@ for _, serverName in ipairs(servers) do
         n([[gi :lua vim.lsp.buf.implementation()<CR>]])
         n([[gt :lua vim.lsp.buf.type_definition()<CR>]])
         n([[gr :lua vim.lsp.buf.references()<CR>]])
-        n([[<leader>ff :lua vim.lsp.buf.format({ async = true })<CR>]])
+        -- n([[<leader>ff :lua vim.lsp.buf.format({ async = true })<CR>]])
 
         n([[<leader><Space> :lua vim.lsp.buf.hover()<CR>]])
         n([[<leader>a :lua vim.lsp.buf.code_action()<CR>]])
