@@ -1,0 +1,118 @@
+// # vi:foldmethod=marker
+// edit this file by doing :CocConfig after coc.nvim is installed
+{
+  // A E S T H E T I C
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.infoSign": "ⓘ",
+
+  // code lens
+  "codeLens.enable": false,
+  "els.codeLens.relatedFiles": true,
+
+  // Sources for intellisense {{{
+  // worthless sources when language-server is present
+  "coc.source.buffer.enable": false,
+  "coc.source.file.enable": false,
+  "coc.source.around.enable": false,
+  // }}}
+
+  // coc-tsserver config
+  "tsserver.implicitProjectConfig.experimentalDecorators": true,
+  "tsserver.maxTsServerMemory": 8196,
+  "tsserver.enableJavascript": true,
+
+  // coc-tailwindcss {{{
+  "tailwindCSS.headwind.runOnSave": false,
+  "tailwindCSS.htmlLanguages": [
+    "handlebars",
+    "html",
+    "markdown",
+    "typescript.glimmer",
+    "javascript.glimmer"
+  ],
+  // }}}
+
+  // Linting {{{
+  "eslint.quiet": true,
+  "eslint.packageManager": "yarn",
+  "eslint.format.enable": true,
+
+  // Linting (CSS) -- handled by coc-stylelintplus
+  "css.validate": false,
+  "scss.validate": false,
+  // }}}
+
+  // Git {{{
+  // Git - integration with vim-gitgutter
+  "git.addedSign.hlGroup": "GitGutterAdd",
+  "git.changedSign.hlGroup": "GitGutterChange",
+  "git.removedSign.hlGroup": "GitGutterDelete",
+  "git.topRemovedSign.hlGroup": "GitGutterDelete",
+  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+  // }}}
+
+  // Spelling {{{
+  "cSpell.userWords": [
+    "Cacheable",
+    "Changset",
+    "Containery",
+    "Deliteral",
+    "ENTRYPOINT",
+    "Entrypoints",
+    "Extendables",
+    "Falsey",
+    "JSQR",
+    "Klass",
+    "SPACEBAR",
+    "Statechart",
+    "Stickied",
+    "Styleguide",
+    "backoff",
+    "boop",
+    "changeset's",
+    "colocation",
+    "crowdstrike",
+    "defrag",
+    "devs",
+    "docfy",
+    "dotfile",
+    "emberjs",
+    "esbuild",
+    "execa",
+    "focusable",
+    "focusables",
+    "frontmatter",
+    "glimdown",
+    "globby",
+    "hljs",
+    "htmlbars",
+    "investigatables",
+    "jscodeshift",
+    "metas",
+    "mktemp",
+    "nullvoxpopuli",
+    "outdir",
+    "overwatch",
+    "performant",
+    "proxied",
+    "qunit",
+    "reactivitiy",
+    "rehype",
+    "routable",
+    "sidenav",
+    "statecharts",
+    "tabbable",
+    "tablist",
+    "triggerable",
+    "unreactive",
+    "untabbable",
+    "xstate"
+  ],
+  // }}}
+
+  // Shell
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  }
+}
