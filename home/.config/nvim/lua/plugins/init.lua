@@ -63,7 +63,7 @@ require('packer').startup(function(use)
   ----------------------
   use 'airblade/vim-gitgutter'
   -- Indentation indication
-  use "lukas-reineke/indent-blankline.nvim"
+  -- use "lukas-reineke/indent-blankline.nvim"
   -- colorize various color-like tokens in code
   use 'norcalli/nvim-colorizer.lua'
   -- tree-sitter plugin, colorizez brackets and parens
