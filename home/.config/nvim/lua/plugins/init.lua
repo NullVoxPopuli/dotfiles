@@ -62,6 +62,8 @@ require('packer').startup(function(use)
   -- Information
   ----------------------
   use 'airblade/vim-gitgutter'
+  -- Indentation indication
+  use "lukas-reineke/indent-blankline.nvim"
   -- colorize various color-like tokens in code
   use 'norcalli/nvim-colorizer.lua'
   -- tree-sitter plugin, colorizez brackets and parens
@@ -80,3 +82,4 @@ require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+

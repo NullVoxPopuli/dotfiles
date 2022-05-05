@@ -120,6 +120,9 @@ nnoremap <F2> :setlocal spell! spelllang=en_us<CR>
 " for commenting
 map <C-_> gcc
 
+" Jump anywhere - similar to vimium
+nnoremap <A-w> :HopWord<CR>
+
 " GitHub Copilot
 " imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
 " let g:copilot_no_tab_map = v:true
@@ -128,7 +131,7 @@ map <C-_> gcc
 nnoremap <leader>z zczA
 
 " Generate a GUID
-nnoremap <F1> "=trim(system('uuidgen'))<CR>p
+nnoremap <F1> "=trim(system('uuidgen'))<CR>
 
 " Move Lines Up/Down
 nnoremap <C-j> :move+1<CR>
