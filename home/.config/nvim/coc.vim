@@ -4,6 +4,7 @@ let g:coc_global_extensions = [
   \ 'coc-diagnostic',
   \ 'coc-sh',
   \ 'coc-git',
+  \ 'coc-glint',
   \ 'coc-spell-checker',
   \ 'coc-conventional',
   \ 'coc-tailwindcss',
