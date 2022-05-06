@@ -2,6 +2,24 @@ local dvorak_keys = "aoeuidhtnsgcrld;qjkxbmwv"
 
 return function(use)
   use {
+    "folke/which-key.nvim",
+    config = function()
+      -- https://github.com/folke/which-key.nvim
+      require("which-key").setup {
+        plugins = {
+          marks = false, -- shows a list of your marks on ' and `
+          registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+          presets = {
+            operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+            motions = true, -- adds help for motions
+            text_objects = true, -- help for text objects triggered after entering an operator
+          },
+        },
+      }
+    end
+  }
+
+  use {
     'phaazon/hop.nvim',
     branch = 'v1', -- optional but strongly recommended
     config = function()
@@ -25,11 +43,6 @@ return function(use)
         open_on_setup = false,
         open_on_tab = false,
 
-        update_to_buf_dir = {
-          enable = false,
-          auto_open = false
-        },
-
         filters = {
           custom = { '.git', 'node_modules', '.cache', 'dist', 'tmp', 'declarations' }
         },
@@ -41,7 +54,6 @@ return function(use)
 
         view = {
           width = 40,
-          auto_resize = true,
           mappings = {
             list = {
               { key = "<Tab>", cb = tree_cb("preview") }

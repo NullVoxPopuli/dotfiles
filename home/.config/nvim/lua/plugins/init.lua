@@ -31,7 +31,7 @@ require('packer').startup(function(use)
 
   -- Scripting Utilities
   use 'nvim-lua/plenary.nvim'
-  -- use 'rcarriga/nvim-notify'
+  use 'rcarriga/nvim-notify'
 
   ----------------------
   -- Syntax / Theme
@@ -47,6 +47,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'ntpeters/vim-better-whitespace'
   use 'windwp/nvim-autopairs'
+  use 'stevearc/dressing.nvim'
   use 'editorconfig/editorconfig-vim'
   use {
     'abecodes/tabout.nvim',
@@ -82,4 +83,3 @@ require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
-

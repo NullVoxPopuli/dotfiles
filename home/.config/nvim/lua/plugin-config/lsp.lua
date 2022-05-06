@@ -1,3 +1,7 @@
+local cmp = require'cmp'
+local lsp = require('lspconfig')
+-- local lsp_status = require('lsp-status')
+
 local servers = {
   --------------
   -- Languages
@@ -66,7 +70,6 @@ require("nvim-lsp-installer").setup {
   }
 }
 
-local cmp = require'cmp'
 
 -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#menu-type
 -- for later ^
@@ -111,6 +114,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'spell' },
   }, {
     { name = 'buffer' },
   })
@@ -119,7 +123,8 @@ cmp.setup({
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local lsp = require('lspconfig')
+-- lsp_status.register_progress()
+-- capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
 for _, serverName in ipairs(servers) do
   local server = lsp[serverName]
@@ -129,6 +134,8 @@ for _, serverName in ipairs(servers) do
       capabilities = capabilities,
       settings = mySettings[serverName],
       on_attach = function(client, bufnr)
+        -- lsp_status.on_attach(client)
+
         -- Helpers, Utilities, etc. (lua -> vim apis are verbose)
         local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
         local function n(line) vim.cmd([[nnoremap ]] .. line) end

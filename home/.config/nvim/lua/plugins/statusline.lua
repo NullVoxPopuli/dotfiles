@@ -3,7 +3,9 @@ return function(use)
     'NullVoxPopuli/lualine.nvim',
     branch = 'fix-estimated-with-calculation',
     config = function ()
-      require('lualine').setup{
+
+      require('lualine').setup {
+
         options = {
           theme = 'dracula',
           -- theme = 'nightfly'
