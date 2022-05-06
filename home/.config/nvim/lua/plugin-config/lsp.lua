@@ -1,5 +1,6 @@
 local cmp = require'cmp'
 local lsp = require('lspconfig')
+local pipe = io.popen('cmd')
 -- local lsp_status = require('lsp-status')
 
 local servers = {
@@ -114,7 +115,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'spell' },
+    -- { name = 'spell' },
   }, {
     { name = 'buffer' },
   })
@@ -148,16 +149,28 @@ for _, serverName in ipairs(servers) do
         n([[gi :lua vim.lsp.buf.implementation()<CR>]])
         n([[gt :lua vim.lsp.buf.type_definition()<CR>]])
         n([[gr :lua vim.lsp.buf.references()<CR>]])
-        -- n([[<leader>ff :lua vim.lsp.buf.format({ async = true })<CR>]])
+        n([[<leader>ff :lua vim.lsp.buf.format({ async = true })<CR>]])
 
         n([[<leader><Space> :lua vim.lsp.buf.hover()<CR>]])
         n([[<leader>a :lua vim.lsp.buf.code_action()<CR>]])
         n([[<leader>rn :lua vim.lsp.buf.rename()<CR>]])
 
         -- Server-specific things to do
-        if serverName == 'eslint' then
-          n([[<leader>ff :EslintFixAll<CR>]])
+        if client.name == 'eslint' then
+          -- This only works for now because most of what I write is js/ts, but this is technically incorrect
+          -- n([[<leader>ff :EslintFixAll<CR>]])
+          client.server_capabilities.document_formatting = true
         end
+
+        -- if serverName == 'ember' then
+          -- Need Language Server support for invoking this as a formatter
+          -- local name = vim.api.nvim_buf_get_name(bufnr)
+          -- local isHbs = name:sub(-string.len('.hbs')) == '.hbs'
+
+          -- if (isHbs) then
+          --   n([[<leader>ff :silent ! $(npm bin ember-template-lint)/ember-template-lint ]] .. name .. [[<CR>]])
+          -- end
+        -- end
 
         -- Show line diagnostics automatically in hover window
         vim.api.nvim_create_autocmd("CursorHold", {
