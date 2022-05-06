@@ -13,5 +13,5 @@ return function(use)
 
   -- https://github.com/arkav/lualine-lsp-progress
   -- Plugin for lualine
-  use 'arkav/lualine-lsp-progress'
+  -- use 'arkav/lualine-lsp-progress'
 end

@@ -16,6 +16,7 @@ require('packer').startup(function(use)
   -- Plugins with too much config to have all in
   -- the same file
   require('plugins.lsp')(use)
+  require('plugins.linting')(use)
   require('plugins.highlighting')(use)
   require('plugins.statusline')(use)
   require('plugins.browsing')(use)
