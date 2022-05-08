@@ -1,6 +1,7 @@
 local cmp = require'cmp'
 local lsp = require('lspconfig')
-local pipe = io.popen('cmd')
+local notify = require('notify')
+
 -- local lsp_status = require('lsp-status')
 
 local servers = {
@@ -13,6 +14,7 @@ local servers = {
   "sumneko_lua",
   "tsserver",
   "bashls",
+  -- Not actively using these atm
   -- "elixirls",
   -- "rust_analyzer",
   -- "fsautocomplete",
@@ -114,15 +116,20 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
     { name = 'luasnip' },
-    -- { name = 'spell' },
+    { name = 'path' },
+    { name = 'spell' },
   }, {
     { name = 'buffer' },
   })
 })
 
+vim.opt.spelllang = { 'en_us' }
+
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp')
+  .update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- lsp_status.register_progress()
 -- capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)

@@ -13,6 +13,9 @@ end
 -- :PackerUpdate
 -- :PackerSync
 require('packer').startup(function(use)
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
+
   -- Plugins with too much config to have all in
   -- the same file
   require('plugins.lsp')(use)
@@ -21,6 +24,7 @@ require('packer').startup(function(use)
   require('plugins.statusline')(use)
   require('plugins.browsing')(use)
   require('plugins.finding')(use)
+  require('plugins.visuals')(use)
 
   -- NOTE: previously tried plugins
   --   twilight.nvim
@@ -35,12 +39,6 @@ require('packer').startup(function(use)
   use 'rcarriga/nvim-notify'
 
   ----------------------
-  -- Syntax / Theme
-  ----------------------
-  use 'joshdick/onedark.vim'
-  use 'sainnhe/edge'
-
-  ----------------------
   -- Editor Behavior
   ----------------------
   use 'tpope/vim-surround'
@@ -48,7 +46,6 @@ require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'ntpeters/vim-better-whitespace'
   use 'windwp/nvim-autopairs'
-  use 'stevearc/dressing.nvim'
   use 'editorconfig/editorconfig-vim'
   use {
     'abecodes/tabout.nvim',
@@ -58,18 +55,6 @@ require('packer').startup(function(use)
     wants = { 'nvim-treesitter' }
   }
 
-  -- https://github.com/Pocco81/DAPInstall.nvim
-  -- use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-  ----------------------
-  -- Information
-  ----------------------
-  use 'airblade/vim-gitgutter'
-  -- Indentation indication
-  -- use "lukas-reineke/indent-blankline.nvim"
-  -- colorize various color-like tokens in code
-  use 'norcalli/nvim-colorizer.lua'
-  -- tree-sitter plugin, colorizez brackets and parens
-  use 'p00f/nvim-ts-rainbow'
 
   --  ¯\_( ツ )_/¯
   -- kinda broken -- overriding tab breaks everything
