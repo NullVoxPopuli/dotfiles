@@ -1,24 +1,21 @@
 #####################
 # Install Common Deps
 #####################
-# veromix \
-sudo apt install -y \
-  git curl xclip \
-  gparted gufw \
-  build-essential \
-  audacity clementine \
-  gimp kdenlive vlc \
-  i3 exa \
-  libappindicator1 \
-  fonts-font-awesome fonts-powerline \
-  python3-pip \
-  imagemagick \
-  exa bat
+# quality of life
+sudo apt install xclip gufw exa bat libappindicator1 fonts-font-awesome fonts-powerline
+
+# personal stuff for various projects
+sudo apt install gparted audacity
+# old / haven't used in a while:
+#   clementine
+#   veromix
+#   kdenlive
+#   gimp
+
+# hobby / work stuff
+sudo apt install git curl build-essential i3 python3-pip imagemagick
 
 sudo snap install dust
-
-# Screenshot to clipboard
-sudo pip install escrotum
 
 # Volta / node manager
 curl https://get.volta.sh | bash
@@ -28,10 +25,6 @@ sudo apt install silversearcher-ag
 pip install neovim
 pip3 install neovim
 pip3 install --user pynvim
-
-# vim-plug
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
