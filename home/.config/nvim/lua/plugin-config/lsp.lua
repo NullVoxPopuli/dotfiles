@@ -84,7 +84,7 @@ cmp.setup({
     end,
   },
   window = {
-    -- completion = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
@@ -115,6 +115,7 @@ cmp.setup({
     end
   }),
   sources = cmp.config.sources({
+    { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'luasnip' },
@@ -147,6 +148,8 @@ for _, serverName in ipairs(servers) do
         -- Helpers, Utilities, etc. (lua -> vim apis are verbose)
         local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
         local function n(line) vim.cmd([[nnoremap ]] .. line) end
+        local function i(line) vim.cmd([[inoremap ]] .. line) end
+
 
         buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -159,6 +162,8 @@ for _, serverName in ipairs(servers) do
         n([[<leader>ff :lua vim.lsp.buf.format({ async = true })<CR>]])
 
         n([[<leader><Space> :lua vim.lsp.buf.hover()<CR>]])
+        -- n([[<leader><Space> :lua vim.lsp.buf.signature_help()<CR>]])
+        n([[<leader>e :lua vim.diagnostic.open_float()<CR>]])
         n([[<leader>a :lua vim.lsp.buf.code_action()<CR>]])
         n([[<leader>rn :lua vim.lsp.buf.rename()<CR>]])
 
@@ -179,22 +184,7 @@ for _, serverName in ipairs(servers) do
           -- end
         -- end
 
-        -- Show line diagnostics automatically in hover window
-        vim.api.nvim_create_autocmd("CursorHold", {
-          buffer = bufnr,
-          callback = function()
-            local opts = {
-              focusable = false,
-              close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-              border = 'rounded',
-              source = 'always',
-              prefix = ' ',
-              scope = 'cursor',
-            }
-            vim.diagnostic.open_float(nil, opts)
-          end
-        })
-
+        -- vim.api.nvim_exec([[ autocmd CursorHoldI <buffer> lua vim.lsup.buf.signature_help()]], false)
       end
     })
   end
@@ -222,6 +212,6 @@ vim.diagnostic.config({
   signs = true,
   underline = true,
   update_in_insert = false,
-  severity_sort = false,
+  severity_sort = true,
 })
 
