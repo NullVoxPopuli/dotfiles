@@ -1,8 +1,8 @@
 local cmp = require'cmp'
 local lsp = require('lspconfig')
 local notify = require('notify')
-
 -- local lsp_status = require('lsp-status')
+-- local lsp_spinner = require('lsp_spinner')
 
 local servers = {
   --------------
@@ -134,6 +134,8 @@ local capabilities = require('cmp_nvim_lsp')
 
 -- lsp_status.register_progress()
 -- capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
+-- lsp_spinner.setup()
+-- lsp_spinner.init_capabilities(capabilities)
 
 for _, serverName in ipairs(servers) do
   local server = lsp[serverName]
@@ -144,28 +146,32 @@ for _, serverName in ipairs(servers) do
       settings = mySettings[serverName],
       on_attach = function(client, bufnr)
         -- lsp_status.on_attach(client)
+        -- lsp_spinner.on_attach(client, bufnr)
 
         -- Helpers, Utilities, etc. (lua -> vim apis are verbose)
         local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-        local function n(line) vim.cmd([[nnoremap ]] .. line) end
-        local function i(line) vim.cmd([[inoremap ]] .. line) end
+        local function n(key, line)
+          vim.api.nvim_buf_set_keymap(bufnr, 'n', key, '<cmd>lua ' .. line .. '<CR>', { noremap = true, silent = true })
+        end
+        local function i(key, line)
+          vim.api.nvim_buf_set_keymap(bufnr, 'i', key, '<cmd>lua ' .. line .. '<CR>', { noremap = true, silent = true })
+        end
 
 
         buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
         -- Global keymaps (no-remap by default, cause... sanity)
-        n([[gD :lua vim.lsp.buf.declaration()<CR>]])
-        n([[gd :lua vim.lsp.buf.definition()<CR>]])
-        n([[gi :lua vim.lsp.buf.implementation()<CR>]])
-        n([[gt :lua vim.lsp.buf.type_definition()<CR>]])
-        n([[gr :lua vim.lsp.buf.references()<CR>]])
-        n([[<leader>ff :lua vim.lsp.buf.format({ async = true })<CR>]])
+        n('gD', 'vim.lsp.buf.declaration()')
+        n('gd', 'vim.lsp.buf.definition()')
+        n('gi', 'vim.lsp.buf.implementation()')
+        n('gt', 'vim.lsp.buf.type_definition()')
+        n('gr', 'vim.lsp.buf.references()')
+        n('<leader>ff', 'vim.lsp.buf.format({ async = true })')
 
-        n([[<leader><Space> :lua vim.lsp.buf.hover()<CR>]])
-        -- n([[<leader><Space> :lua vim.lsp.buf.signature_help()<CR>]])
-        n([[<leader>e :lua vim.diagnostic.open_float()<CR>]])
-        n([[<leader>a :lua vim.lsp.buf.code_action()<CR>]])
-        n([[<leader>rn :lua vim.lsp.buf.rename()<CR>]])
+        n('<leader><Space>', 'vim.lsp.buf.hover()')
+        n('<leader>e', 'vim.diagnostic.open_float()')
+        n('<leader>a', 'vim.lsp.buf.code_action()')
+        n('<leader>rn', 'vim.lsp.buf.rename()')
 
         -- Server-specific things to do
         if client.name == 'eslint' then
@@ -183,8 +189,12 @@ for _, serverName in ipairs(servers) do
           --   n([[<leader>ff :silent ! $(npm bin ember-template-lint)/ember-template-lint ]] .. name .. [[<CR>]])
           -- end
         -- end
-
-        -- vim.api.nvim_exec([[ autocmd CursorHoldI <buffer> lua vim.lsup.buf.signature_help()]], false)
+        -- vim.api.nvim_exec([[
+        --   augroup lsp_au
+        --     autocmd! * <buffer>
+        --     autocmd CursorHoldI <buffer> lua vim.lsp.buf.signature_help()
+        --   augroup END
+        -- ]], false)
       end
     })
   end

@@ -5,18 +5,11 @@ set nocompatible
 
 " Actual config split out here
 lua require('plugins')
+so ~/.config/nvim/theme.vim
 lua require('plugin-config')
 so ~/.config/nvim/editor.vim
 so ~/.config/nvim/functions.vim
 so ~/.config/nvim/keymap.vim
-so ~/.config/nvim/theme.vim
-
-lua << EOF
--- I don't think anything uses this yet
---  vim.notify = require("notify")
-require('nvim-autopairs').setup{}
-EOF
-
 
 augroup ShouldBeDefaults
   autocmd!

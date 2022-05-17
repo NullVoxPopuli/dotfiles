@@ -24,7 +24,10 @@ return function(use)
     }
 
 
+  -- Do any of these work?
   -- https://github.com/arkav/lualine-lsp-progress
   -- Plugin for lualine
   -- use 'arkav/lualine-lsp-progress'
+  -- use 'nvim-lua/lsp-status.nvim'
+  -- use 'doums/lsp_spinner.nvim'
 end

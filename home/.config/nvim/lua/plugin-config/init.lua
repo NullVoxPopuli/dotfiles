@@ -7,4 +7,4 @@ require('plugin-config.lsp')
 vim.notify = require('notify')
 vim.notify.setup { level = 'warn' }
 
-
+require('nvim-autopairs').setup{}
