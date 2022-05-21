@@ -80,6 +80,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Python....
 export PATH="$HOME/.pythons/Python-3.6.3/bin:$PATH"
 
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
 
 # http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
 # --files: List files that would be searched but do not search

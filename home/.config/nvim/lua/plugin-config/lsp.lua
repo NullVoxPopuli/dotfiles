@@ -115,7 +115,6 @@ cmp.setup({
     end
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'luasnip' },
@@ -147,6 +146,9 @@ for _, serverName in ipairs(servers) do
       on_attach = function(client, bufnr)
         -- lsp_status.on_attach(client)
         -- lsp_spinner.on_attach(client, bufnr)
+        require "lsp_signature".on_attach({
+          hint_enable = false
+        })
 
         -- Helpers, Utilities, etc. (lua -> vim apis are verbose)
         local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end

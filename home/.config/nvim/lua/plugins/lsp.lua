@@ -12,7 +12,9 @@ return function(use)
      requires = {
        -- Completion Sources
        'hrsh7th/cmp-nvim-lsp',
-       'hrsh7th/cmp-nvim-lsp-signature-help',
+       -- Considered hacky (by the author)
+       -- https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/issues/12#issuecomment-1128820104
+       -- 'hrsh7th/cmp-nvim-lsp-signature-help',
        'hrsh7th/cmp-buffer',
        'hrsh7th/cmp-path',
        'hrsh7th/cmp-nvim-lua',
@@ -22,6 +24,8 @@ return function(use)
        'L3MON4D3/LuaSnip'
       }
     }
+
+  use 'ray-x/lsp_signature.nvim'
 
 
   -- Do any of these work?
