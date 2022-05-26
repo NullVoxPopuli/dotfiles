@@ -50,6 +50,10 @@
     },
     {
       "class": "Jammy"
+    },
+    {
+      "class": "Signal",
+      "title": "Signal Desktop Preferences"
     }
   ],
   "skiptaskbarhidden": [],

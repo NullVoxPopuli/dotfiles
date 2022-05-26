@@ -5,6 +5,6 @@ require('plugin-config.lsp')
 
 -- Fancy notification from nvim-notify
 vim.notify = require('notify')
-vim.notify.setup { level = 'warn' }
+vim.notify.setup { level = 'error' }
 
 require('nvim-autopairs').setup{}

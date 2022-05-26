@@ -28,6 +28,8 @@ return function(use)
   use 'ray-x/lsp_signature.nvim'
 
 
+  use 'j-hui/fidget.nvim'
+
   -- Do any of these work?
   -- https://github.com/arkav/lualine-lsp-progress
   -- Plugin for lualine

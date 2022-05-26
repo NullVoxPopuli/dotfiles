@@ -61,6 +61,9 @@ local mySettings = {
   }
 }
 
+-- https://github.com/j-hui/fidget.nvim
+require"fidget".setup {}
+
 require("nvim-lsp-installer").setup {
   ensure_installed = servers,
   automatic_installation = true,
