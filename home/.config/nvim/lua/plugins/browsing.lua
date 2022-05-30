@@ -44,7 +44,7 @@ return function(use)
         open_on_tab = false,
 
         filters = {
-          custom = { '.git', 'node_modules', '.cache', 'dist', 'tmp', 'declarations' }
+          custom = { '.git/', 'node_modules', '.cache', 'dist', 'tmp', 'declarations' }
         },
 
         diagnostics = {
