@@ -36,6 +36,8 @@ local servers = {
   "eslint",
 }
 
+vim.keymap.set("n", "<A-r>", ":IncRename ")
+
 ---------------------------
 -- Settings and other available servers
 --  https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md

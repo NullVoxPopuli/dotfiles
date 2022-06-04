@@ -28,12 +28,21 @@ return function(use)
   use 'ray-x/lsp_signature.nvim'
 
 
+  -- LSP status on the bottom right as hint text.
+  -- subtle.
+  --  Better than:
+  --    use 'arkav/lualine-lsp-progress'
+  --    use 'nvim-lua/lsp-status.nvim'
+  --    use 'doums/lsp_spinner.nvim'
+  --
+  --  In that, this works (and is unobtrusive visually, and to the config)
   use 'j-hui/fidget.nvim'
 
-  -- Do any of these work?
-  -- https://github.com/arkav/lualine-lsp-progress
-  -- Plugin for lualine
-  -- use 'arkav/lualine-lsp-progress'
-  -- use 'nvim-lua/lsp-status.nvim'
-  -- use 'doums/lsp_spinner.nvim'
+  use {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      -- Default: <leader>r
+      require("inc_rename").setup()
+    end,
+  }
 end

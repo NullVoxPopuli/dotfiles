@@ -55,7 +55,6 @@ require('packer').startup(function(use)
     wants = { 'nvim-treesitter' }
   }
 
-
   --  ¯\_( ツ )_/¯
   -- kinda broken -- overriding tab breaks everything
   -- issues are disabled on the repo, no support
