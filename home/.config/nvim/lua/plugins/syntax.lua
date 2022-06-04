@@ -22,6 +22,9 @@ return function(use)
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require'nvim-treesitter.configs'.setup {
+        context_commentstring = {
+          enable = true,
+        },
         ensure_installed = {
           -- "markdown", -- buggy
           "javascript", "typescript", "glimmer", "tsx",
@@ -62,4 +65,19 @@ return function(use)
       }
     end
   }
+
+  -- Useful for large functions or in unfamiliar code
+  use 'nvim-treesitter/nvim-treesitter-context'
+
+  -- Comments in embedded languages via treesitter
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  -- TreeSitter-aware spell checking
+  -- not enabled for now, because there is yet to be a solidy LSP integration with spell
+  -- use {
+  --   'lewis6991/spellsitter.nvim',
+  --   config = function()
+  --     require('spellsitter').setup()
+  --   end
+  -- }
 end

@@ -20,7 +20,7 @@ require('packer').startup(function(use)
   -- the same file
   require('plugins.lsp')(use)
   require('plugins.linting')(use)
-  require('plugins.highlighting')(use)
+  require('plugins.syntax')(use)
   require('plugins.statusline')(use)
   require('plugins.browsing')(use)
   require('plugins.finding')(use)
