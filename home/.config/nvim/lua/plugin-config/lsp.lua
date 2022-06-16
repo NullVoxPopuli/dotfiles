@@ -207,12 +207,6 @@ for _, serverName in ipairs(servers) do
   end
 end
 
-vim.diagnostic.config({
-  virtual_text = {
-    prefix = '➢', -- Could be '●', '▎', 'x'
-    source = 'always'
-  }
-})
 
 -- Change diagnostic symbols in the sign column (gutter)
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#change-diagnostic-symbols-in-the-sign-column-gutter
@@ -230,5 +224,12 @@ vim.diagnostic.config({
   underline = true,
   update_in_insert = false,
   severity_sort = true,
+  float = {
+    show_header = false,
+    source = 'if_many',
+    border = 'rounded',
+    -- So we can copy-paste errors to chat
+    focusable = true,
+  },
 })
 
