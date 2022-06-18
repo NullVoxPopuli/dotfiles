@@ -12,7 +12,8 @@ local servers = {
   "yamlls",
   "cssls",
   "sumneko_lua",
-  "tsserver",
+  -- tsserver disabled while glint is in use
+  -- "tsserver",
   "bashls",
   -- Not actively using these atm
   -- "elixirls",
@@ -144,7 +145,8 @@ local capabilities = require('cmp_nvim_lsp')
 for _, serverName in ipairs(servers) do
   local server = lsp[serverName]
 
-  if server then
+  -- TODO: only disable TS when glint is available
+  if (server and (server ~= 'tsserver')) then
     server.setup({
       capabilities = capabilities,
       settings = mySettings[serverName],
@@ -226,7 +228,7 @@ vim.diagnostic.config({
   severity_sort = true,
   float = {
     show_header = false,
-    source = 'if_many',
+    source = true,
     border = 'rounded',
     -- So we can copy-paste errors to chat
     focusable = true,
