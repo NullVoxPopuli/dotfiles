@@ -3,8 +3,6 @@
 ----------------------
 return function(use)
 
-  -- Tree-sitter markdown seems buggy and unmaintained
-  use 'plasticboy/vim-markdown'
   use {
     'Quramy/vim-js-pretty-template',
     setup = function()
@@ -17,7 +15,7 @@ return function(use)
   }
 
   -- for developing highlights
-  -- use 'nvim-treesitter/playground' -- debugging / reporting bugs
+  use 'nvim-treesitter/playground' -- debugging / reporting bugs
   use {
     'nvim-treesitter/nvim-treesitter',
     config = function()
@@ -26,13 +24,18 @@ return function(use)
           enable = true,
         },
         ensure_installed = {
-          -- "markdown", -- buggy
-          "javascript", "typescript", "glimmer", "tsx",
-          "html", "jsdoc", "regex", "bash",
-          "toml", "html", "jsonc",
-          "css", "lua",
+          "javascript", "typescript",
+          "html", "css", "jsdoc", "regex",
+          "markdown",
+          "glimmer", "tsx", "svelte",
+          "toml", "html", "jsonc", "dockerfile",
+          "graphql",
+          "lua", "vim",
           "commonlisp",
-          "c"
+          "bash", "comment",
+          "c", "cmake",
+          -- Specifically for the treesitter AST
+          "query"
         },
         ignore_install = {
           "json" -- jsonc is better
@@ -45,7 +48,7 @@ return function(use)
           extended_mode = true,
         },
         playground = {
-          enable = false,
+          enable = true,
           disable = {},
           updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
           persist_queries = false, -- Whether the query persists across vim sessions

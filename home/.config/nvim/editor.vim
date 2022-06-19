@@ -40,8 +40,10 @@ let &showbreak='⇢ ' " the wrapped part of a line is indented a bit
 set hlsearch  " highlight search terms
 set list      " show whitespace
 
-" set whitespace chars
-set listchars=eol:¬,tab:>·,extends:>,precedes:<,space:·
+" set whitespace chars - everything
+" set listchars=eol:¬,tab:>·,extends:>,precedes:<,space:·
+" set whitespace chars - minimal
+set listchars=eol:¬,extends:>,precedes:<
 
 set autoread   " Autoload reload files when they have changed on the disk
 

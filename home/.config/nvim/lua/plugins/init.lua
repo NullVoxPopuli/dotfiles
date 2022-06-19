@@ -16,9 +16,13 @@ require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- *aggressive* caching
+  use 'lewis6991/impatient.nvim'
+
   -- Plugins with too much config to have all in
   -- the same file
   require('plugins.lsp')(use)
+  require('plugins.debugging')(use)
   require('plugins.linting')(use)
   require('plugins.syntax')(use)
   require('plugins.statusline')(use)

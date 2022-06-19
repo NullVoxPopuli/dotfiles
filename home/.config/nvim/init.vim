@@ -3,6 +3,9 @@
 " https://stackoverflow.com/questions/5845557/in-a-vimrc-is-set-nocompatible-completely-useless
 set nocompatible
 
+" Activate aggressive cache
+lua require('impatient')
+
 " Actual config split out here
 lua require('plugins')
 so ~/.config/nvim/theme.vim

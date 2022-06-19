@@ -12,8 +12,7 @@ local servers = {
   "yamlls",
   "cssls",
   "sumneko_lua",
-  -- tsserver disabled while glint is in use
-  -- "tsserver",
+  "tsserver",
   "bashls",
   -- Not actively using these atm
   -- "elixirls",

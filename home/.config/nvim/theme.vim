@@ -28,6 +28,21 @@ highlight! Terminal guibg=#202230
 highlight! EndOfBuffer guibg=#202230
 " default neon bg: 2f3242
 highlight! SignColumn guibg=#262836
+" disable italic on Type
+highlight! Type cterm=NONE gui=NONE guifg=#9988cc
+" most themes link TS Groups to Basic AF colors
+highlight! TSType guifg=#cc9988
+highlight! TSTypeBuiltin guifg=#bbaadd
+" Too much red
+highlight! TSProperty guifg=#bbccff
+" highlight! TSParameter guifg=#ff88cc
+highlight! TSVariable guifg=#ff8888
+highlight! TSVariableBuiltin guifg=#9999bb
+highlight! TSTag guifg=#ff99cc
+highlight! TSTagDelimiter guifg=#ffccff
+highlight! TSURI guifg=#559999
+
+
 
 highlight! CursorLine guibg=#262836
 highlight! CursorColumn guibg=#262836
