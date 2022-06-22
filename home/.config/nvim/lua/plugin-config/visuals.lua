@@ -14,3 +14,19 @@ require("indent_blankline").setup {
   },
   show_trailing_blankline_indent = false,
 }
+
+local theta = require("alpha.themes.theta")
+local layout = theta.config.layout
+
+local config = {
+  layout = {
+    layout[0],
+    layout[1],
+    layout[2],
+    layout[3],
+    layout[4]
+  },
+  opts = theta.config.opts
+}
+
+require'alpha'.setup(config)
