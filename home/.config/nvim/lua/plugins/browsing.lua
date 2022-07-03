@@ -19,14 +19,8 @@ return function(use)
     end
   }
 
-  use {
-    'phaazon/hop.nvim',
-    branch = 'v1', -- optional but strongly recommended
-    config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      require'hop'.setup { keys = dvorak_keys }
-    end
-  }
+  -- Very fast motion
+  use 'ggandor/lightspeed.nvim'
 
   use {
     'kyazdani42/nvim-tree.lua',
@@ -50,6 +44,13 @@ return function(use)
         diagnostics = {
           -- lsp info
           enable = true,
+        },
+
+        menu = {
+          actions = {
+            ['Copy File Path'] = 'copy_path',
+            ['Copy File Name'] = 'copy_name'
+          }
         },
 
         view = {

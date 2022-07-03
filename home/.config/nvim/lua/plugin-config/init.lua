@@ -9,5 +9,4 @@ vim.notify = require('notify')
 vim.notify.setup { level = 'error' }
 
 require('nvim-autopairs').setup{}
-
-
+require'lightspeed'.setup {}
