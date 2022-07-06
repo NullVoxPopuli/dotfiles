@@ -25,10 +25,6 @@ return function(use)
   use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
-    setup = function()
-      vim.g.nvim_tree_highlight_opened_files = 0 -- breaks icon color
-      vim.g.nvim_tree_add_trailing = 1
-    end,
     config = function()
       local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
@@ -44,13 +40,6 @@ return function(use)
         diagnostics = {
           -- lsp info
           enable = true,
-        },
-
-        menu = {
-          actions = {
-            ['Copy File Path'] = 'copy_path',
-            ['Copy File Name'] = 'copy_name'
-          }
         },
 
         view = {

@@ -4,6 +4,16 @@ function DEBUG_NODE() {
   eval $@
 }
 
+function node-why() {
+  local dep=$1
+
+  echo ""
+  echo "Node resolves $dep from $PWD to: "
+  echo ""
+  node -e "console.log(require.resolve('$dep'))"
+  echo ""
+}
+
 function pscripts() {
   cat package.json | jq '.scripts'
 }

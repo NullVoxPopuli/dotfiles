@@ -19,6 +19,7 @@ return function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     config = function()
+      require("nvim-treesitter.install").prefer_git = true
       require'nvim-treesitter.configs'.setup {
         context_commentstring = {
           enable = true,

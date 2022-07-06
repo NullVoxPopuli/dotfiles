@@ -20,6 +20,7 @@ augroup ShouldBeDefaults
   " Set everything to jsonc, cause it's easier
   autocmd FileType json set filetype=jsonc
   autocmd FileType json5 set filetype=jsonc
+  autocmd BufRead *.mts set filetype=typescript
 
   " This should be a default
   autocmd BufWritePre * StripWhitespace
