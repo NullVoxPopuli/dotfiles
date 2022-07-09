@@ -93,6 +93,8 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
+    ['<C-Space>'] = cmp.mapping.complete(),
+
     -- Scroll up in docs
     ['<C-k>'] = cmp.mapping.scroll_docs(-4),
     -- Scroll down in docs
