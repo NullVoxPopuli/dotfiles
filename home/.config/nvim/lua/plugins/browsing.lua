@@ -51,9 +51,15 @@ return function(use)
           }
         },
 
+
         renderer = {
           indent_markers = {
             enable = true
+          },
+          icons = {
+            show = {
+              folder_arrow = false
+            }
           }
         },
 
