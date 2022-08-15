@@ -7,7 +7,7 @@ return function(use)
 
   -- Project-wide Search, Find&Replace, with Regex!
   use {
-    'windwp/nvim-spectre',
+    'nvim-pack/nvim-spectre',
     config = function()
       require('spectre').setup({
 

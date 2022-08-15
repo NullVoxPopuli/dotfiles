@@ -66,9 +66,7 @@ local mySettings = {
 -- https://github.com/j-hui/fidget.nvim
 require"fidget".setup {}
 
-require("nvim-lsp-installer").setup {
-  ensure_installed = servers,
-  automatic_installation = true,
+require("mason").setup {
   ui = {
     icons = {
       server_installed = "✓",
@@ -76,6 +74,10 @@ require("nvim-lsp-installer").setup {
       server_uninstalled = "✗"
     }
   }
+}
+require("mason-lspconfig").setup {
+  ensure_installed = servers,
+  automatic_installation = true
 }
 
 

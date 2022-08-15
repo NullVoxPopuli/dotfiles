@@ -54,6 +54,12 @@
     {
       "class": "Signal",
       "title": "Signal Desktop Preferences"
+    },
+    {
+      "class": "piper"
+    },
+    {
+      "class": "screenkey"
     }
   ],
   "skiptaskbarhidden": [],

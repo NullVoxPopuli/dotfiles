@@ -50,6 +50,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'ntpeters/vim-better-whitespace'
   use 'windwp/nvim-autopairs'
+  use 'mg979/vim-visual-multi'
   use 'editorconfig/editorconfig-vim'
   use {
     'abecodes/tabout.nvim',
