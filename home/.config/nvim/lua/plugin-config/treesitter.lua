@@ -53,11 +53,11 @@ if vim.env.JS_DEBUG == 'true' then
   }
 
   -- Resets the highlights
-  -- vim.api.nvim_exec([[
-  --   !rm -r ~/.config/nvim/queries/javascript
-  --   !mkdir -p ~/.config/nvim/queries/javascript
-  --   !ln -s ]] .. jsRepo .. [['/queries/*.scm ~/.config/nvim/queries/javascript/
-  -- ]], true)
+  vim.api.nvim_exec([[
+    !rm -r ~/.config/nvim/queries/javascript
+    !mkdir -p ~/.config/nvim/queries/javascript
+  ]], true)
+  vim.api.nvim_exec("!ln -s " .. jsRepo .. "/queries/*.scm ~/.config/nvim/queries/javascript/", true)
 
   vim.cmd([[
     function JSUpdateAndNotify()
@@ -75,9 +75,9 @@ if vim.env.TS_DEBUG == 'true' then
   local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
   local tsRepo = "~/Development/NullVoxPopuli/tree-sitter-typescript"
 
-  parser_config.javascript = {
+  parser_config.typescript = {
     install_info = {
-      url = tsRepo,
+      url = tsRepo .. "/typescript",
       files = { "src/parser.c", "src/scanner.c" },
     },
   }
@@ -86,8 +86,12 @@ if vim.env.TS_DEBUG == 'true' then
   vim.api.nvim_exec([[
     !rm -r ~/.config/nvim/queries/typescript
     !mkdir -p ~/.config/nvim/queries/typescript
-    !ln -s ]] .. tsRepo .. [['/queries/*.scm ~/.config/nvim/queries/typescript/
   ]], true)
+
+  vim.api.nvim_exec("!ln -s " .. tsRepo .. "/queries/*.scm ~/.config/nvim/queries/typescript/", true)
+
+  local jsRepo = "~/Development/NullVoxPopuli/tree-sitter-javascript"
+  vim.api.nvim_exec("!ln -s " .. jsRepo .. "/queries/*.scm ~/.config/nvim/queries/typescript/", true)
 
   vim.cmd([[
     function TSUpdateAndNotify()

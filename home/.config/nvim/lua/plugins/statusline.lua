@@ -20,7 +20,7 @@ return function(use)
           lualine_a = { {'mode', upper = true} },
           -- lualine_b = { {'branch', icon = ''} },
           lualine_b = { {'diff'} },
-          lualine_c = { {'filename', file_status = false, path = 1 } },
+          lualine_c = { {'filename', file_status = true, path = 1 } },
           lualine_x = { 'filetype' },
           lualine_y = { 'progress' },
           lualine_z = { 'location'  },

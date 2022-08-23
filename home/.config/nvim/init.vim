@@ -13,6 +13,7 @@ lua require('plugin-config')
 so ~/.config/nvim/editor.vim
 so ~/.config/nvim/functions.vim
 so ~/.config/nvim/keymap.vim
+so ~/.config/nvim/clients/init.vim
 
 augroup ShouldBeDefaults
   autocmd!
