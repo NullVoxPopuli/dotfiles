@@ -60,6 +60,13 @@ local mySettings = {
         enable = false,
       },
     }
+  },
+  tsserver = {
+    maxTsServerMemory = 8000,
+    implicitProjectConfig = {
+      experimentalDecorators = true
+    },
+    -- importModuleSpecifier = "shortest"
   }
 }
 
