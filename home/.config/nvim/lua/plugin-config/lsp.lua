@@ -46,6 +46,20 @@ local mySettings = {
   eslint = {
     format = true,
   },
+  tailwindcss = {
+    tailwindCSS = {
+      includeLanguages = {
+        markdown = "html",
+        handlebars = "html",
+        javascript = {
+          glimmer = "javascript"
+        },
+        typescript = {
+          glimmer = "javascript"
+        }
+      }
+    }
+  },
   sumneko_lua = {
     Lua = {
       diagnostics = {
@@ -152,6 +166,7 @@ local capabilities = require('cmp_nvim_lsp')
 -- lsp_spinner.setup()
 -- lsp_spinner.init_capabilities(capabilities)
 
+
 for _, serverName in ipairs(servers) do
   local server = lsp[serverName]
 
@@ -163,9 +178,9 @@ for _, serverName in ipairs(servers) do
       on_attach = function(client, bufnr)
         -- lsp_status.on_attach(client)
         -- lsp_spinner.on_attach(client, bufnr)
-        require "lsp_signature".on_attach({
-          hint_enable = false
-        })
+        -- require "lsp_signature".on_attach({
+        --   fix_pos = true,
+        -- }, bufnr)
 
         -- Helpers, Utilities, etc. (lua -> vim apis are verbose)
         local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -187,6 +202,7 @@ for _, serverName in ipairs(servers) do
         n('gr', 'vim.lsp.buf.references()')
         n('<leader>ff', 'vim.lsp.buf.format({ async = true })')
 
+        n('<C-u>', 'vim.lsp.buf.signature_help()<CR>')
         n('<leader><Space>', 'vim.lsp.buf.hover()')
         n('<leader>e', 'vim.diagnostic.open_float()')
         n('<leader>a', 'vim.lsp.buf.code_action()')

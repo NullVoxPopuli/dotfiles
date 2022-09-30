@@ -2,18 +2,6 @@
 -- Syntax Highlighting
 ----------------------
 return function(use)
-
-  use {
-    'Quramy/vim-js-pretty-template',
-    setup = function()
-      -- Nested syntax highlighting (normally provided by tree-sitter)
-      -- needed for js/ts named template literals in markdown.
-      vim.g.vim_markdown_fenced_languages = {
-        'js=javascript', 'ts=typescript', 'hbs=handlebars', 'bash=sh', 'cjs=javascript', 'mjs=javascript'
-      }
-    end
-  }
-
   -- for developing highlights
   use 'nvim-treesitter/playground' -- debugging / reporting bugs
   use {
@@ -27,6 +15,7 @@ return function(use)
         ensure_installed = {
           "javascript", "typescript",
           "html", "css", "jsdoc", "regex",
+          "ejs",
           "markdown",
           "glimmer", "tsx", "svelte",
           "toml", "html", "jsonc", "dockerfile",

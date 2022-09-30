@@ -44,6 +44,13 @@ return function(use)
 
         view = {
           width = 40,
+          side = 'right',
+          -- float = {
+          --   enable = true,
+          --   open_win_config = {
+          --     width = 42
+          --   }
+          -- },
           mappings = {
             list = {
               { key = "<Tab>", cb = tree_cb("preview") }
