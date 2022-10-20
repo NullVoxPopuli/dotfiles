@@ -159,7 +159,7 @@ vim.opt.spelllang = { 'en_us' }
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp')
-  .update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  .default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- lsp_status.register_progress()
 -- capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
