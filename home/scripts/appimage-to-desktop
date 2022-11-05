@@ -1,0 +1,80 @@
+#!/bin/bash
+
+USAGE="
+
+Usage:
+
+  appimage-to-desktop 'Name of App' \$HOME/Application/path
+
+
+NOTE: only works for GUI-launching AppImages
+
+Convention:
+
+  for the second argument, you must pass a partial path that matches both the icon and the AppImage
+
+  For example,
+
+    appimage-to-desktop 'FireFox' \$HOME/Applications/firefox
+
+    Where at \$HOME/Applications/
+    there are two files:
+      firefox.png
+      firefox-{version}.AppImage
+
+    tab completion will stop at the ambiguity character between the two files.
+"
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+  echo ""
+  echo "Missing arguments!"
+  echo ""
+  echo "$USAGE"
+  exit 1
+fi
+
+name=$1
+icon="$2.png"
+exec="$2*.AppImage"
+spaceless_name=${name//[[:blank:]]/}
+file_location="$HOME/.local/share/applications/$spaceless_name.desktop"
+
+TEMPLATE="[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Icon=$icon
+Exec=$exec
+Name=$name
+"
+
+read -r -d '' warningMessage <<-EOF
+  Create .desktop file at $file_location
+
+  With the contents:
+
+  ---------------
+
+$TEMPLATE
+
+  ---------------
+
+  Confirm? (Y|N)
+EOF
+
+while true; do
+    read -p "$warningMessage" yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* )
+          echo "exiting..."
+          exit 0
+        ;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+echo "$TEMPLATE" > "$file_location"
+chmod +x $file_location
