@@ -24,7 +24,7 @@ augroup ShouldBeDefaults
   autocmd BufRead *.mts set filetype=typescript
 
   " This should be a default
-  autocmd BufWritePre * StripWhitespace
+  autocmd BufWritePre * Format
 augroup END
 
 
