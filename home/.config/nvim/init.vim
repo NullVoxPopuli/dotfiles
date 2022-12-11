@@ -25,9 +25,6 @@ augroup ShouldBeDefaults
   autocmd FileType json set filetype=jsonc
   autocmd FileType json5 set filetype=jsonc
   autocmd BufRead *.mts set filetype=typescript
-
-  " This should be a default
-  autocmd BufWritePre * Format
 augroup END
 
 
