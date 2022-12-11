@@ -15,6 +15,9 @@ so ~/.config/nvim/functions.vim
 so ~/.config/nvim/keymap.vim
 so ~/.config/nvim/clients/init.vim
 
+" Loads the .bash_profile
+set shell=/bin/bash\ --login
+
 augroup ShouldBeDefaults
   autocmd!
   " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
