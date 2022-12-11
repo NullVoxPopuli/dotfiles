@@ -71,7 +71,7 @@ nnoremap <silent> <CR> :noh<CR><CR>
 " Pane Management
 """"""""""""""""""
 " Convert Pane to Terminal
-nnoremap <C-y> :terminal<CR>
+nnoremap <C-y> :IntegratedTerm<CR>
 
 " Creating Panes
 " chtn = up, left, down, right
