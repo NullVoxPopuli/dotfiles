@@ -1,6 +1,10 @@
 local dvorak_keys = "aoeuidhtnsgcrld;qjkxbmwv"
 
 return function(use)
+  -- Very fast motion
+  -- Hotkey 's' in normal mode
+  use 'ggandor/lightspeed.nvim'
+
   use {
     "folke/which-key.nvim",
     config = function()
@@ -18,9 +22,6 @@ return function(use)
       }
     end
   }
-
-  -- Very fast motion
-  use 'ggandor/lightspeed.nvim'
 
   use {
     'kyazdani42/nvim-tree.lua',

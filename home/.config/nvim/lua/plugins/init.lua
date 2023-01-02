@@ -61,9 +61,9 @@ require('packer').startup(function(use)
   }
 
   --  ¯\_( ツ )_/¯
-  -- kinda broken -- overriding tab breaks everything
-  -- issues are disabled on the repo, no support
-  -- use { 'github/copilot.vim' }
+  if os.getenv("COPILOT") == "true" then
+    use { 'github/copilot.vim' }
+  end
 
 
 

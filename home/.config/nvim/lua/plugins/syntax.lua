@@ -13,19 +13,35 @@ return function(use)
           enable = true,
         },
         ensure_installed = {
+          -- Web Languages
           "javascript", "typescript",
-          "html", "css", "jsdoc", "regex",
+          "html", "css", "regex",
           "ejs",
-          "markdown",
+          -- Web Framework Languages
           "glimmer", "tsx", "svelte",
-          "toml", "html", "jsonc", "dockerfile",
+          -- Web Transport Languages
           "graphql",
+          -- Documentation Languages
+          "markdown", "markdown_inline",
+          "help", "comment", "jsdoc",
+          -- Configuration Languages
+          "toml", "jsonc",
+          "dockerfile",
           "lua", "vim",
+          -- Scripting Languages
           "commonlisp",
-          "bash", "comment",
+          "bash",
+          "jq",
+          -- Systems Languages
           "c", "cmake",
+          "rust",
+          "go",
           -- Specifically for the treesitter AST
-          "query"
+          "query",
+          -- Utility Syntaxes
+          "diff",
+          "jq",
+          "git_rebase", "gitcommit", "gitignore"
         },
         ignore_install = {
           "json" -- jsonc is better
@@ -38,7 +54,7 @@ return function(use)
           extended_mode = true,
         },
         playground = {
-          enable = true,
+          enable = false,
           disable = {},
           updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
           persist_queries = false, -- Whether the query persists across vim sessions
