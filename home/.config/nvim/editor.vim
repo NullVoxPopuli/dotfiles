@@ -17,7 +17,8 @@ set cursorcolumn     " highlight the current columnm
 set ruler            " show current position
 
 set number           " line numbers
-set relativenumber   " relative line numbers
+" Because I use `s` for fast motion, this isn't useful to me anymore
+" set relativenumber   " relative line numbers
 
 set backspace=indent,eol,start  " backspace everywhere
 
@@ -92,7 +93,7 @@ set equalalways noequalalways " prevents splits from all auto-adjusting horizont
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable      "" don't open a file with folds, display the whole thing
-set signcolumn=yes    "" always show the signcolumn
+set signcolumn=number    "" make better use of space by putting signs on top of the number in the signcolumn 
 
 "" set the title of the window to the filename
 set title

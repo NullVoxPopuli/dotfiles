@@ -50,27 +50,6 @@ return function (use)
 
   -- https://github.com/emileferreira/nvim-strict
   -- highlights potential codesmells
-  use({
-      'emileferreira/nvim-strict',
-      config = function()
-          require('strict').setup({
-            deep_nesting = {
-              -- JS + HTML gets pretty deep
-              -- (yet still maintainable!)
-              depth_limit = 6,
-              -- more JS Conventions
-              ignored_trailing_characters = ',',
-              ignored_leading_characters = '.'
-            },
-            overlong_lines = {
-              length_limit = 100
-            },
-            -- Things I don't care about
-            trailing_empty_lines = { highlight = false },
-            todos = { highlight = false }
-          })
-      end
-  })
+  -- don't use this, as it breaks JSON files.
 
 end
-
