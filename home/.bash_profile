@@ -98,7 +98,7 @@ export FZF_DEFAULT_COMMAND="\
   -g \"!node_modules\" \
   -g \"!declarations\" \
   -g \"!dist\" \
-  -g \"!.git\" \
+  -g \"!.git\/\" \
   2> /dev/null"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="bfs -type d -nohidden"
