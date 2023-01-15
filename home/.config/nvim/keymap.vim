@@ -124,6 +124,7 @@ nnoremap <F2> :setlocal spell! spelllang=en_us<CR>
 " gc in visual mode
 " for commenting
 map <C-_> gcc
+nnoremap <F5> :lua require('dapui').toggle()<CR>
 
 " Git 
 nnoremap <leader>gs :LazyGit<CR>
