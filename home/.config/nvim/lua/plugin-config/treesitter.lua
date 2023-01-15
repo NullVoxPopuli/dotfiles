@@ -1,3 +1,20 @@
+require('ufo').setup({
+  open_fold_hl_timeout = 0,
+  provider_selector = function(bufnr, filetype, buftype)
+    return {'treesitter'}
+  end
+})
+
+vim.o.foldcolumn = '0' -- '0' is not bad
+vim.o.foldlevel = 20 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = -1
+vim.o.foldenable = true
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
+vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+vim.keymap.set('n', 'z<space>', require('ufo').peekFoldedLinesUnderCursor)
+
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
 parser_config.ejs = {

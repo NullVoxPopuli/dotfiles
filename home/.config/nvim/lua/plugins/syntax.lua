@@ -2,6 +2,9 @@
 -- Syntax Highlighting
 ----------------------
 return function(use)
+  -- Better Folding
+  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
   -- for developing highlights
   use 'nvim-treesitter/playground' -- debugging / reporting bugs
   use {

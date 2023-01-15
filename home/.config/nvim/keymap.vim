@@ -128,13 +128,6 @@ map <C-_> gcc
 " Git 
 nnoremap <leader>gs :LazyGit<CR>
 
-" GitHub Copilot
-" imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
-" let g:copilot_no_tab_map = v:true
-
-" Recursively unfold
-nnoremap <leader>z zczA
-
 " Generate a GUID
 nnoremap <F1> "=trim(system('uuidgen'))<CR>
 
