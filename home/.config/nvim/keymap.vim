@@ -1,5 +1,10 @@
-
+"
+" aka "cheatsheet for how I use vim"
+"
+" ---------------------------------------
+"
 noremap <unique> ' <NOP>
+" I use DVorak, so this is the "Q" position on qwerty keyboards
 let mapleader = "\'"
 let maplocalleader = "\'"
 
@@ -9,10 +14,10 @@ nnoremap ; :
 " swap navigation keys for more ergonomic navigation
 " querty: h j k l -- left down up right (inline)
 " dvorak: h t c n -- left down up right (WASD)
-" querty: j k i l -- left down up right (WASD)
 "
-" NOTE: h doesn't need to be re-mapped, because it happens to be
-"       in the right spot for right-hand dvorak wasd
+" NOTE: basic movement keys should not be remapped,
+"       because so much in (neo)vim depends on hjkl, 
+"       the other keys are generally used, so remap with caution.
 "
 " consider http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/
 
@@ -59,8 +64,8 @@ nnoremap <leader>fp viw:lua require('spectre').open_file_search()<cr>
 nnoremap <C-d> :let @/ = printf("\\<%s\\>", escape(expand('<cword>'), '/\'))<CR> :let &hlsearch = &hlsearch<CR>
 
 """
-nnoremap <C-t> :FzfLua files<CR>
-nmap <leader>gs :FzfLua git_status<CR>
+nnoremap <C-t> <CMD>Telescope smart_open<CR> 
+" nmap <leader>gs :FzfLua git_status<CR>
 " nmap <C-f> :Ag<CR>
 nmap <leader><BSlash> :NvimTreeToggle<CR>
 nmap <leader>l :NvimTreeFindFile<CR>
@@ -120,8 +125,8 @@ nnoremap <F2> :setlocal spell! spelllang=en_us<CR>
 " for commenting
 map <C-_> gcc
 
-" Jump anywhere - similar to vimium
-nnoremap <A-w> :HopWord<CR>
+" Git 
+nnoremap <leader>gs :LazyGit<CR>
 
 " GitHub Copilot
 " imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
@@ -136,12 +141,6 @@ nnoremap <F1> "=trim(system('uuidgen'))<CR>
 " Move Lines Up/Down
 nnoremap <C-j> :move+1<CR>
 nnoremap <C-k> :move-2<CR>
-
-" Autofix via ALE
-" nnoremap <leader>af :ALEFix<CR>
-
-" vim-conflicted
-nnoremap <leader>gm :GitNextConflict<CR>
 
 " " vim-multiple-cursors keymap
 " let g:multi_cursor_start_word_key      = '<C-Enter>'
