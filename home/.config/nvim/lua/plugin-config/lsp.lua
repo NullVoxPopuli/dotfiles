@@ -1,6 +1,7 @@
 local cmp = require'cmp'
 local lsp = require('lspconfig')
 local notify = require('notify')
+local lspkind = require('lspkind')
 -- local lsp_status = require('lsp-status')
 -- local lsp_spinner = require('lsp_spinner')
 
@@ -98,8 +99,10 @@ require("mason").setup {
 }
 require("mason-lspconfig").setup {
   ensure_installed = servers,
-  automatic_installation = true
+  automatic_installation = false
 }
+
+
 
 
 -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#menu-type
@@ -149,13 +152,21 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'nvim_lua' },
     { name = 'luasnip' },
     { name = 'path' },
+  }, {
+    { name = 'copilot'},
+    { name = 'nvim_lua' },
     { name = 'spell' },
   }, {
     { name = 'buffer' },
-  })
+  }),
+  formatting = {
+    fields = {'menu', 'abbr', 'kind'},
+    format = lspkind.cmp_format({
+      symbol_map = { Copilot = "" }
+    })
+},
 })
 
 vim.opt.spelllang = { 'en_us' }

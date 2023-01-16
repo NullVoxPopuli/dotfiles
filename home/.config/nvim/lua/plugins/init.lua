@@ -63,7 +63,37 @@ require('packer').startup(function(use)
 
   --  ¯\_( ツ )_/¯
   if os.getenv("COPILOT") == "true" then
-    use { 'github/copilot.vim' }
+    -- Not very efficient.
+    -- copilot.lua explains why to use the 
+    -- lua version over GitHub's own plugin
+    -- use { 'github/copilot.vim' }
+    use { 
+      "zbirenbaum/copilot.lua",
+      event = "InsertEnter",
+      config = function () 
+        vim.schedule(function()
+          require("copilot").setup({
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+          })
+        end)
+      end
+    }
+    use {
+      "zbirenbaum/copilot-cmp",
+      after = { "copilot.lua", 'lspkind.nvim' },
+      config = function ()
+        require("copilot_cmp").setup()
+        -- local lspkind = require("lspkind")
+        -- lspkind.init({
+        --   symbol_map = {
+        --     Copilot = "",
+        --   },
+        -- })
+
+        -- vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
+      end
+    }
   end
 
 

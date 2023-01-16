@@ -64,7 +64,7 @@ nnoremap <leader>fp viw:lua require('spectre').open_file_search()<cr>
 nnoremap <C-d> :let @/ = printf("\\<%s\\>", escape(expand('<cword>'), '/\'))<CR> :let &hlsearch = &hlsearch<CR>
 
 """
-nnoremap <C-t> <CMD>Telescope smart_open<CR> 
+nnoremap <C-t> :lua require('telescope').extensions.smart_open.smart_open({cwd_only = true})<CR>
 " nmap <leader>gs :FzfLua git_status<CR>
 " nmap <C-f> :Ag<CR>
 nmap <leader><BSlash> :NvimTreeToggle<CR>
