@@ -75,7 +75,9 @@ alias getclip='xclip -selection clipboard -o'
 # [[ $- == *i* ]] && stty -ixon
 
 ### Cargo / Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+if [ -f "$HOME/.cargo/env" ]; then 
+  source "$HOME/.cargo/env"
+fi
 
 # Python....
 export PATH="$HOME/.pythons/Python-3.6.3/bin:$PATH"
