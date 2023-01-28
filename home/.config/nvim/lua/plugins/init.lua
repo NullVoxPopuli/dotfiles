@@ -48,8 +48,6 @@ require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
   use 'kdheepak/lazygit.nvim'
-  -- use 'sindrets/diffview.nvim'
-  -- use 'ntpeters/vim-better-whitespace'
   use 'windwp/nvim-autopairs'
   use 'mg979/vim-visual-multi'
   use 'editorconfig/editorconfig-vim'

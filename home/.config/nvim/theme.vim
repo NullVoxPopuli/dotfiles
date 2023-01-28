@@ -17,6 +17,9 @@ set background=dark
 "
 let g:edge_style = 'neon'
 let g:edge_enable_italic = 1
+let g:edge_better_performance = 1
+let g:edge_dim_foreground = 0
+let g:edge_dim_inactive_windows = 1
 colorscheme edge
 
 " No theme has 100% of what I want.
