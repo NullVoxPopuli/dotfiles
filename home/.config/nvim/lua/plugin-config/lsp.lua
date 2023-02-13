@@ -12,7 +12,7 @@ local servers = {
   "jsonls",
   "yamlls",
   "cssls",
-  "sumneko_lua",
+  "lua_ls",
   "tsserver",
   "bashls",
   -- Not actively using these atm
@@ -61,7 +61,7 @@ local mySettings = {
       }
     }
   },
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       diagnostics = {
         globals = { 'vim' },
