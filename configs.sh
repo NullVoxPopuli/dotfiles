@@ -97,16 +97,6 @@ function keybinding() {
 keybinding 'App Launcher' 'albert toggle' '<Super>d'
 keybinding 'Interactive Screenshot' 'flameshot gui' '<Shift><Super>s'
 
-# Screenshots, disabled for the most part, use flameshot instead
-gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot-clip []
-gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip []
-gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot []
-gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot []
-gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot []
-gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot-clip "['Print']"
-
-
-
 # pop-shell settings
 #
 # schema: https://github.com/pop-os/shell/blob/master/schemas/org.gnome.shell.extensions.pop-shell.gschema.xml
