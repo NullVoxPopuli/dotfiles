@@ -76,6 +76,7 @@ gsettings set org.gnome.desktop.wm.keybindings show-desktop []
 gsettings set org.gnome.mutter overlay-key ""
 gsettings set org.gnome.settings-daemon.plugins.media-keys control-center "['<Super>backslash']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>minus']"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys terminal '<Primary><Alt>t'
 
 keybindingKey=0
 function keybinding() {
