@@ -20,6 +20,7 @@
 
 # Use fixed number of workspaces to simulate i3
 gsettings set org.gnome.mutter dynamic-workspaces false
+gsettings set org.gnome.mutter overlay-key '[<Super>]'
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 10
 
 # Dock-related hotkeys suck
@@ -32,6 +33,7 @@ gsettings set org.gnome.shell.keybindings switch-to-application-6  []
 gsettings set org.gnome.shell.keybindings switch-to-application-7  []
 gsettings set org.gnome.shell.keybindings switch-to-application-8  []
 gsettings set org.gnome.shell.keybindings switch-to-application-9  []
+gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys false
 
 # <Sumer> + <Workspace #>
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1  "['<Super>1']"
