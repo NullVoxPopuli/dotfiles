@@ -26,6 +26,7 @@ export PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"'
 export NODE_OPTIONS='--trace-warnings --unhandled-rejections=strict'
 export GG_PATHS="$HOME/Development/NullVoxPopuli:$HOME/Development/tmp:$HOME/Development/OpenSource:$HOME/Development/Work"
 export GG_PREFIX="$HOME/Development/"
+export COPILOT="true"
 
 # Utilities, etc
 source "$HOME/shell/bash/npm.sh"

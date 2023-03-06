@@ -9,10 +9,10 @@ local servers = {
   --------------
   -- Languages
   "html",
-  "jsonls",
-  "yamlls",
+  -- "jsonls",
+  -- "yamlls",
   "cssls",
-  "lua_ls",
+  -- "lua_ls",
   "tsserver",
   "bashls",
   -- Not actively using these atm
