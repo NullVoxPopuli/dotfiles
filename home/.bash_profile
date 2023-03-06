@@ -7,7 +7,9 @@ if ! [ -x "$(command -v starship)" ]; then
 fi
 
 SCRIPTS="$HOME/scripts"
+# NOTE: see also $HOME/.local/share/applications/
 APPS="$HOME/Applications"
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:$APPS"
 
 # Extend our path, include scripts, etc
 source "$SCRIPTS/bash-support/paths.sh"

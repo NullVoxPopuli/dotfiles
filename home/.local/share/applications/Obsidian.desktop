@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Obsidian
+Comment=Obsidian is a Markdown editor for writers
+Path=/Applications/
+Exec=/Applications/Obsidian-1.1.16.AppImage --no-sandbox %U
+Terminal=false
+Categories=TextEditor;Utility;
+StartupWMClass=obsidian
+MimeType=x-scheme-handler/obsidian
