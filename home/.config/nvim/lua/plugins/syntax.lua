@@ -21,7 +21,7 @@ return function(use)
           "html", "css", "regex",
           "ejs",
           -- Web Framework Languages
-          "glimmer", "tsx", "svelte",
+          "glimmer", "svelte",
           -- Web Transport Languages
           "graphql",
           -- Documentation Languages

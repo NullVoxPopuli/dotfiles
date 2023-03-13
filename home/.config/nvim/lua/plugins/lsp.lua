@@ -6,6 +6,11 @@ return function(use)
   use { 'williamboman/mason.nvim' }
   use { 'williamboman/mason-lspconfig.nvim' }
 
+  -- LSP integration with things that are not LSP
+  -- This provides a unified interface for various tools
+  -- that otherwise would need custom implemenations of the LSP UIs
+  use 'jose-elias-alvarez/null-ls.nvim'
+
   -- Development
   -- use '~/Development/NullVoxPopuli/nvim-lspconfig'
   -- use { 'muziejus/nvim-lspconfig', branch = "glint" }
