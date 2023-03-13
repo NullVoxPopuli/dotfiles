@@ -47,9 +47,7 @@ require('packer').startup(function(use)
   ----------------------
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
-  use 'kdheepak/lazygit.nvim'
-  use 'windwp/nvim-autopairs'
-  use 'mg979/vim-visual-multi'
+  -- use 'kdheepak/lazygit.nvim'
   use 'editorconfig/editorconfig-vim'
   use {
     'abecodes/tabout.nvim',
@@ -91,6 +89,11 @@ require('packer').startup(function(use)
         -- vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
       end
     }
+  else
+    -- This generally isn't needed when using lots of 
+    -- copilot suggestions. Copilot will include the matched pair.
+    -- SEE: https://github.com/zbirenbaum/copilot-cmp/issues/31
+    use 'windwp/nvim-autopairs'
   end
 
 

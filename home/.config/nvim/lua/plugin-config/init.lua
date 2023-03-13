@@ -10,7 +10,7 @@ require('plugin-config.debugging')
 vim.notify = require('notify')
 vim.notify.setup { level = 'error' }
 
-require('nvim-autopairs').setup{}
+-- require('nvim-autopairs').setup{}
 require'lightspeed'.setup {}
 
 vim.api.nvim_create_user_command('IntegratedTerm', function()

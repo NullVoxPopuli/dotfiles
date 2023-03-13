@@ -2,8 +2,6 @@ local cmp = require'cmp'
 local lsp = require('lspconfig')
 local notify = require('notify')
 local lspkind = require('lspkind')
--- local lsp_status = require('lsp-status')
--- local lsp_spinner = require('lsp_spinner')
 
 local servers = {
   --------------
@@ -15,6 +13,7 @@ local servers = {
   -- "lua_ls",
   "tsserver",
   "bashls",
+  "marksman", -- https://github.com/artempyanykh/marksman
   -- Not actively using these atm
   -- "elixirls",
   -- "rust_analyzer",
@@ -108,6 +107,18 @@ require("mason-lspconfig").setup {
 -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#menu-type
 -- for later ^
 cmp.setup({
+  -- Disable completion in comments
+  -- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#disabling-completion-in-certain-contexts-such-as-comments
+  enabled = function()
+    local context = require 'cmp.config.context'
+    -- keep command mode completion enabled when cursor is in a comment
+    if vim.api.nvim_get_mode().mode == 'c' then
+      return true
+    else
+      return not context.in_treesitter_capture("comment") 
+        and not context.in_syntax_group("Comment")
+    end
+  end,
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
@@ -124,9 +135,9 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<C-Space>'] = cmp.mapping.complete(),
 
-    -- Scroll up in docs
+    -- Scroll up in docs -- only works when scrollbar is visible
     ['<C-k>'] = cmp.mapping.scroll_docs(-4),
-    -- Scroll down in docs
+    -- Scroll down in docs -- only works when scrollbar is visible
     ['<C-j>'] = cmp.mapping.scroll_docs(4),
 
     -- Same as the escape key
@@ -163,9 +174,9 @@ cmp.setup({
   }),
   formatting = {
     fields = {'menu', 'abbr', 'kind'},
-    format = lspkind.cmp_format({
-      symbol_map = { Copilot = "" }
-    })
+    -- format = lspkind.cmp_format({
+    --   symbol_map = { Copilot = "" }
+    -- })
 },
 })
 
@@ -175,77 +186,123 @@ vim.opt.spelllang = { 'en_us' }
 local capabilities = require('cmp_nvim_lsp')
   .default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- lsp_status.register_progress()
--- capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
--- lsp_spinner.setup()
--- lsp_spinner.init_capabilities(capabilities)
+local function keymap(bufnr)
+  -- Helpers, Utilities, etc. (lua -> vim apis are verbose)
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  local function n(key, line)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', key, '<cmd>lua ' .. line .. '<CR>', { noremap = true, silent = true })
+  end
+  local function i(key, line)
+    vim.api.nvim_buf_set_keymap(bufnr, 'i', key, '<cmd>lua ' .. line .. '<CR>', { noremap = true, silent = true })
+  end
 
+
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Global keymaps (no-remap by default, cause... sanity)
+  n('gD', 'vim.lsp.buf.declaration()')
+  n('gd', 'vim.lsp.buf.definition()')
+  n('gi', 'vim.lsp.buf.implementation()')
+  n('gt', 'vim.lsp.buf.type_definition()')
+  n('gr', 'vim.lsp.buf.references()')
+  n('<leader>ff', 'vim.lsp.buf.format({ async = true })')
+
+  n('<leader>u', 'vim.lsp.buf.signature_help()<CR>')
+  n('<leader><Space>', 'vim.lsp.buf.hover()')
+  n('<leader>e', 'vim.diagnostic.open_float()')
+  n('<leader>a', 'vim.lsp.buf.code_action()')
+  n('<leader>rn', 'vim.lsp.buf.rename()')
+end
+
+local function readFile(filePath)
+  local file = io.open(filePath, "r")
+  local contents = file:read("*all")
+
+  file:close()
+
+  return contents;
+end
+
+local function read_nearest_ts_config(fromFile) 
+  local rootDir = lsp.util.root_pattern('tsconfig.json')(fromFile);
+
+  if not rootDir then 
+    return nil 
+  end
+
+  local tsConfig = rootDir .. "/tsconfig.json"
+  local contents = readFile(tsConfig)
+  local isGlint = string.find(contents, '"glint"')
+
+  return { 
+    isGlint = not not isGlint,
+    rootDir = rootDir,
+  };
+end
+
+-- See:
+-- :help lspconfig 
+-- search for ROOT DIRECTORY DETECTION
+local function is_glint_project(filename, bufnr) 
+  local result = read_nearest_ts_config(filename)
+  
+  if not result then 
+    return nil
+  end
+
+  if (not result.isGlint) then 
+    return nil
+  end
+
+  return result.rootDir 
+end
+
+local function is_ts_project(filename, bufnr) 
+  local result = read_nearest_ts_config(filename)
+
+  if not result then 
+    return nil
+  end 
+
+  if (result.isGlint) then 
+    return nil
+  end
+
+  return result.rootDir
+end
 
 for _, serverName in ipairs(servers) do
   local server = lsp[serverName]
 
-  -- TODO: only disable TS when glint is available
-  if (server and (server ~= 'tsserver')) then
-    server.setup({
-      capabilities = capabilities,
-      settings = mySettings[serverName],
-      on_attach = function(client, bufnr)
-        -- lsp_status.on_attach(client)
-        -- lsp_spinner.on_attach(client, bufnr)
-        -- require "lsp_signature".on_attach({
-        --   fix_pos = true,
-        -- }, bufnr)
-
-        -- Helpers, Utilities, etc. (lua -> vim apis are verbose)
-        local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-        local function n(key, line)
-          vim.api.nvim_buf_set_keymap(bufnr, 'n', key, '<cmd>lua ' .. line .. '<CR>', { noremap = true, silent = true })
+  if (server) then
+    if (serverName == 'tsserver') then 
+      server.setup({
+        single_file_support = false,
+        root_dir = is_ts_project,
+        capabilities = capabilities,
+        settings = mySettings[serverName],
+        on_attach = function(client, bufnr)
+          keymap(bufnr)
         end
-        local function i(key, line)
-          vim.api.nvim_buf_set_keymap(bufnr, 'i', key, '<cmd>lua ' .. line .. '<CR>', { noremap = true, silent = true })
+      })
+    elseif (serverName == 'glint') then 
+      server.setup({
+        root_dir = is_glint_project,
+        capabilities = capabilities,
+        settings = mySettings[serverName],
+        on_attach = function(client, bufnr)
+          keymap(bufnr)
         end
-
-
-        buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-        -- Global keymaps (no-remap by default, cause... sanity)
-        n('gD', 'vim.lsp.buf.declaration()')
-        n('gd', 'vim.lsp.buf.definition()')
-        n('gi', 'vim.lsp.buf.implementation()')
-        n('gt', 'vim.lsp.buf.type_definition()')
-        n('gr', 'vim.lsp.buf.references()')
-        n('<leader>ff', 'vim.lsp.buf.format({ async = true })')
-
-        n('<C-u>', 'vim.lsp.buf.signature_help()<CR>')
-        n('<leader><Space>', 'vim.lsp.buf.hover()')
-        n('<leader>e', 'vim.diagnostic.open_float()')
-        n('<leader>a', 'vim.lsp.buf.code_action()')
-        n('<leader>rn', 'vim.lsp.buf.rename()')
-
-        -- Server-specific things to do
-        if client.name == 'eslint' then
-          -- This only works for now because most of what I write is js/ts, but this is technically incorrect
-          -- n([[<leader>ff :EslintFixAll<CR>]])
-          client.server_capabilities.document_formatting = true
+      })
+    else
+      server.setup({
+        capabilities = capabilities,
+        settings = mySettings[serverName],
+        on_attach = function(client, bufnr)
+          keymap(bufnr)
         end
-
-        -- if serverName == 'ember' then
-          -- Need Language Server support for invoking this as a formatter
-          -- local name = vim.api.nvim_buf_get_name(bufnr)
-          -- local isHbs = name:sub(-string.len('.hbs')) == '.hbs'
-
-          -- if (isHbs) then
-          --   n([[<leader>ff :silent ! $(npm bin ember-template-lint)/ember-template-lint ]] .. name .. [[<CR>]])
-          -- end
-        -- end
-        -- vim.api.nvim_exec([[
-        --   augroup lsp_au
-        --     autocmd! * <buffer>
-        --     autocmd CursorHoldI <buffer> lua vim.lsp.buf.signature_help()
-        --   augroup END
-        -- ]], false)
-      end
-    })
+      })
+    end
   end
 end
 
