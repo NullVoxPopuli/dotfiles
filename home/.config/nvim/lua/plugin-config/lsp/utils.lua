@@ -1,5 +1,12 @@
+local lsp = require('lspconfig')
+
 local function readFile(filePath)
   local file = io.open(filePath, "r")
+
+  if not file then
+    return nil
+  end
+
   local contents = file:read("*all")
 
   file:close()
@@ -7,18 +14,24 @@ local function readFile(filePath)
   return contents;
 end
 
-local function read_nearest_ts_config(fromFile) 
+local function read_nearest_ts_config(fromFile)
   local rootDir = lsp.util.root_pattern('tsconfig.json')(fromFile);
 
-  if not rootDir then 
-    return nil 
+  if not rootDir then
+    return nil
   end
 
   local tsConfig = rootDir .. "/tsconfig.json"
   local contents = readFile(tsConfig)
+
+  if not contents then
+    return nil
+  end
+
+  
   local isGlint = string.find(contents, '"glint"')
 
-  return { 
+  return {
     isGlint = not not isGlint,
     rootDir = rootDir,
   };
@@ -38,13 +51,13 @@ local function is_glint_project(filename, bufnr)
     return nil
   end
 
-  return result.rootDir 
+  return result.rootDir
 end
 
 local function is_ts_project(filename, bufnr) 
   local result = read_nearest_ts_config(filename)
 
-  if not result then 
+  if not result then
     return nil
   end 
 

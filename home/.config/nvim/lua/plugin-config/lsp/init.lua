@@ -10,8 +10,11 @@ require('plugin-config.lsp.integrations')
 local servers = {
   --------------
   -- Languages
+  --
+  -- NOTE:
+  --   jsonls doesn't support jsonc (it just does JSON.parse and reports errors)
+  --------------
   "html",
-  -- "jsonls", -- jsonls doesn't support jsonc (it just does JSON.parse and reports errors)
   "yamlls",
   "cssls",
   "lua_ls",
@@ -34,12 +37,6 @@ local servers = {
   "tailwindcss",
   "graphql",
   "dockerls",
-
-  --------------
-  -- Linting
-  -- Linting and Formatting handled by null_ls via daemonized implementations
-  -- of the linting and formatting tools
-  -- "eslint",
 }
 
 
