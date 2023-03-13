@@ -40,7 +40,16 @@ return function (use)
   ----------------------
   scrollbar(use)
 
-  use 'airblade/vim-gitgutter'
+  -- Debounced / low-resource git-sign column integration
+  -- Provides blame via line via <leader>gb (custom in keymap.vim) 
+  --
+  -- See: https://github.com/lewis6991/gitsigns.nvim#comparison-with-vim-gitgutter
+  use { 
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
   -- Indentation indication
   use "lukas-reineke/indent-blankline.nvim"
   -- colorize various color-like tokens in code

@@ -128,6 +128,8 @@ nnoremap <F5> :lua require('dapui').toggle()<CR>
 
 " Git 
 nnoremap <leader>gs :LazyGit<CR>
+nnoremap <leader>gbi :Gitsigns toggle_current_line_blame<CR>
+nnoremap <leader>gb <cmd>lua require"gitsigns".blame_line{full=true}<CR>
 
 " Generate a GUID
 nnoremap <F1> "=trim(system('uuidgen'))<CR>
