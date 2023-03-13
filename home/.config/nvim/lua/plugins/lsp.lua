@@ -8,8 +8,11 @@ return function(use)
 
   -- LSP integration with things that are not LSP
   -- This provides a unified interface for various tools
-  -- that otherwise would need custom implemenations of the LSP UIs
-  use 'jose-elias-alvarez/null-ls.nvim'
+  -- that otherwise would need custom implementations of the LSP UIs
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = { "nvim-lua/plenary.nvim" }
+  }
 
   -- Development
   -- use '~/Development/NullVoxPopuli/nvim-lspconfig'

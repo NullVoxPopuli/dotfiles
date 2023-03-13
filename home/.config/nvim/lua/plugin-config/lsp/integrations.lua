@@ -12,36 +12,44 @@ local null_ls = require('null-ls')
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 -- TODO: figure out how to wire up ember-template-lint
-local lsp_formatting = function(bufnr)
-    vim.lsp.buf.format({
-        filter = function(client)
-            -- apply whatever logic you want (in this example, we'll only use null-ls)
-            return client.name == "null-ls"
-        end,
-        bufnr = bufnr,
-    })
+local lsp_formatting = function(buffer)
+  vim.lsp.buf.format({
+    filter = function(client)
+      -- By default, ignore any formatters provider by other LSPs 
+      -- (such as those managed via lspconfig or mason)
+      return client.name == "null-ls"
+    end,
+    bufnr = buffer,
+  })
 end
 
 -- Format on save
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts#neovim-08
-local on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-                lsp_formatting(bufnr)
-            end,
-        })
-    end
+local on_attach = function(client, buffer)
+  -- the Buffer will be null in buffers like nvim-tree or new unsaved files
+  if (not buffer) then
+    return
+  end
+
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = buffer })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = buffer,
+      callback = function()
+        lsp_formatting(buffer)
+      end,
+    })
+  end
 end
 
 null_ls.setup({
   sources = {
     -- ESlint, but faster (daemonized)
     -- Install eslint_d globally -- it'll defer to local eslint
-    null_ls.builtins.diagnostics.eslint_d,
+    null_ls.builtins.diagnostics.eslint_d.with({
+      filetypes = { "javascript", "typescript", "javascript.glimmer", "typescript.glimmer" }
+    }),
     null_ls.builtins.formatting.eslint_d.with({
       filetypes = { "javascript", "typescript", "javascript.glimmer", "typescript.glimmer" }
     }), 
@@ -54,6 +62,7 @@ null_ls.setup({
       }
     }),
 
+    -- Code actions for staging hunks, blame, etc 
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.completion.luasnip,
 
@@ -61,9 +70,11 @@ null_ls.setup({
     -- all stored locally
     -- https://github.com/streetsidesoftware/cspell
     null_ls.builtins.diagnostics.cspell.with({
+      -- This file is symlinked from my dotfiles repo
       extra_args = { "--config", "~/.cspell.json" }
     }),
     null_ls.builtins.code_actions.cspell.with({
+      -- This file is symlinked from my dotfiles repo
       extra_args = { "--config", "~/.cspell.json" }
     })
     -- null_ls.builtins.completion.spell,

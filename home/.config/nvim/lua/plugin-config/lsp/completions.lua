@@ -1,4 +1,5 @@
-local cmp = require'cmp'
+local cmp = require('cmp')
+local lspkind = require('lspkind')
 
 -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#menu-type
 -- for later ^

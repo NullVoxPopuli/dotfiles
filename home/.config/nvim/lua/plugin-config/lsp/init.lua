@@ -1,12 +1,11 @@
 local lsp = require('lspconfig')
-local notify = require('notify')
-local lspkind = require('lspkind')
 
-require('plugin-config.lsp.integrations')
-require('plugin-config.lsp.completions')
-require('plugin-config.lsp.config')
 local keymap = require('plugin-config.lsp.keymap')
 local utils = require('plugin-config.lsp.utils')
+
+require('plugin-config.lsp.config')
+require('plugin-config.lsp.completions')
+require('plugin-config.lsp.integrations')
 
 local servers = {
   --------------
