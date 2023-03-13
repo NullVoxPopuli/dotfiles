@@ -1,8 +1,8 @@
 return function(use)
   use {
-    -- 'nvim-lualine/lualine.nvim',
-    'NullVoxPopuli/lualine.nvim',
-    branch = 'fix-filename-width',
+    'nvim-lualine/lualine.nvim',
+    -- 'NullVoxPopuli/lualine.nvim',
+    -- branch = 'fix-filename-width',
     config = function ()
 
       require('lualine').setup {

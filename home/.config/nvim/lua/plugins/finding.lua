@@ -28,6 +28,7 @@ return function(use)
             cwd_only = true,
             ignore_patterns = {
               "*.git/*", "*/tmp/",
+              "*/vendor/",
               "*/dist/*",  "*/declarations/*", "*/node_modules/*"
             }
           },
