@@ -37,6 +37,11 @@ local servers = {
   "tailwindcss",
   "graphql",
   "dockerls",
+
+  --------------
+  -- Linting / Formatting
+  -- null_ls not needed for these
+  "eslint"
 }
 
 
@@ -45,9 +50,6 @@ local servers = {
 --  https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ---------------------------
 local mySettings = {
-  eslint = {
-    format = true,
-  },
   tailwindcss = {
     tailwindCSS = {
       includeLanguages = {
@@ -134,6 +136,15 @@ for _, serverName in ipairs(servers) do
         on_attach = function(client, bufnr)
           keymap(bufnr)
         end
+      })
+    elseif (serverName == 'eslint') then 
+      server.setup({
+        on_attach = function(client, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+          })
+        end,
       })
     else
       server.setup({

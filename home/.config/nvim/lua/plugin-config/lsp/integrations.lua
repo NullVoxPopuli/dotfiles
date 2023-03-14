@@ -5,7 +5,7 @@
 --
 -- Be sure to :checkhealth to see if any underlying tools are missing
 --
--- pnpm add --global eslint_d @fsouza/prettierd cspell typescript
+-- pnpm add --global @fsouza/prettierd cspell typescript
 --
 ---------------------------------------------------------
 local null_ls = require('null-ls')
@@ -17,6 +17,7 @@ local lsp_formatting = function(buffer)
     filter = function(client)
       -- By default, ignore any formatters provider by other LSPs 
       -- (such as those managed via lspconfig or mason)
+      -- Also "eslint as a formatter" doesn't work :( 
       return client.name == "null-ls"
     end,
     bufnr = buffer,
@@ -45,15 +46,7 @@ end
 
 null_ls.setup({
   sources = {
-    -- ESlint, but faster (daemonized)
-    -- Install eslint_d globally -- it'll defer to local eslint
-    null_ls.builtins.diagnostics.eslint_d.with({
-      filetypes = { "javascript", "typescript", "javascript.glimmer", "typescript.glimmer" }
-    }),
-    null_ls.builtins.formatting.eslint_d.with({
-      filetypes = { "javascript", "typescript", "javascript.glimmer", "typescript.glimmer" }
-    }), 
-    -- Same for prettier
+    -- Prettier, but faster (daemonized)
     null_ls.builtins.formatting.prettierd.with({
       filetypes = { 
         "css", "json", "jsonc","javascript", "typescript",
