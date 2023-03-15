@@ -8,6 +8,7 @@
 -- pnpm add --global @fsouza/prettierd cspell typescript
 --
 ---------------------------------------------------------
+local lsp = require('lspconfig')
 local null_ls = require('null-ls')
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -52,7 +53,12 @@ null_ls.setup({
         "css", "json", "jsonc","javascript", "typescript",
         "javascript.glimmer", "typescript.glimmer",
         "handlebars"
-      }
+      },
+      condition = function()
+
+        -- return require('null-ls.utils').root_pattern( ".prettierrc.js", ".prettierrc.cjs")(vim.api.nvim_buf_get_name(0)) ~= nil
+        return lsp.util.root_pattern( ".prettierrc.js", ".prettierrc.cjs")
+      end
     }),
 
     -- Code actions for staging hunks, blame, etc 
