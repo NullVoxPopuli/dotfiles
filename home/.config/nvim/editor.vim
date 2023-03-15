@@ -44,7 +44,7 @@ set list      " show whitespace
 " set whitespace chars - everything
 " set listchars=eol:¬,tab:>·,extends:>,precedes:<,space:·
 " set whitespace chars - minimal
-set listchars=eol:¬,extends:>,precedes:<
+set listchars=eol:¬,extends:>,precedes:<,tab:\ \ 
 
 set autoread   " Autoload reload files when they have changed on the disk
 

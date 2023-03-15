@@ -80,6 +80,9 @@
     },
     {
       "class": "Kazam"
+    },
+    {
+      "class": "Software-properties-gtk"
     }
   ],
   "skiptaskbarhidden": [],

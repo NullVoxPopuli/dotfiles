@@ -55,7 +55,6 @@ null_ls.setup({
         "handlebars"
       },
       condition = function()
-
         -- return require('null-ls.utils').root_pattern( ".prettierrc.js", ".prettierrc.cjs")(vim.api.nvim_buf_get_name(0)) ~= nil
         return lsp.util.root_pattern( ".prettierrc.js", ".prettierrc.cjs")
       end
