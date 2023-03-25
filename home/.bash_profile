@@ -24,9 +24,10 @@ source "$SCRIPTS/bash-support/command-defaults.sh"
 export EDITOR=nvim
 export PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"'
 export NODE_OPTIONS='--trace-warnings --unhandled-rejections=strict'
-export GG_PATHS="$HOME/Development/NullVoxPopuli:$HOME/Development/tmp:$HOME/Development/OpenSource:$HOME/Development/Work"
+export GG_PATHS="$HOME/Development/NullVoxPopuli:$HOME/Development/tmp:$HOME/Development/OpenSource:$HOME/Development/Work:$HOME/Development/OpenSource/emberjs"
 export GG_PREFIX="$HOME/Development/"
 export COPILOT="true"
+export PRETTIERD_LOCAL_PRETTIER_ONLY=1
 
 # Utilities, etc
 source "$HOME/shell/bash/npm.sh"
@@ -115,9 +116,16 @@ eval "$(starship init bash)"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-# https://github.com/TaKO8Ki/frum/releases
-if [ -f "$APPS/frum/frum" ]; then
-  export PATH="$APPS/frum:$PATH"
-  eval "$(frum init)"
+if [ -d "$HOME/.cargo/bin" ]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+
+  if [ -f "$HOME/.cargo/bin/frum" ]; then
+    eval "$(frum init)"
+  fi
 fi
 
+
+if [ -d "$HOME/.deno" ]; then 
+  export DENO_INSTALL="/home/nvp/.deno"
+  export PATH="$DENO_INSTALL/bin:$PATH"
+fi
