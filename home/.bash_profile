@@ -1,10 +1,3 @@
-# Prompt by starship
-# https://starship.rs/guide/#%F0%9F%9A%80-installation
-if ! [ -x "$(command -v starship)" ]; then
-  echo "Starship command not found. Check script before uncommenting"
-  # echo "Running external script. Be careful."
-  # curl -fsSL https://starship.rs/install.sh | bash
-fi
 
 SCRIPTS="$HOME/scripts"
 # NOTE: see also $HOME/.local/share/applications/
@@ -24,7 +17,9 @@ source "$SCRIPTS/bash-support/command-defaults.sh"
 export EDITOR=nvim
 export PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"'
 export NODE_OPTIONS='--trace-warnings --unhandled-rejections=strict'
-export GG_PATHS="$HOME/Development/NullVoxPopuli:$HOME/Development/tmp:$HOME/Development/OpenSource:$HOME/Development/Work:$HOME/Development/OpenSource/emberjs"
+export DEV="$HOME/Development"
+export OSS="$DEV/OpenSource"
+export GG_PATHS="$DEV/NullVoxPopuli:$DEV/tmp:$DEV/Work:$OSS:$OSS/emberjs:$OSS/starbeam"
 export GG_PREFIX="$HOME/Development/"
 export COPILOT="true"
 export PRETTIERD_LOCAL_PRETTIER_ONLY=1
@@ -64,11 +59,6 @@ alias g-reset="git remote set-head origin -a && git fetch origin && git checkout
 alias ggraph='git log master --graph --format="%C(auto) %h %s"'
 alias idgaf="git checkout origin/\$(gorigin) \$(git diff --name-only --diff-filter=U --relative)"
 
-alias herpderp='ember'
-
-# Docker
-alias docko="docker-compose"
-
 # Clipboard
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
@@ -78,17 +68,23 @@ alias getclip='xclip -selection clipboard -o'
 # But only do this when running an interactive shell
 # [[ $- == *i* ]] && stty -ixon
 
-### Cargo / Rust
-if [ -f "$HOME/.cargo/env" ]; then 
-  source "$HOME/.cargo/env"
+
+###############################################################################
+##
+## Conditional environment augmentations
+##
+###############################################################################
+
+# Prompt by starship
+# https://starship.rs/guide/#%F0%9F%9A%80-installation
+if ! [ -x "$(command -v starship)" ]; then
+  echo "Starship command not found. Check script before uncommenting"
+  echo ""
+  echo "\tRunning external script. Be careful."
+  echo "\t curl -fsSL https://starship.rs/install.sh | bash"
+else
+  eval "$(starship init bash)"
 fi
-
-# Python....
-export PATH="$HOME/.pythons/Python-3.6.3/bin:$PATH"
-
-# pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
 
 
 # http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
@@ -97,35 +93,56 @@ export PATH="$PNPM_HOME:$PATH"
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND="\
-  rg --files --no-ignore --hidden --follow \
-  -g \"!tmp/\" \
-  -g \"!node_modules\" \
-  -g \"!declarations\" \
-  -g \"!dist\" \
-  -g \"!.git\/\" \
-  2> /dev/null"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="bfs -type d -nohidden"
+if [ -f ~/.fzf.bash ]; then
+  source ~/.fzf.bash
 
-# https://starship.rs/
-eval "$(starship init bash)"
+  export FZF_DEFAULT_COMMAND="\
+    rg --files --no-ignore --hidden --follow \
+    -g \"!tmp/\" \
+    -g \"!node_modules\" \
+    -g \"!declarations\" \
+    -g \"!dist\" \
+    -g \"!.git\/\" \
+    2> /dev/null"
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND="bfs -type d -nohidden"
+fi
 
-# https://volta.sh/
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
+### Cargo / Rust
+if [ -f "$HOME/.cargo/env" ]; then 
+  source "$HOME/.cargo/env"
+fi
 if [ -d "$HOME/.cargo/bin" ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
 
+  # Ruby version manager
   if [ -f "$HOME/.cargo/bin/frum" ]; then
     eval "$(frum init)"
   fi
 fi
 
 
+# https://volta.sh/
+if [ -d "$HOME/.volta" ]; then 
+  export VOLTA_FEATURE_PNPM=1
+  export VOLTA_HOME="$HOME/.volta"
+  export PATH="$VOLTA_HOME/bin:$PATH"
+fi
+
+# Deno is a node alternative
 if [ -d "$HOME/.deno" ]; then 
   export DENO_INSTALL="/home/nvp/.deno"
   export PATH="$DENO_INSTALL/bin:$PATH"
+fi
+
+
+# Python....
+if [ -d "$HOME/.pythons" ]; then
+  export PATH="$HOME/.pythons/Python-3.6.3/bin:$PATH"
+fi
+
+# pnpm
+if [ -x "$(pnpm --version)" ]; then
+  export PNPM_HOME="$HOME/.local/share/pnpm"
+  export PATH="$PNPM_HOME:$PATH"
 fi
