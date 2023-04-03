@@ -1,4 +1,26 @@
 #!/bin/bash
-# old command
-# netstat -atp tcp | grep -i "listen"
-sudo netstat -nlp | grep -i "listen" | grep tcp
+
+echo "----------------------"
+echo "Summary"
+echo "----------------------"
+
+ss --summary
+
+echo ""
+echo "----------------------"
+echo "Listening: UDP"
+echo "----------------------"
+ss -u -l --processes 
+
+echo ""
+echo "----------------------"
+echo "Listening: TCP"
+echo "----------------------"
+ss -t -l --processes
+
+
+echo ""
+echo "----------------------"
+echo "Active socket connection changes"
+echo "----------------------"
+ss -E --processes
