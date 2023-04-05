@@ -63,6 +63,7 @@ cmp.setup({
     { name = 'luasnip' },
     { name = 'path' },
   }, {
+    { name = 'nvim-cmp-ts-tag-close' },
     { name = 'copilot'},
     { name = 'nvim_lua' },
     { name = 'spell' },

@@ -32,6 +32,9 @@ return function(use)
        'hrsh7th/cmp-nvim-lua',
        -- 'f3fora/cmp-spell',
 
+       -- Auto-closing tag suggestions
+       'buschco/nvim-cmp-ts-tag-close',
+
        -- It bothers me that this person's name is all caps
        'L3MON4D3/LuaSnip'
       }

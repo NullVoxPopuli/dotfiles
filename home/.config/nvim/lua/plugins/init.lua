@@ -19,6 +19,9 @@ require('packer').startup(function(use)
   -- *aggressive* caching
   use 'lewis6991/impatient.nvim'
 
+  -- Fun 
+  -- https://github.com/letieu/hacker.nvim
+
   -- Plugins with too much config to have all in
   -- the same file
   require('plugins.lsp')(use)
