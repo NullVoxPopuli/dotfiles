@@ -22,6 +22,12 @@ case "${unameOut}" in
       #
       # to use old cat, /bin/cat -- which cat
       alias cat="bat"
+
+      # brew install gnu-sed, installs as gsed
+      alias sed="gsed"
+
+      # brew install findutils, instals find as gfind
+      alias find="gfind"
     ;;
     *)    
       echo "Unknown OS: $unameOut"

@@ -26,7 +26,7 @@ return function(use)
           "graphql",
           -- Documentation Languages
           "markdown", "markdown_inline",
-          "help", 
+          -- "help", -- missing?
           -- "comment", -- slow? 
           "jsdoc",
           -- Configuration Languages

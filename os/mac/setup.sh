@@ -1,5 +1,15 @@
 #!/bin/bash
 
+rm -rf ~/.config/yabai
+rm -rf ~/.config/skhd
+
+mkdir -p ~/.config/yabai
+mkdir -p ~/.config/skhd
+
+ln -s $PWD/os/mac/home/.config/yabai/yabairc ~/.config/yabai/yabairc
+ln -s $PWD/os/mac/home/.config/skhd/skhdrc ~/.config/skhd/skhdrc
+
+
 ##############################################
 # Link up config files, and set up directories
 ##############################################

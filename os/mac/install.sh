@@ -13,10 +13,29 @@ brew install findutils # MacOS ships with the wrong `find` command
 brew install coreutils
 brew install neovim    # The one true code editor
 
+# i3~ish
+#  https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
+brew install koekeishiya/formulae/yabai
+# hotkey daemon, recommended by the above
+#  https://github.com/koekeishiya/skhd/issues/42#issuecomment-401886533
+#  run 
+#    brew reinstall skhd to apply settings changes
+#    brew services restart skhd
+#
+# Also,
+#   /tmp/skhd.pid may need removing  
+brew install koekeishiya/formulae/skhd
+
 ##############
 # Support for tools
 ##############
 brew install python
+brew install jq
+brew install gnu-sed
+brew install ag
+brew install rg
+brew install tldr
+brew install direnv
 
 ###############
 # CLI Utils
