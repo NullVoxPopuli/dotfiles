@@ -1,4 +1,3 @@
-
 SCRIPTS="$HOME/scripts"
 # NOTE: see also $HOME/.local/share/applications/
 APPS="$HOME/Applications"
@@ -74,6 +73,10 @@ alias getclip='xclip -selection clipboard -o'
 ## Conditional environment augmentations
 ##
 ###############################################################################
+# on MacOS, brew must be loaded first
+if [ -f "/opt/homebrew/bin/brew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Prompt by starship
 # https://starship.rs/guide/#%F0%9F%9A%80-installation
@@ -121,7 +124,6 @@ if [ -d "$HOME/.cargo/bin" ]; then
   fi
 fi
 
-
 # https://volta.sh/
 if [ -d "$HOME/.volta" ]; then 
   export VOLTA_FEATURE_PNPM=1
@@ -146,3 +148,4 @@ if [ -x "$(pnpm --version)" ]; then
   export PNPM_HOME="$HOME/.local/share/pnpm"
   export PATH="$PNPM_HOME:$PATH"
 fi
+
