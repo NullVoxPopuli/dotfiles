@@ -1,34 +1,18 @@
-#####################
-# Install Common Deps
-#####################
-# quality of life
-sudo apt install xclip gufw exa bat libappindicator1 fonts-font-awesome fonts-powerline 
+unameOut="$(uname -s)"
 
-# personal stuff for various projects
-sudo apt install gparted audacity
-# old / haven't used in a while:
-#   clementine
-#   veromix
-#   kdenlive
-#   gimp
+case "${unameOut}" in
+    Linux*) 
+      echo "Installing for Linux"
+      source "$PWD/os/ubuntu/install.sh"
+    ;;
+    Darwin*)    
+      echo "Installing for Mac"
+      source "$PWD/os/mac/install.sh"
+    ;;
+    *)    
+      echo "Unknown OS: $unameOut"
+esac
 
-# hobby / work stuff
-sudo apt install git curl build-essential i3 python3-pip imagemagick fzf
-
-# core dependencies of tools used
-sudo apt install sqlite3 libsqlite3-dev
-
-sudo snap install dust
-sudo snap install starship
-
-# Volta / node manager
-curl https://get.volta.sh | bash
-
-# Vim Deps
-sudo apt install silversearcher-ag
-pip install neovim
-pip3 install neovim
-pip3 install --user pynvim
 
 # packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
@@ -36,6 +20,8 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 
 mkdir -p ~/Development/NullVoxPopuli
 mkdir -p ~/Development/OpenSource
+mkdir -p ~/Development/OpenSource/emberjs
+mkdir -p ~/Development/OpenSource/starbeam
 mkdir -p ~/Development/tmp
 mkdir -p ~/Development/Work
 
@@ -52,6 +38,12 @@ rm -rf ~/.themes
 rm -rf ~/.bash_profile
 rm -rf ~/.config/nvim
 rm -rf ~/.config/fish
+rm -rf ~/.config/bat
+rm -rf ~/.config/starship.toml
+rm -rf ~/.config/pop-shell/config.json
+rm -rf ~/.gitmessage
+rm -rf ~/.tldrrc
+
 
 ln -s $PWD/home/Applications ~/Applications
 ln -s $PWD/home/scripts ~/scripts
@@ -61,23 +53,24 @@ ln -s $PWD/home/.bash_profile ~/.bash_profile
 ln -s $PWD/home/.config/nvim ~/.config/nvim
 ln -s $PWD/home/.config/fish ~/.config/fish
 ln -s $PWD/home/.config/starship.toml ~/.config/starship.toml
+ln -s $PWD/home/.config/bat ~/.config/bat
 ln -s $PWD/home/.config/pop-shell/config.json ~/.config/pop-shell/config.json
 ln -s $PWD/home/.gitmessage ~/.gitmessage
 ln -s $PWD/home/.tldrrc ~/.tldrrc
 
-echo "Symlinking ~/Application/nvim.appimage to /usr/bin/nvim . Will need sudo."
-sudo ln -s ~/Applications/nvim.appimage /usr/bin/nvim
 
-###############################################
-# Load Ubuntu/Gnome Configuration + KeyMappings
-###############################################
-source ./configs.sh
-# cat home/.config/dconf/user.d/* | dconf load /
-
-# NOTE: to export dconf settings:
-# dconf dump / > ~/.config/dconf/user.d/everything.conf
-
-
+case "${unameOut}" in
+    Linux*) 
+      echo "Setup for Linux"
+      source "$PWD/os/ubuntu/setup.sh"
+    ;;
+    Darwin*)    
+      echo "Setup for Mac"
+      source "$PWD/os/mac/setup.sh"
+    ;;
+    *)    
+      echo "Unknown OS: $unameOut"
+esac
 
 ###############################################
 # Setup Git
