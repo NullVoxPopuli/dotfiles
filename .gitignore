@@ -10,3 +10,6 @@ home/.themes
 
 # Don't show new local applications
 home/Applications
+
+# Git clones which are updated during install 
+os/mac/home/.config/alacritty/themes/

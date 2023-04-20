@@ -1,0 +1,26 @@
+font:
+  normal:
+    family: "DejaVuSansMono Nerd Font Mono"
+
+import: 
+  - ~/.config/alacritty/themes/themes/horizon-dark.yaml
+
+mouse:
+  hide_when_typing: false # buggy
+
+shell:
+  program: "/opt/homebrew/Cellar/bash/5.2.15/bin/bash"
+  args:
+    - --login
+
+key_bindings:
+  # New window, keeping CWD
+  - { key: N, mods: Control|Shift, action: CreateNewWindow }
+  # Mimics Linux
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+
+window:
+  # Without this, Meta-bindings don't work, which are heavily used in my neovim config
+  # https://github.com/alacritty/alacritty/issues/93#issuecomment-1428462339
+  option_as_alt: Both
