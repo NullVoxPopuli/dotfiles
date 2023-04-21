@@ -77,9 +77,12 @@
 # ############################################################### #
 
 # Disable macOS bindings
+# This has to be done per-app in settings....
 # cmd - h : true
 # cmd - n : true
-# This has to be done per-app in settings....
+
+# Launching apps
+ctrl + alt - t : sh -c "/Applications/Alacritty.app/Contents/MacOS/alacritty" 2> /dev/null
 
 
 # focus window
@@ -172,6 +175,10 @@ ctrl + cmd - n : yabai -m window east --resize left:20:0 2> /dev/null || yabai -
 
 # set insertion point in focused container
 # ctrl + alt - h : yabai -m window --insert west
+ctrl + cmd - c : yabai -m window --insert east
+ctrl + cmd - h : yabai -m window --insert west
+ctrl + cmd - c : yabai -m window --insert north
+ctrl + cmd - t : yabai -m window --insert south
 
 # toggle window zoom
 # alt - d : yabai -m window --toggle zoom-parent
