@@ -24,3 +24,23 @@ bindkey '\eOH'  beginning-of-line
 bindkey '\e[F'  end-of-line
 bindkey '\eOF'  end-of-line
 
+
+# Control = ^
+# Shift = $
+defaults write NSGlobalDomain NSUserKeyEquivalents '{
+    Hide = "@~^$h";
+    "New Tab" = "^t";
+    "New Window" = "^n";
+    "Switch to Channel" = "^k";
+    "Find" = "^f";
+}'
+
+defaults write -app "Google Chrome" NSUserKeyEquivalents '{
+    "Close Tab" = "^w";
+    "Reopen Closed Tab" = "^$t";
+    "Hide Google Chrome" = "@~^$h";
+    "Find\\U2026" = "^f";
+    "Find\\\\U2026" = "^f";
+    "Open Location\\U2026" = "^l";
+    "Open Location\\\\U2026" = "^l";
+}'

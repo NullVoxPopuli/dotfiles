@@ -77,11 +77,17 @@
 # ############################################################### #
 
 # Disable macOS bindings
-# cmd - h : :
+# cmd - h : true
+# cmd - n : true
+# This has to be done per-app in settings....
 
 
 # focus window
 # alt - h : yabai -m window --focus west
+cmd - h : yabai -m window --focus west
+cmd - n : yabai -m window --focus east
+cmd - t : yabai -m window --focus south
+cmd - c : yabai -m window --focus north
 
 # swap managed window
 # shift + alt - h : yabai -m window --swap north
