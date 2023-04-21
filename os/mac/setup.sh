@@ -18,6 +18,10 @@ rm -f ~/.bashrc; ln -s $PWD/os/mac/home/.bashrc ~/.bashrc
 
 git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
 
+# NOTE: karabiner conflicts with skhd *and* breaks the commands that it overrides
+#       (which are needed in the terminal)
+#       Do not use karabiner.
+# 
 # Fix home and end -- How do you do this sytem wide?
 bindkey '\e[H'  beginning-of-line
 bindkey '\eOH'  beginning-of-line
