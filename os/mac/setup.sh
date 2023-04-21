@@ -43,8 +43,11 @@ defaults write -app "Google Chrome" NSUserKeyEquivalents '{
     "Close Tab" = "^w";
     "Reopen Closed Tab" = "^$t";
     "Hide Google Chrome" = "@~^$h";
-    "Find\\U2026" = "^f";
     "Find\\\\U2026" = "^f";
-    "Open Location\\U2026" = "^l";
     "Open Location\\\\U2026" = "^l";
 }'
+
+defaults write com.apple.finder NSUserKeyEquivalents
+{
+    "Go to Folder\\\\U2026" = "^l";
+}
