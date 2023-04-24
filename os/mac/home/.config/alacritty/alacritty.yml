@@ -19,6 +19,9 @@ key_bindings:
   # Mimics Linux
   - { key: V, mods: Control|Shift, action: Paste }
   - { key: C, mods: Control|Shift, action: Copy }
+  # Why does MacOS ruin shortcuts by default?
+  # Control+/ is used for toggleing comments in my editor
+  - { key: Slash,   mods: Control,       chars: "\x1f"                 }
 
 window:
   # Without this, Meta-bindings don't work, which are heavily used in my neovim config
