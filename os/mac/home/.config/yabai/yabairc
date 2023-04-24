@@ -23,7 +23,7 @@ yabai -m config window_opacity bsp
 yabai -m config window_shadow off
 
 # mouse
-yabai -m config mouse_follows_focus on
+yabai -m config mouse_follows_focus   off # this causes problems when apps have drag behavior
 yabai -m config mouse_modifier        fn             
 yabai -m config mouse_action1         move           # left click
 yabai -m config mouse_action2         resize         # right hclick

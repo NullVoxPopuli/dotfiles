@@ -47,7 +47,6 @@ defaults write -app "Google Chrome" NSUserKeyEquivalents '{
     "Open Location\\\\U2026" = "^l";
 }'
 
-defaults write com.apple.finder NSUserKeyEquivalents
-{
+defaults write com.apple.finder NSUserKeyEquivalents '{
     "Go to Folder\\\\U2026" = "^l";
-}
+}'

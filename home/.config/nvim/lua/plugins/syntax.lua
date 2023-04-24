@@ -3,10 +3,16 @@
 ----------------------
 return function(use)
   -- Better Folding
-  -- use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+  use {
+    "kevinhwang91/nvim-ufo",
+    opt = true,
+    event = { "BufReadPre" },
+    wants = { "promise-async" },
+    requires = "kevinhwang91/promise-async",
+  }
   use { 
     'anuvyklack/pretty-fold.nvim',
-    config = function () 
+    config = function ()
       require('pretty-fold').setup()
     end
   }
@@ -20,6 +26,9 @@ return function(use)
       require'nvim-treesitter.configs'.setup {
         context_commentstring = {
           enable = true,
+        },
+       fold = {
+          fold_one_line_after = true,
         },
         ensure_installed = {
           -- Web Languages
