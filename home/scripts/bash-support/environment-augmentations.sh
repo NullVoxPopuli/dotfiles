@@ -79,3 +79,8 @@ if [ -x "$(pnpm --version)" ]; then
   export PATH="$PNPM_HOME:$PATH"
 fi
 
+
+# Werk
+if [ -f "$HOME/.bash_profile.werk" ]; then 
+  source "$HOME/.bash_profile.werk"
+fi

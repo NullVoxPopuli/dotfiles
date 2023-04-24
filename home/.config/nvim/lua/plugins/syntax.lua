@@ -3,7 +3,13 @@
 ----------------------
 return function(use)
   -- Better Folding
-  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+  -- use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+  use { 
+    'anuvyklack/pretty-fold.nvim',
+    config = function () 
+      require('pretty-fold').setup()
+    end
+  }
 
   -- for developing highlights
   use 'nvim-treesitter/playground' -- debugging / reporting bugs
