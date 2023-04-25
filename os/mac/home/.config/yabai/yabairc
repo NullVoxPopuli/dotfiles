@@ -16,28 +16,36 @@ sudo yabai --load-sa
 
 yabai -m config layout bsp
 
-# focus
 yabai -m config window_opacity bsp
+
+# focus
+yabai -m config focus_follows_mouse off
+yabai -m config mouse_follows_focus   off # this causes problems when apps have drag behavior
+# focus indicator
+# NOTE: colors are 0x{alpha}{Red}{Green}{Blue}
+yabai -m config window_border on
+yabai -m config window_border_radius 0
+yabai -m config active_window_border_color 0xffbb00ff # purpleish
+yabai -m config normal_window_border_color 0xff000000 # black
 
 # visuals
 yabai -m config window_shadow off
 
 # mouse
-yabai -m config mouse_follows_focus   off # this causes problems when apps have drag behavior
 yabai -m config mouse_modifier        fn             
 yabai -m config mouse_action1         move           # left click
 yabai -m config mouse_action2         resize         # right hclick
 yabai -m config mouse_drop_action     swap
 
-padding=2
+padding=0
 yabai -m config top_padding $padding
 yabai -m config bottom_padding $padding
 yabai -m config left_padding $padding
 yabai -m config right_padding $padding
 yabai -m config window_gap $padding
 
+
 yabai -m config                                 \
-    focus_follows_mouse          off            \
     window_origin_display        default        \
     window_placement             second_child   \
     window_zoom_persist          on             \
@@ -49,13 +57,9 @@ yabai -m config                                 \
     normal_window_opacity        0.90           \
     window_opacity               off            \
     insert_feedback_color        0xffd75f5f     \
-    active_window_border_color   0xff775759     \
-    normal_window_border_color   0xff555555     \
     window_border_width          4              \
-    window_border_radius         4             \
     window_border_blur           off            \
     window_border_hidpi          on             \
-    window_border                off            \
     split_ratio                  0.50           \
     split_type                   auto           \
     auto_balance                 off            
