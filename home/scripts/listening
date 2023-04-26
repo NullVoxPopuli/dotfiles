@@ -1,26 +1,47 @@
 #!/bin/bash
 
-echo "----------------------"
-echo "Summary"
-echo "----------------------"
+unameOut="$(uname -s)"
 
-ss --summary
+function linuxListening() {
+  echo "----------------------"
+  echo "Summary"
+  echo "----------------------"
 
-echo ""
-echo "----------------------"
-echo "Listening: UDP"
-echo "----------------------"
-ss -u -l --processes 
+  ss --summary
 
-echo ""
-echo "----------------------"
-echo "Listening: TCP"
-echo "----------------------"
-ss -t -l --processes
+  echo ""
+  echo "----------------------"
+  echo "Listening: UDP"
+  echo "----------------------"
+  ss -u -l --processes 
+
+  echo ""
+  echo "----------------------"
+  echo "Listening: TCP"
+  echo "----------------------"
+  ss -t -l --processes
 
 
-echo ""
-echo "----------------------"
-echo "Active socket connection changes"
-echo "----------------------"
-ss -E --processes
+  echo ""
+  echo "----------------------"
+  echo "Active socket connection changes"
+  echo "----------------------"
+  ss -E --processes
+}
+
+function macListening() {
+  # we care about less here
+  netstat -an | grep LISTEN
+}
+
+case "${unameOut}" in
+    Linux*) 
+      linuxListening
+    ;;
+    Darwin*)    
+      macListening
+    ;;
+    *)    
+      echo "Unknown OS: $unameOut"
+esac
+
