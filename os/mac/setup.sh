@@ -28,6 +28,10 @@ bindkey '\eOH'  beginning-of-line
 bindkey '\e[F'  end-of-line
 bindkey '\eOF'  end-of-line
 
+# Show all files, hidden, etc
+# good for .dotfiles
+defaults write com.apple.Finder AppleShowAllFiles true
+killall Finder
 
 # Control = ^
 # Shift = $
