@@ -50,8 +50,15 @@ require('packer').startup(function(use)
   ----------------------
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
+  -- lazygit Slow? investigate
   -- use 'kdheepak/lazygit.nvim'
   use 'editorconfig/editorconfig-vim'
+
+  -- Markdown
+  use {
+    'iamcco/markdown-preview.nvim',
+    run = function () vim.fn["mkdp#util#install"]() end,
+  }
   use {
     'abecodes/tabout.nvim',
     config = function()
