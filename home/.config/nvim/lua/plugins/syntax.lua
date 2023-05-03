@@ -5,8 +5,7 @@ return function(use)
   -- Better Folding
   use {
     "kevinhwang91/nvim-ufo",
-    opt = true,
-    event = { "BufReadPre" },
+    event = { "BufRead" },
     wants = { "promise-async" },
     requires = "kevinhwang91/promise-async",
     config = function () 
@@ -17,7 +16,7 @@ return function(use)
       end
     })
 
-    vim.opt.foldcolumn = "1"
+    vim.opt.foldcolumn = "0"
     vim.opt.foldlevel = 99
     vim.opt.foldlevelstart = 99
     vim.opt.foldenable = true
