@@ -50,6 +50,11 @@ local servers = {
 --  https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ---------------------------
 local mySettings = {
+  yamlls = {
+    yaml = {
+      keyOrdering = false
+    }
+  },
   tailwindcss = {
     tailwindCSS = {
       includeLanguages = {
