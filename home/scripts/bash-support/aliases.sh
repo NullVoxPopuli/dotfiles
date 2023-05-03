@@ -6,9 +6,10 @@ alias dotfiles='cd $HOME/Development/NullVoxPopuli/dotfiles'
 alias unme-clip="getclip | unme | setclip"
 # cleaning js+ts projects
 alias nuke="\
-  echo \"nukin' node_modules & declaration directories\" \
+  echo \"nukin' stuff\" \
   && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + \
   && find . -name 'declarations' -type d -prune -exec rm -rf '{}' + \
+  && find . -name 'dist' -type d -prune -exec rm -rf '{}' + \
   && find . -name '.turbo' -type d -prune -exec rm -rf '{}' + \
   "
 
