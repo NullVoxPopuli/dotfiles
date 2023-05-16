@@ -144,6 +144,12 @@ for _, serverName in ipairs(servers) do
       })
     elseif (serverName == 'eslint') then 
       server.setup({
+        filetypes = { 
+          "javascript", "typescript", 
+          "typescript.glimmer", "javascript.glimmer", 
+          "json", 
+          "markdown" 
+        },
         on_attach = function(client, bufnr)
           vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = bufnr,
