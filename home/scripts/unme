@@ -22,7 +22,7 @@ if [ ! -z "$repoPlaceholder" ]; then
 fi
 
 if [ ! -z "$projectPlaceholder" ]; then
-  input="$(echo "$input}" | sed "s~$gitRoot~$projectPlaceholder~g")"
+  input="$(echo "$input" | sed "s~$gitRoot~$projectPlaceholder~g")"
 fi
 
 echo "$input" \

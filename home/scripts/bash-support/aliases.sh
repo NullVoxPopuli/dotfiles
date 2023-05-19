@@ -27,8 +27,3 @@ alias g-reset="git remote set-head origin -a && git fetch origin && git checkout
 alias ggraph='git log master --graph --format="%C(auto) %h %s"'
 alias idgaf="git checkout origin/\$(gorigin) \$(git diff --name-only --diff-filter=U --relative)"
 
-# Clipboard
-alias setclip='xclip -selection c'
-alias getclip='xclip -selection clipboard -o'
-
-

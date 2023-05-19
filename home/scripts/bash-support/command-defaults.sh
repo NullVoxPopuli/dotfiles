@@ -15,6 +15,10 @@ case "${unameOut}" in
       #
       # to use old cat, /usr/bin/cat -- which cat
       alias cat="batcat"
+
+      # Clipboard
+      alias setclip='xclip -selection c'
+      alias getclip='xclip -selection clipboard -o'
     ;;
     Darwin*)    
       # Requires bat https://github.com/sharkdp/bat
@@ -28,6 +32,11 @@ case "${unameOut}" in
 
       # brew install findutils, instals find as gfind
       alias find="gfind"
+
+      # Clipboard
+      alias setclip='pbcopy'
+      alias getclip='pbpaste'
+
     ;;
     *)    
       echo "Unknown OS: $unameOut"
