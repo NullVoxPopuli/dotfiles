@@ -7,8 +7,8 @@ require('plugin-config.treesitter')
 require('plugin-config.debugging')
 
 -- Fancy notification from nvim-notify
-vim.notify = require('notify')
-vim.notify.setup { level = 'error' }
+-- vim.notify = require('notify')
+-- vim.notify.setup { level = 'error' }
 
 -- require('nvim-autopairs').setup{}
 require'lightspeed'.setup {}

@@ -43,7 +43,7 @@ noremap <leader>p "+p
 " https://github.com/dyng/ctrlsf.vim#key-maps
 " Enter - Open
 " <C-O> - Open, but horizontal split
-" O - Open, but leaze the search results
+" O - Open, but leave the search results
 " q - quit
 nnoremap <C-f> :lua require('spectre').open()<CR>
 
@@ -67,8 +67,8 @@ nnoremap <C-d> :let @/ = printf("\\<%s\\>", escape(expand('<cword>'), '/\'))<CR>
 nnoremap <C-t> :lua require('telescope').extensions.smart_open.smart_open({cwd_only = true})<CR>
 " nmap <leader>gs :FzfLua git_status<CR>
 " nmap <C-f> :Ag<CR>
-nmap <leader><BSlash> :NvimTreeToggle<CR>
-nmap <leader>l :NvimTreeFindFile<CR>
+nmap <leader><BSlash> :Neotree toggle<CR>
+nmap <leader>l :Neotree reveal<CR>
 
 nnoremap <silent> <CR> :noh<CR><CR>
 

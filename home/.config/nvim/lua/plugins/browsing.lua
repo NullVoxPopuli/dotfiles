@@ -5,82 +5,55 @@ return function(use)
   -- Hotkey 's' in normal mode
   use 'ggandor/lightspeed.nvim'
 
-  use {
-    "folke/which-key.nvim",
-    config = function()
-      -- https://github.com/folke/which-key.nvim
-      require("which-key").setup {
-        plugins = {
-          marks = false, -- shows a list of your marks on ' and `
-          registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-          presets = {
-            operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-            motions = true, -- adds help for motions
-            text_objects = true, -- help for text objects triggered after entering an operator
-          },
-        },
-      }
-    end
-  }
+  -- This is a cool tool, but I ultimately don't use it
+  -- use {
+  --   "folke/which-key.nvim",
+  --   config = function()
+  --     -- https://github.com/folke/which-key.nvim
+  --     require("which-key").setup {
+  --       plugins = {
+  --         marks = false, -- shows a list of your marks on ' and `
+  --         registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+  --         presets = {
+  --           operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+  --           motions = true, -- adds help for motions
+  --           text_objects = true, -- help for text objects triggered after entering an operator
+  --         },
+  --       },
+  --     }
+  --   end
+  -- }
+
+  -- NOTE: nvim-tree.lua broke my trust via a rocky migration and breaking change.
+  --       review their README very careful if re-evaluating.
+  --
+  --       neo-tree.nvim strives for avoiding breaking changes and still adhering to good UX
+  vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
   use {
-    'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function()
-      local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-
-      -- https://github.com/kyazdani42/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt#L505
-      require'nvim-tree'.setup {
-        open_on_setup = false,
-        open_on_tab = false,
-
-        filters = {
-          custom = { '.git/', 'node_modules', '.cache', 'dist', 'tmp', 'declarations' }
-        },
-
-        diagnostics = {
-          -- lsp info
-          enable = true,
-        },
-
-        view = {
-          width = 40,
-          side = 'right',
-          -- float = {
-          --   enable = true,
-          --   open_win_config = {
-          --     width = 42
-          --   }
-          -- },
-          mappings = {
-            list = {
-              { key = "<Tab>", cb = tree_cb("preview") }
-            }
-          }
-        },
-
-
-        renderer = {
-          indent_markers = {
-            enable = true
+    "nvim-neo-tree/neo-tree.nvim",
+      branch = "v2.x",
+      requires = { 
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        "MunifTanjim/nui.nvim",
+      },
+      config = function () 
+        require('neo-tree').setup({
+          default_component_configs = {
+            name = { trailing_slash = true }
           },
-          icons = {
-            show = {
-              folder_arrow = false
-            }
-          }
-        },
-
-        actions = {
-          open_file = {
-            window_picker = {
-              chars = dvorak_keys
-            }
-          }
-        }
-
-      }
-    end
-  }
+          filesystem = {
+            filtered_items = {
+              visible = true,
+              hide_dotfiles = false,
+            },
+          },
+          buffers = { 
+            follow_current_file = true
+          },
+        })
+      end
+    }
 
 end

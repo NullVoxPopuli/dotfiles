@@ -88,6 +88,9 @@ require('packer').startup(function(use)
       "zbirenbaum/copilot-cmp",
       after = { "copilot.lua", 'lspkind.nvim' },
       config = function ()
+        -- https://github.com/orgs/community/discussions/16298
+        vim.g.copilot_node_command = "~/.volta/bin/node"
+
         require("copilot_cmp").setup()
         -- local lspkind = require("lspkind")
         -- lspkind.init({
