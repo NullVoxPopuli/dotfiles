@@ -67,8 +67,8 @@ nnoremap <C-d> :let @/ = printf("\\<%s\\>", escape(expand('<cword>'), '/\'))<CR>
 nnoremap <C-t> :lua require('telescope').extensions.smart_open.smart_open({cwd_only = true})<CR>
 " nmap <leader>gs :FzfLua git_status<CR>
 " nmap <C-f> :Ag<CR>
-nmap <leader><BSlash> :Neotree toggle<CR>
-nmap <leader>l :Neotree reveal<CR>
+nmap <leader><BSlash> :Neotree toggle right<CR>
+nmap <leader>l :Neotree reveal right<CR>
 
 nnoremap <silent> <CR> :noh<CR><CR>
 
