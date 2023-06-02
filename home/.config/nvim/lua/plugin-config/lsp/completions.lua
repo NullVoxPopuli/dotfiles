@@ -64,6 +64,7 @@ cmp.setup({
     { name = 'path' },
   }, {
     { name = 'nvim-cmp-ts-tag-close' },
+    { name = "codeium" },
     { name = 'copilot'},
     { name = 'nvim_lua' },
     { name = 'spell' },
@@ -72,9 +73,15 @@ cmp.setup({
   }),
   formatting = {
     fields = {'menu', 'abbr', 'kind'},
-    -- format = lspkind.cmp_format({
-    --   symbol_map = { Copilot = "" }
-    -- })
+    format = require('lspkind').cmp_format({
+      mode = "symbol",
+      maxwidth = 50,
+      ellipsis_char = '...',
+      symbol_map = { 
+        Codeium = "", 
+        Copilot = "" 
+      }
+    })
 },
 })
 
