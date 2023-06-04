@@ -84,3 +84,8 @@ fi
 if [ -f "$HOME/.bash_profile.werk" ]; then 
   source "$HOME/.bash_profile.werk"
 fi
+
+# pip3 (as well as other tools installs things here
+if [ -d "$HOME/.local/bin" ]; then 
+  export PATH="$HOME/.local/bin:$PATH"
+fi
