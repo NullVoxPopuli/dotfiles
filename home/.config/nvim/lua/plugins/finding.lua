@@ -17,6 +17,7 @@ return function(use)
   --------------------------------------------------
   use {
     "danielfalk/smart-open.nvim",
+    branch = '0.2.x',
     config = function()
       local telescope = require('telescope')
 
@@ -26,6 +27,7 @@ return function(use)
         extensions = {
           smart_open = {
             cwd_only = true,
+            max_unindexed = 50000,
             ignore_patterns = {
               "*.git/*", "*/tmp/",
               "*/vendor/",
