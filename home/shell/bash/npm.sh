@@ -35,3 +35,32 @@ function latestPkgVer() {
   echo $result | jq '.data.versions[-1]'
   echo ""
 }
+
+# This only works if the workspaces root is the git root
+function reduceLock() {
+  local git_root=$(git rev-parse --show-toplevel) 
+
+  if [ -z "$git_root" ]; then 
+    echo "Not in a repository"
+    return 1
+  fi
+
+  if [[ -f "pnpm-lock.yaml" ]]; then 
+    local upstream_branch="origin/$(gorigin)" 
+
+    echo "Reducing lockfile..."
+    echo ""
+
+    cd $git_root
+    git checkout $upstream_branch -- pnpm-lock.yaml
+    pnpm install
+
+    echo ""
+    echo "Done."
+
+    return 0
+  else
+    echo "Only pnpm is supported"
+    return 1
+  fi
+}
