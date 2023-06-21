@@ -119,6 +119,12 @@ require("mason-lspconfig").setup {
 local capabilities = require('cmp_nvim_lsp')
   .default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+local conditional_features = function (client, bufnr) 
+    if client.server_capabilities.inlayHintProvider then
+        vim.lsp.buf.inlay_hint(bufnr, true)
+    end
+end
+
 for _, serverName in ipairs(servers) do
   local server = lsp[serverName]
 
@@ -131,6 +137,7 @@ for _, serverName in ipairs(servers) do
         settings = mySettings[serverName],
         on_attach = function(client, bufnr)
           keymap(bufnr)
+          conditional_features(client, bufnr)
         end
       })
     elseif (serverName == 'glint') then 
@@ -140,6 +147,7 @@ for _, serverName in ipairs(servers) do
         settings = mySettings[serverName],
         on_attach = function(client, bufnr)
           keymap(bufnr)
+          conditional_features(client, bufnr)
         end
       })
     elseif (serverName == 'eslint') then 
@@ -155,6 +163,7 @@ for _, serverName in ipairs(servers) do
             buffer = bufnr,
             command = "EslintFixAll",
           })
+          conditional_features(client, bufnr)
         end,
       })
     else
@@ -163,6 +172,7 @@ for _, serverName in ipairs(servers) do
         settings = mySettings[serverName],
         on_attach = function(client, bufnr)
           keymap(bufnr)
+          conditional_features(client, bufnr)
         end
       })
     end
