@@ -1,4 +1,10 @@
 return function(use)
+  -- Global Statusline
+  -- This gives us enough room to see everything
+  -- but hides the file name from each
+  -- buffer. So that goes in the top-right
+  vim.opt.laststatus = 3
+
   use {
     'nvim-lualine/lualine.nvim',
     -- 'NullVoxPopuli/lualine.nvim',
@@ -38,4 +44,22 @@ return function(use)
 
     end
   }
+
+  -- filename in top-right
+  -- use { 
+  --   "b0o/incline.nvim" ,
+  --   config = function () 
+  --     require('incline').setup({
+  --       window = {
+  --         padding = 2,
+  --         margin = { horizontal = 2 },
+  --         -- looks weird when there is no status
+  --         -- options = { signcolumn = "yes" }
+  --       },
+  --     }) 
+  --   end
+  -- }
+
+  -- winbar with great defaults
+  use('Bekaboo/dropbar.nvim')
 end

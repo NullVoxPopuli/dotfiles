@@ -70,6 +70,9 @@ return function (use)
           bg = "#202230",
           fg = "#a300de",
         },
+        -- default
+        -- symbols = { "━", "┃", "┏", "┓", "┗", "┛" },
+        symbols = { "─", "│", "╭", "╮", "╰", "╯" },
       }) 
     end
 }
