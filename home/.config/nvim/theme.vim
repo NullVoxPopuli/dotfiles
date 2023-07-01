@@ -20,7 +20,8 @@ let g:edge_enable_italic = 1
 let g:edge_better_performance = 1
 let g:edge_dim_foreground = 0
 " Don't dim inactive when we have the focus ring
-" let g:edge_dim_inactive_windows = 1
+let g:edge_dim_inactive_windows = 0
+let g:edge_colors_override = {'bg0': ['#202230', '234'] }
 colorscheme edge
 
 " No theme has 100% of what I want.
@@ -64,3 +65,4 @@ highlight NvimTreeIndentMarker guifg=#333333
 " The divider lines
 highlight! VertSplit guifg=#000000 guibg=NONE
 highlight! HorSplit guifg=#000000 guibg=NONE
+
