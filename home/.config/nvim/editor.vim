@@ -93,3 +93,12 @@ set signcolumn=number    "" make better use of space by putting signs on top of 
 "" set the title of the window to the filename
 set title
 set titlestring=%f%(\ [%M]%)
+
+
+
+"""""""""""""""""""""""""
+" Other global UI tweaks 
+"""""""""""""""""""""""""
+" Global statusline
+" The winbar is then used for the file name / path
+set laststatus=3 

@@ -1,10 +1,4 @@
 return function(use)
-  -- Global Statusline
-  -- This gives us enough room to see everything
-  -- but hides the file name from each
-  -- buffer. So that goes in the top-right
-  vim.opt.laststatus = 3
-
   use {
     'nvim-lualine/lualine.nvim',
     -- 'NullVoxPopuli/lualine.nvim',
@@ -24,8 +18,8 @@ return function(use)
 
         sections = {
           lualine_a = { {'mode', upper = true} },
-          -- lualine_b = { {'branch', icon = ''} },
-          lualine_b = { {'diff'} },
+          lualine_b = { {'branch', icon = ''}, {'diff'} },
+          -- lualine_b = { {'diff'} },
           lualine_c = { {'filename', file_status = true, path = 1 } },
           lualine_x = { 'filetype' },
           lualine_y = { 'progress' },
@@ -35,7 +29,7 @@ return function(use)
           lualine_a = {  },
           -- lualine_b = {  },
           lualine_b = { {'branch', icon = ''} },
-          lualine_c = { {'filename', file_status = true, path = 1 } },
+         lualine_c = { {'filename', file_status = true, path = 1 } },
           lualine_x = {  },
           lualine_y = {  },
           lualine_z = {  }

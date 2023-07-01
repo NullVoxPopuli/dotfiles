@@ -13,6 +13,8 @@ return function(use)
     'jose-elias-alvarez/null-ls.nvim',
     requires = { "nvim-lua/plenary.nvim" }
   }
+  -- null-ls plugin
+  use { 'davidmh/cspell.nvim' }
 
   -- Development
   -- use '~/Development/NullVoxPopuli/nvim-lspconfig'

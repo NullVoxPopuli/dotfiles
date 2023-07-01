@@ -45,6 +45,14 @@ local on_attach = function(client, buffer)
   end
 end
 
+local cspell = require('cspell')
+local cspellConfig = {
+   find_json = function(cwd)
+     -- This file is symlinked from my dotfiles repo
+    return vim.fn.expand('$HOME/.cspell.json')
+  end,
+}
+
 null_ls.setup({
   sources = {
     -- Prettier, but faster (daemonized)
@@ -64,17 +72,8 @@ null_ls.setup({
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.completion.luasnip,
 
-    -- Spell check that has better tooling
-    -- all stored locally
-    -- https://github.com/streetsidesoftware/cspell
-    null_ls.builtins.diagnostics.cspell.with({
-      -- This file is symlinked from my dotfiles repo
-      extra_args = { "--config", "~/.cspell.json" }
-    }),
-    null_ls.builtins.code_actions.cspell.with({
-      -- This file is symlinked from my dotfiles repo
-      extra_args = { "--config", "~/.cspell.json" }
-    })
+    cspell.diagnostics.with({ config = cspellConfig }),
+    cspell.code_actions.with({ config = cspellConfig }),
     -- null_ls.builtins.completion.spell,
   },
   on_attach = on_attach
