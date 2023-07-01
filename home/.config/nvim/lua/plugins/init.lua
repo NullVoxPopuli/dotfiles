@@ -69,8 +69,13 @@ require('packer').startup(function(use)
 
   --  ¯\_( ツ )_/¯
   if os.getenv("COPILOT") == "true" then
+    -- Login via :Codeium Auth
     use {
         "jcdickinson/codeium.nvim",
+        -- Using a fixed version here until
+        -- https://github.com/jcdickinson/codeium.nvim/issues/70
+        -- is resolved
+        commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
         requires = {
             "nvim-lua/plenary.nvim",
             "hrsh7th/nvim-cmp",
@@ -86,35 +91,37 @@ require('packer').startup(function(use)
     -- use { 'github/copilot.vim' }
     --
     -- Copilot in general is a bit buggy, and constantly can't find the node version
-    -- use { 
-    --   "zbirenbaum/copilot.lua",
-    --   cmd = "Copilot",
-    --   event = "InsertEnter",
-    --   config = function () 
-    --     require("copilot").setup({
-    --       suggestion = { enabled = false },
-    --       panel = { enabled = false },
-    --     })
-    --   end
-    -- }
-    -- use {
-    --   "zbirenbaum/copilot-cmp",
-    --   after = { "copilot.lua", 'lspkind.nvim' },
-    --   config = function ()
-    --     -- https://github.com/orgs/community/discussions/16298
-    --     vim.g.copilot_node_command = "~/.volta/bin/node"
+    --
+    -- Login with :Copilot auth
+    use { 
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+      config = function () 
+        require("copilot").setup({
+          suggestion = { enabled = false },
+          panel = { enabled = false },
+        })
+      end
+    }
+    use {
+      "zbirenbaum/copilot-cmp",
+      after = { "copilot.lua", 'lspkind.nvim' },
+      config = function ()
+        -- https://github.com/orgs/community/discussions/16298
+        vim.g.copilot_node_command = "~/.volta/bin/node"
 
-    --     require("copilot_cmp").setup()
-    --     -- local lspkind = require("lspkind")
-    --     -- lspkind.init({
-    --     --   symbol_map = {
-    --     --     Copilot = "",
-    --     --   },
-    --     -- })
+        require("copilot_cmp").setup()
+        local lspkind = require("lspkind")
+        lspkind.init({
+          symbol_map = {
+            Copilot = "",
+          },
+        })
 
-    --     -- vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
-    --   end
-    -- }
+        vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
+      end
+    }
   else
     -- This generally isn't needed when using lots of 
     -- copilot suggestions. Copilot will include the matched pair.

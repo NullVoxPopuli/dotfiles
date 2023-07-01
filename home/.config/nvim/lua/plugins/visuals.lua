@@ -61,4 +61,16 @@ return function (use)
   -- highlights potential codesmells
   -- don't use this, as it breaks JSON files.
 
+  -- active-buffer highlight
+  use {
+    "nvim-zh/colorful-winsep.nvim",
+    config = function ()
+      require('colorful-winsep').setup({
+        highlight = {
+          bg = "#202230",
+          fg = "#a300de",
+        },
+      }) 
+    end
+}
 end

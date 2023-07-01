@@ -59,3 +59,7 @@ highlight! PurpleSign guibg=#262836
 " nvim-tree.lua
 " :help nvim_tree_highlight
 highlight NvimTreeIndentMarker guifg=#333333
+
+" The divider lines
+highlight! VertSplit guifg=#000000 guibg=NONE
+highlight! HorSplit guifg=#000000 guibg=NONE
