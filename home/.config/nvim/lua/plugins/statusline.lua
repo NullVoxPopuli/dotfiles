@@ -55,5 +55,10 @@ return function(use)
   -- }
 
   -- winbar with great defaults
-  use('Bekaboo/dropbar.nvim')
+  use {
+    'Bekaboo/dropbar.nvim', 
+    requires = {
+      "nvim-tree/nvim-web-devicons", 
+    } 
+  }
 end
