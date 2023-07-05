@@ -151,6 +151,9 @@ function gg() {
     selected_repo=$(print_repos | fzf \
       -1 \
       --with-nth=1 \
+      --no-hscroll \
+      --no-mouse \
+      --height=~60% \
       $QUERY \
     )
 
@@ -185,6 +188,9 @@ function gg() {
 
       selected_worktree=$(print_worktrees | fzf \
         -1 \
+        --no-hscroll \
+        --no-mouse \
+        --height=~60% \
         $QUERY \
       )
 
@@ -222,6 +228,9 @@ function gg() {
     selected_workspace=$(print_workspaces | fzf \
       -1 \
       --with-nth=1 \
+      --no-hscroll \
+      --no-mouse \
+      --height=~60% \
       $QUERY \
       | cut -f2 \
     )
