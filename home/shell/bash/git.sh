@@ -21,9 +21,9 @@ function werk() {
   local branchName=${1:-"nvp-$sha"}
   local upstream=$(gorigin)
 
-  echo "Starting new work on $branchName branched off $upstream"
+  echo "Starting new work on $branchName branched off origin/$upstream"
 
-  git switch -c $branchName $upstream
+  git switch -c $branchName "origin/$upstream"
 }
 
 # Interactive git checkout (recent branches)
