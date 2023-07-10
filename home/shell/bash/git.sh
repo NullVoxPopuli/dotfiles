@@ -16,6 +16,16 @@ function gb() {
   | cut -c 1-$columns
 }
 
+function werk() {
+  local sha="$(uuid | cut -d - -f 1)"
+  local branchName=${1:-"nvp-$sha"}
+  local upstream=$(gorigin)
+
+  echo "Starting new work on $branchName branched off $upstream"
+
+  git switch -c $branchName $upstream
+}
+
 # Interactive git checkout (recent branches)
 function gcr() {
   if [[ -n "$1" ]]; then
