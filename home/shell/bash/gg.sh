@@ -153,7 +153,7 @@ function gg() {
       --with-nth=1 \
       --no-hscroll \
       --no-mouse \
-      --height=~60% \
+      --height=60% \
       $QUERY \
     )
 
@@ -190,7 +190,7 @@ function gg() {
         -1 \
         --no-hscroll \
         --no-mouse \
-        --height=~60% \
+        --height=60% \
         $QUERY \
       )
 
@@ -230,7 +230,7 @@ function gg() {
       --with-nth=1 \
       --no-hscroll \
       --no-mouse \
-      --height=~60% \
+      --height=60% \
       $QUERY \
       | cut -f2 \
     )
