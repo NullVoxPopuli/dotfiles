@@ -54,8 +54,33 @@ return function (use)
   use "lukas-reineke/indent-blankline.nvim"
   -- colorize various color-like tokens in code
   use 'norcalli/nvim-colorizer.lua'
-  -- tree-sitter plugin, colorizez brackets and parens
-  use 'p00f/nvim-ts-rainbow'
+  -- tree-sitter colorizes ({[, etc 
+  use { 
+    'https://gitlab.com/HiPhish/rainbow-delimiters.nvim.git',
+    config = function() 
+      local rainbow_delimiters = require 'rainbow-delimiters'
+
+      vim.g.rainbow_delimiters = {
+          strategy = {
+              [''] = rainbow_delimiters.strategy['global'],
+              vim = rainbow_delimiters.strategy['local'],
+          },
+          query = {
+              [''] = 'rainbow-delimiters',
+              lua = 'rainbow-blocks',
+          },
+          highlight = {
+              'RainbowDelimiterOutest',
+              'RainbowDelimiterViolet',
+              'RainbowDelimiterOrange',
+              'RainbowDelimiterBlue',
+              'RainbowDelimiterGreen',
+              'RainbowDelimiterYellow',
+              'RainbowDelimiterRed',
+          },
+      }
+    end
+  }
 
   -- https://github.com/emileferreira/nvim-strict
   -- highlights potential codesmells
@@ -75,5 +100,32 @@ return function (use)
         symbols = { "─", "│", "╭", "╮", "╰", "╯" },
       }) 
     end
-}
+  }
+
+  -- Visual decorations around popovers and such
+  -- kind of glitchy -- as if they use useEffect to apply their stuff
+  -- use { 
+  --   'folke/noice.nvim',
+  --   requires = {
+  --     'MunifTanjim/nui.nvim',
+  --     'nvim-telescope/telescope.nvim',
+  --   },
+  --   config = function () 
+  --     local telescope = require('telescope')
+
+  --     require("telescope").load_extension("noice")
+
+  --     require('noice').setup({
+  --       lsp = {
+  --         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+  --         override = {
+  --           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+  --           ["vim.lsp.util.stylize_markdown"] = true,
+  --           ["cmp.entry.get_documentation"] = true,
+  --         },
+  --       },
+  --       cmdline = { view = "cmdline" },
+  --     });
+  --   end
+  -- }
 end

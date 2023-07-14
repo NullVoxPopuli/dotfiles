@@ -88,10 +88,6 @@ return function(use)
         highlight = {
           enable = true,
         },
-        rainbow = {
-          enable = true,
-          extended_mode = true,
-        },
         playground = {
           enable = false,
           disable = {},
