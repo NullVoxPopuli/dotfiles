@@ -49,7 +49,7 @@ local cspell = require('cspell')
 local cspellConfig = {
    find_json = function(cwd)
      -- This file is symlinked from my dotfiles repo
-    return vim.fn.expand('$HOME/.cspell.json')
+    return os.getenv('HOME') .. '/.cspell.json'
   end,
 }
 
