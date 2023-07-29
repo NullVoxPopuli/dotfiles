@@ -46,10 +46,11 @@ local on_attach = function(client, buffer)
 end
 
 local cspell = require('cspell')
+-- This file is symlinked from my dotfiles repo
+local cspellConfigFile = os.getenv('HOME') .. '/.cspell.json'
 local cspellConfig = {
-   find_json = function(cwd)
-     -- This file is symlinked from my dotfiles repo
-    return os.getenv('HOME') .. '/.cspell.json'
+   find_json = function()
+    return cspellConfigFile
   end,
 }
 
