@@ -66,7 +66,13 @@ null_ls.setup({
       condition = function()
         -- return require('null-ls.utils').root_pattern( ".prettierrc.js", ".prettierrc.cjs")(vim.api.nvim_buf_get_name(0)) ~= nil
         return lsp.util.root_pattern( ".prettierrc.js", ".prettierrc.cjs")
-      end
+      end,
+      generator_opts = {
+        cwd = function(params)
+          return lsp.util.root_pattern( ".prettierrc.js", ".prettierrc.cjs")(params.bufname)
+        end
+      },
+
     }),
 
     -- Code actions for staging hunks, blame, etc 
