@@ -1,3 +1,6 @@
+
+
+
 function DEBUG_NODE() {
   export NODE_OPTIONS='--trace-warnings --unhandled-rejections=strict --inspect-brk'
 
@@ -6,12 +9,9 @@ function DEBUG_NODE() {
 
 function node-why() {
   local dep=$1
+  local here="$(dirname "${BASH_SOURCE[0]}")"
 
-  echo ""
-  echo "Node resolves $dep from $PWD to: "
-  echo ""
-  node -e "console.log(require.resolve('$dep'))"
-  echo ""
+  node "$here/node-why.mjs $dep"
 }
 
 function pscripts() {

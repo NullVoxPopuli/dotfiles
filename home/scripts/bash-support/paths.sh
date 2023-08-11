@@ -1,6 +1,7 @@
 PATH="$HOME/scripts:$PATH"
 PATH="$HOME/scripts/rails:$PATH"
 PATH="$HOME/scripts/git:$PATH"
+PATH="$HOME/scripts/node:$PATH"
 PATH="$HOME/scripts/system-utils:$PATH"
 PATH="$HOME/apps/phantomjs/bin:$PATH"
 PATH="$HOME/Applications:$PATH"
