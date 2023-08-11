@@ -54,6 +54,9 @@ function reduceLock() {
     cd $git_root
     git checkout $upstream_branch -- pnpm-lock.yaml
     pnpm install
+    # This should be automatic, but it isn't always. I don't know why.
+    # Ideally, and hopefully the average case, it's a no-op
+    pnpm dedupe
 
     echo ""
     echo "Done."
