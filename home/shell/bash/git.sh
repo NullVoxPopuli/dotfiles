@@ -18,7 +18,7 @@ function gb() {
 
 function werk() {
   local sha="$(uuid | cut -d - -f 1)"
-  local branchName=${1:-"nvp-$sha"}
+  local branchName=${1:-"nvp/$sha"}
   local upstream=$(gorigin)
 
   echo "Starting new work on $branchName branched off origin/$upstream"
