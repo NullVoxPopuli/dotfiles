@@ -48,10 +48,11 @@ end
 local cspell = require('cspell')
 -- This file is symlinked from my dotfiles repo
 local cspellConfigFile = os.getenv('HOME') .. '/.cspell.json'
+
 local cspellConfig = {
    find_json = function()
     return cspellConfigFile
-  end,
+  end
 }
 
 null_ls.setup({
@@ -80,7 +81,18 @@ null_ls.setup({
     null_ls.builtins.completion.luasnip,
 
     cspell.diagnostics.with({ config = cspellConfig }),
-    cspell.code_actions.with({ config = cspellConfig }),
+    cspell.code_actions.with({ 
+      config = cspellConfig,
+      on_success = function(_)
+
+        -- ❯ cat <<< $(jq -S '.words |= sort' ~/.cspell.json) > ~/.cspell.json
+
+        -- local command = "cat <<< $(jq -S '.words |= sort' " .. cspellConfigFile .. ") > " .. cspellConfigFile 
+
+        -- os.execute(command)
+        os.execute("cat <<< $(jq -S '.words |= sort' ~/.cspell.json) > ~/.cspell.json")
+    end,
+    }),
     -- null_ls.builtins.completion.spell,
   },
   on_attach = on_attach
