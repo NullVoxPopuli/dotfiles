@@ -50,8 +50,27 @@ local cspell = require('cspell')
 local cspellConfigFile = os.getenv('HOME') .. '/.cspell.json'
 
 local cspellConfig = {
-   find_json = function()
+  find_json = function()
     return cspellConfigFile
+  end,
+  --- Callback after a successful execution of a code action.
+  ---@param cspell_config_file_path string|nil
+  ---@param params GeneratorParams
+  ---@action_name 'use_suggestion'|'add_to_json'|'add_to_dictionary'
+  on_success = function(cspell_config_file_path, params, action_name)
+      -- For example, you can format the cspell config file after you add a word
+      if action_name == 'add_to_json' then
+          os.execute(
+              string.format(
+                  "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
+                  cspell_config_file_path,
+                  cspell_config_file_path
+              )
+          )
+      end
+
+      -- Note: The cspell_config_file_path param could be nil for the
+      -- 'use_suggestion' action
   end
 }
 
