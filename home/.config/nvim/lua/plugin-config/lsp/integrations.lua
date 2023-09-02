@@ -63,8 +63,8 @@ local cspellConfig = {
           os.execute(
               string.format(
                   "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
-                  cspell_config_file_path,
-                  cspell_config_file_path
+                  cspellConfigFile,
+                  cspellConfigFile
               )
           )
       end
