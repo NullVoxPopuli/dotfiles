@@ -35,7 +35,7 @@ fi
 
 name=$1
 icon="$2.png"
-exec="$2*.AppImage"
+exec="$2.AppImage"
 spaceless_name=${name//[[:blank:]]/}
 file_location="$HOME/.local/share/applications/$spaceless_name.desktop"
 
