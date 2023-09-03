@@ -1,5 +1,4 @@
 local lsp = require('lspconfig')
-
 local keymap = require('plugin-config.lsp.keymap')
 local utils = require('plugin-config.lsp.utils')
 

@@ -13,14 +13,11 @@ return function(use)
     'jose-elias-alvarez/null-ls.nvim',
     requires = { "nvim-lua/plenary.nvim" }
   }
+
   -- null-ls plugin
   use { 'davidmh/cspell.nvim' }
 
-  -- Development
-  -- use '~/Development/NullVoxPopuli/nvim-lspconfig'
-  -- use { 'muziejus/nvim-lspconfig', branch = "glint" }
-
-  -- Completion
+  ---- Completion
   use {
     'hrsh7th/nvim-cmp',
      requires = {
@@ -30,7 +27,9 @@ return function(use)
        -- https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/issues/12#issuecomment-1128820104
        -- 'hrsh7th/cmp-nvim-lsp-signature-help',
        'hrsh7th/cmp-buffer',
-       'hrsh7th/cmp-path',
+       -- Freezes the whole editor
+       --  https://github.com/hrsh7th/cmp-path/issues/68#issuecomment-1704351464
+       -- 'hrsh7th/cmp-path',
        'hrsh7th/cmp-nvim-lua',
        -- 'f3fora/cmp-spell',
 

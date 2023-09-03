@@ -69,7 +69,7 @@ cmp.setup({
   }, {
     { name = 'nvim-cmp-ts-tag-close' },
     { name = "codeium" },
-    { name = 'copilot'},
+    -- { name = 'copilot'},
     { name = 'nvim_lua' },
     { name = 'spell' },
   }, {
