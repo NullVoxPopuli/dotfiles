@@ -54,7 +54,10 @@ return function (use)
     end
   }
   -- Indentation indication
-  use "lukas-reineke/indent-blankline.nvim"
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    branch = "v3"
+  }
   -- colorize various color-like tokens in code
   use 'norcalli/nvim-colorizer.lua'
   -- tree-sitter colorizes ({[, etc 
