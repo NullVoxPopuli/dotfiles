@@ -3,26 +3,13 @@ local dvorak_keys = "aoeuidhtnsgcrld;qjkxbmwv"
 return function(use)
   -- Very fast motion
   -- Hotkey 's' in normal mode
-  use 'ggandor/lightspeed.nvim'
-
-  -- This is a cool tool, but I ultimately don't use it
-  -- use {
-  --   "folke/which-key.nvim",
-  --   config = function()
-  --     -- https://github.com/folke/which-key.nvim
-  --     require("which-key").setup {
-  --       plugins = {
-  --         marks = false, -- shows a list of your marks on ' and `
-  --         registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-  --         presets = {
-  --           operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-  --           motions = true, -- adds help for motions
-  --           text_objects = true, -- help for text objects triggered after entering an operator
-  --         },
-  --       },
-  --     }
-  --   end
-  -- }
+  -- Note, lightspeed's successor, leap, does not work as good.
+  --       there are a lot of issues around behavior, extra cursors, etc
+  --       lots of extra config needed, too.
+  use { 'ggandor/lightspeed.nvim', config = function () 
+    require('lightspeed').setup({})
+    end
+  }
 
   -- NOTE: nvim-tree.lua broke my trust via a rocky migration and breaking change.
   --       review their README very careful if re-evaluating.

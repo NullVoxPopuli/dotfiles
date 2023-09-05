@@ -4,6 +4,7 @@ return function(use)
     -- 'NullVoxPopuli/lualine.nvim',
     -- branch = 'fix-filename-width',
     config = function ()
+      local wpm = require("wpm")
 
       require('lualine').setup {
 
@@ -22,8 +23,8 @@ return function(use)
           -- lualine_b = { {'diff'} },
           lualine_c = { {'filename', file_status = true, path = 1 } },
           lualine_x = { 'filetype' },
-          lualine_y = { 'progress' },
-          lualine_z = { 'location'  },
+          lualine_y = { 'progress', 'location' },
+          lualine_z = {  wpm.wpm, wpm.historic_graph },
         },
         inactive_sections = {
           lualine_a = {  },
