@@ -89,3 +89,11 @@ fi
 if [ -d "$HOME/.local/bin" ]; then 
   export PATH="$HOME/.local/bin:$PATH"
 fi
+
+# Bun (node, but faster)
+
+# bun
+if [ -d "$HOME/.bun" ]; then 
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+fi
