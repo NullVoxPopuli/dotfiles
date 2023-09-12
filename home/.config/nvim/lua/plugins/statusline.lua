@@ -60,6 +60,16 @@ return function(use)
     'Bekaboo/dropbar.nvim', 
     requires = {
       "nvim-tree/nvim-web-devicons", 
-    } 
+    } ,
+    config = function () 
+      require("dropbar").setup({
+        bar = {
+          sources = function ()
+            local sources = require('dropbar.sources')
+            return { sources.path }
+          end
+        }
+      })
+    end
   }
 end
