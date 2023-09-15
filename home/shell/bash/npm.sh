@@ -11,7 +11,7 @@ function node-why() {
   local dep=$1
   local here="$(dirname "${BASH_SOURCE[0]}")"
 
-  node "$here/node-why.mjs $dep"
+  $here/../../scripts/node/node-why.mjs $dep
 }
 
 function pscripts() {

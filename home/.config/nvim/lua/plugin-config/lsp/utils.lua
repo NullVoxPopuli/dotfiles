@@ -29,6 +29,9 @@ local function read_nearest_ts_config(fromFile)
   end
 
   
+  -- BUG:
+  --   this does not follow "extends" or global tsconfigs if a "one tsconfig.json"
+  --   is used.
   local isGlint = string.find(contents, '"glint"')
 
   return {
