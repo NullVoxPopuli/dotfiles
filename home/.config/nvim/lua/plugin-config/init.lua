@@ -20,22 +20,25 @@ vim.api.nvim_create_user_command('IntegratedTerm', function()
 end, {})
 
 
-function MyFoldtext()
-  local text = vim.treesitter.foldtext()
+-- default folding experience is either really bad,
+-- or something in my config is causing it to be bad.
+-- this is even with UFO disabled
+-- function MyFoldtext()
+--   local text = vim.treesitter.foldtext()
 
-  local n_lines = vim.v.foldend - vim.v.foldstart
-  local text_lines = " lines"
+--   local n_lines = vim.v.foldend - vim.v.foldstart
+--   local text_lines = " lines"
 
-  if n_lines == 1 then
-    text_lines = " line"
-  end
+--   if n_lines == 1 then
+--     text_lines = " line"
+--   end
 
-  table.insert(text, { " - " .. n_lines .. text_lines, { "Folded" }})
+--   table.insert(text, { " - " .. n_lines .. text_lines, { "Folded" }})
 
-  return text
-end
+--   return text
+-- end
 
-vim.opt.foldmethod="expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.opt.foldmethod="expr"
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 -- vim.opt.foldtext = "v:lua.MyFoldtext()"

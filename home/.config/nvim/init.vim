@@ -27,7 +27,8 @@ augroup ShouldBeDefaults
   autocmd BufRead *.mts set filetype=typescript
 
   " Don't open a file with all the folds closed
-  autocmd BufReadPost,FileReadPost * normal zR
+  " Not needed with UFO
+  " autocmd BufReadPost,FileReadPost * normal zR
 augroup END
 
 
