@@ -40,21 +40,6 @@ return function(use)
     end
   }
 
-  -- filename in top-right
-  -- use { 
-  --   "b0o/incline.nvim" ,
-  --   config = function () 
-  --     require('incline').setup({
-  --       window = {
-  --         padding = 2,
-  --         margin = { horizontal = 2 },
-  --         -- looks weird when there is no status
-  --         -- options = { signcolumn = "yes" }
-  --       },
-  --     }) 
-  --   end
-  -- }
-
   -- winbar with great defaults
   use {
     'Bekaboo/dropbar.nvim', 

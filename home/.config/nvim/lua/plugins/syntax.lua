@@ -2,33 +2,6 @@
 -- Syntax Highlighting
 ----------------------
 return function(use)
-  -- Better Folding
-  use {
-    "kevinhwang91/nvim-ufo",
-    event = { "BufRead" },
-    wants = { "promise-async" },
-    requires = "kevinhwang91/promise-async",
-    config = function () 
-      
-    require('ufo').setup({
-      provider_selector = function (bufnr, filetype, buftype) 
-        return { 'treesitter' }
-      end
-    })
-
-    vim.opt.foldcolumn = "0"
-    vim.opt.foldlevel = 99
-    vim.opt.foldlevelstart = 99
-    vim.opt.foldenable = true
-
-    vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-    vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-    vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
-    vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
-    vim.keymap.set('n', 'z<space>', require('ufo').peekFoldedLinesUnderCursor)
-
-    end
-  }
   use { 
     'anuvyklack/pretty-fold.nvim',
     config = function ()

@@ -25,6 +25,9 @@ augroup ShouldBeDefaults
   autocmd FileType json set filetype=jsonc
   autocmd FileType json5 set filetype=jsonc
   autocmd BufRead *.mts set filetype=typescript
+
+  " Don't open a file with all the folds closed
+  autocmd BufReadPost,FileReadPost * normal zR
 augroup END
 
 
