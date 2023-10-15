@@ -36,6 +36,11 @@ return function(use)
     end
   }
 
+  -- autoclose and autorename tags
+  use { 
+    'windwp/nvim-ts-autotag',
+  }
+
   -- for developing highlights
   use 'nvim-treesitter/playground' -- debugging / reporting bugs
   use {
@@ -43,6 +48,17 @@ return function(use)
     config = function()
       require("nvim-treesitter.install").prefer_git = true
       require'nvim-treesitter.configs'.setup {
+        autotag = {
+          enable = true,
+          filetypes = { 
+            "html",  
+            "javascript", "typescript",
+            "typescript.glimmer", "javascript.glimmer",
+            "javascriptreact", "typescriptreact",
+            "markdown",
+            "glimmer", "handlebars", "hbs", "svelte", "vue"
+          }
+        },
         context_commentstring = {
           enable = true,
         },
@@ -84,6 +100,9 @@ return function(use)
         },
         highlight = {
           enable = true,
+        },
+        indent = {
+          enable = false
         },
         playground = {
           enable = false,

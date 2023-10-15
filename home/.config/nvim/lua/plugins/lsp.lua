@@ -9,9 +9,26 @@ return function(use)
   -- LSP integration with things that are not LSP
   -- This provides a unified interface for various tools
   -- that otherwise would need custom implementations of the LSP UIs
-  use {
-    'jose-elias-alvarez/null-ls.nvim',
-    requires = { "nvim-lua/plenary.nvim" }
+  -- use {
+  --   'jose-elias-alvarez/null-ls.nvim',
+  --   requires = { "nvim-lua/plenary.nvim" }
+  -- }
+ use {
+    'stevearc/conform.nvim',
+    config = function() 
+      require('conform').setup({
+       formatters_by_ft = {
+          -- Use a sub-list to run only the first available formatter
+          javascript = { { "prettierd", "prettier" } },
+          [ 'javascript.glimmer' ] = { { "prettierd", "prettier" } },
+       },
+       format_on_save = {
+            timeout_ms = 250,
+            lsp_fallback = true,
+       },
+       notify_on_error = false,
+      }) 
+    end
   }
 
   -- null-ls plugin

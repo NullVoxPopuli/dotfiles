@@ -34,3 +34,8 @@ augroup END
 
 " Autosave after 'updatetime'
 " autocmd CursorHold * wa
+
+
+" temporary until tree-sitter-glimmer supports indentation
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.gjs,*.gts,*.cshtml'

@@ -55,6 +55,9 @@ require('packer').startup(function(use)
   -- use 'kdheepak/lazygit.nvim'
   use 'editorconfig/editorconfig-vim'
 
+  -- temporary
+  use 'alvan/vim-closetag'
+
   -- Markdown
   use {
     'iamcco/markdown-preview.nvim',
