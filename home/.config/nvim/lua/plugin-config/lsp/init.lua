@@ -97,7 +97,7 @@ local mySettings = {
 }
 
 -- https://github.com/j-hui/fidget.nvim
-require"fidget".setup {}
+require "fidget".setup {}
 
 require("mason").setup {
   ui = {
@@ -116,19 +116,19 @@ require("mason-lspconfig").setup {
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp')
-  .default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    .default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local conditional_features = function (client, bufnr) 
-    if client.server_capabilities.inlayHintProvider then
-        vim.lsp.buf.inlay_hint(bufnr, true)
-    end
+local conditional_features = function(client, bufnr)
+  -- if client.server_capabilities.inlayHintProvider then
+  --     vim.lsp.buf.inlay_hint(bufnr, true)
+  -- end
 end
 
 for _, serverName in ipairs(servers) do
   local server = lsp[serverName]
 
   if (server) then
-    if (serverName == 'tsserver') then 
+    if (serverName == 'tsserver') then
       server.setup({
         single_file_support = false,
         root_dir = utils.is_ts_project,
@@ -139,7 +139,7 @@ for _, serverName in ipairs(servers) do
           conditional_features(client, bufnr)
         end
       })
-    elseif (serverName == 'glint') then 
+    elseif (serverName == 'glint') then
       server.setup({
         root_dir = utils.is_glint_project,
         capabilities = capabilities,
@@ -149,13 +149,13 @@ for _, serverName in ipairs(servers) do
           conditional_features(client, bufnr)
         end
       })
-    elseif (serverName == 'eslint') then 
+    elseif (serverName == 'eslint') then
       server.setup({
-        filetypes = { 
-          "javascript", "typescript", 
-          "typescript.glimmer", "javascript.glimmer", 
-          "json", 
-          "markdown" 
+        filetypes = {
+          "javascript", "typescript",
+          "typescript.glimmer", "javascript.glimmer",
+          "json",
+          "markdown"
         },
         on_attach = function(client, bufnr)
           vim.api.nvim_create_autocmd("BufWritePre", {
@@ -177,4 +177,3 @@ for _, serverName in ipairs(servers) do
     end
   end
 end
-
