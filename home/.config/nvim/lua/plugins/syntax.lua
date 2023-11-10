@@ -8,36 +8,34 @@ return function(use)
     event = { "BufRead" },
     wants = { "promise-async" },
     requires = "kevinhwang91/promise-async",
-    config = function () 
-      
-    require('ufo').setup({
-      provider_selector = function (bufnr, filetype, buftype) 
-        return { 'treesitter' }
-      end
-    })
+    config = function()
+      require('ufo').setup({
+        provider_selector = function(bufnr, filetype, buftype)
+          return { 'treesitter' }
+        end
+      })
 
-    vim.opt.foldcolumn = "0"
-    vim.opt.foldlevel = 99
-    vim.opt.foldlevelstart = 99
-    vim.opt.foldenable = true
+      vim.opt.foldcolumn = "0"
+      vim.opt.foldlevel = 99
+      vim.opt.foldlevelstart = 99
+      vim.opt.foldenable = true
 
-    vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-    vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-    vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
-    vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
-    vim.keymap.set('n', 'z<space>', require('ufo').peekFoldedLinesUnderCursor)
-
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+      vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
+      vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+      vim.keymap.set('n', 'z<space>', require('ufo').peekFoldedLinesUnderCursor)
     end
   }
-  use { 
+  use {
     'anuvyklack/pretty-fold.nvim',
-    config = function ()
+    config = function()
       require('pretty-fold').setup()
     end
   }
 
   -- autoclose and autorename tags
-  use { 
+  use {
     'windwp/nvim-ts-autotag',
   }
 
@@ -47,11 +45,11 @@ return function(use)
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require("nvim-treesitter.install").prefer_git = true
-      require'nvim-treesitter.configs'.setup {
+      require 'nvim-treesitter.configs'.setup {
         autotag = {
           enable = true,
-          filetypes = { 
-            "html",  
+          filetypes = {
+            "html",
             "javascript", "typescript",
             "typescript.glimmer", "javascript.glimmer",
             "javascriptreact", "typescriptreact",
@@ -74,7 +72,7 @@ return function(use)
           -- Documentation Languages
           "markdown", "markdown_inline",
           -- "help", -- missing?
-          -- "comment", -- slow? 
+          -- "comment", -- slow?
           "jsdoc",
           -- Configuration Languages
           "toml", "jsonc",
@@ -102,12 +100,12 @@ return function(use)
           enable = true,
         },
         indent = {
-          enable = false
+          enable = true
         },
         playground = {
           enable = false,
           disable = {},
-          updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+          updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
           persist_queries = false, -- Whether the query persists across vim sessions
           keybindings = {
             toggle_query_editor = 'o',

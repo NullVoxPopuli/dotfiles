@@ -22,7 +22,8 @@ set number           " line numbers
 
 set backspace=indent,eol,start  " backspace everywhere
 
-set autoindent   " Use current indentation level for new lines
+" indentation handled by auto-indent.nvim, which uses treesitter
+" set autoindent   " Use current indentation level for new lines
 " set smartindent  " Try to guess indentation based on previous line
 
 " Default indentation - editorconfig should override these
