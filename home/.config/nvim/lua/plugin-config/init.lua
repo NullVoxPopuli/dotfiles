@@ -10,8 +10,6 @@ require('plugin-config.debugging')
 -- vim.notify = require('notify')
 -- vim.notify.setup { level = 'error' }
 
--- require('nvim-autopairs').setup{}
-
 vim.api.nvim_create_user_command('IntegratedTerm', function()
   vim.cmd(':term')
   local winid = vim.api.nvim_get_current_win()
