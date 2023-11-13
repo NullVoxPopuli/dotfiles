@@ -18,9 +18,6 @@ return function(use)
     vim.keymap.set('', 'f', function()
       hop.hint_words()
     end, { remap = true })
-    vim.keymap.set('', 't', function()
-      hopTS.hint_nodes()
-    end, { remap = true })
   end }
 
   -- NOTE: nvim-tree.lua broke my trust via a rocky migration and breaking change.

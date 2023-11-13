@@ -61,6 +61,9 @@ require('packer').startup(function(use)
   -- lazygit Slow? investigate
   -- use 'kdheepak/lazygit.nvim'
   use 'editorconfig/editorconfig-vim'
+  use { 'FabijanZulj/blame.nvim', config = function()
+    require('blame').setup({ virtual_style = "right_asign" })
+  end }
   use {
     'vidocqh/auto-indent.nvim',
     config = function()
