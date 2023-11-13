@@ -79,6 +79,21 @@ require('packer').startup(function(use)
   -- * for search forward
   -- # for search backwards
   use 'backdround/improved-search.nvim'
+  use { 'dnlhc/glance.nvim', config = function()
+    require('glance').setup({
+      detached = true,
+      border = {
+        enable = true,
+        top_char = "─",
+        bottom_char = "─"
+      }
+    })
+    vim.keymap.set('n', 'gD', '<CMD>Glance declaration<CR>')
+    vim.keymap.set('n', 'gd', '<CMD>Glance definition<CR>')
+    vim.keymap.set('n', 'gi', '<CMD>Glance implementations<CR>')
+    vim.keymap.set('n', 'gt', '<CMD>Glance type_definitions<CR>')
+    vim.keymap.set('n', 'gr', '<CMD>Glance references<CR>')
+  end }
 
   -- temporary
   use 'alvan/vim-closetag'

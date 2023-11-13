@@ -1,4 +1,3 @@
-
 vim.keymap.set("n", "<A-r>", ":IncRename ")
 
 -- Used in server.setup on_attach
@@ -16,11 +15,12 @@ local function keymap(bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Global keymaps (no-remap by default, cause... sanity)
-  n('gD', 'vim.lsp.buf.declaration()')
-  n('gd', 'vim.lsp.buf.definition()')
-  n('gi', 'vim.lsp.buf.implementation()')
-  n('gt', 'vim.lsp.buf.type_definition()')
-  n('gr', 'vim.lsp.buf.references()')
+  -- handled by Glance
+  -- n('gD', 'vim.lsp.buf.declaration()')
+  -- n('gd', 'vim.lsp.buf.definition()')
+  -- n('gi', 'vim.lsp.buf.implementation()')
+  -- n('gt', 'vim.lsp.buf.type_definition()')
+  -- n('gr', 'vim.lsp.buf.references()')
   n('<leader>ff', 'vim.lsp.buf.format({ async = true })')
 
   n('<leader>u', 'vim.lsp.buf.signature_help()<CR>')
