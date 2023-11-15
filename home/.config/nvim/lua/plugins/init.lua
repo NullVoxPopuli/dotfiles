@@ -61,6 +61,10 @@ require('packer').startup(function(use)
   -- lazygit Slow? investigate
   -- use 'kdheepak/lazygit.nvim'
   use 'editorconfig/editorconfig-vim'
+  use { "sindrets/diffview.nvim", config = function()
+    require('diffview').setup({
+    })
+  end }
   use { 'FabijanZulj/blame.nvim', config = function()
     require('blame').setup({ virtual_style = "right_asign" })
   end }
