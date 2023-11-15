@@ -62,7 +62,19 @@ require('packer').startup(function(use)
   -- use 'kdheepak/lazygit.nvim'
   use 'editorconfig/editorconfig-vim'
   use { "sindrets/diffview.nvim", config = function()
+    local actions = require("diffview.actions")
+
     require('diffview').setup({
+      keymaps = {
+        diff1 = {
+          -- Mappings in single window diff layouts
+          { "n", "?", actions.help({ "view", "diff1" }), { desc = "Open the help panel" } },
+        },
+        diff2 = {
+          -- Mappings in 2-way diff layouts
+          { "n", "?", actions.help({ "view", "diff2" }), { desc = "Open the help panel" } },
+        },
+      }
     })
   end }
   use { 'FabijanZulj/blame.nvim', config = function()
