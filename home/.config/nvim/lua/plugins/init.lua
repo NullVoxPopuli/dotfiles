@@ -66,6 +66,11 @@ require('packer').startup(function(use)
 
     require('diffview').setup({
       keymaps = {
+        view = {
+          -- override NeoTree shortcuts
+          { "n", "<leader>\\", actions.focus_files, { desc = "Bring focus to the file panel" } },
+          { "n", "<leader>/",  actions.focus_files, { desc = "Bring focus to the file panel" } },
+        },
         diff1 = {
           -- Mappings in single window diff layouts
           { "n", "?", actions.help({ "view", "diff1" }), { desc = "Open the help panel" } },
