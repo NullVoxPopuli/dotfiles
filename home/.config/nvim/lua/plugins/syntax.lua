@@ -57,9 +57,6 @@ return function(use)
             "glimmer", "handlebars", "hbs", "svelte", "vue"
           }
         },
-        context_commentstring = {
-          enable = true,
-        },
         ensure_installed = {
           -- Web Languages
           "javascript", "typescript",
@@ -121,6 +118,9 @@ return function(use)
           },
         }
       }
+
+      require('ts_context_commentstring').setup({})
+      vim.g.skip_ts_context_commentstring_module = true
     end
   }
 
