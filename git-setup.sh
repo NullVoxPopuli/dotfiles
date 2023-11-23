@@ -19,3 +19,7 @@ git config --global delta.syntax-theme "TwoDark"
 git config --global merge.conflictstyle "diff3"
 git config --global diff.colorMoved "default"
 git config --global init.defaultBranch "main"
+
+git config --global user.email "199018+NullVoxPopuli@users.noreply.github.com"
+git config --global user.name "NullVoxPopuli"
+

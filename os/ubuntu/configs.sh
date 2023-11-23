@@ -1,7 +1,13 @@
+# disable errors
+set +e
 #
 # For use with https://github.com/pop-os/shell/
 #
 #   which is trying to be i3, but on top of gnome
+#
+# OR other gname-based window tiling.
+# Using gnome as a base for the desktop environment
+# ensures maximum compatibility with various screen share / recording tools. 
 #
 # Use these extensions:
 #  https://extensions.gnome.org/extension/3851/workspaces-bar/
@@ -165,3 +171,13 @@ gnome-extensions disable ding@rastersoft.com
 # Behaviors
 gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
 gsettings set org.gnome.Terminal.Legacy.Settings headerbar false
+
+
+# re-enable errors
+set -e
+
+echo ""
+echo " ------------------------------------------------------------ "
+echo "   Finished configuring dconf / gsettings / gnome-extensions  "
+echo " ------------------------------------------------------------ "
+echo ""

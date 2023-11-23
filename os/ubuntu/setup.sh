@@ -5,13 +5,6 @@ here="$absolute_here"
 root="$here/../.."
 #
 
-if [ -f "$HOME/Applications/nvim.appimage" ]; then
-  if [ ! -f "/usr/bin/nvim" ]; then
-    echo "Symlinking ~/Application/nvim.appimage to /usr/bin/nvim . Will need sudo."
-    sudo ln -s ~/Applications/nvim.appimage /usr/bin/nvim
-  fi
-fi
-
 ###############################################
 # Load Ubuntu/Gnome Configuration + KeyMappings
 ###############################################
@@ -27,3 +20,14 @@ if [ -f "$HOME/Applications/neovide.AppImage" ]; then
   appimage-to-desktop "neovide" "$HOME/Applications/neovide"
 fi
 
+# Install our favorite editor!
+# Note: this must be in setup.sh instead of install.sh because we need our 
+#       $HOME scripts to be in the right place
+export PATH="$PATH:$HOME/scripts"
+update-neovim
+
+echo ""
+echo " --------------------------------------- "
+echo "   Finished dotfiles/os/ubuntu/setup.sh  "
+echo " --------------------------------------- "
+echo ""

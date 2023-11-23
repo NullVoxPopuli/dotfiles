@@ -15,8 +15,10 @@ esac
 
 
 # packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
+  git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+fi
 
 mkdir -p ~/Development/NullVoxPopuli
 mkdir -p ~/Development/OpenSource
@@ -34,6 +36,7 @@ mkdir -p ~/.config/pop-shell/
 
 rm -rf ~/Applications
 rm -rf ~/scripts
+rm -rf ~/shell
 rm -rf ~/.themes
 rm -rf ~/.bash_profile
 rm -rf ~/.config/nvim

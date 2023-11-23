@@ -4,7 +4,7 @@
 # Install Common Deps
 #####################
 # quality of life
-sudo apt install xclip gufw exa bat libappindicator1 fonts-font-awesome fonts-powerline 
+sudo apt install xclip gufw exa bat libappindicator1 fonts-font-awesome fonts-powerline python3-pip
 
 # personal stuff for various projects
 sudo apt install gparted audacity
@@ -18,17 +18,39 @@ sudo apt install gparted audacity
 sudo apt install git curl build-essential i3 python3-pip imagemagick fzf
 
 # core dependencies of tools used
-sudo apt install sqlite3 libsqlite3-dev
+#  sqlite3 - needed as a storage for some tools
+#  cmake - most tools expect this for Makefile support
+#  libfuse2 - needed for running AppImage files
+sudo apt install sqlite3 libsqlite3-dev cmake libfuse2
 
 sudo snap install dust
 sudo snap install starship
 
 # Volta / node manager
 curl https://get.volta.sh | bash
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 
 # Vim Deps
-sudo apt install silversearcher-ag
-pip install neovim
-pip3 install neovim
-pip3 install --user pynvim
+sudo apt install silversearcher-ag 
+
+# Rust tooling 
+curl https://sh.rustup.rs -sSf | sh
+# to not require a new terminal, we'll temporarily modify PATH 
+source "$HOME/.cargo/env"
+
+
+# PS1 replacement
+# on snapcraft, they haven't released a stable version yet for some reason
+# it's also not as up to date as cargo
+# sudo snap install --edge starship 
+cargo install starship --locked
+
+
+# Dev and Neovim stuff
+volta install node
+npm add --global pnpm
+npm add --global @fsouza/prettierd cspell typescript
+cargo install tree-sitter-cli
 
