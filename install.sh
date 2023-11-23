@@ -81,3 +81,15 @@ esac
 # Setup Git
 ###############################################
 source ./git-setup.sh
+
+
+echo "------------------"
+echo " 🎉 Done! "
+echo ""
+echo "------------------"
+echo ""
+echo "Be sure to:"
+echo "- Install Albert"
+echo "- Change the Terminal Font"
+echo "- Change the terminal to run as 'Login Shell'"
+echo "- fix any keybinding issues as settings' names may have changed"
