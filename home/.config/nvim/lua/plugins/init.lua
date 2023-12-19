@@ -122,36 +122,6 @@ require('packer').startup(function(use)
   -- temporary
   use 'alvan/vim-closetag'
 
-  -- This generally isn't needed when using lots of
-  -- copilot suggestions. Copilot will include the matched pair.
-  -- SEE: https://github.com/zbirenbaum/copilot-cmp/issues/31
-  use { 'windwp/nvim-autopairs', config = function()
-    local npairs = require('nvim-autopairs')
-    npairs.setup({
-      check_ts = true,
-    })
-    local Rule = require('nvim-autopairs.rule')
-    local cond = require('nvim-autopairs.conds')
-    local ts_cond = require('nvim-autopairs.ts-conds')
-
-    -- glimmer autopairs
-    -- TODO: replace with lua-snip so these are more ergonomic
-    --       https://github.com/alexlafroscia/tree-sitter-glimmer/issues/60
-    npairs.add_rules({
-      Rule('{{#if.*}}', '{{/if}}', 'handlebars'):use_regex(true):end_wise(cond.is_end_line()),
-      Rule('{{#unless.*}}', '{{/unless}}', 'handlebars'):use_regex(true):end_wise(cond.is_end_line()),
-      Rule('{{#each-in.*}}', '{{/each-in}}', 'handlebars'):use_regex(true):end_wise(cond.is_end_line()),
-      Rule('{{#each.*}}', '{{/each}}', 'handlebars'):use_regex(true):end_wise(cond.is_end_line()),
-      Rule('{{#let.*}}', '{{/let}}', 'handlebars'):use_regex(true):end_wise(cond.is_end_line()),
-      Rule('{{#in-element.*}}', '{{/in-element}}', 'handlebars'):use_regex(true):end_wise(cond.is_end_line()),
-      Rule('{{#link-to.*}}', '{{/link-to}}', 'handlebars'):use_regex(true):end_wise(cond.is_end_line()),
-      Rule('|', '|', 'handlebars'):with_move(cond.done()):with_pair(ts_cond.is_ts_node({ 'block_params',
-        'block_statement_start' })),
-      -- ensure nice behaviour when pressing CR inside an html tag
-      Rule('>[%w%s]*$', '^%s*</', 'handlebars'):only_cr():use_regex(true)
-    })
-  end }
-
   -- Markdown
   use {
     'iamcco/markdown-preview.nvim',
