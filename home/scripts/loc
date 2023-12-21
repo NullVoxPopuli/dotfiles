@@ -20,6 +20,7 @@ function relevant_files() {
     -not \( -name '.turbo' -prune \) \
     -not \( -name '.husky' -prune \) \
     -not \( -name '.eslintcache' -prune \) \
+    -not \( -name '.prettier-cache' -prune \) \
     -type f \
     $@
 }
