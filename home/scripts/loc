@@ -1,0 +1,29 @@
+#!/bin/bash
+# 
+# Counting lines of files
+# because real tools try to parse
+# code to remove whitespate / invisibles and such
+#
+# we can't do that with custom extensions, etc.
+
+echo "Counting the lines of *all* files in $PWD ..."
+
+# Examples
+#   relevant_files -print
+#   relevant_files -exec wc -l {} \;
+function relevant_files() {
+  find . \
+    -not \( -name 'node_modules' -prune \) \
+    -not \( -name 'dist' -prune \) \
+    -not \( -name 'declarations' -prune \) \
+    -not \( -name '.changelog' -prune \) \
+    -not \( -name '.turbo' -prune \) \
+    -not \( -name '.husky' -prune \) \
+    -not \( -name '.eslintcache' -prune \) \
+    -type f \
+    $@
+}
+
+# relevant_files -print
+
+relevant_files -exec wc -l {} \; | awk '{ total += $1 } END { print total}'
