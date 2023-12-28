@@ -34,12 +34,11 @@ vim.cmd [[highlight IndentBlanklineIndent2 guibg=#202230 gui=nocombine]]
 
 
 local highlight = {
-    "RainbowViolet",
+  "RainbowViolet",
 }
 vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
 
 vim.g.rainbow_delimiters = { highlight = highlight }
-require("ibl").setup { 
-  scope = { highlight = highlight }, 
+require("ibl").setup {
+  scope = { highlight = highlight },
 }
-

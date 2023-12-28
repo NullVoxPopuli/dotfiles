@@ -28,7 +28,7 @@ local function read_nearest_ts_config(fromFile)
     return nil
   end
 
-  
+
   -- BUG:
   --   this does not follow "extends" or global tsconfigs if a "one tsconfig.json"
   --   is used.
@@ -41,30 +41,30 @@ local function read_nearest_ts_config(fromFile)
 end
 
 -- See:
--- :help lspconfig 
+-- :help lspconfig
 -- search for ROOT DIRECTORY DETECTION
-local function is_glint_project(filename, bufnr) 
+local function is_glint_project(filename, bufnr)
   local result = read_nearest_ts_config(filename)
-  
-  if not result then 
+
+  if not result then
     return nil
   end
 
-  if (not result.isGlint) then 
+  if (not result.isGlint) then
     return nil
   end
 
   return result.rootDir
 end
 
-local function is_ts_project(filename, bufnr) 
+local function is_ts_project(filename, bufnr)
   local result = read_nearest_ts_config(filename)
 
   if not result then
     return nil
-  end 
+  end
 
-  if (result.isGlint) then 
+  if (result.isGlint) then
     return nil
   end
 

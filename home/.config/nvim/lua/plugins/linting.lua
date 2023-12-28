@@ -1,6 +1,6 @@
 -- Linters don't all have language server plugins,
 -- otherwise I'd use the lsp integration
-return function (use)
+return function(use)
   -- use {
   --   'mhartington/formatter.nvim',
   --   config = function()
@@ -45,5 +45,4 @@ return function (use)
   --     }
   --   end
   -- }
-
 end

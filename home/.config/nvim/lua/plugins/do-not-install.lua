@@ -3,30 +3,30 @@
 --         when closing the pane, you get a ton of disruptive errors
 use({
   "jackMort/pommodoro-clock.nvim",
-    config = function()
-      require("pommodoro-clock").setup({
-        sound = "none", 
-      })
-    end,
-    requires = {
-      "MunifTanjim/nui.nvim",
-    }
+  config = function()
+    require("pommodoro-clock").setup({
+      sound = "none",
+    })
+  end,
+  requires = {
+    "MunifTanjim/nui.nvim",
+  }
 })
 
 
 -- Not very efficient.
--- copilot.lua explains why to use the 
+-- copilot.lua explains why to use the
 -- lua version over GitHub's own plugin
 -- use { 'github/copilot.vim' }
 --
 -- Copilot in general is a bit buggy, and constantly can't find the node version
 --
 -- Login with :Copilot auth
-use { 
+use {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
   event = "InsertEnter",
-  config = function () 
+  config = function()
     require("copilot").setup({
       suggestion = { enabled = false },
       panel = { enabled = false },
@@ -36,7 +36,7 @@ use {
 use {
   "zbirenbaum/copilot-cmp",
   after = { "copilot.lua", 'lspkind.nvim' },
-  config = function ()
+  config = function()
     -- https://github.com/orgs/community/discussions/16298
     vim.g.copilot_node_command = "~/.volta/bin/node"
 
@@ -48,6 +48,6 @@ use {
       },
     })
 
-    vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
+    vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
   end
 }

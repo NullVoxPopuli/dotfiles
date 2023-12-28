@@ -16,9 +16,9 @@ local lsp = require('lspconfig')
 --local lsp_formatting = function(buffer)
 --  vim.lsp.buf.format({
 --    filter = function(client)
---      -- By default, ignore any formatters provider by other LSPs 
+--      -- By default, ignore any formatters provider by other LSPs
 --      -- (such as those managed via lspconfig or mason)
---      -- Also "eslint as a formatter" doesn't work :( 
+--      -- Also "eslint as a formatter" doesn't work :(
 --      return client.name == "null-ls"
 --    end,
 --    bufnr = buffer,
@@ -78,7 +78,7 @@ local lsp = require('lspconfig')
 --  sources = {
 --    -- Prettier, but faster (daemonized)
 --    null_ls.builtins.formatting.prettierd.with({
---      filetypes = { 
+--      filetypes = {
 --        "css", "json", "jsonc","javascript", "typescript",
 --        "javascript.glimmer", "typescript.glimmer",
 --        "handlebars"
@@ -96,18 +96,18 @@ local lsp = require('lspconfig')
 
 --    }),
 
---    -- Code actions for staging hunks, blame, etc 
+--    -- Code actions for staging hunks, blame, etc
 --    null_ls.builtins.code_actions.gitsigns,
 --    null_ls.builtins.completion.luasnip,
 
 --    cspell.diagnostics.with({ config = cspellConfig }),
---    cspell.code_actions.with({ 
+--    cspell.code_actions.with({
 --      config = cspellConfig,
 --      on_success = function(_)
 
 --        -- ❯ cat <<< $(jq -S '.words |= sort' ~/.cspell.json) > ~/.cspell.json
 
---        -- local command = "cat <<< $(jq -S '.words |= sort' " .. cspellConfigFile .. ") > " .. cspellConfigFile 
+--        -- local command = "cat <<< $(jq -S '.words |= sort' " .. cspellConfigFile .. ") > " .. cspellConfigFile
 
 --        -- os.execute(command)
 --        os.execute("cat <<< $(jq -S '.words |= sort' ~/.cspell.json) > ~/.cspell.json")
@@ -117,4 +117,3 @@ local lsp = require('lspconfig')
 --  },
 --  on_attach = on_attach
 --})
-

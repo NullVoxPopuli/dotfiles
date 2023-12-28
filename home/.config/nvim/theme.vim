@@ -68,3 +68,4 @@ highlight! HorSplit guifg=#000000 guibg=NONE
 
 " specifically for rainbow-delimiters.nvim
 highlight RainbowDelimiterOutest  guifg=#aaaaaa ctermfg=White
+

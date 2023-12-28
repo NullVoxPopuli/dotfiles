@@ -1,4 +1,3 @@
-
 -- Change diagnostic symbols in the sign column (gutter)
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#change-diagnostic-symbols-in-the-sign-column-gutter
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -25,4 +24,3 @@ vim.diagnostic.config({
     focusable = true,
   },
 })
-

@@ -20,7 +20,7 @@ local function scrollbar(use)
   }
 end
 
-return function (use)
+return function(use)
   ----------------------
   -- Syntax / Theme
   ----------------------
@@ -59,30 +59,30 @@ return function (use)
   }
   -- colorize various color-like tokens in code
   use 'norcalli/nvim-colorizer.lua'
-  -- tree-sitter colorizes ({[, etc 
-  use { 
+  -- tree-sitter colorizes ({[, etc
+  use {
     'https://gitlab.com/HiPhish/rainbow-delimiters.nvim.git',
-    config = function() 
+    config = function()
       local rainbow_delimiters = require 'rainbow-delimiters'
 
       vim.g.rainbow_delimiters = {
-          strategy = {
-              [''] = rainbow_delimiters.strategy['global'],
-              vim = rainbow_delimiters.strategy['local'],
-          },
-          query = {
-              [''] = 'rainbow-delimiters',
-              lua = 'rainbow-blocks',
-          },
-          highlight = {
-              'RainbowDelimiterOutest',
-              'RainbowDelimiterViolet',
-              'RainbowDelimiterOrange',
-              'RainbowDelimiterBlue',
-              'RainbowDelimiterGreen',
-              'RainbowDelimiterYellow',
-              'RainbowDelimiterRed',
-          },
+        strategy = {
+          [''] = rainbow_delimiters.strategy['global'],
+          vim = rainbow_delimiters.strategy['local'],
+        },
+        query = {
+          [''] = 'rainbow-delimiters',
+          lua = 'rainbow-blocks',
+        },
+        highlight = {
+          'RainbowDelimiterOutest',
+          'RainbowDelimiterViolet',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterRed',
+        },
       }
     end
   }
@@ -94,7 +94,7 @@ return function (use)
   -- active-buffer highlight
   use {
     "nvim-zh/colorful-winsep.nvim",
-    config = function ()
+    config = function()
       require('colorful-winsep').setup({
         highlight = {
           bg = "#202230",
@@ -103,19 +103,19 @@ return function (use)
         -- default
         -- symbols = { "━", "┃", "┏", "┓", "┗", "┛" },
         symbols = { "─", "│", "╭", "╮", "╰", "╯" },
-      }) 
+      })
     end
   }
 
   -- Visual decorations around popovers and such
   -- kind of glitchy -- as if they use useEffect to apply their stuff
-  -- use { 
+  -- use {
   --   'folke/noice.nvim',
   --   requires = {
   --     'MunifTanjim/nui.nvim',
   --     'nvim-telescope/telescope.nvim',
   --   },
-  --   config = function () 
+  --   config = function ()
   --     local telescope = require('telescope')
 
   --     require("telescope").load_extension("noice")

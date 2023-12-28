@@ -116,4 +116,3 @@ if vim.env.TS_DEBUG == 'true' then
     augroup END
   ]])
 end
-
