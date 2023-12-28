@@ -20,9 +20,9 @@ local servers = {
   "tsserver",
   "bashls",
   "marksman", -- https://github.com/artempyanykh/marksman
+  "rust_analyzer",
   -- Not actively using these atm
   -- "elixirls",
-  -- "rust_analyzer",
   -- "fsautocomplete",
 
   --------------
