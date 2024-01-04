@@ -87,6 +87,11 @@ function gg() {
     pnpmlock="$root_of_repo/pnpm-lock.yaml"
 
     if [ -f "$pnpmlock" ]; then
+
+      workspaces_info=$(pnpm ls -r --depth -1 --long --json)
+      repo_relative=$(echo "$workspaces_info" | jq 'map(.path |= sub("'"$root_of_repo"'/"; ""))')
+      echo $repo_relative | jq -r '(.[] | [.name, .path]) | @tsv'
+
       # See: https://github.com/pnpm/pnpm/issues/3398
       #
       # Line-by-line:
@@ -94,11 +99,11 @@ function gg() {
       #   Remove the current directory
       #   Remove empty lines
       #   Remove leading slashes
-      pnpm ls -r --depth -1 --long --parseable \
-        | cut -f1 -d':' \
-        | sed "s~$root_of_repo~~g" \
-        | sed '/^[[:space:]]*$/d' \
-        | sed 's~^/~~g'
+      # pnpm ls -r --depth -1 --long --parseable \
+      #   | cut -f1 -d':' \
+      #   | sed "s~$root_of_repo~~g" \
+      #   | sed '/^[[:space:]]*$/d' \
+      #   | sed 's~^/~~g'
     elif [ -f "$yarnlock" ]; then
       yarn workspaces --json info --json | jq '.data' -r | jq 'map(.location) | .[]' -r
     else
@@ -225,15 +230,24 @@ function gg() {
 
   if [ "$workspace_config" != "null" ]; then
     # Ask to choose a workspace
-    selected_workspace=$(print_workspaces | fzf \
+    #  The "print_workspaces" string should be formatted as:
+    #  
+    #    package-name             package-path
+    selection=$(print_workspaces | column -t -s $'\t' | fzf \
       -1 \
-      --with-nth=1 \
       --no-hscroll \
       --no-mouse \
       --height=60% \
       $QUERY \
       | cut -f2 \
     )
+
+    selected_workspace="$(echo $selection | awk -v FPAT='[^[:space:]]+' '{print $2}')"
+
+    if [ "$selected_workspace" == "" ]; then
+      # fallback for single-column print_workspaces
+      selected_workspace=$selection
+    fi
 
     if [ "$selected_workspace" == "" ]; then
       return 0
