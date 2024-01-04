@@ -191,7 +191,7 @@ function gg() {
         done
       }
 
-      selected_worktree=$(print_worktrees | fzf \
+      selected_worktree=$(print_worktrees | column -t | fzf \
         -1 \
         --no-hscroll \
         --no-mouse \
