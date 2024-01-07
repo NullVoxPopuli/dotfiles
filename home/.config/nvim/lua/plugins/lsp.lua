@@ -27,6 +27,14 @@ return function(use)
           lsp_fallback = true,
         },
         notify_on_error = false,
+        formatters = {
+          prettierd = {
+            require_cwd = true
+          },
+          prettier = {
+            require_cwd = true
+          }
+        }
       })
     end
   }

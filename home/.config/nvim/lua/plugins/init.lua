@@ -131,6 +131,13 @@ require('packer').startup(function(use)
       })
     end
   }
+  use { "OlegGulevskyy/better-ts-errors.nvim",
+    config = function()
+      require("better-ts-errors").setup({
+        keymap = '<leader>e' -- Toggling keymap
+      })
+    end
+  }
   -- * for search forward
   -- # for search backwards
   use 'backdround/improved-search.nvim'
