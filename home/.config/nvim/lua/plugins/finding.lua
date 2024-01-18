@@ -1,11 +1,11 @@
 return function(use)
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.3',
-    requires = { 
+    requires = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-fzy-native.nvim'
     },
-    config = function ()
+    config = function()
       require('telescope').load_extension('fzy_native')
     end
   }
@@ -37,7 +37,7 @@ return function(use)
             ignore_patterns = {
               "*.git/*", "*/tmp/",
               "*/vendor/",
-              "*/dist/*",  "*/declarations/*", "*/node_modules/*"
+              "*/dist/*", "*/declarations/*", "*/node_modules/*"
             }
           },
           -- fzy_native = {
@@ -62,7 +62,12 @@ return function(use)
     'nvim-pack/nvim-spectre',
     config = function()
       require('spectre').setup({
-
+        default = {
+          find = {
+            cmd = "ag",
+            options = {}
+          }
+        }
       })
     end
   }
