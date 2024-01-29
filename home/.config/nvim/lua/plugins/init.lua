@@ -56,7 +56,33 @@ require('packer').startup(function(use)
   -- Editor Behavior
   ----------------------
   use 'tpope/vim-surround'
-  use 'tpope/vim-commentary'
+  -- use { 'terrortylor/nvim-comment', config = function()
+  --   require('nvim_comment').setup {
+  --     hook = function()
+  --       require('ts_context_commentstring').update_commentstring()
+  --     end,
+  --   }
+  -- end }
+
+  use { 'b3nj5m1n/kommentary', config = function()
+    local config = require('kommentary.config')
+
+    config.configure_language('default', {
+      single_line_comment_string = 'auto',
+      multi_line_comment_strings = 'auto',
+      hook_function = function()
+        require('ts_context_commentstring').update_commentstring()
+      end,
+    })
+
+    config.configure_language("typescript.glimmer", {
+      multi_line_comment_strings = { "{{!--", "--}}" },
+    })
+    config.configure_language("javascript.glimmer", {
+      multi_line_comment_strings = { "{{!--", "--}}" },
+    })
+  end }
+
   -- lazygit Slow? investigate
   -- use 'kdheepak/lazygit.nvim'
   use 'editorconfig/editorconfig-vim'

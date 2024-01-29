@@ -128,5 +128,11 @@ return function(use)
   use 'nvim-treesitter/nvim-treesitter-context'
 
   -- Comments in embedded languages via treesitter
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use { 'JoosepAlviste/nvim-ts-context-commentstring',
+    config = function()
+      require('ts_context_commentstring').setup {
+        enable_autocmd = false,
+      }
+    end
+  }
 end
