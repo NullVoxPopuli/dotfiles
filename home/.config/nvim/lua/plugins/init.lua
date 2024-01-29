@@ -81,6 +81,12 @@ require('packer').startup(function(use)
     config.configure_language("javascript.glimmer", {
       multi_line_comment_strings = { "{{!--", "--}}" },
     })
+    config.configure_language("glimmer", {
+      multi_line_comment_strings = { "{{!--", "--}}" },
+    })
+    config.configure_language("handlebars", {
+      multi_line_comment_strings = { "{{!--", "--}}" },
+    })
   end }
 
   -- lazygit Slow? investigate
