@@ -129,13 +129,4 @@ return function(use)
 
   -- Comments in embedded languages via treesitter
   use 'JoosepAlviste/nvim-ts-context-commentstring'
-
-  -- TreeSitter-aware spell checking
-  -- not enabled for now, because there is yet to be a solidy LSP integration with spell
-  -- use {
-  --   'lewis6991/spellsitter.nvim',
-  --   config = function()
-  --     require('spellsitter').setup()
-  --   end
-  -- }
 end

@@ -10,17 +10,6 @@ return function(use)
     end
   }
 
-  --------------------------------------------------
-  -- use { 'junegunn/fzf', run = './install --bin', }
-  -- use {
-  --   'ibhagwan/fzf-lua',
-  --   requires = { 'kyazdani42/nvim-web-devicons' },
-  -- }
-  -- previously used fzf-lua, which is great,
-  -- but fzf-lua is *only* great at searching quickly,
-  -- fzf-lua is not designed to be relevant to working
-  -- within a project as smart-open is.
-  --------------------------------------------------
   use {
     "danielfalk/smart-open.nvim",
     branch = '0.2.x',
@@ -40,15 +29,10 @@ return function(use)
               "*/dist/*", "*/declarations/*", "*/node_modules/*"
             }
           },
-          -- fzy_native = {
-          --   override_generic_sorter = false,
-          --   override_file_sorter = true,
-          -- }
         }
       })
     end,
     requires = {
-      -- "nvim-telescope/telescope-fzy-native.nvim",
       "nvim-telescope/telescope.nvim",
       -- sudo apt install sqlite3 libsqlite3-dev
       "kkharji/sqlite.lua",

@@ -1,16 +1,4 @@
 local function scrollbar(use)
-  -- Choose this one or the following
-  -- https://github.com/petertriho/nvim-scrollbar
-  -- use {
-  --   'petertriho/nvim-scrollbar',
-  --   config = function()
-  --     require('scrollbar').setup({
-  --       hide_if_all_visible = false
-  --     })
-  --   end
-  -- }
-
-  -- Choose this one or the above
   -- https://github.com/lewis6991/satellite.nvim
   use {
     'lewis6991/satellite.nvim',
@@ -138,10 +126,6 @@ return function(use)
     end
   }
 
-  -- https://github.com/emileferreira/nvim-strict
-  -- highlights potential codesmells
-  -- don't use this, as it breaks JSON files.
-
   -- active-buffer highlight
   use {
     "nvim-zh/colorful-winsep.nvim",
@@ -157,31 +141,4 @@ return function(use)
       })
     end
   }
-
-  -- Visual decorations around popovers and such
-  -- kind of glitchy -- as if they use useEffect to apply their stuff
-  -- use {
-  --   'folke/noice.nvim',
-  --   requires = {
-  --     'MunifTanjim/nui.nvim',
-  --     'nvim-telescope/telescope.nvim',
-  --   },
-  --   config = function ()
-  --     local telescope = require('telescope')
-
-  --     require("telescope").load_extension("noice")
-
-  --     require('noice').setup({
-  --       lsp = {
-  --         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-  --         override = {
-  --           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-  --           ["vim.lsp.util.stylize_markdown"] = true,
-  --           ["cmp.entry.get_documentation"] = true,
-  --         },
-  --       },
-  --       cmdline = { view = "cmdline" },
-  --     });
-  --   end
-  -- }
 end

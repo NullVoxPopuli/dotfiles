@@ -6,13 +6,6 @@ return function(use)
   use { 'williamboman/mason.nvim' }
   use { 'williamboman/mason-lspconfig.nvim' }
 
-  -- LSP integration with things that are not LSP
-  -- This provides a unified interface for various tools
-  -- that otherwise would need custom implementations of the LSP UIs
-  -- use {
-  --   'jose-elias-alvarez/null-ls.nvim',
-  --   requires = { "nvim-lua/plenary.nvim" }
-  -- }
   use {
     'stevearc/conform.nvim',
     config = function()
@@ -67,16 +60,6 @@ return function(use)
   }
 
   use 'ray-x/lsp_signature.nvim'
-
-
-  -- LSP status on the bottom right as hint text.
-  -- subtle.
-  --  Better than:
-  --    use 'arkav/lualine-lsp-progress'
-  --    use 'nvim-lua/lsp-status.nvim'
-  --    use 'doums/lsp_spinner.nvim'
-  --
-  --  In that, this works (and is unobtrusive visually, and to the config)
   use 'j-hui/fidget.nvim'
 
   use {
