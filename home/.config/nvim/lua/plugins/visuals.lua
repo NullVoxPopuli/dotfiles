@@ -69,14 +69,6 @@ return function(use)
   -- UI
   use 'stevearc/dressing.nvim'
 
-  if not vim.g.neovide then
-    use {
-      -- greeting
-      'goolord/alpha-nvim',
-      requires = { 'kyazdani42/nvim-web-devicons' },
-    }
-  end
-
   ----------------------
   -- Information
   ----------------------

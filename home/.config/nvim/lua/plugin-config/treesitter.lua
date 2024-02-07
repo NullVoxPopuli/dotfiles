@@ -12,7 +12,7 @@ parser_config.ejs = {
 
 if vim.env.GLIMMER_DEBUG == 'true' then
   local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-  local glimmerRepo = "~/Development/NullVoxPopuli/tree-sitter-glimmer"
+  local glimmerRepo = "~/Development/OpenSource/tree-sitter-glimmer"
 
   parser_config.glimmer = {
     install_info = {
@@ -50,7 +50,7 @@ end
 
 if vim.env.JS_DEBUG == 'true' then
   local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-  local jsRepo = "~/Development/NullVoxPopuli/tree-sitter-javascript"
+  local jsRepo = "~/Development/OpenSource/tree-sitter-javascript"
 
   parser_config.javascript = {
     install_info = {
@@ -85,7 +85,7 @@ end
 
 if vim.env.TS_DEBUG == 'true' then
   local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-  local tsRepo = "~/Development/NullVoxPopuli/tree-sitter-typescript"
+  local tsRepo = "~/Development/OpenSource/tree-sitter-typescript"
 
   parser_config.typescript = {
     install_info = {
@@ -102,7 +102,7 @@ if vim.env.TS_DEBUG == 'true' then
 
   vim.api.nvim_exec("!ln -s " .. tsRepo .. "/queries/*.scm ~/.config/nvim/queries/typescript/", true)
 
-  local jsRepo = "~/Development/NullVoxPopuli/tree-sitter-javascript"
+  local jsRepo = "~/Development/OpenSource/tree-sitter-javascript"
   vim.api.nvim_exec("!ln -s " .. jsRepo .. "/queries/*.scm ~/.config/nvim/queries/typescript/", true)
 
   vim.cmd([[

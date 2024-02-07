@@ -43,6 +43,7 @@ return function(use)
   use 'nvim-treesitter/playground' -- debugging / reporting bugs
   use {
     'nvim-treesitter/nvim-treesitter',
+    -- '~/Development/OpenSource/nvim-treesitter',
     config = function()
       require("nvim-treesitter.install").prefer_git = true
       require 'nvim-treesitter.configs'.setup {
