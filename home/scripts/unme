@@ -10,11 +10,17 @@ original_tilde="/home/$USER/"
 tilde="🏠/"
 repoPlaceholder="<repo>"
 projectPlaceholder="<project>"
+pnpmPlaceholder="<.pnpm>"
 
 
 if git rev-parse --git-dir > /dev/null 2>&1; then
   gitRoot=$(git rev-parse --show-toplevel)
   gitPath=$(echo $PWD | sed "s~$gitRoot~~g")
+fi
+
+if [ ! -z "$pnpmPlaceholder" ]; then
+  pnpmRoot="$gitRoot/node_modules/.pnpm"
+  input="$(echo "$input" | sed "s~$pnpmRoot~$pnpmPlaceholder~g")"
 fi
 
 if [ ! -z "$repoPlaceholder" ]; then
