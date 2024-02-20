@@ -1,0 +1,5 @@
+[font.normal]
+family = "CodeNewRoman Nerd Font Mono"
+
+[shell]
+args = ['login']

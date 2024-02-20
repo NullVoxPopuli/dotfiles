@@ -57,6 +57,7 @@ ln -s $PWD/home/.themes ~/.themes
 ln -s $PWD/home/.bash_profile ~/.bash_profile
 ln -s $PWD/home/.config/nvim ~/.config/nvim
 ln -s $PWD/home/.config/fish ~/.config/fish
+ln -s $PWD/home/.config/alacritty ~/.config/alacritty
 ln -s $PWD/home/.config/starship.toml ~/.config/starship.toml
 ln -s $PWD/home/.config/bat ~/.config/bat
 ln -s $PWD/home/.config/pop-shell/config.json ~/.config/pop-shell/config.json

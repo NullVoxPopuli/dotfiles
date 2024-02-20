@@ -1,0 +1,23 @@
+font:
+  normal:
+    family: "CodeNewRoman Nerd Font Mono"
+
+import: 
+  - ~/.config/alacritty/themes/horizon-dark.yaml
+
+mouse:
+  hide_when_typing: false # buggy
+
+shell:
+  program: '/bin/bash'
+  args:
+    - --login
+
+colors:
+  primary:
+    background: '0x000000'
+
+key_bindings:
+  # New window, keeping CWD
+  - { key: N, mods: Control|Shift, action: CreateNewWindow }
+
