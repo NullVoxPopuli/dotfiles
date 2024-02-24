@@ -1,20 +1,14 @@
 #!/bin/bash
 
-TARGET="$HOME/.local/share/applications"
-SOURCE="./home/.local/share/applications"
+FILES="$PWD/home/.local/share/applications"
 
-# OBSIDIAN_LOCATION="/Applications/Obsidian-1.1.16.AppImage"
+mkdir -p ~/.local/share/applications
 
-# function getDesktop() {
-#   DIR=$(dirname $1)
+for filePath in $FILES/*.desktop; do
+    [ -e "$filePath" ] || continue
 
-#   cd $DIR
-#   $1 --appimage-extract
-#   cd squashfs-root
-# }
+    file=$(basename $filePath)
+    rm -f "$HOME/.local/share/applications/$file" 
+    ln -s $filePath "$HOME/.local/share/applications/$file" 
+done
 
-# TODO: iterate over these 
-desktop-file-install --dir=$TARGET "$SOURCE/Obsidian.desktop"
-
-
-update-desktop-database $TARGET

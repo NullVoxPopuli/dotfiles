@@ -13,7 +13,7 @@ fi
 if ! [ -x "$(command -v starship)" ]; then
   echo "Starship command not found. Please install"
   echo ""
-  echo "Linux: sudo snap install starship"
+  echo "Linux: cargo install starship"
   echo "Mac: brew install starship"
 else
   eval "$(starship init bash)"

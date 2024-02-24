@@ -4,6 +4,9 @@ truncation_length = 4
 [package]
 disabled = true
 
+[direnv]
+disabled = true
+
 [nodejs]
 disabled = true
 

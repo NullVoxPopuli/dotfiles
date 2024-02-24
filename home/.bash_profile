@@ -5,8 +5,6 @@ source "$SCRIPTS/bash-support/setup.sh"
 
 # Extend our path, include scripts, etc
 source "$SCRIPTS/bash-support/paths.sh"
-# allows having the current command running as the title of your terminal window
-source "$SCRIPTS/bash-support/current-command.sh"
 # Override common commands such as ls, cat, etc
 source "$SCRIPTS/bash-support/command-defaults.sh"
 # Config, defaults, etc 
