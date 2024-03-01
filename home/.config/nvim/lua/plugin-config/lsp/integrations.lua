@@ -5,7 +5,7 @@
 --
 -- Be sure to :checkhealth to see if any underlying tools are missing
 --
--- pnpm add --global @fsouza/prettierd cspell typescript
+-- pnpm add --global cspell typescript
 --
 ---------------------------------------------------------
 local lsp = require('lspconfig')

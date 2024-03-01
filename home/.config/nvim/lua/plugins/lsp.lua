@@ -21,9 +21,13 @@ return function(use)
         },
         notify_on_error = false,
         formatters = {
-          prettierd = {
+          -- We don't want to enable prettierd
+          -- because it requires global installation, and then
+          -- we can't even have projects without prettier
+          --[[ prettierd = {
             require_cwd = true
-          },
+          }, ]]
+          -- NOTE: make sure prettier (and prettierd) are not installed globally
           prettier = {
             require_cwd = true
           }

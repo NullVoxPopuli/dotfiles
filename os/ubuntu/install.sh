@@ -50,6 +50,6 @@ cargo install starship --locked
 # Dev and Neovim stuff
 volta install node
 npm add --global pnpm
-npm add --global @fsouza/prettierd cspell typescript
+npm add --global cspell typescript
 cargo install tree-sitter-cli
 
