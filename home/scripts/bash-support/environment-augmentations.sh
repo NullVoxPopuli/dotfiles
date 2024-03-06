@@ -16,6 +16,13 @@ if ! [ -x "$(command -v starship)" ]; then
   echo "Linux: cargo install starship"
   echo "Mac: brew install starship"
 else
+  function set_win_title(){
+    DIRNAME2=$(basename "$(dirname "$PWD")")/$(basename "$PWD")
+    echo -ne "\033]0; $DIRNAME2 \007"
+  }
+  # starship adds to this
+  export PROMPT_COMMAND="set_win_title"
+
   eval "$(starship init bash)"
 fi
 
