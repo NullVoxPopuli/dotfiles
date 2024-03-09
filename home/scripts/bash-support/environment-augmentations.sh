@@ -21,7 +21,7 @@ else
     echo -ne "\033]0; $DIRNAME2 \007"
   }
   # starship adds to this
-  export PROMPT_COMMAND="set_win_title"
+  export PROMPT_COMMAND="$PROMPT_COMMAND;set_win_title"
 
   eval "$(starship init bash)"
 fi
