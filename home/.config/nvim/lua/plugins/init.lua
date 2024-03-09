@@ -216,11 +216,7 @@ require('packer').startup(function(use)
   if os.getenv("COPILOT") == "true" then
     -- Login via :Codeium Auth
     use {
-      "jcdickinson/codeium.nvim",
-      -- Using a fixed version here until
-      -- https://github.com/jcdickinson/codeium.nvim/issues/70
-      -- is resolved
-      commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
+      "Exafunction/codeium.nvim",
       requires = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",

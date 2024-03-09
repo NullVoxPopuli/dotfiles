@@ -16,8 +16,8 @@ cmp.setup({
     if vim.api.nvim_get_mode().mode == 'c' then
       return true
     else
-      return not context.in_treesitter_capture("comment") 
-        and not context.in_syntax_group("Comment")
+      return not context.in_treesitter_capture("comment")
+          and not context.in_syntax_group("Comment")
     end
   end,
   snippet = {
@@ -48,9 +48,9 @@ cmp.setup({
     -- Selects next item in completion menu
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
-          cmp.select_next_item()
-        else
-          fallback()
+        cmp.select_next_item()
+      else
+        fallback()
       end
     end,
     -- Selects previous item in completion menu
@@ -65,27 +65,26 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'path' },
+    { name = 'path',    max_item_count = 3 },
   }, {
     { name = 'nvim-cmp-ts-tag-close' },
-    { name = "codeium" },
+    { name = "codeium",              max_item_count = 3 },
     -- { name = 'copilot'},
     { name = 'nvim_lua' },
     { name = 'spell' },
   }, {
-    { name = 'buffer' },
+    { name = 'buffer', max_item_count = 3 },
   }),
   formatting = {
-    fields = {'menu', 'abbr', 'kind'},
+    fields = { 'menu', 'abbr', 'kind' },
     format = require('lspkind').cmp_format({
       mode = "symbol",
       maxwidth = 50,
       ellipsis_char = '...',
-      symbol_map = { 
-        Codeium = "", 
-        Copilot = "" 
+      symbol_map = {
+        Codeium = " | Codeium",
+        Copilot = " | Copilot"
       }
     })
-},
+  },
 })
-
