@@ -1,0 +1,35 @@
+#!/bin/bash
+
+in_file=$1
+lazy_copy=$2
+
+name_without_ext=${in_file%.*}
+out_file="$name_without_ext.mp4"
+out_dir=$(dirname $out_file)
+
+# Because input videos may not have even width/height
+# (they are selections from a user which may result in odd-numbered dimensions)
+# We need to pad one or both of the dimensions to make the dimensions
+# even. This is a requirement of mp4.
+make_even_filter="pad=ceil(iw/2)*2:ceil(ih/2)*2"
+
+# NOTES: https://blog.addpipe.com/converting-webm-to-mp4-with-ffmpeg/
+
+# All MP4 files contain a moov atom. 
+# The moov atom contains information about the length of the video. 
+# If it’s at the beginning it immediately enables a streaming video player to play and scrub the MP4 file. 
+# By default FFmpeg places the moov atom at the end of the MP4 file.
+
+# To ensure the highest compatibility with older iOS or Android devices you will need to use certain encoding profiles and levels. 
+# For example a video encoded with the High Profile and Level 4.2 will work on iPhone 5S and newer but not on older iOS devices.
+
+if [ -z "$lazy_copy" ]; then  
+  ffmpeg -i "$in_file" \
+    -preset slow \
+    -profile:v high -level 4.2 \
+    -movflags faststart \
+    -vf $make_even_filter \
+    "$out_file"
+else
+  ffmpeg -i "$in_file" -c:v copy $out_file
+fi
