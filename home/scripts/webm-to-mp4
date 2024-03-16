@@ -29,6 +29,7 @@ if [ -z "$lazy_copy" ]; then
     -profile:v high -level 4.2 \
     -movflags faststart \
     -vf $make_even_filter \
+    -vsync 2 \
     "$out_file"
 else
   ffmpeg -i "$in_file" -c:v copy $out_file
