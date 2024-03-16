@@ -74,6 +74,11 @@ if [ -d "$HOME/.deno" ]; then
   export PATH="$DENO_INSTALL/bin:$PATH"
 fi
 
+# Bun is a node alternative
+if [ -d "$HOME/.bun/bin" ]; then
+  export PATH="$HOME/.bun/bin:$PATH"
+fi
+
 
 # Python....
 if [ -d "$HOME/.pythons" ]; then
