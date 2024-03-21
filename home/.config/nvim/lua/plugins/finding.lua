@@ -46,12 +46,12 @@ return function(use)
     'nvim-pack/nvim-spectre',
     config = function()
       require('spectre').setup({
-        default = {
+        --[[ default = {
           find = {
             cmd = "ag",
             options = {}
           }
-        }
+        } ]]
       })
     end
   }
