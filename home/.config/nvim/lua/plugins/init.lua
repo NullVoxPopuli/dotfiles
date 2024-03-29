@@ -147,6 +147,7 @@ require('packer').startup(function(use)
   use { 'FabijanZulj/blame.nvim', config = function()
     require('blame').setup({ virtual_style = "right_asign" })
   end }
+
   use {
     'vidocqh/auto-indent.nvim',
     config = function()
@@ -188,7 +189,7 @@ require('packer').startup(function(use)
   end }
 
   -- temporary
-  use 'alvan/vim-closetag'
+  -- use 'alvan/vim-closetag'
 
   -- Markdown
   use {

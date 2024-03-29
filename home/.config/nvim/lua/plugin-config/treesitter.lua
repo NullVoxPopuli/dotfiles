@@ -1,15 +1,3 @@
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-
-parser_config.ejs = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-embedded-template",
-    files = { "src/parser.c" },
-    requires_generate_from_grammar = true,
-  },
-  filetype = "ejs",
-}
-
-
 if vim.env.GLIMMER_DEBUG == 'true' then
   local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
   local glimmerRepo = "~/Development/OpenSource/tree-sitter-glimmer"
@@ -30,11 +18,11 @@ if vim.env.GLIMMER_DEBUG == 'true' then
   }
 
   -- Resets the highlights
-  -- vim.api.nvim_exec([[
-  --   !rm -r ~/.config/nvim/queries/glimmer
-  --   !mkdir -p ~/.config/nvim/queries/glimmer
-  --   !ln -s ]] .. glimmerRepo .. [['/queries/*.scm ~/.config/nvim/queries/glimmer/
-  -- ]], true)
+  vim.api.nvim_exec([[
+    !rm -r ~/.config/nvim/queries/glimmer
+    !mkdir -p ~/.config/nvim/queries/glimmer
+  ]], true)
+  vim.api.nvim_exec("!ln -s " .. glimmerRepo .. "/queries/*.scm ~/.config/nvim/queries/glimmer/", true)
 
   vim.cmd([[
     function UpdateAndNotify()
