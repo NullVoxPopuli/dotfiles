@@ -10,6 +10,26 @@ return function(use)
     end
   }
 
+  -- / for search
+  -- * for search forward
+  -- # for search backwards
+  use 'backdround/improved-search.nvim'
+  use { 'dnlhc/glance.nvim', config = function()
+    require('glance').setup({
+      detached = true,
+      border = {
+        enable = true,
+        top_char = "─",
+        bottom_char = "─"
+      }
+    })
+    vim.keymap.set('n', 'gd', '<CMD>Glance definitions<CR>')
+    vim.keymap.set('n', 'gi', '<CMD>Glance implementations<CR>')
+    vim.keymap.set('n', 'gt', '<CMD>Glance type_definitions<CR>')
+    vim.keymap.set('n', 'gr', '<CMD>Glance references<CR>')
+  end }
+
+
   use {
     "danielfalk/smart-open.nvim",
     branch = '0.2.x',

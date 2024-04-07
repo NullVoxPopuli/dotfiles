@@ -27,6 +27,7 @@ require('packer').startup(function(use)
   -- Plugins with too much config to have all in
   -- the same file
   require('plugins.lsp')(use)
+  require('plugins.git')(use)
   require('plugins.debugging')(use)
   require('plugins.syntax')(use)
   require('plugins.statusline')(use)
@@ -56,97 +57,6 @@ require('packer').startup(function(use)
   -- Editor Behavior
   ----------------------
   use 'tpope/vim-surround'
-  -- use { 'terrortylor/nvim-comment', config = function()
-  --   require('nvim_comment').setup {
-  --     hook = function()
-  --       require('ts_context_commentstring').update_commentstring()
-  --     end,
-  --   }
-  -- end }
-
-  use { 'b3nj5m1n/kommentary', config = function()
-    local config = require('kommentary.config')
-
-    config.configure_language('default', {
-      single_line_comment_string = 'auto',
-      multi_line_comment_strings = 'auto',
-      hook_function = function()
-        require('ts_context_commentstring').update_commentstring()
-      end,
-    })
-
-    config.configure_language("typescript.glimmer", {
-      multi_line_comment_strings = { "{{!--", "--}}" },
-    })
-    config.configure_language("javascript.glimmer", {
-      multi_line_comment_strings = { "{{!--", "--}}" },
-    })
-    config.configure_language("glimmer", {
-      multi_line_comment_strings = { "{{!--", "--}}" },
-    })
-    config.configure_language("handlebars", {
-      multi_line_comment_strings = { "{{!--", "--}}" },
-    })
-  end }
-
-  -- lazygit Slow? investigate
-  -- use 'kdheepak/lazygit.nvim'
-  use 'editorconfig/editorconfig-vim'
-  use { "sindrets/diffview.nvim", config = function()
-    local actions = require("diffview.actions")
-
-    function hl(name, options)
-      vim.api.nvim_set_hl(0, name, options)
-    end
-
-    -- Base colors from theme.vim
-    local addedBg = "#202930"
-    local removedBg = "#302230"
-    local bg = "#202230"
-
-    hl('DiffviewDiffAddAsDelete', { bg = removedBg })
-    hl('DiffDelete', { bg = removedBg })
-    hl('DiffviewDiffDelete', { bg = removedBg })
-    hl('DiffAdd', { bg = addedBg })
-    hl('DiffChange', { bg = bg })
-    hl('DiffText', { bg = bg })
-
-    require('diffview').setup({
-      enhanced_diff_hl = true,
-      hooks = {
-        diff_buf_read = function(bufnr)
-          -- Change local options in diff buffers
-          -- vim.opt_local.wrap = false
-          -- vim.opt_local.list = false
-          -- vim.opt_local.colorcolumn = { 80 }
-
-          -- default diff fill chars are *way* too visually noisy
-          vim.opt.fillchars:append { diff = " " }
-        end,
-        -- diff_buf_win_enter = function(bufnr)
-        -- end,
-      },
-
-      keymaps = {
-        view = {
-          -- override NeoTree shortcuts
-          { "n", "<leader>\\", actions.focus_files, { desc = "Bring focus to the file panel" } },
-          { "n", "<leader>/",  actions.focus_files, { desc = "Bring focus to the file panel" } },
-        },
-        diff1 = {
-          -- Mappings in single window diff layouts
-          { "n", "?", actions.help({ "view", "diff1" }), { desc = "Open the help panel" } },
-        },
-        diff2 = {
-          -- Mappings in 2-way diff layouts
-          { "n", "?", actions.help({ "view", "diff2" }), { desc = "Open the help panel" } },
-        },
-      }
-    })
-  end }
-  use { 'FabijanZulj/blame.nvim', config = function()
-    require('blame').setup({ virtual_style = "right_asign" })
-  end }
 
   use {
     'vidocqh/auto-indent.nvim',
@@ -170,24 +80,6 @@ require('packer').startup(function(use)
       })
     end
   }
-  -- * for search forward
-  -- # for search backwards
-  use 'backdround/improved-search.nvim'
-  use { 'dnlhc/glance.nvim', config = function()
-    require('glance').setup({
-      detached = true,
-      border = {
-        enable = true,
-        top_char = "─",
-        bottom_char = "─"
-      }
-    })
-    vim.keymap.set('n', 'gd', '<CMD>Glance definitions<CR>')
-    vim.keymap.set('n', 'gi', '<CMD>Glance implementations<CR>')
-    vim.keymap.set('n', 'gt', '<CMD>Glance type_definitions<CR>')
-    vim.keymap.set('n', 'gr', '<CMD>Glance references<CR>')
-  end }
-
   -- temporary
   -- use 'alvan/vim-closetag'
 
