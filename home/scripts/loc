@@ -21,6 +21,7 @@ function relevant_files() {
     -not \( -name '.husky' -prune \) \
     -not \( -name '.eslintcache' -prune \) \
     -not \( -name '.prettier-cache' -prune \) \
+    -not \( -name '.git' -prune \) \
     -type f \
     $@
 }
