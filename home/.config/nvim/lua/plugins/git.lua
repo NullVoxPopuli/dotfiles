@@ -25,7 +25,9 @@ return function(use)
       enhanced_diff_hl = true,
       hooks = {
         diff_buf_read = function(bufnr)
+          vim.lsp.stop_client(vim.lsp.get_clients())
           -- Change local options in diff buffers
+          --
           -- vim.opt_local.wrap = false
           -- vim.opt_local.list = false
           -- vim.opt_local.colorcolumn = { 80 }
