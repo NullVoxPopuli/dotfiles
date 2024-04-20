@@ -54,7 +54,14 @@ return function(use)
       }
     })
   end }
+
   use { 'FabijanZulj/blame.nvim', config = function()
-    require('blame').setup({ virtual_style = "right_asign" })
+    local window = require("blame.views.window_view")
+    require('blame').setup({
+      virtual_style = "right_asign",
+      views = {
+        default = window,
+      },
+    })
   end }
 end
