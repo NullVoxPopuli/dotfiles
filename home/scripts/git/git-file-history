@@ -1,0 +1,13 @@
+#!/bin/bash
+# in-terminal git history inspecting!
+
+FILENAME=$1
+
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow -g '!.git/' -g '!tmp/'"
+
+# fuzzy find files if not given $1
+if [ -z "$FILENAME" ]; then FILENAME=$(fzf); fi
+
+git log --color --oneline $FILENAME \
+  | fzf --ansi --preview-window=right,70% \
+        --preview "echo {} | cut -d' ' -f1 | xargs bash -c 'git diff \$1..\$1~ --color $FILENAME' --"
