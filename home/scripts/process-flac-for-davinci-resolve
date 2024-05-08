@@ -1,0 +1,9 @@
+#!/bin/bash
+
+input="$1"
+track="0:${2:-2}"
+audio="$input.flac"
+wave="$audio.wav"
+
+ffmpeg -i "$input" -map $track -vn -acodec copy "$audio"
+ffmpeg -i "$audio" -c:a pcm_s24le "$wave"
