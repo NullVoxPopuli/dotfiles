@@ -1,2 +1,66 @@
 #!/bin/bash
-sudo kill -9 $1
+#
+# Smites processes, defaulting to searching processes with active ports
+#
+# 2 - SIGINT
+# 3 - SIGQUIT
+# 6 - SIGABRT
+# 9 - SIGKILL
+# 15 - SIGTERM
+# 19 - SIGSTOP
+
+
+
+# We mean business...
+SIGCODE=9
+
+function processesByPort() {
+  # ss will display TCP, UDP, Sockets, and "other"
+  # By default this gives the columns:
+  # 1      2      3       4       5              6             7      8
+  # Netid, State, Recv-Q, Send-Q, Local Address, Peer Address, Port Process                                                                                                       
+  #
+  # This is further fitlered down to only UDP and TCP ports 
+  ss -l --processes --no-header -u -t \
+  | awk '{print $1 " " $5 " " $7}' | column -t
+}
+
+line=$(\
+  processesByPort \
+  | fzf ${FZF_DEFAULT_OPTS} -m --header="[kill:process:$SIGCODE]")
+
+if [[ -z "$line" ]]; then
+  echo "No Selection. Nothing Smitten"
+  exit 0;
+fi
+
+pid=$(node -e "console.log('$line'.match(/pid=(\d+),/)[1])");
+
+if [[ -z "$pid" ]]; then
+  echo "Could not determine PID. Nothing Smitten"
+  exit 0;
+fi
+
+read -r -d '' warningMessage <<-EOF
+  !!! WARNING !!!
+
+  $line
+
+  Do you want to kill it?
+
+    sudo kill -$SIGCODE $pid
+
+  Confirm? (Y|N)
+EOF
+
+while true; do
+    read -p "$warningMessage" yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit 0;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+sudo kill -$SIGCODE $pid
+
