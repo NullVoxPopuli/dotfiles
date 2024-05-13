@@ -34,11 +34,18 @@ if [[ -z "$line" ]]; then
   exit 0;
 fi
 
-pid=$(node -e "console.log('$line'.match(/pid=(\d+),/)[1])");
+# Silly parse
+# line will look something like
+#  tcp LISTEN 0      511                *:4201             *:* users:(("ember",pid=2292515,fd=22))         
+pid_and_stuff=$(echo "${line#*pid=}")
+pid=$(echo "${pid_and_stuff%,*}");
+
 
 if [[ -z "$pid" ]]; then
   echo "Could not determine PID. Nothing Smitten"
-  exit 0;
+  echo ""
+  echo "Selected Line: $line"
+  exit 1;
 fi
 
 read -r -d '' warningMessage <<-EOF
