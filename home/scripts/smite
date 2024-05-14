@@ -55,7 +55,7 @@ read -r -d '' warningMessage <<-EOF
 
   Do you want to kill it?
 
-    sudo kill -$SIGCODE $pid
+    kill -$SIGCODE $pid
 
   Confirm? (Y|N)
 EOF
@@ -69,5 +69,9 @@ while true; do
     esac
 done
 
-sudo kill -$SIGCODE $pid
+# NOTE: if we don't own this process,
+#       sudo would be required.
+#       we could probably inspect the owner of the process 
+#       and dynamically prepend sudo if we need to. (later, obvs)
+kill -$SIGCODE $pid
 
