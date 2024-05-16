@@ -14,6 +14,7 @@ so ~/.config/nvim/editor.vim
 so ~/.config/nvim/functions.vim
 so ~/.config/nvim/keymap.vim
 so ~/.config/nvim/clients/init.vim
+so ~/.config/nvim/terminal.vim
 
 " Loads the .bash_profile
 set shell=/bin/bash\ --login
