@@ -2,9 +2,9 @@ return function(use)
   -- icons
   use 'onsails/lspkind.nvim'
   -- server management and installation
-  use 'neovim/nvim-lspconfig'
   use { 'williamboman/mason.nvim' }
   use { 'williamboman/mason-lspconfig.nvim' }
+  use { 'neovim/nvim-lspconfig' }
 
   use {
     'stevearc/conform.nvim',
