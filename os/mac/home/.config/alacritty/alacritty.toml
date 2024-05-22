@@ -1,0 +1,34 @@
+import = ["/Users/psego/.config/alacritty/themes/themes/horizon-dark.toml"]
+
+[font.normal]
+family = "DejaVuSansMono Nerd Font Mono"
+
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "N"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001F"
+key = "Slash"
+mods = "Control"
+
+[mouse]
+hide_when_typing = false
+
+[shell]
+args = ["--login"]
+program = "/opt/homebrew/bin/bash"
+
+[window]
+option_as_alt = "Both"
