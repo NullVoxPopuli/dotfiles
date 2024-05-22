@@ -1,0 +1,18 @@
+#!/bin/bash
+
+rm -rf $PWD/node_modules/.embroider/
+echo "Removed $PWD/node_modules/.embroider/"
+
+rm -rf /tmp/embroider/
+echo "Removed /tmp/embroider/"
+
+echo "Setting:"
+echo -e "\tCI=true"
+echo -e "\tCLEAR_BROCCOLI_PERSISTENT_FILTER_CACHE=true"
+echo -e "\tBABEL_DISABLE_CACHE=1"
+
+export CI=true
+export CLEAR_BROCCOLI_PERSISTENT_FILTER_CACHE=true
+export BABEL_DISABLE_CACHE=1
+
+pnpm ember $@ 
