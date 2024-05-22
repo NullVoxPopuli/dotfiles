@@ -18,3 +18,4 @@ source "$HOME/shell/bash/github-action-runner.sh"
 source "$HOME/shell/bash/git.sh"
 
 source "$SCRIPTS/bash-support/environment-augmentations.sh"
+. "$HOME/.cargo/env"

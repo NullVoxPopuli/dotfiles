@@ -44,7 +44,7 @@ brew install direnv
 # Better du
 brew install dust # Better du
 brew install fzf # Fast fuzzy finding
-brew install exa # Better la
+brew install eza # Better la
 brew install bat # Better cat
 
 

@@ -1,11 +1,12 @@
 unameOut="$(uname -s)"
 
-# Requires exa https://the.exa.website/
-# sudo apt install exa
+# Requires eza 
+# https://github.com/eza-community/eza
+# sudo apt install eza
 #
 # to use old ls, /usr/bin/ls -- which ls
-alias ls='exa -h'
-alias la="exa -lah"
+alias ls='eza -h'
+alias la="eza -lah"
 
 
 case "${unameOut}" in

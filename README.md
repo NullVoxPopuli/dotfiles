@@ -30,9 +30,9 @@ https://github.com/XAMPPRocky/tokei
 
 ### `ls`, but better
 
-https://the.exa.website/
+https://github.com/eza-community/eza
 
-`sudo apt install exa`
+`sudo apt install eza`
 
 ### `cat`, but better
 
