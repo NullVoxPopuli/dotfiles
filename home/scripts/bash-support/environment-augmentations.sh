@@ -3,6 +3,9 @@
 ## Conditional environment augmentations
 ##
 ###############################################################################
+unameOut="$(uname -s)"
+
+
 # on MacOS, brew must be loaded first
 if [ -f "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -16,12 +19,17 @@ if ! [ -x "$(command -v starship)" ]; then
   echo "Linux: cargo install starship"
   echo "Mac: brew install starship"
 else
-  function set_win_title(){
-    DIRNAME2=$(basename "$(dirname "$PWD")")/$(basename "$PWD")
-    echo -ne "\033]0; $DIRNAME2 \007"
-  }
-  # starship adds to this
-  export PROMPT_COMMAND="$PROMPT_COMMAND;set_win_title"
+  case "${unameOut}" in
+    Linux*)
+    function set_win_title(){
+      DIRNAME2=$(basename "$(dirname "$PWD")")/$(basename "$PWD")
+      echo -ne "\033]0; $DIRNAME2 \007"
+    }
+
+    # starship adds to this
+    export PROMPT_COMMAND="$PROMPT_COMMAND;set_win_title"
+    ;;
+  esac
 
   eval "$(starship init bash)"
 fi
