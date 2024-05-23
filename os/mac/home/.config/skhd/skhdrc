@@ -83,6 +83,7 @@
 
 # Launching apps
 ctrl + alt - t : sh -c "/Applications/Alacritty.app/Contents/MacOS/alacritty" 2> /dev/null
+f11 : yabai -m window --toggle zoom-fullscreen
 
 
 # focus window
