@@ -72,6 +72,9 @@ yabai -m rule --add app="zoom.us" manage=off
 yabai -m rule --add app="^QuickTime Player" manage=off
 yabai -m rule --add app="^VoiceOver" manage=off
 yabai -m rule --add title=" - Huddle$" manage=off
+yabai -m rule --add app="^Thunderbird$" title="Reminder" manage=off
+yabai -m rule --add app="^Karabiner-Elements$" manage=off
+
 
 echo "yabai configuration loaded.."
 

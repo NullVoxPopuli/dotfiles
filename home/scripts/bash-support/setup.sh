@@ -5,6 +5,9 @@ case "${unameOut}" in
       eval `dircolors -b`
     ;;
     Darwin*)    
+      # MacOS *really* wants us to use zsh.
+      # I don't want to.
+      export BASH_SILENCE_DEPRECATION_WARNING=1
     ;;
     *)    
       echo "Unknown OS: $unameOut"
