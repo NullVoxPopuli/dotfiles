@@ -74,3 +74,6 @@ yabai -m rule --add app="^VoiceOver" manage=off
 yabai -m rule --add title=" - Huddle$" manage=off
 
 echo "yabai configuration loaded.."
+
+
+borders active_color=0xffbb00ff inactive_color=0xff000000 width=8.0 &

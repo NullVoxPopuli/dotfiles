@@ -25,6 +25,12 @@ brew install koekeishiya/formulae/yabai
 # Also,
 #   /tmp/skhd.pid may need removing  
 brew install koekeishiya/formulae/skhd
+# Window  focus highlight, because contrast is not 
+# high enough on focused windows on MacOS
+# (or really any OS)
+# https://github.com/FelixKratz/JankyBorders
+brew tap FelixKratz/formulae
+brew install borders
 
 ##############
 # Support for tools
