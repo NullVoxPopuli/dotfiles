@@ -74,6 +74,7 @@ yabai -m rule --add app="^VoiceOver" manage=off
 yabai -m rule --add title=" - Huddle$" manage=off
 yabai -m rule --add app="^Thunderbird$" title="Reminder" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
+yabai -m rule --add app="^Tuple$" manage=off
 
 
 echo "yabai configuration loaded.."
