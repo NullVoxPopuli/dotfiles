@@ -19,20 +19,20 @@ function pscripts() {
 }
 
 function latestPkgVer() {
-  local result=$(yarn info $1 --json)
+  local result=$(pnpm info $1 --json)
   echo ""
   echo ""
 
   echo "Current:"
-  echo $result | jq '.data.version'
+  echo $result | jq '.version'
   echo ""
 
   echo "Tags:"
-  echo $result | jq '.data["dist-tags"]'
+  echo $result | jq '.["dist-tags"]'
   echo ""
 
   echo "Most Recent:"
-  echo $result | jq '.data.versions[-1]'
+  echo $result | jq '.versions[-1]'
   echo ""
 }
 
