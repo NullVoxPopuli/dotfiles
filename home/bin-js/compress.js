@@ -3,7 +3,6 @@ import path from 'node:path';
 import { filesize } from 'filesize';
 import { minify } from 'terser';
 import { execa,  execaCommand, $ } from 'execa';
-import brotli from 'brotli';
 
 const options =  {
   parse: {
@@ -38,7 +37,7 @@ for (let file of files) {
 
   fs.writeFileSync(min, terserResult.code, 'utf8');
   await execa({stdout: {file: gz}})`gzip -c ${min}`;
-  fs.writeFileSync(br, brotli.compress(terserResult.code), 'utf8');
+  await execa`brotli ${min} --output=${br}`;
 }
 
 /**
