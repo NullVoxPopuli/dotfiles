@@ -37,7 +37,7 @@ for (let file of files) {
 
   fs.writeFileSync(min, terserResult.code, 'utf8');
   await execa({stdout: {file: gz}})`gzip -c ${min}`;
-  await execa`brotli ${min} --output=${br}`;
+  await execa`brotli ${min} --quality=11 --output=${br}`;
 }
 
 /**
