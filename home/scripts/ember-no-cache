@@ -6,6 +6,11 @@ echo "Removed $PWD/node_modules/.embroider/"
 rm -rf /tmp/embroider/
 echo "Removed /tmp/embroider/"
 
+if [[ ${TMPDIR} ]]; then 
+  rm -rf $TMPDIR/embroider 
+  echo "Removed \$TMPDIR/embroider"
+fi
+
 echo "Setting:"
 echo -e "\tCI=true"
 echo -e "\tCLEAR_BROCCOLI_PERSISTENT_FILTER_CACHE=true"
