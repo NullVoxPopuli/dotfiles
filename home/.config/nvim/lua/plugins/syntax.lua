@@ -72,7 +72,7 @@ return function(use)
           -- "comment", -- slow?
           "jsdoc",
           -- Configuration Languages
-          "toml", "jsonc",
+          "toml", "jsonc", "yaml",
           "dockerfile",
           "lua", "vim",
           -- Scripting Languages
