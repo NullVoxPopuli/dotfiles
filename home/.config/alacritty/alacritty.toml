@@ -3,3 +3,14 @@ family = "CodeNewRoman Nerd Font Mono"
 
 [shell]
 args = ['login']
+
+# https://github.com/alacritty/alacritty/issues/5246#issuecomment-1878166299
+[[hints.enabled]]
+binding = { key = "U", mods = "Control|Shift" }
+command = "xdg-open"
+hyperlinks = true
+mouse.enabled = true
+mouse.mods = "Control"
+post_processing = true
+persist = false
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
