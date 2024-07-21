@@ -26,6 +26,7 @@ augroup ShouldBeDefaults
   autocmd FileType json set filetype=jsonc
   autocmd FileType json5 set filetype=jsonc
   autocmd BufRead *.mts set filetype=typescript
+  autocmd BufRead *.edge set filetype=html
 
   " Don't open a file with all the folds closed
   " Not needed with UFO
