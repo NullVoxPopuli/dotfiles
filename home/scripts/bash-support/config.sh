@@ -1,6 +1,6 @@
 # Overwritten by starship
 # export PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"'
-export NODE_OPTIONS='--trace-warnings --unhandled-rejections=strict'
+export NODE_OPTIONS='--trace-deprecation --trace-warnings --unhandled-rejections=strict'
 
 # Navigating repos
 export DEV="$HOME/Development"
