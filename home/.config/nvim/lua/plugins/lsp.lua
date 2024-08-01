@@ -12,8 +12,10 @@ return function(use)
       require('conform').setup({
         formatters_by_ft = {
           -- Use a sub-list to run only the first available formatter
-          javascript = { { "prettierd", "prettier" } },
-          ['javascript.glimmer'] = { { "prettierd", "prettier" } },
+          javascript = { "prettier", stop_after_first = true },
+          ['javascript.glimmer'] = { "prettier", stop_after_first = true },
+          typescript = { "prettier", stop_after_first = true },
+          ['typescript.glimmer'] = { "prettier", stop_after_first = true },
         },
         format_on_save = {
           timeout_ms = 250,
