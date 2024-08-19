@@ -89,7 +89,12 @@ return function(use)
     "lukas-reineke/indent-blankline.nvim",
   }
   -- colorize various color-like tokens in code
-  use 'norcalli/nvim-colorizer.lua'
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require 'colorizer'.setup()
+    end
+  }
   -- tree-sitter colorizes ({[, etc
   use {
     'https://gitlab.com/HiPhish/rainbow-delimiters.nvim.git',
