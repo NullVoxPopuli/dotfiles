@@ -16,9 +16,11 @@ return function(use)
           ['javascript.glimmer'] = { "prettier", stop_after_first = true },
           typescript = { "prettier", stop_after_first = true },
           ['typescript.glimmer'] = { "prettier", stop_after_first = true },
+          html = { "prettier", stop_after_first = true },
+          ['html.edge'] = { "prettier", stop_after_first = true },
         },
         format_on_save = {
-          timeout_ms = 250,
+          timeout_ms = 1000,
           lsp_fallback = true,
         },
         notify_on_error = false,
