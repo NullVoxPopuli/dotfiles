@@ -108,17 +108,18 @@ require('packer').startup(function(use)
   --  ¯\_( ツ )_/¯
   if os.getenv("COPILOT") == "true" then
     -- Login via :Codeium Auth
-    use {
-      "Exafunction/codeium.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "hrsh7th/nvim-cmp",
-      },
-      config = function()
-        require("codeium").setup({
-        })
-      end
-    }
+    -- Crashes frequently with neovim updates
+    -- use {
+    --   "Exafunction/codeium.nvim",
+    --   requires = {
+    --     "nvim-lua/plenary.nvim",
+    --     "hrsh7th/nvim-cmp",
+    --   },
+    --   config = function()
+    --     require("codeium").setup({
+    --     })
+    --   end
+    -- }
   end
 
 
