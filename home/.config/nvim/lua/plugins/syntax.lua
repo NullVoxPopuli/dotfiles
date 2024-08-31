@@ -63,7 +63,8 @@ return function(use)
           "html", "css", "regex",
           "ejs",
           -- Web Framework Languages
-          "glimmer", "svelte",
+          "glimmer", "glimmer_javascript", "glimmer_typescript",
+          "svelte",
           -- Web Transport Languages
           "graphql",
           -- Documentation Languages
