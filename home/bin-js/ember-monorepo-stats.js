@@ -1,4 +1,4 @@
-import { ember, project } from "ember-apply";
+import { ember, project, packageJson } from "ember-apply";
 import { inspect } from "node:util";
 
 let stats = {
@@ -7,6 +7,7 @@ let stats = {
       app: {
         "test-app": 0,
         "real-app": 0,
+        embroider: 0,
         get total() {
           return this["test-app"] + this["real-app"];
         },
@@ -29,6 +30,17 @@ let stats = {
   },
 };
 
+function containsEmbroider(manifest) {
+  let deps = [
+    ...Object.keys(manifest.devDependencies ?? {}),
+    ...Object.keys(manifest.dependencies ?? {}),
+  ];
+
+  return (
+    deps.includes("@embroider/webpack") || deps.includes("@embroider/vite")
+  );
+}
+
 for await (let workspace of await project.eachWorkspace()) {
   let isEmber = await ember.isEmberProject();
 
@@ -37,9 +49,16 @@ for await (let workspace of await project.eachWorkspace()) {
     continue;
   }
 
+  let manifest = await packageJson.read();
+  let hasEmbroider = containsEmbroider(manifest);
+
   let isApp = await ember.isApp();
 
   if (isApp) {
+    if (hasEmbroider) {
+      stats.projects.ember.app.embroider++;
+    }
+
     if (workspace.includes("/test-app")) {
       stats.projects.ember.app["test-app"]++;
       continue;
