@@ -61,7 +61,6 @@ return function(use)
           -- Web Languages
           "javascript", "typescript",
           "html", "css", "regex",
-          "ejs",
           -- Web Framework Languages
           "glimmer", "glimmer_javascript", "glimmer_typescript",
           "svelte",

@@ -17,7 +17,7 @@ local servers = {
   "yamlls",
   "cssls",
   "lua_ls",
-  "tsserver",
+  "ts_ls",    -- formally tsserver
   "bashls",
   "marksman", -- https://github.com/artempyanykh/marksman
   "rust_analyzer",
