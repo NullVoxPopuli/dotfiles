@@ -43,6 +43,11 @@ return function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     -- '~/Development/OpenSource/nvim-treesitter',
+    run = function()
+      require("nvim-treesitter.install").prefer_git = true
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
     config = function()
       require("nvim-treesitter.install").prefer_git = true
       require 'nvim-treesitter.configs'.setup {
