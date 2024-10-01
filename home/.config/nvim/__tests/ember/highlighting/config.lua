@@ -42,6 +42,9 @@ require('packer').startup(function(use)
 
       -- vim.treesitter.language.register('gjs', 'javascript.glimmer')
       -- vim.treesitter.language.register('gjs', 'typescript.glimmer')
+      -- temporarily
+      -- autocmd BufRead *.gjs set filetype=glimmer_javascript
+      -- autocmd BufRead *.gts set filetype=glimmer_typescript
     end
   }
 
