@@ -1,6 +1,12 @@
 # Overwritten by starship
 # export PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"'
-export NODE_OPTIONS='--trace-deprecation --trace-warnings --unhandled-rejections=strict'
+# Must forward incoming $NODE_OPTIONS 
+# for use in VSCode's JavaScript Debug Terminal
+export NODE_OPTIONS="--trace-deprecation --trace-warnings --unhandled-rejections=strict $NODE_OPTIONS"
+
+# Because we work in so many projects, 
+# we don't want to set this if a project doesn't have it.
+export COREPACK_ENABLE_AUTO_PIN=0
 
 # Navigating repos
 export DEV="$HOME/Development"
