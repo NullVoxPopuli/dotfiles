@@ -110,8 +110,8 @@ require('packer').startup(function(use)
       set({ "n", "v" }, "<leader><down>", function() mc.lineSkipCursor(1) end)
 
       -- Add or skip adding a new cursor by matching word/selection
-      set({ "n", "v" }, "<leader>b", function() mc.matchAddCursor(1) end, { noremap = true })
-      set({ "n", "v" }, "<leader>B", function() mc.matchAddCursor(-1) end)
+      set({ "n", "v" }, "<leader>d", function() mc.matchAddCursor(1) end, { noremap = true, nowait = true })
+      set({ "n", "v" }, "<leader>D", function() mc.matchAddCursor(-1) end)
       set({ "n", "v" }, "<leader>s", function() mc.matchSkipCursor(1) end)
       set({ "n", "v" }, "<leader>S", function() mc.matchSkipCursor(-1) end)
 
