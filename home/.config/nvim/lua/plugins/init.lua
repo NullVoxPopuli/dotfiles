@@ -60,7 +60,6 @@ require('packer').startup(function(use)
 
   use({ "L3MON4D3/LuaSnip", tag = "v2.*" })
   -- Snippet editing
-
   use {
     "chrisgrieser/nvim-scissors",
     dependencies = { "nvim-telescope/telescope.nvim", "garymjr/nvim-snippets" },
@@ -74,15 +73,74 @@ require('packer').startup(function(use)
       require("luasnip.loaders.from_vscode").lazy_load {
         paths = { snippets },
       }
-
-
-      vim.keymap.set("n", "<leader>se", function() require("scissors").editSnippet() end)
-
-      -- when used in visual mode, prefills the selection as snippet body
-      vim.keymap.set({ "n", "x" }, "<leader>sa", function() require("scissors").addNewSnippet() end)
     end,
   }
 
+  -- Multi-cursor
+  -- Some vim zealots really hate that people want this.
+  -- They're wrong.
+  -- Multi-cursor is good.
+  -- Macros are also good, but not for the same purpose.
+  use {
+    -- This also effectively disables usage of the arrow key
+    -- for normal movement. Should be using better movement anyway
+    -- (by word, or hoppin')
+    'jake-stewart/multicursor.nvim',
+    branch = "1.0",
+    config = function()
+      local mc = require("multicursor-nvim")
+
+      mc.setup()
+
+      local set = vim.keymap.set
+
+      -- Easy way to add and remove cursors using the main cursor.
+      set({ "n", "v" }, "<c-q>", mc.toggleCursor)
+
+      -- Delete the main cursor.
+      set({ "n", "v" }, "<leader>x", mc.deleteCursor)
+
+      -- bring back cursors if you accidentally clear them
+      set("n", "<leader>gv", mc.restoreCursors)
+
+      -- Add or skip cursor above/below the main cursor.
+      set({ "n", "v" }, "<up>", function() mc.lineAddCursor(-1) end)
+      set({ "n", "v" }, "<down>", function() mc.lineAddCursor(1) end)
+      set({ "n", "v" }, "<leader><up>", function() mc.lineSkipCursor(-1) end)
+      set({ "n", "v" }, "<leader><down>", function() mc.lineSkipCursor(1) end)
+
+      -- Add or skip adding a new cursor by matching word/selection
+      set({ "n", "v" }, "<leader>b", function() mc.matchAddCursor(1) end, { noremap = true })
+      set({ "n", "v" }, "<leader>B", function() mc.matchAddCursor(-1) end)
+      set({ "n", "v" }, "<leader>s", function() mc.matchSkipCursor(1) end)
+      set({ "n", "v" }, "<leader>S", function() mc.matchSkipCursor(-1) end)
+
+      -- Add all matches in the document
+      set({ "n", "v" }, "<leader>A", mc.matchAllAddCursors)
+
+      -- Rotate the main cursor.
+      set({ "n", "v" }, "<left>", mc.nextCursor)
+      set({ "n", "v" }, "<right>", mc.prevCursor)
+
+      set("n", "<esc>", function()
+        if not mc.cursorsEnabled() then
+          mc.enableCursors()
+        elseif mc.hasCursors() then
+          mc.clearCursors()
+        else
+          -- Default <esc> handler.
+        end
+      end)
+
+      -- Rotate visual selection contents.
+      set("v", "<leader>t",
+        function() mc.transposeCursors(1) end)
+      set("v", "<leader>T",
+        function() mc.transposeCursors(-1) end)
+    end
+  }
+
+  -- Making up for issues in some tree-sitter grammars
   use {
     'vidocqh/auto-indent.nvim',
     config = function()
