@@ -58,6 +58,31 @@ require('packer').startup(function(use)
   ----------------------
   use 'tpope/vim-surround'
 
+  use({ "L3MON4D3/LuaSnip", tag = "v2.*" })
+  -- Snippet editing
+
+  use {
+    "chrisgrieser/nvim-scissors",
+    dependencies = { "nvim-telescope/telescope.nvim", "garymjr/nvim-snippets" },
+    config = function()
+      local home = os.getenv('HOME');
+      local snippets = home .. '/.config/nvim/snippets'
+
+      require("scissors").setup {
+        snippetDir = snippets,
+      }
+      require("luasnip.loaders.from_vscode").lazy_load {
+        paths = { snippets },
+      }
+
+
+      vim.keymap.set("n", "<leader>se", function() require("scissors").editSnippet() end)
+
+      -- when used in visual mode, prefills the selection as snippet body
+      vim.keymap.set({ "n", "x" }, "<leader>sa", function() require("scissors").addNewSnippet() end)
+    end,
+  }
+
   use {
     'vidocqh/auto-indent.nvim',
     config = function()

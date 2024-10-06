@@ -57,6 +57,8 @@ return function(use)
       --  https://github.com/hrsh7th/cmp-path/issues/68#issuecomment-1704351464
       -- 'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lua',
+      -- For Snippets
+      'saadparwaiz1/cmp_luasnip',
       -- 'f3fora/cmp-spell',
 
       -- Auto-closing tag suggestions
@@ -64,7 +66,7 @@ return function(use)
 
       -- It bothers me that this person's name is all caps
       'L3MON4D3/LuaSnip'
-    }
+    },
   }
 
   use 'ray-x/lsp_signature.nvim'
