@@ -45,6 +45,7 @@ rm -rf ~/.config/bat
 rm -rf ~/.config/starship.toml
 rm -rf ~/.config/pop-shell/config.json
 rm -rf ~/.gitmessage
+rm -rf ~/.prototools
 rm -rf ~/.tldrrc
 rm -rf ~/.cspell.json
 
@@ -53,6 +54,7 @@ ln -s $PWD/home/Applications ~/Applications
 ln -s $PWD/home/scripts ~/scripts
 ln -s $PWD/home/shell ~/shell
 ln -s $PWD/home/.cspell.json ~/.cspell.json
+ln -s $PWD/home/.prototools ~/.prototools
 ln -s $PWD/home/.themes ~/.themes
 ln -s $PWD/home/.bash_profile ~/.bash_profile
 ln -s $PWD/home/.config/nvim ~/.config/nvim
