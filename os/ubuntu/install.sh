@@ -28,12 +28,6 @@ sudo apt install \
 
 sudo snap install dust
 
-# Volta / node manager
-curl https://get.volta.sh | bash
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-
 # Rust tooling 
 curl https://sh.rustup.rs -sSf | sh
 # to not require a new terminal, we'll temporarily modify PATH 

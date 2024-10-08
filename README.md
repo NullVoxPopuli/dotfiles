@@ -44,8 +44,6 @@ https://github.com/sharkdp/bat
 
 https://tldr.sh/
 
-- `volta install tldr`
-
 ### paths => tree
 
 https://github.com/jez/as-tree
