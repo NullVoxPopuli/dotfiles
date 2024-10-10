@@ -4,7 +4,6 @@ local utils = require('plugin-config.lsp.utils')
 
 require('plugin-config.lsp.config')
 require('plugin-config.lsp.completions')
-require('plugin-config.lsp.integrations')
 
 local servers = {
   --------------
