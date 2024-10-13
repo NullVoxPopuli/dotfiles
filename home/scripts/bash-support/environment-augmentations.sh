@@ -77,7 +77,7 @@ if [ -d "$HOME/.pythons" ]; then
 fi
 
 # pnpm
-if [ -n "$(which pnpm)" ] && [ -x "$(pnpm --version)" ]; then
+if [ -n "$(which pnpm)" ]; then
   export PNPM_HOME="$HOME/.local/share/pnpm"
   export PATH="$PNPM_HOME:$PATH"
 fi

@@ -1,3 +1,9 @@
 # vim: set filetype=toml :
 [settings]
 auto-install = true
+
+# manually,
+# export PROTO_LOG=true
+# export PROTO_DEBUG_SHIM=true
+[env]
+DEBUG = false

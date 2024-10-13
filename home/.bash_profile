@@ -17,5 +17,5 @@ source "$HOME/shell/bash/gg.sh"
 source "$HOME/shell/bash/github-action-runner.sh"
 source "$HOME/shell/bash/git.sh"
 
-source "$SCRIPTS/bash-support/environment-augmentations.sh"
 source "$SCRIPTS/bash-support/tooling-managers.sh"
+source "$SCRIPTS/bash-support/environment-augmentations.sh"
