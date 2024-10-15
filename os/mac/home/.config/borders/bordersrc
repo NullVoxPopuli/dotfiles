@@ -1,0 +1,11 @@
+#!/bin/bash 
+
+# Colors are Alpha, R, G, B
+
+options=(
+  active_color=0xffbb00ff
+  inactive_color=0xff000000
+  width=8.0
+)
+
+borders "${options[@]}"

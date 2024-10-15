@@ -5,9 +5,11 @@ rm -rf ~/.config/skhd
 
 mkdir -p ~/.config/yabai
 mkdir -p ~/.config/skhd
+mkdir -p ~/.config/borders
 
 ln -s $PWD/os/mac/home/.config/yabai/yabairc ~/.config/yabai/yabairc
 ln -s $PWD/os/mac/home/.config/skhd/skhdrc ~/.config/skhd/skhdrc
+ln -s $PWD/os/mac/home/.config/borders/bordersrc ~/.config/borders/bordersrc
 
 
 ##############################################
