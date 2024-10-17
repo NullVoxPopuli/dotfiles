@@ -2,8 +2,9 @@ vim.api.nvim_command [[set termguicolors]]
 vim.api.nvim_command [[syntax on]]
 
 
-local tmp_folder = vim.api.nvim_command(':system mktemp')
-vim.api.nvim_echo({"Cloning plugins to " .. tmp_folder}, false, {})
+local tmp_folder = vim.fn.system({ 'mktemp' })
+
+vim.print("Plugins will be stored in :: " .. tmp_folder)
 
 
 vim.api.nvim_command('!git clone https://github.com/nvim-treesitter/nvim-treesitter.git')
