@@ -1,13 +1,14 @@
 vim.api.nvim_command [[set termguicolors]]
 vim.api.nvim_command [[syntax on]]
 
-
-local tmp_folder = vim.fn.system({ 'mktemp' })
+local now = vim.fn.system({ 'date', '+%s' })
+local tmp_folder = vim.fn.system({ 'mktemp' , '-t', 'nvim-test-' .. now })
+vim.fn.system({ 'mkdir', '-p', tmp_folder })
 
 vim.print("Plugins will be stored in :: " .. tmp_folder)
 
 
-vim.api.nvim_command('!git clone https://github.com/nvim-treesitter/nvim-treesitter.git')
+vim.fn.system({ 'git', 'clone', 'https://github.com/nvim-treesitter/nvim-treesitter.git',  tmp_folder .. '/nvim-treesitter' })
 
 -- Add plugins to runtime path so that require can find them
 vim.opt.rtp:append(tmp_folder .. "/nvim-treesitter")
