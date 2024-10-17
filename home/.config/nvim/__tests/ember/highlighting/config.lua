@@ -6,30 +6,33 @@ vim.api.nvim_command [[set termguicolors]]
 vim.api.nvim_command [[syntax on]]
 
 local now = vim.fn.system({ 'date', '+%s' })
-local tmp_folder = os.tmpname() .. '/nvim-test-' .. now
+-- MacOS is really annoying about this.
+-- Default $USER doesn't have permissions to create folders in /tmp
+local tmp_folder = os.getenv("TMPDIR") .. os.tmpname() .. '/nvim-test-' .. now
 
 -- remove the trailing new line
 tmp_folder = vim.fn.trim(tmp_folder)
 
-vim.fn.system({ 'mkdir', '-p', tmp_folder })
+vim.api.nvim_command("!mkdir -p " .. tmp_folder)
 
 vim.print("Plugins will be stored in :: '" .. tmp_folder .. "'")
 
-function install(repo, name)
+function install(repo, name, rtpAddition)
   vim.print("Installing " .. name)
-  vim.fn.system({ 'git', 'clone', repo,  tmp_folder .. '/' .. name })
+  vim.api.nvim_command("!git clone " .. repo .. " " .. tmp_folder .. '/')
 
   -- Add plugins to runtime path so that require can find them
-  vim.opt.rtp:append(tmp_folder .. "/" .. name)
+  vim.opt.rtp:append(tmp_folder .. "/" .. name .. "/" .. rtpAddition)
 end
 
-install('https://github.com/nvim-treesitter/nvim-treesitter.git', 'nvim-treesitter')
+install('https://github.com/nvim-treesitter/nvim-treesitter.git', 'nvim-treesitter', 'lua/nvim-treesitter')
+
+vim.print("Runtimepath is " .. vim.opt.rtp._value)
 
 vim.api.nvim_create_autocmd('BufRead', {
   pattern = { "*.gjs", "*.gts" },
 
   callback = function()
-    require("nvim-treesitter.install").prefer_git = true
     require 'nvim-treesitter.configs'.setup {
       sync_install = true,
       ignore_install = {},
@@ -49,7 +52,10 @@ vim.api.nvim_create_autocmd('BufRead', {
       },
     }
 
-    local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+    local ts_install = require("nvim-treesitter.install")
+    local ts_update = ts_install.update({ with_sync = true })
+
+    ts_install.prefer_git = true
 
     ts_update()
   end
