@@ -16,18 +16,14 @@ tmp_folder = vim.fn.trim(tmp_folder)
 vim.api.nvim_command("!mkdir -p " .. tmp_folder)
 
 vim.print("Plugins will be stored in :: '" .. tmp_folder .. "'")
+vim.opt.rtp:append(tmp_folder)
 
-function install(repo, name, rtpAddition)
+function install(repo, name)
   vim.print("Installing " .. name)
   vim.api.nvim_command("!git clone " .. repo .. " " .. tmp_folder .. '/')
-
-  -- Add plugins to runtime path so that require can find them
-  vim.opt.rtp:append(tmp_folder .. "/" .. name .. "/" .. rtpAddition)
 end
 
-install('https://github.com/nvim-treesitter/nvim-treesitter.git', 'nvim-treesitter', 'lua/nvim-treesitter')
-
-vim.print("Runtimepath is " .. vim.opt.rtp._value)
+install('https://github.com/nvim-treesitter/nvim-treesitter.git', 'nvim-treesitter')
 
 vim.api.nvim_create_autocmd('BufRead', {
   pattern = { "*.gjs", "*.gts" },
