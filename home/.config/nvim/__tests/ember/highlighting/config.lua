@@ -25,35 +25,28 @@ end
 
 install('https://github.com/nvim-treesitter/nvim-treesitter.git', 'nvim-treesitter')
 
-vim.api.nvim_create_autocmd('BufRead', {
-  pattern = { "*.gjs", "*.gts" },
+require 'nvim-treesitter.configs'.setup {
+  sync_install = true,
+  ignore_install = {},
+  auto_install = true,
+  modules = {},
+  ensure_installed = {
+    "javascript", "typescript",
+    "glimmer", "glimmer_javascript", "glimmer_typescript",
+    "jsdoc",
+    "diff",
+  },
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = true
+  },
+}
 
-  callback = function()
-    require 'nvim-treesitter.configs'.setup {
-      sync_install = true,
-      ignore_install = {},
-      auto_install = true,
-      modules = {},
-      ensure_installed = {
-        "javascript", "typescript",
-        "glimmer", "glimmer_javascript", "glimmer_typescript",
-        "jsdoc",
-        "diff",
-      },
-      highlight = {
-        enable = true,
-      },
-      indent = {
-        enable = true
-      },
-    }
+local ts_install = require("nvim-treesitter.install")
+local ts_update = ts_install.update({ with_sync = true })
 
-    local ts_install = require("nvim-treesitter.install")
-    local ts_update = ts_install.update({ with_sync = true })
+ts_install.prefer_git = true
 
-    ts_install.prefer_git = true
-
-    ts_update()
-  end
-})
-
+ts_update()
