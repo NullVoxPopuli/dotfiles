@@ -79,7 +79,7 @@ return function(use)
           -- Configuration Languages
           "toml", "jsonc", "yaml",
           "dockerfile",
-          "lua", "vim",
+          "lua", "vim", "hyprlang",
           -- Scripting Languages
           "commonlisp",
           "bash",
@@ -110,6 +110,10 @@ return function(use)
       vim.g.skip_ts_context_commentstring_module = true
 
       vim.treesitter.language.register('html', 'html.edge')
+
+      vim.filetype.add({
+        pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+      })
     end
   }
 
