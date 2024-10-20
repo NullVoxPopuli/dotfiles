@@ -1,0 +1,30 @@
+#waybar {
+  border-bottom: 1px solid black;
+}
+
+#workspaces button {
+  padding: 0 0.5rem; 
+  background-color: @surface0;
+  color: @text;
+  margin: 0.25em;
+}
+
+#workspaces button.empty {
+  color: @overlay0;
+}
+
+#workspaces button.visible {
+  color: @blue;
+}
+
+#workspaces button.active {
+  color: @green;
+  background-color: #121212;
+}
+
+#workspaces button.urgent {
+  background-color: @red;
+  border-radius: 1em;
+  color: @text;
+}
+
