@@ -33,7 +33,6 @@ mkdir -p ~/.local/share/nvim/_undo
 mkdir -p ~/.local/share/nvim/spell
 mkdir -p ~/.config/
 mkdir -p ~/.config/pop-shell/
-mkdir -p ~/.config/hypr/
 
 rm -rf ~/Applications
 rm -rf ~/scripts
@@ -49,7 +48,8 @@ rm -rf ~/.gitmessage
 rm -rf ~/.prototools
 rm -rf ~/.tldrrc
 rm -rf ~/.cspell.json
-rm -rf ~/.config/hypr/hyprland.conf
+rm -rf ~/.config/hypr
+rm -rf ~/.config/waybar
 
 
 ln -s $PWD/home/Applications ~/Applications
@@ -68,6 +68,7 @@ ln -s $PWD/home/.config/pop-shell/config.json ~/.config/pop-shell/config.json
 ln -s $PWD/home/.gitmessage ~/.gitmessage
 ln -s $PWD/home/.tldrrc ~/.tldrrc
 ln -s $PWD/home/.config/hypr ~/.config/hypr
+ln -s $PWD/home/.config/waybar ~/.config/waybar
 
 
 case "${unameOut}" in

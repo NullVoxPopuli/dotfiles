@@ -5,6 +5,7 @@ PATH="$HOME/scripts/node:$PATH"
 PATH="$HOME/scripts/system-utils:$PATH"
 PATH="$HOME/apps/phantomjs/bin:$PATH"
 PATH="$HOME/Applications:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 
 # NOTE: see also $HOME/.local/share/applications/
 APPS="$HOME/Applications"

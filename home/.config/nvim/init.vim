@@ -28,10 +28,6 @@ augroup ShouldBeDefaults
   autocmd BufRead *.mts set filetype=typescript
   autocmd BufRead *.edge set filetype=html.edge
 
-  " Temporary -- need to figure out what happend
-  autocmd BufRead *.gjs set filetype=glimmer_javascript
-  autocmd BufRead *.gts set filetype=glimmer_typescript
-
   " Don't open a file with all the folds closed
   " Not needed with UFO
   " autocmd BufReadPost,FileReadPost * normal zR
