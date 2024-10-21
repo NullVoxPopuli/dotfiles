@@ -11,7 +11,10 @@ export COREPACK_ENABLE_AUTO_PIN=0
 # Navigating repos
 export DEV="$HOME/Development"
 export OSS="$DEV/OpenSource"
-export GG_PATHS="$DEV/NullVoxPopuli:$DEV/tmp:$DEV/Work:$OSS:$OSS/emberjs:$OSS/starbeam"
+
+GG_PATHS="$DEV/NullVoxPopuli:$DEV/tmp:$DEV/Work:$OSS" 
+export GG_PATHS="$GG_PATHS:$OSS/emberjs:$OSS/starbeam:$OSS/hyprland"
+
 export GG_PREFIX="$HOME/Development/"
 
 # Editor
