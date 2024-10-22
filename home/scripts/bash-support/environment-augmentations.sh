@@ -93,3 +93,6 @@ if [ -d "$HOME/.local/bin" ]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
+if [ -d "$HOME/go" ]; then 
+  export PATH="$HOME/go/bin:$PATH"
+fi

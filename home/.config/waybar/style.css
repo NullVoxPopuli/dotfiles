@@ -1,28 +1,32 @@
-#waybar {
-  border-bottom: 1px solid black;
+@import "./gnome-like.css";
+
+#language {}
+#
+
+window#waybar {
+  background: rgba(0, 0, 0, 0.5);
+  color: @theme_text_color;
 }
 
-#workspaces button {
-  padding: 0 0.5rem; 
+window#workspaces button {
   background-color: @surface0;
   color: @text;
-  margin: 0.25em;
 }
 
-#workspaces button.empty {
+window#workspaces button.empty {
   color: @overlay0;
 }
 
-#workspaces button.visible {
+window#workspaces button.visible {
   color: @blue;
 }
 
-#workspaces button.active {
-  color: @green;
-  background-color: #121212;
+window#workspaces button.active {
+  color: #fff;
+  background-color: #232323;
 }
 
-#workspaces button.urgent {
+window#workspaces button.urgent {
   background-color: @red;
   border-radius: 1em;
   color: @text;

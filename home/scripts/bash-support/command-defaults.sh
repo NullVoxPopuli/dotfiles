@@ -18,6 +18,8 @@ case "${unameOut}" in
       alias cat="batcat"
 
       # Clipboard
+      # What can we use for wayland/sway?
+      # if [ "$XDG_SESSION_DESKTOP" == 
       alias setclip='xclip -selection c'
       alias getclip='xclip -selection clipboard -o'
     ;;
