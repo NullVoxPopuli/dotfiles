@@ -19,9 +19,13 @@ case "${unameOut}" in
 
       # Clipboard
       # What can we use for wayland/sway?
-      # if [ "$XDG_SESSION_DESKTOP" == 
-      alias setclip='xclip -selection c'
-      alias getclip='xclip -selection clipboard -o'
+      if [ "$XDG_SESSION_DESKTOP" == "hyprland" ]; then
+        alias setclip='wl-copy'
+        alias getclip='wl-paste'
+      else
+        alias setclip='xclip -selection c'
+        alias getclip='xclip -selection clipboard -o'
+      fi
     ;;
     Darwin*)    
       # Requires bat https://github.com/sharkdp/bat
