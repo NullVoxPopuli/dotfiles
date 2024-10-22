@@ -50,6 +50,7 @@ rm -rf ~/.tldrrc
 rm -rf ~/.cspell.json
 rm -rf ~/.config/hypr
 rm -rf ~/.config/waybar
+rm -rf ~/.config/swaync
 
 
 ln -s $PWD/home/Applications ~/Applications
@@ -69,6 +70,7 @@ ln -s $PWD/home/.gitmessage ~/.gitmessage
 ln -s $PWD/home/.tldrrc ~/.tldrrc
 ln -s $PWD/home/.config/hypr ~/.config/hypr
 ln -s $PWD/home/.config/waybar ~/.config/waybar
+ln -s $PWD/home/.config/swaync ~/.config/swaync
 
 
 case "${unameOut}" in
