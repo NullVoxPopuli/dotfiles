@@ -36,7 +36,7 @@
 @define-color crust #11111b;
 
 @define-color bg @mantle;
-@define-color accept @mantle;
+@define-color volumeBg @base;
 
 * {
   font-family: "IBM Plex Sans";
@@ -84,11 +84,11 @@
 }
 
 .widget-dnd>switch {
-  background-color: @surface2;
+  background-color: @surface0;
 }
 
 .widget-dnd>switch:checked {
-  background-color: @red;
+  background-color: @mauve;
 }
 
 .widget-dnd>switch slider {
@@ -155,8 +155,8 @@
 }
 
 .widget-volume {
-  background-color: @surface2;
-  border-radius: 20px;
+  background-color: @surface0;
+  border-radius: 10px;
   margin: 0 10px;
 }
 
