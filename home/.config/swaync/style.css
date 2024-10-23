@@ -104,10 +104,10 @@
 }
 
 .notification {
-  background-color: @surface2;
+  background-color: @surface0;
   box-shadow: none;
   margin: 0px;
-  border: 2px solid @lavender;
+  border: 2px solid @mauve;
   color: @text;
 }
 
@@ -154,11 +154,13 @@
   background-color: @lavender;
 }
 
+.widget-backlight,
 .widget-volume {
   background-color: @surface0;
   border-radius: 10px;
   margin: 0 10px;
 }
+.widget-backlight { margin-top: 10px; }
 
 trough highlight {
   background-color: @text;
@@ -178,15 +180,18 @@ slider {
   border: 2px solid @text;
 }
 
+.widget-backlight label,
 .widget-volume label {
   padding: 0 0 0 10px;
 }
 
+.widget-backlight trough highlight,
 .widget-volume trough highlight {
   background: @lavender;
   border: unset;
 }
 
+.widget-backlight button,
 .widget-volume button {
   background-color: inherit;
   box-shadow: unset;

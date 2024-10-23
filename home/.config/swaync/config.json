@@ -48,6 +48,7 @@
     "dnd",
     "notifications",
     "volume",
+    "backlight",
     "buttons-grid"
   ],
   "widget-config": {
@@ -72,31 +73,35 @@
       "image-size": 96,
       "image-radius": 12
     },
+    "backlight": {
+      "label": "🔆",
+      "device": "amdgpu_bl1"
+    },
     "volume": {
       "expand-button-label": "",
       "collapse-button-label": "",
       "show-per-app": true,
-      "show-per-app-icon": false,
+      "show-per-app-icon": true,
       "show-per-app-label": true
     },
     "buttons-grid": {
       "actions": [
-	{
-	  "label": "󰌾",
-	  "type": "normal",
-	  "command": "swaylock"
-	},
-	{
-	  "label": "󰍃",
-	  "type": "normal",
-	  "command": "swaymsg exit"
-	},
-	{
-	  "label": "󰜉",
-	  "type": "normal",
-	  "command": "systemctl reboot"
-	},
-	{
+        {
+          "label": "󰌾",
+          "type": "normal",
+          "command": "swaylock"
+        },
+        {
+          "label": "󰍃",
+          "type": "normal",
+          "command": "swaymsg exit"
+        },
+        {
+          "label": "󰜉",
+          "type": "normal",
+          "command": "systemctl reboot"
+        },
+        {
           "label": "󰐥",
           "type": "normal",
           "command": "systemctl poweroff"
