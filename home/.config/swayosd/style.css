@@ -1,0 +1,7 @@
+window#osd {
+  border: 1px solid #bbbbbb;
+  padding: 15px 30px;
+  border-radius: 10px;
+  background: alpha(@theme_bg_color, 0.7);
+}
+
