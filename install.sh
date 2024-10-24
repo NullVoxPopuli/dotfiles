@@ -52,6 +52,7 @@ rm -rf ~/.config/hypr
 rm -rf ~/.config/waybar
 rm -rf ~/.config/swaync
 rm -rf ~/.config/swayosd
+rm -rf ~/.config/yofi
 
 
 ln -s $PWD/home/Applications ~/Applications
@@ -73,6 +74,7 @@ ln -s $PWD/home/.config/hypr ~/.config/hypr
 ln -s $PWD/home/.config/waybar ~/.config/waybar
 ln -s $PWD/home/.config/swaync ~/.config/swaync
 ln -s $PWD/home/.config/swayosd ~/.config/swayosd
+ln -s $PWD/home/.config/yofi ~/.config/yofi
 
 
 case "${unameOut}" in
