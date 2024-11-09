@@ -96,3 +96,11 @@ fi
 if [ -d "$HOME/go" ]; then 
   export PATH="$HOME/go/bin:$PATH"
 fi
+
+# NVIDIA CUDA
+#  For 24.04 +  560
+#    https://medium.com/@scofield44165/ubuntu-24-04-1-install-nvidia-driver-560-cuda-12-6-fe8f820b1a2b
+if [ -d "/usr/local/cuda" ]; then 
+  export PATH="/usr/local/cuda/bin:$PATH" 
+  export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+fi

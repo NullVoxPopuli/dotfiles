@@ -1,0 +1,8 @@
+#!/bin/bash
+# From:
+#   https://www.reddit.com/r/davinciresolve/comments/1eaepzh/how_to_upgradeinstall_davinci_resolve_190b5_free/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+
+export __NV_PRIME_RENDER_OFFLOAD=1 
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export LD_PRELOAD="/lib/x86_64-linux-gnu/libglib-2.0.so.0 /lib/x86_64-linux-gnu/libgmodule-2.0.so.0 /lib/x86_64-linux-gnu/libpango-1.0.so.0 /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0" 
+/opt/resolve/bin/resolve "$@"
