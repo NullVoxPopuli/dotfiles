@@ -20,6 +20,12 @@ return function(use)
     end, { remap = true })
   end }
 
+  -- Same thing as hop, but for buffers / panes
+  use { 'NStefan002/wormhole.nvim', config = function()
+    vim.keymap.set("n", "<M-f>", "<Plug>(WormholeLabelsToggle)", { desc = "Wormhole Labels Toggle" })
+  end
+  }
+
   -- This tool helps me learn plugins' custom
   -- use {
   --   "folke/which-key.nvim",
