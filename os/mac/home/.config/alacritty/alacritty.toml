@@ -1,7 +1,11 @@
 import = ["/Users/psego/.config/alacritty/themes/themes/horizon-dark.toml"]
 
 [font.normal]
-family = "DejaVuSansMono Nerd Font Mono"
+family = "NotoSansM Nerd Font Mono"
+# family = "AnonymicePro Nerd Font Mono"
+# family = "0xProto Nerd Font Mono"
+# family = "CodeNewRoman Nerd Font Mono"
+# family = "DejaVuSansMono Nerd Font Mono"
 
 [[keyboard.bindings]]
 action = "CreateNewWindow"
