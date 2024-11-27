@@ -143,6 +143,10 @@ h = 'resize width -20'
 n = 'resize width +20'
 c = 'resize height +20'
 t = 'resize height -20'
+shift-h = 'resize width -50'
+shift-n = 'resize width +50'
+shift-c = 'resize height +50'
+shift-t = 'resize height -50'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
