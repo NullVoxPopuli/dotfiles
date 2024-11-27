@@ -15,7 +15,14 @@ brew install neovim    # The one true code editor
 
 # i3~ish
 #  https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
-brew install koekeishiya/formulae/yabai
+# brew install koekeishiya/formulae/yabai
+
+# i3-ish
+#   https://github.com/nikitabobko/AeroSpace
+#
+#   Better than Yabai. Yabai has all the same problems that Forge does on Ubuntu
+brew install --cask nikitabobko/tap/aerospace
+
 # hotkey daemon, recommended by the above
 #  https://github.com/koekeishiya/skhd/issues/42#issuecomment-401886533
 #  run 
@@ -25,6 +32,7 @@ brew install koekeishiya/formulae/yabai
 # Also,
 #   /tmp/skhd.pid may need removing  
 brew install koekeishiya/formulae/skhd
+
 # Window  focus highlight, because contrast is not 
 # high enough on focused windows on MacOS
 # (or really any OS)
@@ -52,5 +60,6 @@ brew install dust # Better du
 brew install fzf # Fast fuzzy finding
 brew install eza # Better la
 brew install bat # Better cat
+
 
 

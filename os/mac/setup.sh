@@ -2,6 +2,7 @@
 
 rm -rf ~/.config/yabai
 rm -rf ~/.config/skhd
+rm ~/.aerospace.toml
 
 mkdir -p ~/.config/yabai
 mkdir -p ~/.config/skhd
@@ -10,6 +11,7 @@ mkdir -p ~/.config/borders
 ln -s $PWD/os/mac/home/.config/yabai/yabairc ~/.config/yabai/yabairc
 ln -s $PWD/os/mac/home/.config/skhd/skhdrc ~/.config/skhd/skhdrc
 ln -s $PWD/os/mac/home/.config/borders/bordersrc ~/.config/borders/bordersrc
+ln -s $PWD/os/mac/home/.aerospace.toml ~/.aerospace.toml
 
 
 ##############################################
@@ -58,3 +60,7 @@ defaults write -app "Google Chrome" NSUserKeyEquivalents '{
 defaults write com.apple.finder NSUserKeyEquivalents '{
     "Go to Folder\\\\U2026" = "^l";
 }'
+
+
+# Disable the shitty workspace-fullscreen behavior that MacOS has
+defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer
