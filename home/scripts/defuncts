@@ -1,0 +1,5 @@
+#!/bin/bash
+
+while IFS= read -r pid; do
+    pstree -p $pid
+done <<< $(ps -ef | grep defunct | awk '{print $3}' | sort -u)
