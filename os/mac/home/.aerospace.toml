@@ -163,7 +163,7 @@ run = ['layout floating']
 
 [[on-window-detected]]
 if.app-name-regex-substring = "Thunderbird"
-if.window-title-regex-substring = "Reminders"
+if.window-title-regex-substring = "Reminder"
 run = ['layout floating']
 
 [[on-window-detected]]
