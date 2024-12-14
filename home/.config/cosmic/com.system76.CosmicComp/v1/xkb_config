@@ -1,0 +1,9 @@
+(
+    rules: "",
+    model: "pc105",
+    layout: "us",
+    variant: "dvorak",
+    options: Some(",caps:ctrl_modifier,lv3:alt_switch"),
+    repeat_delay: 600,
+    repeat_rate: 25,
+)
