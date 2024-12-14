@@ -42,6 +42,7 @@ rm -rf ~/.bash_profile
 rm -rf ~/.config/nvim
 rm -rf ~/.config/fish
 rm -rf ~/.config/bat
+rm -rf ~/.config/cosmic
 rm -rf ~/.config/starship.toml
 rm -rf ~/.config/pop-shell/config.json
 rm -rf ~/.gitmessage
@@ -64,6 +65,7 @@ ln -s $PWD/home/.prototools ~/.prototools
 ln -s $PWD/home/.themes ~/.themes
 ln -s $PWD/home/.bash_profile ~/.bash_profile
 ln -s $PWD/home/.config/nvim ~/.config/nvim
+ln -s $PWD/home/.config/cosmic ~/.config/cosmic
 ln -s $PWD/home/.config/fish ~/.config/fish
 ln -s $PWD/home/.config/alacritty ~/.config/alacritty
 ln -s $PWD/home/.config/starship.toml ~/.config/starship.toml
