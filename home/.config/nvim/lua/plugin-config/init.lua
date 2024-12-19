@@ -16,6 +16,21 @@ vim.api.nvim_create_user_command('IntegratedTerm', function()
   vim.api.nvim_set_hl(0, 'TermBackGround', { background = '#000000' })
 end, {})
 
+local colors = {
+  fg = '#ffffff',
+  bg = '#5D3FD3',
+  bold = true
+}
+require 'window-picker'.setup({
+  hint = 'statusline-winbar',
+  selection_chars = "AOEUHTNSIDKBPGXYFPCRLMJWVZQ",
+  highlights = {
+    statusline = {
+      unfocused = colors
+    }
+  }
+})
+
 
 -- default folding experience is either really bad,
 -- or something in my config is causing it to be bad.

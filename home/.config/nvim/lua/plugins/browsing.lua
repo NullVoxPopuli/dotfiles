@@ -1,5 +1,3 @@
-local dvorak_keys = "aoeuidhtnsgcrld;qjkxbmwv"
-
 return function(use)
   -- Very fast motion
   -- Hotkey 's' in normal mode
@@ -56,25 +54,7 @@ return function(use)
   --       neo-tree.nvim strives for avoiding breaking changes and still adhering to good UX
   vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
-  use {
-    's1n7ax/nvim-window-picker',
-    tag = 'v2.*',
-    config = function()
-      local colors = {
-        fg = '#ffffff',
-        bg = '#5D3FD3',
-        bold = true
-      }
-      require 'window-picker'.setup({
-        selection_chars = dvorak_keys,
-        highlights = {
-          statusline = {
-            unfocused = colors
-          }
-        }
-      })
-    end,
-  }
+  use { 's1n7ax/nvim-window-picker', tag = 'v2.*' }
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
