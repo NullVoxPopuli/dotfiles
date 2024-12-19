@@ -3,6 +3,9 @@
 rm -rf $PWD/node_modules/.embroider/
 echo "Removed $PWD/node_modules/.embroider/"
 
+rm -rf $PWD/node_modules/.vite
+echo "Removed $PWD/node_modules/.vite/"
+
 rm -rf /tmp/embroider/
 echo "Removed /tmp/embroider/"
 
