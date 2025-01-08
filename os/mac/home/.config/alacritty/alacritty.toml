@@ -1,4 +1,3 @@
-import = ["/Users/psego/.config/alacritty/themes/themes/horizon-dark.toml"]
 
 [font.normal]
 family = "NotoSansM Nerd Font Mono"
@@ -30,7 +29,7 @@ mods = "Control"
 [mouse]
 hide_when_typing = false
 
-[shell]
+[terminal.shell]
 args = ["--login"]
 program = "/opt/homebrew/bin/bash"
 
@@ -47,3 +46,8 @@ mouse.mods = "Control"
 post_processing = true
 persist = false
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+
+[general]
+import = ["/Users/psego/.config/alacritty/themes/themes/horizon-dark.toml"]
+
+[terminal]
