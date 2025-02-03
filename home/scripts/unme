@@ -7,7 +7,7 @@ input=$(</dev/stdin)
 
 dev="/✂️/"
 tilde="🏠/"
-user=""
+user="" # TODO: is there a good user icon?
 repoPlaceholder="<repo>"
 projectPlaceholder="<project>"
 pnpmPlaceholder="<.pnpm>"
