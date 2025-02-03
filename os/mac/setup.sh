@@ -17,7 +17,7 @@ ln -s $PWD/os/mac/home/.aerospace.toml ~/.aerospace.toml
 ##############################################
 # Link up config files, and set up directories
 ##############################################
-rm -f ~/.config/alacritty; ln -s $PWD/os/mac/home/.config/alacritty ~/.config/alacritty
+# NOTE: alacritty is set up in install.sh
 rm -f ~/.bashrc; ln -s $PWD/os/mac/home/.bashrc ~/.bashrc
 
 rm -fr ~/.config/alacritty/themes
