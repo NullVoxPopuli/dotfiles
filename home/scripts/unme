@@ -4,14 +4,19 @@
 #    cat /tmp/error.dump.log | unme | setclip
 #
 input=$(</dev/stdin)
-original_dev="/home/$USER/Development"
+
 dev="/✂️/"
-original_tilde="/home/$USER/"
 tilde="🏠/"
+user=""
 repoPlaceholder="<repo>"
 projectPlaceholder="<project>"
 pnpmPlaceholder="<.pnpm>"
 
+original_dev="/home/$USER/Development"
+mac_original_dev="/home/$USER/Development"
+
+original_tilde="/home/$USER/"
+mac_original_tilde="/Users/$USER/"
 
 if git rev-parse --git-dir > /dev/null 2>&1; then
   gitRoot=$(git rev-parse --show-toplevel)
@@ -31,10 +36,21 @@ if [ ! -z "$projectPlaceholder" ]; then
   input="$(echo "$input" | sed "s~$gitRoot~$projectPlaceholder~g")"
 fi
 
-echo "$input" \
-  | sed "s~$original_dev/NullVoxPopuli/~$dev~g" \
-  | sed "s~$original_dev/OpenSource/~$dev~g" \
-  | sed "s~$original_dev/Work/~$dev~g" \
-  | sed "s~$original_dev/tmp/~$dev~g" \
-  | sed "s~$original_dev/~$dev~g" \
-  | sed "s~$original_tilde~$tilde~g"
+function doReplacing() {
+  local _dev=$1
+  local _home=$2
+
+  echo "$input" \
+    | sed "s~$_dev/NullVoxPopuli/~$dev~g" \
+    | sed "s~$_dev/OpenSource/~$dev~g" \
+    | sed "s~$_dev/Work/~$dev~g" \
+    | sed "s~$_dev/tmp/~$dev~g" \
+    | sed "s~$_dev/~$dev~g" \
+    | sed "s~$_home~$tilde~g"
+}
+
+
+input=$(doReplacing $original_dev $original_tilde)
+input=$(doReplacing $mac_original_dev $mac_original_tilde)
+
+echo  "$input"
