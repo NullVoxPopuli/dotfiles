@@ -53,6 +53,9 @@ read -r -d '' warningMessage <<-EOF
 
   $line
 
+  $(ps -p $pid -o args --no-headers)
+  in $(readlink -e /proc/$pid/cwd)
+
   Do you want to kill it?
 
     kill -$SIGCODE $pid
