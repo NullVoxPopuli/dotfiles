@@ -92,6 +92,9 @@ local mySettings = {
       experimentalDecorators = true
     },
     -- importModuleSpecifier = "shortest"
+  },
+  eslint = {
+    useFlatConfig = true
   }
 }
 
