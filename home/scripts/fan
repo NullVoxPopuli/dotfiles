@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+
+# From here
+# https://community.frame.work/t/fan-speed-controller-with-custom-speed-curve/17208/2
+#
+# No clue how this does on non-frame.work machines.
+# On my desktop, I'm not bothered by fan speeds, but also,
+# on my desktop, the fans barely make any noise at all (well optimized)
+
+percent=${1:-40}
+
+echo "Setting $percent%"
+sudo ectool --interface=lpc fanduty $percent
+
+sudo ectool --interface=lpc pwmgetfanrpm
