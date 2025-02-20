@@ -16,6 +16,7 @@ source "$HOME/shell/bash/npm.sh"
 source "$HOME/shell/bash/gg.sh"
 source "$HOME/shell/bash/github-action-runner.sh"
 source "$HOME/shell/bash/git.sh"
+source "$HOME/shell/bash/run.sh"
 
 source "$SCRIPTS/bash-support/tooling-managers.sh"
 source "$SCRIPTS/bash-support/environment-augmentations.sh"
