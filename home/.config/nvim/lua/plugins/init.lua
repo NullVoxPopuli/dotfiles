@@ -190,6 +190,61 @@ require('packer').startup(function(use)
 
   --  ¯\_( ツ )_/¯
   if os.getenv("COPILOT") == "true" then
+    use({
+      "frankroeder/parrot.nvim",
+      requires = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim' },
+      config = function()
+        require("parrot").setup({
+          cmd_prefix = "Parrot",
+          providers = {
+            -- anthropic = {
+            --   api_key = os.getenv "ANTHROPIC_API_KEY",
+            -- },
+            -- gemini = {
+            --   api_key = os.getenv "GEMINI_API_KEY",
+            -- },
+            -- groq = {
+            --   api_key = os.getenv "GROQ_API_KEY",
+            -- },
+            -- mistral = {
+            --   api_key = os.getenv "MISTRAL_API_KEY",
+            -- },
+            -- pplx = {
+            --   api_key = os.getenv "PERPLEXITY_API_KEY",
+            -- },
+            -- provide an empty list to make provider available (no API key required)
+            -- ollama = {},
+            -- openai = {
+            --   api_key = os.getenv "OPENAI_API_KEY",
+            -- },
+            github = {
+              api_key = os.getenv "GITHUB_TOKEN",
+            },
+            -- nvidia = {
+            --   api_key = os.getenv "NVIDIA_API_KEY",
+            -- },
+            -- xai = {
+            --   api_key = os.getenv "XAI_API_KEY",
+            -- },
+          },
+          hooks = {
+            Ask = function(parrot, params)
+              local template = [[
+          In light of your existing knowledge base, please generate a response that
+          is succinct and directly addresses the question posed. Prioritize accuracy
+          and relevance in your answer, drawing upon the most recent information
+          available to you. Aim to deliver your response in a concise manner,
+          focusing on the essence of the inquiry.
+          Question: {{command}}
+        ]]
+              local model_obj = parrot.get_model("command")
+              parrot.logger.info("Asking model: " .. model_obj.name)
+              parrot.Prompt(params, parrot.ui.Target.popup, model_obj, "🤖 Ask ~ ", template)
+            end,
+          }
+        })
+      end,
+    })
     -- Login via :Codeium Auth
     -- Crashes frequently with neovim updates
     -- use {
