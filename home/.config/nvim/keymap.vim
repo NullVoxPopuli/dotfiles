@@ -45,14 +45,7 @@ noremap <leader>p "+p
 " <C-O> - Open, but horizontal split
 " O - Open, but leave the search results
 " q - quit
-nnoremap <C-f> :lua require('spectre').open()<CR>
-
-"search current word
-nnoremap <leader>fw :lua require('spectre').open_visual({select_word=true})<CR>
-vnoremap <leader>f :lua require('spectre').open_visual()<CR>
-"  search in current file
-nnoremap <leader>fp viw:lua require('spectre').open_file_search()<cr>
-
+nnoremap <C-f> :GrugFar<CR>
 
 " Highlight the current word under cursor
 "

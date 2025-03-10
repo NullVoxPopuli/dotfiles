@@ -62,17 +62,16 @@ return function(use)
 
 
   -- Project-wide Search, Find&Replace, with Regex!
+  --
   use {
-    'nvim-pack/nvim-spectre',
+    'MagicDuck/grug-far.nvim',
     config = function()
-      require('spectre').setup({
-        --[[ default = {
-          find = {
-            cmd = "ag",
-            options = {}
-          }
-        } ]]
-      })
+      require('grug-far').setup({
+        -- options, see Configuration section below
+        -- there are no required options atm
+        -- engine = 'ripgrep' is default, but 'astgrep' or 'astgrep-rules' can
+        -- be specified
+      });
     end
   }
 end
