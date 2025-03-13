@@ -219,6 +219,10 @@ require('packer').startup(function(use)
             -- },
             github = {
               api_key = os.getenv "GITHUB_TOKEN",
+              topic = {
+                model = "gpt-4o"
+                -- model = "claude-3-7-sonnett"
+              }
             },
             -- nvidia = {
             --   api_key = os.getenv "NVIDIA_API_KEY",

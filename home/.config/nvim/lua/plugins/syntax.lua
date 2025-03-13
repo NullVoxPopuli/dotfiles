@@ -80,6 +80,7 @@ return function(use)
           "toml", "jsonc", "yaml",
           "dockerfile",
           "lua", "vim", "hyprlang",
+          "hcl", "terraform",
           -- Scripting Languages
           "commonlisp",
           "bash",
