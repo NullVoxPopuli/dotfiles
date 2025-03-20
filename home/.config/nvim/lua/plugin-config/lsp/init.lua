@@ -27,10 +27,7 @@ local servers = {
   --------------
   -- Frameworks
   "ember",
-  "volar",
-
-  -- NOTE: not available in Glint@2
-  -- "glint",
+  "glint",
 
   --------------
   -- Tools
