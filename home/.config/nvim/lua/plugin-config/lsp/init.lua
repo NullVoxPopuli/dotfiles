@@ -27,7 +27,10 @@ local servers = {
   --------------
   -- Frameworks
   "ember",
-  "glint",
+  "volar",
+
+  -- NOTE: not available in Glint@2
+  -- "glint",
 
   --------------
   -- Tools
@@ -86,12 +89,14 @@ local mySettings = {
       },
     }
   },
-  tsserver = {
+  ts_ls = {
+    hostInfo = "neovim native LS",
     maxTsServerMemory = 8000,
     implicitProjectConfig = {
       experimentalDecorators = true
     },
-    -- importModuleSpecifier = "shortest"
+    disableAutomaticTypingAcquisition = true,
+    importModuleSpecifierPreference = "shortest",
   },
   eslint = {
     useFlatConfig = true
@@ -126,15 +131,48 @@ local conditional_features = function(client, bufnr)
   -- end
 end
 
+local function get_typescript_server_path(root_dir)
+  local project_root = vim.fs.dirname(vim.fs.find('node_modules', { path = root_dir, upward = true })[1])
+  return project_root and (project_root .. '/node_modules/typescript/lib') or ''
+end
+
 for _, serverName in ipairs(servers) do
+  -- lsp = require('lspconfig')
   local server = lsp[serverName]
 
   if (server) then
-    if (serverName == 'tsserver') then
+    if (serverName == 'ts_ls') then
+      local filetypes = {
+        'typescript',
+        'javascript',
+        'typescript.glimmer',
+        'javascript.glimmer',
+        'typescript.tsx',
+        'javascript.jsx',
+        'html.handlebars',
+        'handlebars',
+      }
       server.setup({
-        single_file_support = false,
-        root_dir = utils.is_ts_project,
+        filetypes = filetypes,
+        -- single_file_support = false,
+        -- root_dir = utils.is_ts_project,
         capabilities = capabilities,
+        on_new_config = function(new_config, new_root_dir)
+          if new_config.init_options then
+            new_config.init_options.tsdk = get_typescript_server_path(new_root_dir)
+          end
+        end,
+        init_options = {
+          disableAutomaticTypingAcquisition = true,
+          importModuleSpecifierPreference = "shortest",
+          plugins = {
+            {
+              name = "@glint/tsserver-plugin",
+              location = "node_modules/@glint/tsserver-plugin",
+              languages = filetypes
+            }
+          },
+        },
         settings = mySettings[serverName],
         on_attach = function(client, bufnr)
           keymap(bufnr)
