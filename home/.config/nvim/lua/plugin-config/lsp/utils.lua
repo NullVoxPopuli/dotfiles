@@ -33,9 +33,13 @@ local function read_nearest_ts_config(fromFile)
   --   this does not follow "extends" or global tsconfigs if a "one tsconfig.json"
   --   is used.
   local isGlint = string.find(contents, '"glint"')
+  local hasGlintPlugin = string.find(contents, '@glint/tsserver-plugin')
+
+
 
   return {
     isGlint = not not isGlint,
+    isGlintPlugin = not not hasGlintPlugin,
     rootDir = rootDir,
   };
 end
@@ -50,6 +54,10 @@ local function is_glint_project(filename, bufnr)
     return nil
   end
 
+  if (not result.isGlintPlugin) then
+    return nil
+  end
+
   if (not result.isGlint) then
     return nil
   end
@@ -60,8 +68,14 @@ end
 local function is_ts_project(filename, bufnr)
   local result = read_nearest_ts_config(filename)
 
+  print(result)
+
   if not result then
     return nil
+  end
+
+  if (result.isGlintPlugin) then
+    return result.rootDir
   end
 
   if (result.isGlint) then
