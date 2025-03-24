@@ -150,29 +150,35 @@ for _, serverName in ipairs(servers) do
         'handlebars',
       }
       server.setup({
-        filetypes = filetypes,
+        -- filetypes = filetypes,
         -- single_file_support = false,
-        -- root_dir = utils.is_ts_project,
+        root_dir = utils.is_ts_project,
         capabilities = capabilities,
         on_new_config = function(new_config, new_root_dir)
+          local info = utils.read_nearest_ts_config(new_root_dir)
+
           if new_config.init_options then
             new_config.init_options.tsdk = get_typescript_server_path(new_root_dir)
+
+            if (info.isGlintPlugin) then
+              -- Debugging
+              new_config.init_options.tsserver = {
+                logVerbosity = 'verbose'
+              }
+              new_config.init_options.plugins = {
+                {
+                  name = "@glint/tsserver-plugin",
+                  location = "node_modules/@glint/tsserver-plugin",
+                  languages = filetypes,
+                  enableForWorkspaceTypeScriptVersions = true,
+                }
+              }
+            end
           end
         end,
         init_options = {
           disableAutomaticTypingAcquisition = true,
           importModuleSpecifierPreference = "shortest",
-          tsserver = {
-            logVerbosity = 'verbose'
-          },
-          plugins = {
-            {
-              name = "@glint/tsserver-plugin",
-              location = "node_modules/@glint/tsserver-plugin",
-              languages = filetypes,
-              enableForWorkspaceTypeScriptVersions = true,
-            }
-          },
         },
         settings = mySettings[serverName],
         on_attach = function(client, bufnr)
