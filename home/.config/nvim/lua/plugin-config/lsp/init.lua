@@ -162,11 +162,15 @@ for _, serverName in ipairs(servers) do
         init_options = {
           disableAutomaticTypingAcquisition = true,
           importModuleSpecifierPreference = "shortest",
+          tsserver = {
+            logVerbosity = 'verbose'
+          },
           plugins = {
             {
               name = "@glint/tsserver-plugin",
               location = "node_modules/@glint/tsserver-plugin",
-              languages = filetypes
+              languages = filetypes,
+              enableForWorkspaceTypeScriptVersions = true,
             }
           },
         },

@@ -79,4 +79,15 @@ return function(use)
       require("inc_rename").setup()
     end,
   }
+
+  -- Debugging language servers
+  use {
+    "mhanberg/output-panel.nvim",
+    version = "*",
+    config = function()
+      require("output_panel").setup({
+        max_buffer_size = 5000 -- default
+      })
+    end,
+  }
 end
