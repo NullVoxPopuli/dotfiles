@@ -150,11 +150,14 @@ for _, serverName in ipairs(servers) do
         'handlebars',
       }
       server.setup({
-        -- filetypes = filetypes,
-        -- single_file_support = false,
+        -- filetypes MUST include our custom filetypes for all variants of TS that we might want to use
+        -- else the server won't boot and on_new_config won't get called, so we can't conditionally
+        -- configure the init_options based on our project
+        filetypes = filetypes,
         root_dir = utils.is_ts_project,
         capabilities = capabilities,
         on_new_config = function(new_config, new_root_dir)
+          print('on_new_config')
           local info = utils.read_nearest_ts_config(new_root_dir)
 
           if new_config.init_options then
