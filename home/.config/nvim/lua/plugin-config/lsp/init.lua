@@ -89,9 +89,9 @@ local mySettings = {
   ts_ls = {
     hostInfo = "neovim native LS",
     maxTsServerMemory = 8000,
-    implicitProjectConfig = {
-      experimentalDecorators = true
-    },
+    -- implicitProjectConfig = {
+    --   experimentalDecorators = true
+    -- },
     disableAutomaticTypingAcquisition = true,
     importModuleSpecifierPreference = "shortest",
   },
@@ -156,32 +156,33 @@ for _, serverName in ipairs(servers) do
         filetypes = filetypes,
         root_dir = utils.is_ts_project,
         capabilities = capabilities,
+        -- This allows us to switch types of TSServers based on the open file.
+        -- We don't always need the @glint/tsserver-plugin -- for example, in backend projects.
         on_new_config = function(new_config, new_root_dir)
-          print('on_new_config')
           local info = utils.read_nearest_ts_config(new_root_dir)
+          local glintPlugin = new_root_dir .. "node_modules/@glint/tsserver-plugin"
 
           if new_config.init_options then
             new_config.init_options.tsdk = get_typescript_server_path(new_root_dir)
 
+
             if (info.isGlintPlugin) then
-              -- Debugging
-              new_config.init_options.tsserver = {
-                logVerbosity = 'verbose'
-              }
               new_config.init_options.plugins = {
                 {
                   name = "@glint/tsserver-plugin",
-                  location = "node_modules/@glint/tsserver-plugin",
+                  location = glintPlugin,
                   languages = filetypes,
-                  enableForWorkspaceTypeScriptVersions = true,
                 }
               }
+              print(glintPlugin)
             end
           end
         end,
         init_options = {
+          tsserver = { logVerbosity = 'verbose', trace = "verbose" },
           disableAutomaticTypingAcquisition = true,
           importModuleSpecifierPreference = "shortest",
+          plugins = {}
         },
         settings = mySettings[serverName],
         on_attach = function(client, bufnr)

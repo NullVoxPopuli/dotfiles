@@ -23,8 +23,13 @@ local function read_nearest_ts_config(fromFile)
 
   local tsConfig = rootDir .. "/tsconfig.json"
   local contents = readFile(tsConfig)
+  local manifest = readFile(rootDir .. "/package.json")
 
   if not contents then
+    return nil
+  end
+
+  if not manifest then
     return nil
   end
 
@@ -33,9 +38,8 @@ local function read_nearest_ts_config(fromFile)
   --   this does not follow "extends" or global tsconfigs if a "one tsconfig.json"
   --   is used.
   local isGlint = string.find(contents, '"glint"')
-  local hasGlintPlugin = string.find(contents, '@glint/tsserver-plugin')
-
-
+  -- NOTE: hyphens don't work here
+  local hasGlintPlugin = string.find(manifest, "@glint/tsserver")
 
   return {
     isGlint = not not isGlint,
