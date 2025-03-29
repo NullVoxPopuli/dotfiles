@@ -86,12 +86,14 @@ local mySettings = {
       },
     }
   },
-  tsserver = {
+  ts_ls = {
+    hostInfo = "neovim native LS",
     maxTsServerMemory = 8000,
-    implicitProjectConfig = {
-      experimentalDecorators = true
-    },
-    -- importModuleSpecifier = "shortest"
+    -- implicitProjectConfig = {
+    --   experimentalDecorators = true
+    -- },
+    disableAutomaticTypingAcquisition = true,
+    importModuleSpecifierPreference = "shortest",
   },
   eslint = {
     useFlatConfig = true
@@ -126,15 +128,62 @@ local conditional_features = function(client, bufnr)
   -- end
 end
 
+local function get_typescript_server_path(root_dir)
+  local project_root = vim.fs.dirname(vim.fs.find('node_modules', { path = root_dir, upward = true })[1])
+  return project_root and (project_root .. '/node_modules/typescript/lib') or ''
+end
+
 for _, serverName in ipairs(servers) do
+  -- lsp = require('lspconfig')
   local server = lsp[serverName]
 
   if (server) then
-    if (serverName == 'tsserver') then
+    if (serverName == 'ts_ls') then
+      local filetypes = {
+        'typescript',
+        'javascript',
+        'typescript.glimmer',
+        'javascript.glimmer',
+        'typescript.tsx',
+        'javascript.jsx',
+        'html.handlebars',
+        'handlebars',
+      }
       server.setup({
-        single_file_support = false,
+        -- filetypes MUST include our custom filetypes for all variants of TS that we might want to use
+        -- else the server won't boot and on_new_config won't get called, so we can't conditionally
+        -- configure the init_options based on our project
+        filetypes = filetypes,
         root_dir = utils.is_ts_project,
         capabilities = capabilities,
+        -- This allows us to switch types of TSServers based on the open file.
+        -- We don't always need the @glint/tsserver-plugin -- for example, in backend projects.
+        on_new_config = function(new_config, new_root_dir)
+          local info = utils.read_nearest_ts_config(new_root_dir)
+          local glintPlugin = new_root_dir .. "node_modules/@glint/tsserver-plugin"
+
+          if new_config.init_options then
+            new_config.init_options.tsdk = get_typescript_server_path(new_root_dir)
+
+
+            if (info.isGlintPlugin) then
+              new_config.init_options.plugins = {
+                {
+                  name = "@glint/tsserver-plugin",
+                  location = glintPlugin,
+                  languages = filetypes,
+                }
+              }
+              print(glintPlugin)
+            end
+          end
+        end,
+        init_options = {
+          tsserver = { logVerbosity = 'verbose', trace = "verbose" },
+          disableAutomaticTypingAcquisition = true,
+          importModuleSpecifierPreference = "shortest",
+          plugins = {}
+        },
         settings = mySettings[serverName],
         on_attach = function(client, bufnr)
           keymap(bufnr)
