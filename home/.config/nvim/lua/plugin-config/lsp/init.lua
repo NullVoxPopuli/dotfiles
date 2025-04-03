@@ -92,8 +92,10 @@ local mySettings = {
     -- implicitProjectConfig = {
     --   experimentalDecorators = true
     -- },
+
     disableAutomaticTypingAcquisition = true,
-    importModuleSpecifierPreference = "shortest",
+    importModuleSpecifierPreference = "relative",
+    importModuleSpecifierEnding = "minimal",
   },
   eslint = {
     useFlatConfig = true
@@ -164,6 +166,7 @@ for _, serverName in ipairs(servers) do
 
           if new_config.init_options then
             new_config.init_options.tsdk = get_typescript_server_path(new_root_dir)
+            new_config.init_options.requestForwardingCommand = "forwardingTsRequest"
 
 
             if (info.isGlintPlugin) then
@@ -172,6 +175,8 @@ for _, serverName in ipairs(servers) do
                   name = "@glint/tsserver-plugin",
                   location = glintPlugin,
                   languages = filetypes,
+                  enableForWorkspaceTypeScriptVersions = true,
+                  configNamespace = "typescript"
                 }
               }
               print(glintPlugin)
@@ -180,8 +185,11 @@ for _, serverName in ipairs(servers) do
         end,
         init_options = {
           tsserver = { logVerbosity = 'verbose', trace = "verbose" },
-          disableAutomaticTypingAcquisition = true,
-          importModuleSpecifierPreference = "shortest",
+          preferences = {
+            disableAutomaticTypingAcquisition = true,
+            importModuleSpecifierPreference = "relative",
+            importModuleSpecifierEnding = "minimal",
+          },
           plugins = {}
         },
         settings = mySettings[serverName],

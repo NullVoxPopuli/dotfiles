@@ -78,7 +78,7 @@ cmp.setup({
     { name = 'path',    max_item_count = 3 },
   }, {
     { name = 'nvim-cmp-ts-tag-close' },
-    { name = "codeium",              max_item_count = 3 },
+    -- { name = "codeium",              max_item_count = 3 },
     -- { name = 'copilot'},
     { name = 'nvim_lua' },
     { name = 'spell' },
