@@ -85,6 +85,8 @@ return function(use)
           "commonlisp",
           "bash",
           "jq",
+          -- Languages I don't know how to categorize
+          "ruby",
           -- Systems Languages
           "c", "cmake",
           "rust",
