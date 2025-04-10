@@ -58,6 +58,7 @@ require('packer').startup(function(use)
   ----------------------
   use 'tpope/vim-surround'
 
+  use "rafamadriz/friendly-snippets"
   use({
     "L3MON4D3/LuaSnip",
     tag = "v2.*",
@@ -65,8 +66,8 @@ require('packer').startup(function(use)
       local home = os.getenv('HOME');
       local snippets = home .. '/.config/nvim/snippets'
 
-      require("scissors").setup {
-        snippetDir = snippets,
+      require("luasnip.loaders.from_vscode").lazy_load {
+        paths = { snippets },
       }
     end
   })
@@ -78,8 +79,8 @@ require('packer').startup(function(use)
       local home = os.getenv('HOME');
       local snippets = home .. '/.config/nvim/snippets'
 
-      require("luasnip.loaders.from_vscode").lazy_load {
-        paths = { snippets },
+      require("scissors").setup {
+        snippetDir = snippets,
       }
     end,
   }
