@@ -1,10 +1,14 @@
 return function(use)
-  -- icons
-  use 'onsails/lspkind.nvim'
-  -- server management and installation
   use { 'williamboman/mason.nvim' }
   use { 'williamboman/mason-lspconfig.nvim' }
-  use { 'neovim/nvim-lspconfig' }
+  use {
+    'neovim/nvim-lspconfig',
+    requires = {
+      -- It bothers me that this person's name is all caps
+      'L3MON4D3/LuaSnip',
+      { 'Saghen/blink.cmp', tag = 'v1.1.1' }
+    },
+  }
 
   use {
     'stevearc/conform.nvim',
@@ -43,33 +47,6 @@ return function(use)
   -- null-ls plugin
   use { 'davidmh/cspell.nvim' }
 
-  ---- Completion
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      -- Completion Sources
-      'hrsh7th/cmp-nvim-lsp',
-      -- Considered hacky (by the author)
-      -- https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/issues/12#issuecomment-1128820104
-      -- 'hrsh7th/cmp-nvim-lsp-signature-help',
-      'hrsh7th/cmp-buffer',
-      -- Freezes the whole editor
-      --  https://github.com/hrsh7th/cmp-path/issues/68#issuecomment-1704351464
-      -- 'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lua',
-      -- For Snippets
-      'saadparwaiz1/cmp_luasnip',
-      -- 'f3fora/cmp-spell',
-
-      -- Auto-closing tag suggestions
-      'buschco/nvim-cmp-ts-tag-close',
-
-      -- It bothers me that this person's name is all caps
-      'L3MON4D3/LuaSnip'
-    },
-  }
-
-  use 'ray-x/lsp_signature.nvim'
   use 'j-hui/fidget.nvim'
 
   use {

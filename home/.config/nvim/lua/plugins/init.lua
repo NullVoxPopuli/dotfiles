@@ -58,7 +58,18 @@ require('packer').startup(function(use)
   ----------------------
   use 'tpope/vim-surround'
 
-  use({ "L3MON4D3/LuaSnip", tag = "v2.*" })
+  use({
+    "L3MON4D3/LuaSnip",
+    tag = "v2.*",
+    config = function()
+      local home = os.getenv('HOME');
+      local snippets = home .. '/.config/nvim/snippets'
+
+      require("scissors").setup {
+        snippetDir = snippets,
+      }
+    end
+  })
   -- Snippet editing
   use {
     "chrisgrieser/nvim-scissors",
@@ -67,9 +78,6 @@ require('packer').startup(function(use)
       local home = os.getenv('HOME');
       local snippets = home .. '/.config/nvim/snippets'
 
-      require("scissors").setup {
-        snippetDir = snippets,
-      }
       require("luasnip.loaders.from_vscode").lazy_load {
         paths = { snippets },
       }
