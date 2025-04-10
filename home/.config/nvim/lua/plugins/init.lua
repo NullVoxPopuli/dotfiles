@@ -59,15 +59,17 @@ require('packer').startup(function(use)
   use 'tpope/vim-surround'
 
   use "rafamadriz/friendly-snippets"
+  use { "ember-tooling/snippets", branch = "implementation" }
   use({
     "L3MON4D3/LuaSnip",
     tag = "v2.*",
     config = function()
       local home = os.getenv('HOME');
       local snippets = home .. '/.config/nvim/snippets'
+      local ember = home .. '/Development/NullVoxPopuli/snippets'
 
       require("luasnip.loaders.from_vscode").lazy_load {
-        paths = { snippets },
+        paths = { snippets, ember },
       }
     end
   })
