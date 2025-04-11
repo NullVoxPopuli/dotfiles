@@ -69,7 +69,7 @@ require('packer').startup(function(use)
       local ember = home .. '/Development/NullVoxPopuli/snippets'
 
       require("luasnip.loaders.from_vscode").lazy_load {
-        paths = { snippets, ember },
+        paths = { ember },
       }
     end
   })
@@ -79,10 +79,11 @@ require('packer').startup(function(use)
     dependencies = { "nvim-telescope/telescope.nvim", "garymjr/nvim-snippets" },
     config = function()
       local home = os.getenv('HOME');
-      local snippets = home .. '/.config/nvim/snippets'
+      -- local snippets = home .. '/.config/nvim/snippets'
+      local ember = home .. '/Development/NullVoxPopuli/snippets'
 
       require("scissors").setup {
-        snippetDir = snippets,
+        snippetDir = ember,
       }
     end,
   }
