@@ -34,6 +34,7 @@ require('packer').startup(function(use)
   require('plugins.browsing')(use)
   require('plugins.finding')(use)
   require('plugins.visuals')(use)
+  require('plugins.snippets')(use)
 
   -- NOTE: previously tried plugins
   --   twilight.nvim
@@ -57,36 +58,6 @@ require('packer').startup(function(use)
   -- Editor Behavior
   ----------------------
   use 'tpope/vim-surround'
-
-  use "rafamadriz/friendly-snippets"
-  use { "ember-tooling/snippets", branch = "implementation" }
-  use({
-    "L3MON4D3/LuaSnip",
-    tag = "v2.*",
-    config = function()
-      local home = os.getenv('HOME');
-      local snippets = home .. '/.config/nvim/snippets'
-      local ember = home .. '/Development/NullVoxPopuli/snippets'
-
-      require("luasnip.loaders.from_vscode").lazy_load {
-        paths = { ember },
-      }
-    end
-  })
-  -- Snippet editing
-  use {
-    "chrisgrieser/nvim-scissors",
-    dependencies = { "nvim-telescope/telescope.nvim", "garymjr/nvim-snippets" },
-    config = function()
-      local home = os.getenv('HOME');
-      -- local snippets = home .. '/.config/nvim/snippets'
-      local ember = home .. '/Development/NullVoxPopuli/snippets'
-
-      require("scissors").setup {
-        snippetDir = ember,
-      }
-    end,
-  }
 
   -- Multi-cursor
   -- Some vim zealots really hate that people want this.
