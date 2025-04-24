@@ -3,7 +3,9 @@
 helpers="$(dirname "${BASH_SOURCE[0]}")/-helpers"
 currentPath=$(which nvim)
 installPath="${currentPath:-/usr/bin/nvim}"
-url="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
+# url="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
+url="https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.appimage"
+nvim_appimage=$(basename $url)
 
 source "$helpers/colors.sh"
 
@@ -24,17 +26,30 @@ echo ""
 echo ""
 
 # remove any previous downloads
-rm nvim.appimage > /dev/null 2>&1
+rm -f nvim.appimage > /dev/null 2>&1
+rm $nvim_appimage > /dev/null 2>&1
 
 set -e
 info "Downloading..."
 wget -q $url
+echo ""
+echo ""
+
+sha256sum $nvim_appimage 
+
+"$helpers/warning-prompt.sh" "Is the SHA256 good?"
+
+if [ "$?" == "1" ]; then
+  exit 1
+fi
+echo ""
+echo ""
 
 info "Making executable -- chmod +x"
-chmod +x nvim.appimage
+chmod +x $nvim_appimage 
 
 warn "Moving to $installPath"
-sudo mv nvim.appimage $installPath
+sudo mv $nvim_appimage $installPath
 yay "Success!"
 
 info "You now have $(nvim -v | grep "NVIM v")"

@@ -59,6 +59,14 @@ require('packer').startup(function(use)
   ----------------------
   use 'tpope/vim-surround'
 
+  -- Better buffer resizing
+  use {
+    "kwkarlwang/bufresize.nvim",
+    config = function()
+      require("bufresize").setup()
+    end
+  }
+
   -- Multi-cursor
   -- Some vim zealots really hate that people want this.
   -- They're wrong.

@@ -21,6 +21,7 @@ export GG_PREFIX="$HOME/Development/"
 export EDITOR=nvim
 export COPILOT="true"
 export PRETTIERD_LOCAL_PRETTIER_ONLY=1
+# export MANPAGER="nvim +Man!"
 
 # Sehcuurrity 
 export GPG_TTY=$(tty)
