@@ -62,5 +62,6 @@ defaults write com.apple.finder NSUserKeyEquivalents '{
 }'
 
 
+defaults write com.apple.dock expose-group-apps -bool true && killall Dock
 # Disable the shitty workspace-fullscreen behavior that MacOS has
 defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer
