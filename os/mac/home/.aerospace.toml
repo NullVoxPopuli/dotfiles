@@ -98,6 +98,7 @@ f11 = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 cmd-r = 'layout tiles horizontal vertical'
+cmd-space = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 cmd-h = 'focus left'

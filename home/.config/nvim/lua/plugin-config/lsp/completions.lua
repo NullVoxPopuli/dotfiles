@@ -2,6 +2,19 @@
 local home = os.getenv('HOME');
 local localEmberSnippets = home .. '/Development/NullVoxPopuli/snippets'
 
+local workSources = { 'lsp', 'path', 'snippets', 'buffer' }
+local ossSources = { 'lsp', 'path', 'snippets', 'buffer', 'codeium' }
+
+local sources = {}
+
+if os.getenv('PWD'):find('Work') then
+  sources = workSources
+else
+  sources = ossSources
+end
+
+
+
 require('blink.cmp').setup({
   keymap = {
     -- NOTE: binding this prevents the enter key from
@@ -52,7 +65,9 @@ require('blink.cmp').setup({
     },
   },
   sources = {
+    default = sources,
     providers = {
+      codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
       snippets = {
         opts = {
           -- supposed to be handled by luasnip
