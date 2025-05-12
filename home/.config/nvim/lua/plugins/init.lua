@@ -240,34 +240,35 @@ require('packer').startup(function(use)
         })
       end,
     })
-
-    -- Login via :Codeium Auth
-    -- :Codeium Chat opens a browser
-    use {
-      "Exafunction/windsurf.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim",
-      },
-      config = function()
-        if os.getenv('PWD'):find('Work') then
-        else
-          require("codeium").setup({
-            enable_cmp_source = false,
-            virtual_text = {
-              enabled = true,
-              idle_delay = 200,
-            },
-            map_keys = false,
-          })
-
-          local accept = require('codeium.virtual_text').accept
-
-          -- On Dvorak, this is easy
-          vim.keymap.set("i", "<C-u>", accept, { silent = true, expr = true, script = true, nowait = true })
-        end
-      end
-    }
   end
+
+  -- Login via :Codeium Auth
+  use {
+    "Exafunction/windsurf.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      if os.getenv('PWD'):find('Work') then
+        -- Not yet approved for work
+      else
+        require("codeium").setup({
+          enable_cmp_source = false,
+          virtual_text = {
+            enabled = true,
+            idle_delay = 200,
+          },
+          map_keys = false,
+        })
+
+        local accept = require('codeium.virtual_text').accept
+
+        -- On Dvorak, this is easy
+        vim.keymap.set("i", "<C-u>", accept, { silent = true, expr = true, script = true, nowait = true })
+      end
+    end
+  }
 
 
 

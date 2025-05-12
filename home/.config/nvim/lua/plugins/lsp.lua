@@ -58,13 +58,15 @@ return function(use)
   }
 
   -- Debugging language servers
-  use {
-    "mhanberg/output-panel.nvim",
-    version = "*",
-    config = function()
-      require("output_panel").setup({
-        max_buffer_size = 5000 -- default
-      })
-    end,
-  }
+  -- Disabled from always being on,
+  -- because it's buggy and dies after a time
+  -- use {
+  --   "mhanberg/output-panel.nvim",
+  --   version = "*",
+  --   config = function()
+  --     require("output_panel").setup({
+  --       max_buffer_size = 5000 -- default
+  --     })
+  --   end,
+  -- }
 end
