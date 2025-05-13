@@ -1,5 +1,3 @@
-vim.keymap.set("n", "<A-r>", ":IncRename ")
-
 -- Used in server.setup on_attach
 local function keymap(bufnr)
   -- Helpers, Utilities, etc. (lua -> vim apis are verbose)
@@ -7,12 +5,9 @@ local function keymap(bufnr)
   local function n(key, line)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', key, '<cmd>lua ' .. line .. '<CR>', { noremap = true, silent = true })
   end
-  local function i(key, line)
-    vim.api.nvim_buf_set_keymap(bufnr, 'i', key, '<cmd>lua ' .. line .. '<CR>', { noremap = true, silent = true })
-  end
 
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Global keymaps (no-remap by default, cause... sanity)
   -- handled by Glance
@@ -23,11 +18,13 @@ local function keymap(bufnr)
   -- n('gr', 'vim.lsp.buf.references()')
   n('<leader>ff', 'vim.lsp.buf.format({ async = true })')
 
-  n('<leader>u', 'vim.lsp.buf.signature_help()<CR>')
-  n('<leader><Space>', 'vim.lsp.buf.hover()')
+  n('<leader>u', 'vim.lsp.buf.signature_help()')
   n('<leader>e', 'vim.diagnostic.open_float()')
+  n('<leader><Space>', 'vim.lsp.buf.hover()')
   n('<leader>a', 'vim.lsp.buf.code_action()')
   n('<leader>rn', 'vim.lsp.buf.rename()')
 end
+
+vim.keymap.set("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
 
 return keymap
