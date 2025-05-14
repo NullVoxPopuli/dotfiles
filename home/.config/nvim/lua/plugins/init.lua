@@ -255,6 +255,8 @@ require('packer').startup(function(use)
       else
         require("codeium").setup({
           enable_cmp_source = false,
+          -- requires api.host, and I don't know what that is
+          -- enterprise_mode = true,
           virtual_text = {
             enabled = true,
             idle_delay = 200,
