@@ -54,5 +54,8 @@
         "/home/lprestonsegoiii/.local/share/nvim/site/pack/packer/start/cmp-path/after",
         "/home/lprestonsegoiii/.local/share/nvim/site/pack/packer/start/playground/after",
         "${3rd}/luassert/library"
+    ],
+    "diagnostics.disable": [
+        "undefined-global"
     ]
 }

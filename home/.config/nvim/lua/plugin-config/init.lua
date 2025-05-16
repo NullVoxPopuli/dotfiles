@@ -30,27 +30,3 @@ require 'window-picker'.setup({
     }
   }
 })
-
-
--- default folding experience is either really bad,
--- or something in my config is causing it to be bad.
--- this is even with UFO disabled
--- function MyFoldtext()
---   local text = vim.treesitter.foldtext()
-
---   local n_lines = vim.v.foldend - vim.v.foldstart
---   local text_lines = " lines"
-
---   if n_lines == 1 then
---     text_lines = " line"
---   end
-
---   table.insert(text, { " - " .. n_lines .. text_lines, { "Folded" }})
-
---   return text
--- end
-
--- vim.opt.foldmethod="expr"
--- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
--- vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
--- vim.opt.foldtext = "v:lua.MyFoldtext()"

@@ -46,13 +46,37 @@ require('packer').startup(function(use)
 
   -- Scripting Utilities
   use 'nvim-lua/plenary.nvim'
-  use 'rcarriga/nvim-notify'
-  use { 'vuki656/package-info.nvim', config = function()
-    vim.api.nvim_set_keymap(
-      'n', '<leader>v', '<cmd>lua require("package-info").show()<cr>',
-      { silent = true, noremap = true }
-    )
-  end }
+  use {
+    'rcarriga/nvim-notify',
+    config = function()
+      vim.keymap.set('n', '<leader>m', '<cmd>lua require("telescope").extensions.notify.notify()<cr>',
+        { silent = true, noremap = true })
+      vim.notify = function(msg, ...)
+        if msg and string.find(msg, "Neo") and string.find(msg, "tree") then
+          return
+        end
+
+        require("notify")(msg, ...)
+      end
+    end
+
+  }
+
+  use {
+    'vuki656/package-info.nvim',
+    requires = "MunifTanjim/nui.nvim",
+    config = function()
+      require('package-info').setup({
+        autostart = false,
+        hide_up_to_date = true
+      })
+
+      vim.keymap.set(
+        'n', '<leader>v', '<cmd>lua require("package-info").toggle()<cr>',
+        { silent = true, noremap = true }
+      )
+    end
+  }
 
   ----------------------
   -- Editor Behavior

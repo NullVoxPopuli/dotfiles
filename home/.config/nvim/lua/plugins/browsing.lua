@@ -73,6 +73,8 @@ return function(use)
           filtered_items = {
             visible = true,
             hide_dotfiles = false,
+            show_hidden_count = true,
+            hide_by_pattern = { ".git", "node_modules" }
           },
         },
         buffers = {
