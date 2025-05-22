@@ -163,6 +163,8 @@ for _, serverName in ipairs(servers) do
           local info = utils.read_nearest_ts_config(new_root_dir)
           local glintPlugin = new_root_dir .. "node_modules/@glint/tsserver-plugin"
 
+          print(info)
+
           if new_config.init_options then
             new_config.init_options.tsdk = get_typescript_server_path(new_root_dir)
             new_config.init_options.requestForwardingCommand = "forwardingTsRequest"

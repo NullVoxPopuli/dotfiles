@@ -3,7 +3,11 @@ local function keymap(bufnr)
   -- Helpers, Utilities, etc. (lua -> vim apis are verbose)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   local function n(key, line)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', key, '<cmd>lua ' .. line .. '<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', key, '<cmd>lua ' .. line .. '<CR>', {
+      buffer = bufnr,
+      noremap = true,
+      silent = true
+    })
   end
 
 
@@ -18,9 +22,9 @@ local function keymap(bufnr)
   -- n('gr', 'vim.lsp.buf.references()')
   n('<leader>ff', 'vim.lsp.buf.format({ async = true })')
 
-  n('<leader>u', 'vim.lsp.buf.signature_help()')
-  n('<leader>e', 'vim.diagnostic.open_float()')
-  n('<leader><Space>', 'vim.lsp.buf.hover()')
+  n('<leader>u', 'vim.lsp.buf.signature_help({ border = "rounded" })')
+  n('<leader>e', 'vim.diagnostic.open_float({ border = "rounded" })')
+  n('<leader><Space>', 'vim.lsp.buf.hover({ border = "rounded" })')
   n('<leader>a', 'vim.lsp.buf.code_action()')
   n('<leader>rn', 'vim.lsp.buf.rename()')
 end
