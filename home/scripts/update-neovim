@@ -35,11 +35,22 @@ wget -q $url
 echo ""
 echo ""
 
-sha256sum $nvim_appimage 
 
-"$helpers/warning-prompt.sh" "Is the SHA256 good?"
+sha_line="$(sha256sum $nvim_appimage)"
+
+sha_msg="
+  $sha_line
+
+  Is the SHA256 good?
+
+  verify at https://github.com/neovim/neovim/releases/tag/nightly
+"
+
+
+"$helpers/warning-prompt.sh" "$sha_msg"
 
 if [ "$?" == "1" ]; then
+  echo "Cancelling install..."
   exit 1
 fi
 echo ""
