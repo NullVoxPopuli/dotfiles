@@ -204,7 +204,7 @@ require('packer').startup(function(use)
   }
 
   --  ¯\_( ツ )_/¯
-  if os.getenv("COPILOT") == "true" then
+  if os.getenv("LOCAL_AI") == "true" then
     use({
       "frankroeder/parrot.nvim",
       requires = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim' },
