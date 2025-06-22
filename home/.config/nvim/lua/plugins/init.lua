@@ -18,9 +18,6 @@ require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- *aggressive* caching
-  use 'lewis6991/impatient.nvim'
-
   -- Fun
   -- https://github.com/letieu/hacker.nvim
 

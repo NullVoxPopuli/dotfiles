@@ -15,7 +15,7 @@ local function readFile(filePath)
 end
 
 local function read_nearest_ts_config(fromFile)
-  local rootDir = lsp.util.root_pattern('tsconfig.json')(fromFile);
+  local rootDir = vim.fs.root(0, { 'tsconfig.json' })
 
   if not rootDir then
     return nil
@@ -69,22 +69,24 @@ local function is_glint_project(filename, bufnr)
   return result.rootDir
 end
 
-local function is_ts_project(filename, bufnr)
+local function is_ts_project(filename, onDir)
   local result = read_nearest_ts_config(filename)
+
+  print(result)
 
   if not result then
     return nil
   end
 
   if (result.isGlintPlugin) then
-    return result.rootDir
+    return onDir(result.rootDir)
   end
 
   if (result.isGlint) then
     return nil
   end
 
-  return result.rootDir
+  return onDir(result.rootDir)
 end
 
 return {
