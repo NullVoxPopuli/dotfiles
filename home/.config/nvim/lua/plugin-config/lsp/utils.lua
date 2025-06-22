@@ -72,8 +72,6 @@ end
 local function is_ts_project(filename, onDir)
   local result = read_nearest_ts_config(filename)
 
-  print(result)
-
   if not result then
     return nil
   end
