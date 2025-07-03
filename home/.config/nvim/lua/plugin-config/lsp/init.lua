@@ -30,7 +30,8 @@ local servers = {
   --------------
   -- Linting / Formatting
   -- null_ls not needed for these
-  "eslint"
+  "eslint",
+  "stylelint_lsp"
 }
 
 ---------------------------
