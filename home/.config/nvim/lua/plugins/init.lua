@@ -48,13 +48,13 @@ require('packer').startup(function(use)
     config = function()
       vim.keymap.set('n', '<leader>m', '<cmd>lua require("telescope").extensions.notify.notify()<cr>',
         { silent = true, noremap = true })
-      vim.notify = function(msg, ...)
-        if msg and string.find(msg, "Neo") and string.find(msg, "tree") then
-          return
-        end
-
-        require("notify")(msg, ...)
-      end
+      -- vim.notify = function(msg, ...)
+      --   if msg and string.find(msg, "Neo") and string.find(msg, "tree") then
+      --     return
+      --   end
+      --
+      --   require("notify")(msg, ...)
+      -- end
     end
 
   }
