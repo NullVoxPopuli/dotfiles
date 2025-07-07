@@ -3,7 +3,11 @@ local home = os.getenv('HOME');
 local localEmberSnippets = home .. '/Development/NullVoxPopuli/snippets'
 
 local workSources = { 'lsp', 'path', 'snippets', 'buffer' }
-local ossSources = { 'lsp', 'path', 'snippets', 'buffer', 'codeium' }
+local ossSources = {
+  'lsp', 'path', 'snippets', 'buffer',
+  -- disabled because windsulf (formally codeium is broken)
+  --'codeium'
+}
 
 local sources = {}
 
@@ -64,18 +68,18 @@ require('blink.cmp').setup({
       }
     },
   },
-  sources = {
-    default = sources,
-    providers = {
-      codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
-      snippets = {
-        opts = {
-          -- supposed to be handled by luasnip
-          search_paths = { localEmberSnippets },
-        },
-      }
-    }
-  },
+  -- sources = {
+  --   default = sources,
+  --   providers = {
+  --     codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
+  --     snippets = {
+  --       opts = {
+  --         -- supposed to be handled by luasnip
+  --         search_paths = { localEmberSnippets },
+  --       },
+  --     }
+  --   }
+  -- },
   snippets = {
     -- Shorthand doesn't work yet
     -- preset = 'luasnip' ,
