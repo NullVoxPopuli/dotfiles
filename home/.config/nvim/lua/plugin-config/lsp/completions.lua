@@ -63,23 +63,26 @@ require('blink.cmp').setup({
       draw = {
         columns = {
           { "label",     "label_description", gap = 1 },
-          { "kind_icon", "kind",              gap = 1 }
+          { "kind_icon", "kind",              'source_name', gap = 1 }
+        },
+        components = {
+          source_name = { text = function(ctx) return ctx.item.client_name or ctx.item.source_name end },
         },
       }
     },
   },
-  -- sources = {
-  --   default = sources,
-  --   providers = {
-  --     codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
-  --     snippets = {
-  --       opts = {
-  --         -- supposed to be handled by luasnip
-  --         search_paths = { localEmberSnippets },
-  --       },
-  --     }
-  --   }
-  -- },
+  sources = {
+    default = sources,
+    --   providers = {
+    --     codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
+    --     snippets = {
+    --       opts = {
+    --         -- supposed to be handled by luasnip
+    --         search_paths = { localEmberSnippets },
+    --       },
+    --     }
+    --   }
+  },
   snippets = {
     -- Shorthand doesn't work yet
     -- preset = 'luasnip' ,

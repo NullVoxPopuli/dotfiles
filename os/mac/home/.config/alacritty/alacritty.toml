@@ -50,4 +50,4 @@ regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:
 [general]
 import = ["/Users/psego/.config/alacritty/themes/themes/horizon-dark.toml"]
 
-[terminal]
+
