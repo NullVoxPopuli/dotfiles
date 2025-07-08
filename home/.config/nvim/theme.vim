@@ -21,16 +21,16 @@ let g:edge_better_performance = 1
 let g:edge_dim_foreground = 0
 " Don't dim inactive when we have the focus ring
 let g:edge_dim_inactive_windows = 0
-let g:edge_colors_override = {'bg0': ['#202230', '234'] }
+let g:edge_colors_override = {'bg0': ['#101220', '123'] }
 colorscheme edge
 
 " No theme has 100% of what I want.
 " Here is where I override the theme's settings
 highlight! link CocExplorerFileDirectory Blue
 " default neon bg: 2b2d3a
-highlight! Normal guibg=#202230
-highlight! Terminal guibg=#202230
-highlight! EndOfBuffer guibg=#202230
+highlight! Normal guibg=#101220
+highlight! Terminal guibg=#101220
+highlight! EndOfBuffer guibg=#101220
 " default neon bg: 2f3242
 highlight! SignColumn guibg=#262836
 " disable italic on Type
