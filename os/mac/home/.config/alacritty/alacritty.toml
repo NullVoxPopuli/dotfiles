@@ -35,6 +35,7 @@ program = "/opt/homebrew/bin/bash"
 
 [window]
 option_as_alt = "Both"
+decorations = "Buttonless"
 
 # https://github.com/alacritty/alacritty/issues/5246#issuecomment-1878166299
 [[hints.enabled]]
@@ -50,4 +51,5 @@ regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:
 [general]
 import = ["/Users/psego/.config/alacritty/themes/themes/horizon-dark.toml"]
 
-
+[colors.primary]
+background = '#000000'

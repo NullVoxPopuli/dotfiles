@@ -149,7 +149,7 @@ async function betterTicketCreation() {
      *       that regularly tries to update everything (relative timestamps everywhere? idk). 
      *       This is evident by react-scan / render-scan highlighting everything occasionally.
      */
-    let parent = document.querySelector('[data-testid="atlassian-navigation--primary-actions"]');
+    let parent = document.querySelector('header');
     [...parent.children].forEach(child => child.style = "display:none;");
 
     let container = document.createElement('div');
@@ -249,8 +249,6 @@ async function betterTicketCreation() {
       })
       layout.appendChild(a);
     }
-
-    layout.appendChild(nav);
   }
 
   await insertUI();
