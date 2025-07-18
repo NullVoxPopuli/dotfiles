@@ -1,0 +1,12 @@
+#!/bin/bash
+
+upstream=$(git symbolic-ref refs/remotes/origin/HEAD --short)
+
+# Sorting also dedupes
+# cut removes the commit information, which for different commits would list the same file multiple times
+conflictedFiles=$(git ls-files -u  | cut -f 2 | sort -u)
+
+for fname in $conflictedFiles 
+do
+  git checkout $upstream -- $fname
+done
