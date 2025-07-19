@@ -46,7 +46,7 @@ function reduceLock() {
   fi
 
   if [[ -f "pnpm-lock.yaml" ]]; then 
-    local upstream_branch="origin/$(gorigin)" 
+    local upstream_branch=$(git symbolic-ref refs/remotes/origin/HEAD --short)
 
     echo "Reducing lockfile..."
     echo ""

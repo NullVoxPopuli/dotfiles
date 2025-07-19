@@ -18,12 +18,12 @@ function gb() {
 
 function werk() {
   local sha="$(uuid | cut -d - -f 1)"
-  local branchName=${1:-"nvp/$sha"}
-  local upstream=$(gorigin)
+  local branchName="nvp/${1:-"$sha"}"
+  local upstream=$(git symbolic-ref refs/remotes/origin/HEAD --short)
 
-  echo "Starting new work on $branchName branched off origin/$upstream"
+  echo "Starting new work on $branchName branched off $upstream"
 
-  git switch -c $branchName "origin/$upstream"
+  git switch -c $branchName $upstream
 }
 
 # Interactive git checkout (recent branches)

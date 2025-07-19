@@ -23,7 +23,7 @@ alias ga="git add --patch"
 alias gbs='git branch-status'
 
 alias gia='git add --patch'
-alias gorigin="git branch -rl '*/HEAD' | rev | cut -d/ -f1 | rev"
+alias gorigin="git symbolic-ref refs/remotes/origin/HEAD --short | cut -d '/' -f 2"
 alias g-reset="git remote set-head origin -a && git fetch origin && git checkout \$(gorigin) && git reset origin/\$(gorigin) --hard"
 alias ggraph='git log master --graph --format="%C(auto) %h %s"'
 alias idgaf="git checkout origin/\$(gorigin) \$(git diff --name-only --diff-filter=U --relative)"
