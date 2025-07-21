@@ -10,11 +10,12 @@ return function(use)
   -- }
   use { 'smoka7/hop.nvim', config = function()
     local hop = require('hop')
-    local hopTS = require('hop-treesitter')
-    hop.setup({})
+    -- local hopTS = require('hop-treesitter')
+    -- hopTS.setup({})
 
     vim.keymap.set('', 'f', function()
       hop.hint_words()
+      -- hopTS.hint_nodes()
     end, { remap = true })
   end }
 

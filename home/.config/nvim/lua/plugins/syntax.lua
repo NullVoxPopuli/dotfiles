@@ -3,39 +3,36 @@
 ----------------------
 return function(use)
   -- Better Folding
-  use {
-    "kevinhwang91/nvim-ufo",
-    event = { "BufRead" },
-    wants = { "promise-async" },
-    requires = "kevinhwang91/promise-async",
+  --  I *used to* use nvim-ufo, but it was really buggy.
+  --  It would randomly fold things I wasn't expecting.
+  --  - search results
+  --  - neo-tree folders
+  --
+  --  It would also regularly break.
+  --  Now I just use treesitter for folding.
+
+  -- Custom foldtext that I don't have to maintain
+  use { 'anuvyklack/pretty-fold.nvim',
     config = function()
-      require('ufo').setup({
-        provider_selector = function(bufnr, filetype, buftype)
-          return { 'lsp', 'treesitter', 'indent' }
-        end
-      })
-
-      vim.opt.foldcolumn = "0"
-      vim.opt.foldlevel = 99
-      vim.opt.foldlevelstart = 99
-      vim.opt.foldenable = true
-
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-      vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
-      vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
-      vim.keymap.set('n', 'z<space>', require('ufo').peekFoldedLinesUnderCursor)
+      require('pretty-fold').setup()
     end
   }
+
+
 
   -- autoclose and autorename tags
   use {
     'windwp/nvim-ts-autotag',
   }
 
-  -- for developing highlights
   use {
+    -- NOTE: this repo is working on a breaking change.
+    --       it's pretty big and can't be tried out right now.
+    --       a bunch of other plugins break.
+    --
+    --       (main is also super buggy right now)
     'nvim-treesitter/nvim-treesitter',
+    -- for developing highlights
     -- '~/Development/OpenSource/nvim-treesitter',
     run = function()
       require("nvim-treesitter.install").prefer_git = true
