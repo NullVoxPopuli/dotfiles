@@ -13,15 +13,17 @@ return function(use)
   use {
     'stevearc/conform.nvim',
     config = function()
+      local config = { "prettier", stop_after_first = true }
+
       require('conform').setup({
         formatters_by_ft = {
           -- Use a sub-list to run only the first available formatter
-          javascript = { "prettier", stop_after_first = true },
-          ['javascript.glimmer'] = { "prettier", stop_after_first = true },
-          typescript = { "prettier", stop_after_first = true },
-          ['typescript.glimmer'] = { "prettier", stop_after_first = true },
-          html = { "prettier", stop_after_first = true },
-          ['html.edge'] = { "prettier", stop_after_first = true },
+          javascript = config,
+          typescript = config,
+          html = config,
+          ['html.edge'] = config,
+          ['javascript.glimmer'] = config,
+          ['typescript.glimmer'] = config,
         },
         format_on_save = {
           timeout_ms = 1000,
@@ -32,9 +34,6 @@ return function(use)
           -- We don't want to enable prettierd
           -- because it requires global installation, and then
           -- we can't even have projects without prettier
-          --[[ prettierd = {
-            require_cwd = true
-          }, ]]
           -- NOTE: make sure prettier (and prettierd) are not installed globally
           prettier = {
             require_cwd = true
