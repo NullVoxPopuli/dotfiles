@@ -11,7 +11,7 @@ return function(use)
     config = function()
       require('ufo').setup({
         provider_selector = function(bufnr, filetype, buftype)
-          return { 'treesitter' }
+          return { 'lsp', 'treesitter', 'indent' }
         end
       })
 
@@ -25,12 +25,6 @@ return function(use)
       vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
       vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
       vim.keymap.set('n', 'z<space>', require('ufo').peekFoldedLinesUnderCursor)
-    end
-  }
-  use {
-    'anuvyklack/pretty-fold.nvim',
-    config = function()
-      require('pretty-fold').setup()
     end
   }
 
