@@ -11,13 +11,6 @@ return function(use)
   --  It would also regularly break.
   --  Now I just use treesitter for folding.
 
-  -- Custom foldtext that I don't have to maintain
-  use { 'anuvyklack/pretty-fold.nvim',
-    config = function()
-      require('pretty-fold').setup()
-    end
-  }
-
 
 
   -- autoclose and autorename tags
