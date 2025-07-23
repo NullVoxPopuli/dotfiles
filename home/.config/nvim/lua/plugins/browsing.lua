@@ -10,8 +10,9 @@ return function(use)
   -- }
   use { 'smoka7/hop.nvim', config = function()
     local hop = require('hop')
+    -- ts hopping is really bad in JSON (it's just one node haha)
     -- local hopTS = require('hop-treesitter')
-    -- hopTS.setup({})
+    hop.setup({})
 
     vim.keymap.set('', 'f', function()
       hop.hint_words()
