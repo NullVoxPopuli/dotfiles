@@ -1,3 +1,4 @@
+node = "~24"
 [env]
 DEBUG = false
 
