@@ -95,6 +95,7 @@ f11 = 'fullscreen'
 # All possible modifiers: cmd, alt, ctrl, shift
 
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
+alt-f4 = 'close'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 cmd-r = 'layout tiles horizontal vertical'
