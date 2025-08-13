@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+dep_name=$1
+
+pnpm why "$dep_name" --json \
+  | jq --arg dep_name "$dep_name" '
+    def hoist_dependencies:
+      walk(
+        if type == "object" and has("dependencies")
+        then del(.dependencies) + .dependencies
+        else .
+        end
+      );
+
+    def remove_keys($keys):
+      walk(
+        if type == "object"
+        then del(.[$keys[]])
+        else .
+        end
+      );
+
+    def strip_empty_keep_target($target):
+      walk(
+        if type == "object"
+        then with_entries(
+               # Keep empty objects if the key matches the target name
+               select(.value != {} or .key == $target)
+             )
+        elif type == "array"
+        then map(select(. != {}))
+        else .
+        end
+      );
+
+    # remove build metadata keys
+    walk(
+      if type == "object"
+      then with_entries(
+        select(.key
+          | test("resolved") or test("path") or test("from") or test("version")
+          | not
+        )
+      )
+      else .
+      end
+    )
+    | hoist_dependencies
+    | remove_keys([
+        "ember-cli",
+        "ember-cli-babel",
+        "ember-cli-sri",
+        "ember-cli-terser",
+        "ember-cli-typescript",
+        "ember-auto-import",
+        "@embroider/addon-shim",
+        "@embroider/macros",
+        "@warp-drive/build-config",
+        "@glint/environment-ember-loose",
+        "broccoli",
+        "broccoli-asset-rev",
+        "broccoli-asset-rewrite",
+        "broccoli-debug",
+        "broccoli-rollup",
+        "broccoli-funnel",
+        "broccoli-plugin",
+        "broccoli-concat",
+        "broccoli-file-creator",
+        "broccoli-persistent-filter",
+        "broccoli-caching-writer",
+        "broccoli-merge-trees",
+        "broccoli-merge-files",
+        "broccoli-stew",
+        "ember-source",
+        "ember-cli-htmlbars"
+      ])
+    | strip_empty_keep_target($dep_name)
+  '
