@@ -1,6 +1,4 @@
 node = "~24"
-[env]
-DEBUG = false
 
 [settings]
 auto-install = true

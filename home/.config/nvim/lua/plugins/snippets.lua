@@ -1,6 +1,6 @@
 return function(use)
   use "rafamadriz/friendly-snippets"
-  use { "ember-tooling/snippets" }
+  use { "ember-tooling/snippets", branch = "neovim/main" }
   use { "L3MON4D3/LuaSnip", tag = "v2.*" }
 
   -- For testing out local snippets
