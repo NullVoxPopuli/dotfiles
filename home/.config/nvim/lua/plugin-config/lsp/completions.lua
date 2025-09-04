@@ -80,12 +80,17 @@ require('blink.cmp').setup({
           --         -- supposed to be handled by luasnip
           --         search_paths = { localEmberSnippets },
           -- https://github.com/Saghen/blink.cmp/issues/1679#issuecomment-3250556163
-          get_filetype = function(context)
-            local curline = vim.fn.line(".")
-            local lang =
-                vim.treesitter.get_parser():language_for_range({ curline, 0, curline, 0 }):lang()
-            return lang
-          end,
+          -- get_filetype = function(context)
+          --   local curline = vim.fn.line(".")
+          --   local parser = vim.treesitter.get_parser()
+          --   if not parser == nil then
+          --     local language = parser:language_for_range({ curline, 0, curline, 0 })
+          --
+          --     local lang = language:lang();
+          --
+          --     return lang
+          --   end
+          -- end,
         },
       }
     }
