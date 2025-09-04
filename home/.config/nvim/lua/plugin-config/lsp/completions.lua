@@ -73,15 +73,22 @@ require('blink.cmp').setup({
   },
   sources = {
     default = sources,
-    --   providers = {
-    --     codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
-    --     snippets = {
-    --       opts = {
-    --         -- supposed to be handled by luasnip
-    --         search_paths = { localEmberSnippets },
-    --       },
-    --     }
-    --   }
+    providers = {
+      --     codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
+      snippets = {
+        opts = {
+          --         -- supposed to be handled by luasnip
+          --         search_paths = { localEmberSnippets },
+          -- https://github.com/Saghen/blink.cmp/issues/1679#issuecomment-3250556163
+          get_filetype = function(context)
+            local curline = vim.fn.line(".")
+            local lang =
+                vim.treesitter.get_parser():language_for_range({ curline, 0, curline, 0 }):lang()
+            return lang
+          end,
+        },
+      }
+    }
   },
   snippets = {
     -- Shorthand doesn't work yet
