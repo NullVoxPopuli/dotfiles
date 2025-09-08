@@ -53,11 +53,8 @@ vim.lsp.config('ts_ls', {
   on_new_config = function(new_config, new_root_dir)
     local info = utils.read_nearest_ts_config(new_root_dir)
     local glintPlugin = new_root_dir .. "node_modules/@glint/tsserver-plugin"
+
     if new_config.init_options then
-      new_config.init_options.tsdk = get_typescript_server_path(new_root_dir)
-      new_config.init_options.requestForwardingCommand = "forwardingTsRequest"
-
-
       if (info.isGlintPlugin) then
         new_config.init_options.plugins = {
           {
