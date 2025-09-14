@@ -69,3 +69,5 @@ highlight! HorSplit guifg=#000000 guibg=NONE
 " specifically for rainbow-delimiters.nvim
 highlight RainbowDelimiterOutest  guifg=#aaaaaa ctermfg=White
 
+" specifically for "nvim-zh/colorful-winsep.nvim",
+highlight ColorfulWinSep guifg=#a300de 

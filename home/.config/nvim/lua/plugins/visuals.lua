@@ -95,46 +95,20 @@ return function(use)
       require 'colorizer'.setup()
     end
   }
-  -- tree-sitter colorizes ({[, etc
-  use {
-    'https://gitlab.com/HiPhish/rainbow-delimiters.nvim.git',
-    config = function()
-      local rainbow_delimiters = require 'rainbow-delimiters'
-
-      vim.g.rainbow_delimiters = {
-        strategy = {
-          [''] = rainbow_delimiters.strategy['global'],
-          vim = rainbow_delimiters.strategy['local'],
-        },
-        query = {
-          [''] = 'rainbow-delimiters',
-          lua = 'rainbow-blocks',
-        },
-        highlight = {
-          'RainbowDelimiterOutest',
-          'RainbowDelimiterViolet',
-          'RainbowDelimiterOrange',
-          'RainbowDelimiterBlue',
-          'RainbowDelimiterGreen',
-          'RainbowDelimiterYellow',
-          'RainbowDelimiterRed',
-        },
-      }
-    end
-  }
 
   -- active-buffer highlight
   use {
     "nvim-zh/colorful-winsep.nvim",
     config = function()
       require('colorful-winsep').setup({
-        highlight = {
-          bg = "#202230",
-          fg = "#a300de",
-        },
-        -- default
-        -- symbols = { "━", "┃", "┏", "┓", "┗", "┛" },
-        symbols = { "─", "│", "╭", "╮", "╰", "╯" },
+        border = { "─", "│", "╭", "╮", "╰", "╯" },
+        animate = {
+          enabled = "shift",
+          shift = {
+            deltay_time = 0,
+            smooth_speed = 3,
+          }
+        }
       })
     end
   }
