@@ -4,12 +4,53 @@ set -euo pipefail
 declare -A authors
 
 while IFS= read -r file; do
-  echo "Checking $file"
 
   # Binaries have no lines to count!
   if file --mime "$file" | grep -q 'charset=binary'; then
     continue
   fi
+
+  if file --mime "$file" | grep -q 'image/svg'; then
+    continue
+  fi
+
+  if [[ $file == 'pnpm-lock.yaml' ]]; then
+    continue
+  fi
+
+  if echo "$file" | grep -q 'package.json'; then 
+    continue
+  fi
+
+  if echo "$file" | grep -q '.vscode'; then 
+    continue
+  fi
+
+  if echo "$file" | grep -q '.mock-cache'; then 
+    continue
+  fi
+
+  if echo "$file" | grep -q '.md'; then 
+    continue
+  fi
+
+  if echo "$file" | grep -q '.txt'; then 
+    continue
+  fi
+
+  if echo "$file" | grep -q '.diff'; then 
+    continue
+  fi
+
+  if echo "$file" | grep -q '.yml'; then 
+    continue
+  fi
+
+  if echo "$file" | grep -q '.yaml'; then 
+    continue
+  fi
+
+  echo "Checking $file"
 
   while IFS= read -r line; do
     [[ $line == author\ * ]] || continue
