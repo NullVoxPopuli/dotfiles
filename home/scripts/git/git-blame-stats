@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+declare -A authors
+
+while IFS= read -r file; do
+  echo "Checking $file"
+
+  # Binaries have no lines to count!
+  if file --mime "$file" | grep -q 'charset=binary'; then
+    continue
+  fi
+
+  while IFS= read -r line; do
+    [[ $line == author\ * ]] || continue
+    author="${line#author }"
+
+    if [[ -z "${authors[$author]+x}" ]]; then
+      authors["$author"]=1
+    else
+      ((authors["$author"]++))
+    fi
+  done < <(git blame -w --line-porcelain -- "$file")
+
+done < <(git ls-files)
+
+echo "Results:"
+
+for author in "${!authors[@]}"; do
+  printf "%7d %s\n" "${authors[$author]}" "$author"
+done | sort -rn
