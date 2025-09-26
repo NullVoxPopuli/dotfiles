@@ -109,7 +109,11 @@ fi
 #
 # Following instructions: https://wiki.lineageos.org/adb_fastboot_guide#installing-adb-and-fastboot
 # Using: https://dl.google.com/android/repository/platform-tools-latest-linux.zip
-if [ -d "$HOME/Applications/adb-platform-tools" ] ; then
- export PATH="$HOME/Applications/adb-platform-tools:$PATH"
-fi
+#
+# Can also be done with:
+#  - android-sdk-platform-tools
+#  - android-sdk-platform-tools-common
+# if [ -d "$HOME/Applications/adb-platform-tools" ] ; then
+#  export PATH="$HOME/Applications/adb-platform-tools:$PATH"
+# fi
 
