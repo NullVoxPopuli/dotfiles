@@ -26,6 +26,20 @@ return function(use)
   end
   }
 
+  use {
+    "WilliamHsieh/overlook.nvim",
+    config = function()
+      vim.keymap.set("n", "<leader>gd", require("overlook.api").peek_definition, { desc = "Peek definition" })
+      vim.keymap.set("n", "<leader>gp", require("overlook.api").peek_cursor, { desc = "Peek cursor" })
+      vim.keymap.set("n", "<leader>gu", require("overlook.api").restore_popup, { desc = "Restore last popup" })
+      vim.keymap.set("n", "<leader>gc", require("overlook.api").close_all, { desc = "Close all popups" })
+      vim.keymap.set("n", "<leader>gt", require("overlook.api").open_in_split, { desc = "Open popup in split" })
+      vim.keymap.set("n", "<leader>gn", require("overlook.api").open_in_vsplit, { desc = "Open popup in vsplit" })
+      vim.keymap.set("n", "<leader>go", require("overlook.api").open_in_original_window,
+        { desc = "Open popup in current window" })
+    end
+  }
+
   -- This tool helps me learn plugins' custom
   -- use {
   --   "folke/which-key.nvim",

@@ -56,7 +56,6 @@ pnpm why "$dep_name" --json \
         "@embroider/addon-shim",
         "@embroider/macros",
         "@warp-drive/build-config",
-        "@glint/environment-ember-loose",
         "broccoli",
         "broccoli-asset-rev",
         "broccoli-asset-rewrite",
