@@ -6,49 +6,6 @@ require('plugin-config.lsp.completions')
 -- https://github.com/j-hui/fidget.nvim
 require "fidget".setup {}
 
-require("mason").setup {
-  ui = {
-    icons = {
-      server_installed = "✓",
-      server_pending = "➜",
-      server_uninstalled = "✗"
-    }
-  }
-}
-require("mason-lspconfig").setup {
-  ensure_installed = {
-    --------------
-    -- Languages
-    --
-    -- NOTE:
-    --   jsonls doesn't support jsonc (it just does JSON.parse and reports errors)
-    --------------
-    "html",
-    "yamlls",
-    "cssls",
-    "lua_ls",
-    "ts_ls",    -- formally tsserver
-    "bashls",
-    "marksman", -- https://github.com/artempyanykh/marksman
-    "rust_analyzer",
-
-    --------------
-    -- Tools
-    "graphql",
-    "tailwindcss",
-    "graphql",
-    "dockerls",
-
-    --------------
-    -- Linting / Formatting
-    -- null_ls not needed for these
-    "eslint",
-    "stylelint_lsp"
-  },
-  automatic_enable = false,
-  automatic_installation = false
-}
-
 vim.lsp.config('eslint', {
   settings = {
     useFlatConfig = true,
@@ -138,3 +95,48 @@ require('plugin-config.lsp.typescript')
 vim.lsp.config('*', {
   capabilities = require('blink.cmp').get_lsp_capabilities()
 })
+
+
+require("mason").setup {
+  ui = {
+    icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
+    }
+  }
+}
+require("mason-lspconfig").setup {
+  ensure_installed = {
+    --------------
+    -- Languages
+    --
+    -- NOTE:
+    --   jsonls doesn't support jsonc (it just does JSON.parse and reports errors)
+    --------------
+    "html",
+    "yamlls",
+    "cssls",
+    "lua_ls",
+    "ts_ls",    -- formally tsserver
+    "bashls",
+    "marksman", -- https://github.com/artempyanykh/marksman
+    "rust_analyzer",
+
+    --------------
+    -- Tools
+    "graphql",
+    "tailwindcss",
+    "graphql",
+    "dockerls",
+
+    --------------
+    -- Linting / Formatting
+    -- null_ls not needed for these
+    "eslint",
+    "stylelint_lsp"
+  },
+  automatic_enable = false,
+  automatic_installation = false
+}
+
