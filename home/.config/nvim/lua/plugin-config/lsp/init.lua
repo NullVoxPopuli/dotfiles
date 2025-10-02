@@ -16,12 +16,6 @@ vim.lsp.config('eslint', {
     "json",
     "markdown"
   },
-  on_attach = function(client, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "EslintFixAll",
-    })
-  end,
 })
 vim.lsp.enable('eslint');
 
@@ -139,4 +133,3 @@ require("mason-lspconfig").setup {
   automatic_enable = false,
   automatic_installation = false
 }
-
