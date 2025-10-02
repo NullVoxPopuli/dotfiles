@@ -1,64 +1,86 @@
-local lsp = require('lspconfig')
-
 require('plugin-config.lsp.keymap')
 require('plugin-config.lsp.config')
 require('plugin-config.lsp.completions')
 
-local servers = {
-  --------------
-  -- Languages
-  --
-  -- NOTE:
-  --   jsonls doesn't support jsonc (it just does JSON.parse and reports errors)
-  --------------
-  "html",
-  "yamlls",
-  "cssls",
-  "lua_ls",
-  "ts_ls",    -- formally tsserver
-  "bashls",
-  "marksman", -- https://github.com/artempyanykh/marksman
-  "rust_analyzer",
 
-  --------------
-  -- Tools
-  "graphql",
-  "tailwindcss",
-  "graphql",
-  "dockerls",
+-- https://github.com/j-hui/fidget.nvim
+require "fidget".setup {}
 
-  --------------
-  -- Linting / Formatting
-  -- null_ls not needed for these
-  "eslint",
-  "stylelint_lsp"
+require("mason").setup {
+  ui = {
+    icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
+    }
+  }
+}
+require("mason-lspconfig").setup {
+  ensure_installed = {
+    --------------
+    -- Languages
+    --
+    -- NOTE:
+    --   jsonls doesn't support jsonc (it just does JSON.parse and reports errors)
+    --------------
+    "html",
+    "yamlls",
+    "cssls",
+    "lua_ls",
+    "ts_ls",    -- formally tsserver
+    "bashls",
+    "marksman", -- https://github.com/artempyanykh/marksman
+    "rust_analyzer",
+
+    --------------
+    -- Tools
+    "graphql",
+    "tailwindcss",
+    "graphql",
+    "dockerls",
+
+    --------------
+    -- Linting / Formatting
+    -- null_ls not needed for these
+    "eslint",
+    "stylelint_lsp"
+  },
+  automatic_installation = false
 }
 
----------------------------
--- Settings and other available servers
---  https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
----------------------------
-local mySettings = {
-  yamlls = {
-    yaml = {
-      keyOrdering = false
-    }
+vim.lsp.config('*', {
+  capabilities = require('blink.cmp').get_lsp_capabilities()
+})
+
+-- TS, Glint, etc
+require('plugin-config.lsp.typescript')
+
+
+vim.lsp.enable('copilot-language-server')
+
+
+vim.lsp.config('eslint', {
+  settings = {
+    useFlatConfig = true,
   },
-  tailwindcss = {
-    tailwindCSS = {
-      includeLanguages = {
-        markdown = "html",
-        handlebars = "html",
-        javascript = {
-          glimmer = "javascript"
-        },
-        typescript = {
-          glimmer = "javascript"
-        }
-      }
-    }
+  filetypes = {
+    "javascript", "typescript",
+    "typescript.glimmer", "javascript.glimmer",
+    "json",
+    "markdown"
   },
-  lua_ls = {
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+})
+vim.lsp.enable('eslint');
+
+
+vim.lsp.config('lua_ls', {
+  settings = {
     Lua = {
       diagnostics = {
         globals = { 'vim' },
@@ -76,63 +98,44 @@ local mySettings = {
         enable = false,
       },
     }
-  },
-  eslint = {
-    useFlatConfig = true
   }
-}
+});
+vim.lsp.enable('lua_ls');
 
--- https://github.com/j-hui/fidget.nvim
-require "fidget".setup {}
-
-require("mason").setup {
-  ui = {
-    icons = {
-      server_installed = "✓",
-      server_pending = "➜",
-      server_uninstalled = "✗"
+vim.lsp.config('tailwindcss', {
+  settings = {
+    tailwindCSS = {
+      includeLanguages = {
+        markdown = "html",
+        handlebars = "html",
+        javascript = {
+          glimmer = "javascript"
+        },
+        typescript = {
+          glimmer = "javascript"
+        }
+      }
     }
   }
-}
-require("mason-lspconfig").setup {
-  ensure_installed = servers,
-  automatic_installation = false
-}
-
-vim.lsp.config('*', {
-  capabilities = require('blink.cmp').get_lsp_capabilities()
-})
-
--- TS, Glint, etc
-require('plugin-config.lsp.typescript')
+});
+vim.lsp.enable('tailwindcss');
 
 
-for _, serverName in ipairs(servers) do
-  local server = lsp[serverName]
+vim.lsp.config('yamlls', {
+  settings = {
+    yaml = {
+      keyOrdering = false
+    }
+  }
+});
 
-  if (server) then
-    if (serverName == 'eslint') then
-      server.setup({
-        filetypes = {
-          "javascript", "typescript",
-          "typescript.glimmer", "javascript.glimmer",
-          "json",
-          "markdown"
-        },
-        on_attach = function(client, bufnr)
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            command = "EslintFixAll",
-          })
-        end,
-      })
-      vim.lsp.enable(serverName)
-    else
-      server.setup({
-        capabilities = capabilities,
-        settings = mySettings[serverName],
-      })
-      vim.lsp.enable(serverName)
-    end
-  end
-end
+vim.lsp.enable('yamlls')
+
+vim.lsp.enable('bashls');
+vim.lsp.enable('cssls');
+vim.lsp.enable('dockerls');
+vim.lsp.enable('graphql');
+vim.lsp.enable('html');
+vim.lsp.enable('marksman'); -- https://github.com/artempyanykh/marksman
+vim.lsp.enable('rust_analyzer');
+vim.lsp.enable('stylelint_lsp');
