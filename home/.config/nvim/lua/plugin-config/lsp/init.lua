@@ -45,19 +45,9 @@ require("mason-lspconfig").setup {
     "eslint",
     "stylelint_lsp"
   },
+  automatic_enable = false,
   automatic_installation = false
 }
-
-vim.lsp.config('*', {
-  capabilities = require('blink.cmp').get_lsp_capabilities()
-})
-
--- TS, Glint, etc
-require('plugin-config.lsp.typescript')
-
-
-vim.lsp.enable('copilot-language-server')
-
 
 vim.lsp.config('eslint', {
   settings = {
@@ -139,3 +129,12 @@ vim.lsp.enable('html');
 vim.lsp.enable('marksman'); -- https://github.com/artempyanykh/marksman
 vim.lsp.enable('rust_analyzer');
 vim.lsp.enable('stylelint_lsp');
+vim.lsp.enable('copilot-language-server')
+
+-- TS, Glint, etc
+require('plugin-config.lsp.typescript')
+
+
+vim.lsp.config('*', {
+  capabilities = require('blink.cmp').get_lsp_capabilities()
+})
