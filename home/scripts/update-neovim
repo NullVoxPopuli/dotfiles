@@ -3,9 +3,27 @@
 helpers="$(dirname "${BASH_SOURCE[0]}")/-helpers"
 currentPath=$(which nvim)
 installPath="${currentPath:-/usr/bin/nvim}"
-# url="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
-url="https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.appimage"
-nvim_appimage=$(basename $url)
+linux_url="https://github.com/neovim/neovil/releases/download/nightly/nvim-linux-x86_64.appimage"
+mac_url="https://github.com/neovim/neovim/releases/download/nightly/nvim-macos-arm64.tar.gz"
+
+url="<not set>"
+
+
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*) 
+      url=$linux_url
+    ;;
+    Darwin*)    
+      url=$mac_url
+    ;;
+    *)    
+      echo "Unknown OS: $unameOut"
+esac
+
+
+
+nvim_local_file=$(basename $url)
 
 source "$helpers/colors.sh"
 
@@ -27,7 +45,7 @@ echo ""
 
 # remove any previous downloads
 rm -f nvim.appimage > /dev/null 2>&1
-rm $nvim_appimage > /dev/null 2>&1
+rm $nvim_local_file > /dev/null 2>&1
 
 set -e
 info "Downloading..."
@@ -36,7 +54,7 @@ echo ""
 echo ""
 
 
-sha_line="$(sha256sum $nvim_appimage)"
+sha_line="$(sha256sum $nvim_local_file)"
 
 sha_msg="
   $sha_line
@@ -56,11 +74,25 @@ fi
 echo ""
 echo ""
 
-info "Making executable -- chmod +x"
-chmod +x $nvim_appimage 
+if [[ $nvim_local_file == *appimage ]]; then
+  info "Making executable -- chmod +x"
+  chmod +x $nvim_local_file 
 
-warn "Moving to $installPath"
-sudo mv $nvim_appimage $installPath
-yay "Success!"
+  warn "Moving to $installPath"
+  sudo mv $nvim_local_file $installPath
+  yay "Success!"
+fi
+
+if [[ $nvim_local_file == *tar.gz ]]; then
+  info "Untarring via tar -xf"
+  tar -xf $nvim_local_file
+  folder_name="${nvim_local_file%.*.*}"
+  bin_path="$folder_name/bin/nvim"
+
+  warn "Moving $bin_path to $installPath"
+  mv $bin_path $installPath
+fi
+
+
 
 info "You now have $(nvim -v | grep "NVIM v")"
