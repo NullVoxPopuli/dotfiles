@@ -16,6 +16,7 @@ case "${unameOut}" in
     ;;
     Darwin*)    
       url=$mac_url
+      installPath="~/Applications/nvim"
     ;;
     *)    
       echo "Unknown OS: $unameOut"
@@ -87,10 +88,18 @@ if [[ $nvim_local_file == *tar.gz ]]; then
   info "Untarring via tar -xf"
   tar -xf $nvim_local_file
   folder_name="${nvim_local_file%.*.*}"
-  bin_path="$folder_name/bin/nvim"
+  bin_path="$installPath/bin/nvim"
 
-  warn "Moving $bin_path to $installPath"
-  mv $bin_path $installPath
+  warn "Deleting old ~/Applications/$folder_name"
+  ( cd ~/Applications && rm -rf "./$folder_name" )
+
+  warn "Deleting old ~/Applications/nvim"
+  ( cd ~/Applications && rm -f nvim )
+
+  warn "Moving $folder_name to ~/Applications"
+  mv $folder_name ~/Applications/$folder_name
+  warn "Symlinking $bin_path to ~/Applications/nivm" 
+  ln -s $HOME/Applications/$folder_name/bin/nvim $HOME/Applications/nvim
 fi
 
 

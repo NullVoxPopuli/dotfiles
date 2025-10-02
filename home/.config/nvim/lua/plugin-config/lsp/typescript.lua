@@ -72,4 +72,3 @@ vim.lsp.config('glint', {
 
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('glint')
-vim.lsp.enable('copilot-language-server')
