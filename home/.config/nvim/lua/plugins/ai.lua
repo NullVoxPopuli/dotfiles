@@ -1,14 +1,11 @@
 return function(use)
-  -- vim.lsp.inline_completion.enable()
+  vim.lsp.inline_completion.enable()
 
   -- use {
   --   "folke/sidekick.nvim",
   --   config = function()
-  --     require('sidekick.config')({
-  --       cli = {
-  --         tools = {
-  --         }
-  --       }
+  --     require("sidekick").setup({
+  --       -- NOTE: requires 'copilot' to work (or other CLIs) -- and these require install scripts, which I refuse to enable
   --     })
   --   end
   -- }
