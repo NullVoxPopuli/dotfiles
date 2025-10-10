@@ -55,6 +55,7 @@ rm -rf ~/.config/swaync
 rm -rf ~/.config/swayosd
 rm -rf ~/.config/yofi
 rm -rf ~/.config/fontconfig
+rm -rf ~/.config/ghostty
 
 
 ln -s $PWD/home/Applications ~/Applications
@@ -79,6 +80,7 @@ ln -s $PWD/home/.config/swaync ~/.config/swaync
 ln -s $PWD/home/.config/swayosd ~/.config/swayosd
 ln -s $PWD/home/.config/yofi ~/.config/yofi
 ln -s $PWD/home/.config/fontconfig ~/.config/fontconfig
+ln -s $PWD/home/.config/ghostty ~/.config/ghostty
 
 
 case "${unameOut}" in
