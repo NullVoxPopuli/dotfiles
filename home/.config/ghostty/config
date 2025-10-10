@@ -4,13 +4,14 @@
 theme = IR Black
 
 # Keys
+keybind = ctrl+c=text:\x03
 keybind = ctrl+t=unbind
 keybind = ctrl+k=unbind
 keybind = ctrl+shift+t=new_window 
 keybind = ctrl+w=close_window
 keybind = alt+f4=close_window
-keybind = ctrl+c=copy_to_clipboard
-keybind = ctrl+v=paste_from_clipboard
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
 
 # Must be an absolute path
 command = /opt/homebrew/bin/bash --login

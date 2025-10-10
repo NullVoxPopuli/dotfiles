@@ -11,8 +11,8 @@ brew install starship  # Prompt with git iteration
 brew install alacritty # MacOS' terminal is terrible
 brew install findutils # MacOS ships with the wrong `find` command
 brew install coreutils
-brew install neovim    # The one true code editor
 brew install wget # needeD
+brew install delta
 
 # i3~ish
 #  https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
