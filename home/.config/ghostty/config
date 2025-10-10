@@ -1,6 +1,7 @@
 # This is the configuration file for Ghostty.
 #
 # https://ghostty.org/docs/config/reference
+theme = IR Black
 
 # Keys
 keybind = ctrl+t=unbind
