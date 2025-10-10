@@ -24,6 +24,11 @@ brew install delta
 #   Better than Yabai. Yabai has all the same problems that Forge does on Ubuntu
 brew install --cask nikitabobko/tap/aerospace
 
+# Better screenshot tool
+#
+# https://flameshot.org/docs/installation/installation-osx/
+brew install --cask flameshot
+
 # hotkey daemon, recommended by the above
 #  https://github.com/koekeishiya/skhd/issues/42#issuecomment-401886533
 #  run 

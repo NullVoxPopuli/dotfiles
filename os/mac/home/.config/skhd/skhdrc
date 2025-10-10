@@ -82,7 +82,7 @@
 # cmd - n : true
 
 # Launching apps
-ctrl + alt - t : sh -c "/Applications/Alacritty.app/Contents/MacOS/alacritty" 2> /dev/null
+ctrl + alt - t : sh -c "/Applications/Ghostty.app/Contents/MacOS/ghostty" 2> /dev/null
 
 #################################
 #

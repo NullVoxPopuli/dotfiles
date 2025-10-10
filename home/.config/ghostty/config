@@ -2,12 +2,13 @@
 #
 # https://ghostty.org/docs/config/reference
 theme = IR Black
+window-inherit-working-directory = true
 
 # Keys
 keybind = ctrl+c=text:\x03
 keybind = ctrl+t=unbind
 keybind = ctrl+k=unbind
-keybind = ctrl+shift+t=new_window 
+keybind = ctrl+shift+n=new_window 
 keybind = ctrl+w=close_window
 keybind = alt+f4=close_window
 keybind = ctrl+shift+c=copy_to_clipboard

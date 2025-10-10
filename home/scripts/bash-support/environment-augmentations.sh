@@ -5,6 +5,11 @@
 ###############################################################################
 unameOut="$(uname -s)"
 
+# Ghostty shell integration for Bash. This must be at the top of your bashrc!
+if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
+    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
+fi
+
 
 # on MacOS, brew must be loaded first
 if [ -f "/opt/homebrew/bin/brew" ]; then
