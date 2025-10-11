@@ -1,4 +1,9 @@
 -- By default, neovim will STEAL FOCUS when an error occurs.
+--
+-- Generally the folks in the neovim community seem to like this,
+--   as your editor tooling having an error *is* something you should fix right away
+--   and not procrastinate so that you can maximize productivity.
+--
 -- We have to enable "extui" which is currentnly experimental (2025-10-11)
 --   so that we can display the messages (briefly) and not steal focus.
 -- Displaying the messages is enough to let me know that there is an issue that
