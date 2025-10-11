@@ -7,6 +7,7 @@ set nocompatible
 lua require('plugins')
 so ~/.config/nvim/theme.vim
 lua require('plugin-config')
+lua require('config.editor')
 so ~/.config/nvim/editor.vim
 so ~/.config/nvim/functions.vim
 so ~/.config/nvim/keymap.vim
