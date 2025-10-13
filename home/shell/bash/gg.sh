@@ -14,11 +14,11 @@
 #
 #     additionally, the workspace root must also be the git root.
 #
-# Requires: GIT_PATHS be set
+# Requires: GG_PATHS be set
 #     Example:
-#        GIT_PATHS="$HOME/Development/NullVoxPopuli:$HOME/Development/Work:$HOME/Code"
+#        GG_PATHS="$HOME/Development/NullVoxPopuli:$HOME/Development/Work:$HOME/Code"
 #
-# Setting GIT_PATHS in your .bash_profile will allow gg to search git repos amoung all colon-separated
+# Setting GG_PATHS in your .bash_profile will allow gg to search git repos amoung all colon-separated
 # directories.
 #
 # Optionally, you may set GG_PREFIX, which will remove the path substring from all

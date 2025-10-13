@@ -28,7 +28,7 @@ vim.lsp.config('ts_ls', {
     importModuleSpecifierEnding = "minimal",
   },
   init_options = {
-    tsserver = { logVerbosity = 'verbose', trace = "verbose" },
+    -- tsserver = { logVerbosity = 'verbose', trace = "verbose" },
     preferences = {
       disableAutomaticTypingAcquisition = true,
       importModuleSpecifierPreference = "relative",
