@@ -5,9 +5,13 @@ theme = IR Black
 window-inherit-working-directory = true
 
 # Keys
+# https://ghostty.org/docs/config/keybind
 keybind = ctrl+c=text:\x03
 keybind = ctrl+t=unbind
 keybind = ctrl+k=unbind
+keybind = super+shift+h=unbind
+keybind = super+w=unbind
+keybind = super+q=unbind
 keybind = ctrl+shift+n=new_window 
 keybind = ctrl+w=close_window
 keybind = alt+f4=close_window
