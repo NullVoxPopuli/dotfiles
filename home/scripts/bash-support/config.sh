@@ -13,7 +13,7 @@ export DEV="$HOME/Development"
 export OSS="$DEV/OpenSource"
 
 GG_PATHS="$DEV/NullVoxPopuli:$DEV/tmp:$DEV/Work:$OSS" 
-export GG_PATHS="$GG_PATHS:$OSS/emberjs:$OSS/starbeam:$OSS/hyprland"
+export GG_PATHS="$GG_PATHS:$OSS/emberjs:$OSS/starbeam"
 
 export GG_PREFIX="$HOME/Development/"
 
