@@ -4,19 +4,21 @@
 theme = IR Black
 window-inherit-working-directory = true
 
-# Keys
 # https://ghostty.org/docs/config/keybind
 keybind = ctrl+c=text:\x03
 keybind = ctrl+t=unbind
 keybind = ctrl+k=unbind
-keybind = super+shift+h=unbind
-keybind = super+w=unbind
-keybind = super+q=unbind
+# NOTE: it is impossible to actually use ctrl+shift++ on a us keyboard -- Shift++ types an = character
+#       https://discord.com/channels/1005603569187160125/1428862511171506226/1428872179365318838
+keybind = ctrl+shift+==increase_font_size:1
+keybind = ctrl+shift+-=decrease_font_size:1
+keybind = ctrl+shift+equal=decrease_font_size:1
 keybind = ctrl+shift+n=new_window 
 keybind = ctrl+w=close_window
 keybind = alt+f4=close_window
 keybind = ctrl+shift+c=copy_to_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
+
 
 # Must be an absolute path
 command = /opt/homebrew/bin/bash --login
@@ -24,3 +26,8 @@ command = /opt/homebrew/bin/bash --login
 # MacOS
 macos-titlebar-style = hidden
 macos-option-as-alt = left
+keybind = super+shift+h=unbind
+keybind = super++=unbind
+keybind = super+-=unbind
+keybind = super+w=unbind
+keybind = super+q=unbind
