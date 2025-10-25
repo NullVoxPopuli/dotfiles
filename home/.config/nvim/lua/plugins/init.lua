@@ -89,6 +89,21 @@ require('packer').startup(function(use)
     end
   }
 
+  use {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    config = function()
+      require("tiny-inline-diagnostic").setup({
+        options = {
+          throttle = 200,
+          multilines = {
+            enabled = true,
+          },
+        }
+      })
+      vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
+    end,
+  }
+
   -- Multi-cursor
   -- Some vim zealots really hate that people want this.
   -- They're wrong.
