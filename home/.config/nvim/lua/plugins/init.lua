@@ -18,6 +18,7 @@ require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+
   -- Fun
   -- https://github.com/letieu/hacker.nvim
 
@@ -94,7 +95,12 @@ require('packer').startup(function(use)
     config = function()
       require("tiny-inline-diagnostic").setup({
         options = {
-          throttle = 200,
+
+          throttle = 500,
+          show_source = {
+            enabled = true,
+            if_many = true,
+          },
           multilines = {
             enabled = true,
           },
