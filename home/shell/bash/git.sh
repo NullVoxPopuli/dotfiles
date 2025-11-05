@@ -18,8 +18,10 @@ function gb() {
 
 function werk() {
   local sha="$(uuid | cut -d - -f 1)"
-  local branchName="nvp/${1:-"$sha"}"
+  local branchName="${1:-"$sha"}"
   local upstream=$(git symbolic-ref refs/remotes/origin/HEAD --short)
+
+  branchName="nvp/$(echo $branchName | sed -E 's/nvp\///g')"
 
   echo "Starting new work on $branchName branched off $upstream"
 
