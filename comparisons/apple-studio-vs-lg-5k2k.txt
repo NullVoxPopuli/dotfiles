@@ -1,0 +1,27 @@
+                   2 Apple Studio Displays    vs    LG 5K2K OLED
+
+Total Price:       ❌ $3200 - $4600                 ✅ $2000
+Size:              ✅ 47" x 13.2"                   ✅ 39" x 18.1"
+Display:           ❌ IPS                           ✅ OLED
+HDR:               ❌ No                            ✅ Yes
+Bit Depth          ❌ 8 + FRC                       ✅ 10
+Backlight:         ❌ W-LED                         ✅ None
+Total Res:         ✅ 10240 x 2880                  ❌ 5120 x 2160
+Density:           ✅ 217 ppi                       ❌ 124 ppi
+Refresh Rate:      ❌ 60hz                          ✅ 165hz
+Variable RR:       ❌ No                            ✅ Yes 
+Static Contrast:   ❌ 1200:1                        ✅ 1500000:1
+Color (Rec 2020):  ❌ No HDR                        ✅ 70.9% 
+Color (DCI P3):    ❌ No HDR                        ✅ 98.5% 
+Color (Adobe RGB): ❌ 88.4%                         ✅ 94.4% 
+Color (sRGB):      ❌ 99.8%                         ✅ 100% 
+
+
+Data from:
+- https://www.rtings.com/monitor/reviews/apple/studio-display
+- https://www.rtings.com/monitor/reviews/lg/45gx950a-b
+- https://www.displayspecifications.com/en/model/c03b3ecb
+- https://www.displayspecifications.com/en/model/ef652ae9
+- https://www.apple.com/studio-display/
+- https://www.lg.com/us/monitors/lg-45gx950a-b-gaming-monitor
+
