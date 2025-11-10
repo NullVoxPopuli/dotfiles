@@ -45,4 +45,5 @@ function addLocalBin() {
 
 
 addLocalBin "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "google-chrome"
+addLocalBin "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "chrome"
 addLocalBin "/Applications/Firefox.app/Contents/MacOS/firefox"
