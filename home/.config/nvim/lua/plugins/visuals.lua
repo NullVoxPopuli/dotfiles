@@ -69,6 +69,27 @@ return function(use)
   -- UI
   use 'stevearc/dressing.nvim'
 
+  -- Unneeded
+  use {
+    'sphamba/smear-cursor.nvim',
+    config = function()
+      require('smear_cursor').setup({
+        particles_enabled = true,
+        time_interval = 7, -- milliseconds
+
+        stiffness = 0.5,
+        trailing_stiffness = 0.2,
+        trailing_exponent = 5,
+        damping = 0.6,
+        gradient_exponent = 0,
+        gamma = 1,
+        never_draw_over_target = true, -- if you want to actually see under the cursor
+        hide_target_hack = true,       -- same
+      })
+    end
+  }
+
+
   ----------------------
   -- Information
   ----------------------

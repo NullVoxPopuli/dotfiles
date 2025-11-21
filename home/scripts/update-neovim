@@ -3,7 +3,7 @@
 helpers="$(dirname "${BASH_SOURCE[0]}")/-helpers"
 currentPath=$(which nvim)
 installPath="${currentPath:-/usr/bin/nvim}"
-linux_url="https://github.com/neovim/neovil/releases/download/nightly/nvim-linux-x86_64.appimage"
+linux_url="https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.appimage"
 mac_url="https://github.com/neovim/neovim/releases/download/nightly/nvim-macos-arm64.tar.gz"
 
 url="<not set>"

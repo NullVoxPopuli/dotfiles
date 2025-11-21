@@ -1,4 +1,9 @@
 return function(use)
+  use { 'dmmulroy/ts-error-translator.nvim',
+    config = function()
+      require("ts-error-translator").setup()
+    end
+  }
   -- DAP w/ Node and JS in general is ridiculous atm.
   --     also, the VSCode JS Debugger is not DAP-compliant
   --     so... that's fun.
