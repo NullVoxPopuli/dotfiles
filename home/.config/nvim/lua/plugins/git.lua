@@ -12,13 +12,14 @@ return function(use)
     -- Base colors from theme.vim
     local addedBg = "#202930"
     local removedBg = "#302230"
-    local bg = "#202230"
+    local changedBg = "#303000"
+    local bg = "#102010"
 
     hl('DiffviewDiffAddAsDelete', { bg = removedBg })
     hl('DiffDelete', { bg = removedBg })
     hl('DiffviewDiffDelete', { bg = removedBg })
     hl('DiffAdd', { bg = addedBg })
-    hl('DiffChange', { bg = bg })
+    hl('DiffChange', { bg = changedBg })
     hl('DiffText', { bg = bg })
 
     require('diffview').setup({
@@ -35,8 +36,10 @@ return function(use)
           -- default diff fill chars are *way* too visually noisy
           vim.opt.fillchars:append { diff = " " }
         end,
-        -- diff_buf_win_enter = function(bufnr)
-        -- end,
+      },
+
+      view = {
+        default = { layout = "diff1_plain" }
       },
 
       keymaps = {

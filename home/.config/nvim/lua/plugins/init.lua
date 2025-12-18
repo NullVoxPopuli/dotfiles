@@ -71,8 +71,8 @@ require('packer').startup(function(use)
       })
 
       vim.keymap.set(
-        'n', '<leader>v', '<cmd>lua require("package-info").toggle()<cr>',
-        { silent = true, noremap = true }
+        "n", "<leader>v", require("package-info").toggle,
+        { noremap = true }
       )
     end
   }
