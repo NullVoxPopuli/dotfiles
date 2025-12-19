@@ -4,6 +4,9 @@ import = [
 ]
 
 
+[font]
+size = 14
+
 [font.normal]
 family = "NotoSansM Nerd Font Mono"
 # family = "AnonymicePro Nerd Font Mono"
