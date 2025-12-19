@@ -175,3 +175,11 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-name-regex-substring = "Zoom"
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-name-regex-substring = "Font Book"
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-name-regex-substring = "1Password"
+run = ['layout floating']

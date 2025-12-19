@@ -1,3 +1,8 @@
+[general]
+import = [
+  "~/Development/NullVoxPopuli/dotfiles/home/.config/alacritty/themes/horizon-dark.toml"
+]
+
 
 [font.normal]
 family = "NotoSansM Nerd Font Mono"
@@ -6,25 +11,6 @@ family = "NotoSansM Nerd Font Mono"
 # family = "CodeNewRoman Nerd Font Mono"
 # family = "DejaVuSansMono Nerd Font Mono"
 
-[[keyboard.bindings]]
-action = "CreateNewWindow"
-key = "N"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-chars = "\u001F"
-key = "Slash"
-mods = "Control"
 
 [mouse]
 hide_when_typing = false
@@ -34,8 +20,8 @@ args = ["--login"]
 program = "/opt/homebrew/bin/bash"
 
 [window]
-option_as_alt = "Both"
-decorations = "Buttonless"
+option_as_alt = "OnlyLeft"
+decorations = "None"
 
 # https://github.com/alacritty/alacritty/issues/5246#issuecomment-1878166299
 [[hints.enabled]]
@@ -48,8 +34,23 @@ post_processing = true
 persist = false
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
 
-[general]
-import = ["/Users/psego/.config/alacritty/themes/themes/horizon-dark.toml"]
+[keyboard]
+bindings = [
+  # Should be macOS default
+  { key = "F11", action = "ToggleSimpleFullscreen" },
 
-[colors.primary]
-background = '#000000'
+  # With same directory
+  { mods= "Control|Shift", key = "n", action = "CreateNewWindow" },
+
+  # Muscle memory from elsewhere
+  { mods = "Alt", key = "F4", command = "" },
+  { mods = "Control|Shift", key = "C", action = "Copy" },
+  { mods = "Control|Shift", key = "V", action = "Paste" },
+
+  # Allow certain characters to pass through to underlying TUIs
+  { mods = "Control", key = "Slash", chars = "\u001F" },
+
+  # These are nice
+  { mods="Option", key="c", action = "ScrollHalfPageUp" },
+  { mods="Option", key="t", action = "ScrollHalfPageDown" }
+]

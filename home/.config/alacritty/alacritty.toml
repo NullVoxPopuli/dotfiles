@@ -1,8 +1,13 @@
 [font.normal]
 family = "CodeNewRoman Nerd Font Mono"
 
-[shell]
-args = ['login']
+[general]
+import = [
+  "~/.config/alacritty/themes/horizon-dark.toml"
+]
+
+[window]
+decorations = "None"
 
 # https://github.com/alacritty/alacritty/issues/5246#issuecomment-1878166299
 [[hints.enabled]]
@@ -14,3 +19,4 @@ mouse.mods = "Control"
 post_processing = true
 persist = false
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+
