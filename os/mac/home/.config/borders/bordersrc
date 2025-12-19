@@ -3,6 +3,7 @@
 # Colors are Alpha, R, G, B
 
 options=(
+  style=square
   active_color=0xffbb00ff
   inactive_color=0xff000000
   width=8.0
