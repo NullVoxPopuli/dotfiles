@@ -46,6 +46,8 @@ bindings = [
   { mods= "Control|Shift", key = "n", action = "CreateNewWindow" },
 
   # Muscle memory from elsewhere
+  # control+d for now, don't know how to make alt-f4 work
+  # { mods = "Alt", key = "F4", chars = "^D" },
   { mods = "Control|Shift", key = "C", action = "Copy" },
   { mods = "Control|Shift", key = "V", action = "Paste" },
 
