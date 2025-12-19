@@ -46,7 +46,6 @@ bindings = [
   { mods= "Control|Shift", key = "n", action = "CreateNewWindow" },
 
   # Muscle memory from elsewhere
-  { mods = "Alt", key = "F4", command = "" },
   { mods = "Control|Shift", key = "C", action = "Copy" },
   { mods = "Control|Shift", key = "V", action = "Paste" },
 
