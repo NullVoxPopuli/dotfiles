@@ -12,6 +12,7 @@ ln -s $PWD/os/mac/home/.config/yabai/yabairc ~/.config/yabai/yabairc
 ln -s $PWD/os/mac/home/.config/skhd/skhdrc ~/.config/skhd/skhdrc
 ln -s $PWD/os/mac/home/.config/borders/bordersrc ~/.config/borders/bordersrc
 ln -s $PWD/os/mac/home/.aerospace.toml ~/.aerospace.toml
+ln -s $PWD/os/mac/home/.config/alacritty ~/.config/alacritty
 
 
 ##############################################
