@@ -12,7 +12,7 @@ return function(use)
     -- Base colors from theme.vim
     local addedBg = "#202930"
     local removedBg = "#302230"
-    local changedBg = "#303000"
+    local changedBg = "#191925"
     local bg = "#102010"
 
     hl('DiffviewDiffAddAsDelete', { bg = removedBg })
