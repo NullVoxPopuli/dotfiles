@@ -6,8 +6,14 @@ import = [
   "~/.config/alacritty/themes/horizon-dark.toml"
 ]
 
+
+[terminal.shell]
+args = ["--login"]
+program = "/bin/bash"
+
 [window]
 decorations = "None"
+padding = { x = 8, y = 8 }
 
 # https://github.com/alacritty/alacritty/issues/5246#issuecomment-1878166299
 [[hints.enabled]]
@@ -20,3 +26,24 @@ post_processing = true
 persist = false
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
 
+[keyboard]
+bindings = [
+  # Should be macOS default
+  { key = "F11", action = "ToggleSimpleFullscreen" },
+
+  # With same directory
+  { mods= "Control|Shift", key = "n", action = "CreateNewWindow" },
+
+  # Muscle memory from elsewhere
+  # control+d for now, don't know how to make alt-f4 work
+  # { mods = "Alt", key = "F4", chars = "^D" },
+  { mods = "Control|Shift", key = "C", action = "Copy" },
+  { mods = "Control|Shift", key = "V", action = "Paste" },
+
+  # Allow certain characters to pass through to underlying TUIs
+  { mods = "Control", key = "Slash", chars = "\u001F" },
+
+  # These are nice
+  { mods="Option", key="c", action = "ScrollHalfPageUp" },
+  { mods="Option", key="t", action = "ScrollHalfPageDown" }
+]
