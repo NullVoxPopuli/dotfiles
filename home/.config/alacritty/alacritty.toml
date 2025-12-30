@@ -44,6 +44,7 @@ bindings = [
   { mods = "Control", key = "Slash", chars = "\u001F" },
 
   # These are nice
-  { mods="Option", key="c", action = "ScrollHalfPageUp" },
-  { mods="Option", key="t", action = "ScrollHalfPageDown" }
+  # https://github.com/alacritty/alacritty/issues/8801
+  # { mods="RightAlt", key="c", action = "ScrollHalfPageUp" },
+  # { mods="Option", key="t", action = "ScrollHalfPageDown" }
 ]
