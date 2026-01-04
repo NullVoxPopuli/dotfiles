@@ -42,7 +42,7 @@ return function(use)
             "javascript", "typescript",
             "typescript.glimmer", "javascript.glimmer",
             "javascriptreact", "typescriptreact",
-            "markdown",
+            "markdown", "markdown_inline",
             "glimmer", "handlebars", "hbs", "svelte", "vue"
           }
         },

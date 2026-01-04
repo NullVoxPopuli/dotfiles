@@ -38,10 +38,6 @@ return function(use)
         end,
       },
 
-      view = {
-        default = { layout = "diff1_plain" }
-      },
-
       keymaps = {
         view = {
           -- override NeoTree shortcuts

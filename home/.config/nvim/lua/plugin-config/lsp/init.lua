@@ -82,9 +82,6 @@ vim.lsp.enable('rust_analyzer');
 vim.lsp.enable('stylelint_lsp');
 vim.lsp.enable('copilot-language-server')
 
--- TS, Glint, etc
-require('plugin-config.lsp.typescript')
-
 
 vim.lsp.config('*', {
   capabilities = require('blink.cmp').get_lsp_capabilities()

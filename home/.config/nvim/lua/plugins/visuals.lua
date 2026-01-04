@@ -115,7 +115,7 @@ return function(use)
   }
   -- colorize various color-like tokens in code
   use {
-    'norcalli/nvim-colorizer.lua',
+    'catgoose/nvim-colorizer.lua',
     config = function()
       require 'colorizer'.setup()
     end

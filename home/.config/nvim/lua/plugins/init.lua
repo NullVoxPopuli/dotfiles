@@ -34,6 +34,17 @@ require('packer').startup(function(use)
   require('plugins.visuals')(use)
   require('plugins.snippets')(use)
   require('plugins.ai')(use)
+  use {
+    'NullVoxPopuli/ember.nvim',
+    requires = {
+      'nvim-treesitter/nvim-treesitter',
+      -- 'neovim/nvim-lspconfig',
+    },
+    config = function()
+      require('ember.nvim').config()
+    end
+  }
+
 
   -- NOTE: previously tried plugins
   --   twilight.nvim

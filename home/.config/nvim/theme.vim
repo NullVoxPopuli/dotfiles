@@ -21,6 +21,7 @@ let g:edge_better_performance = 1
 let g:edge_dim_foreground = 0
 " Don't dim inactive when we have the focus ring
 let g:edge_dim_inactive_windows = 0
+" https://www.color-name.com/hex/101220 "Vulcan" lol
 let g:edge_colors_override = {'bg0': ['#101220', '123'] }
 colorscheme edge
 
