@@ -38,7 +38,7 @@ require('packer').startup(function(use)
     'NullVoxPopuli/ember.nvim',
     requires = {
       'nvim-treesitter/nvim-treesitter',
-      -- 'neovim/nvim-lspconfig',
+      'neovim/nvim-lspconfig',
     },
     config = function()
       require('ember.nvim').config()

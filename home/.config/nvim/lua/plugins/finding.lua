@@ -1,6 +1,6 @@
 return function(use)
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.7',
+    'nvim-telescope/telescope.nvim', tag = 'v0.2.1',
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-fzy-native.nvim'

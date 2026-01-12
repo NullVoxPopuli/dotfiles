@@ -1,5 +1,5 @@
 -- This example dosen't use a package manager.
--- Exact details for how to get plugins will depend on your package manager, 
+-- Exact details for how to get plugins will depend on your package manager,
 --   if you're using one.
 
 vim.api.nvim_command [[set termguicolors]]
@@ -25,28 +25,33 @@ end
 
 install('https://github.com/nvim-treesitter/nvim-treesitter.git', 'nvim-treesitter')
 
-require 'nvim-treesitter.configs'.setup {
-  sync_install = true,
-  ignore_install = {},
-  auto_install = true,
-  modules = {},
-  ensure_installed = {
-    "javascript", "typescript",
-    "glimmer", "glimmer_javascript", "glimmer_typescript",
-    "jsdoc",
-    "diff",
-  },
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true
-  },
+require 'nvim-treesitter'.setup {
+  -- only needed because we launch with --clean
+  install_dir = vim.fn.stdpath('data') .. '/site'
+}
+require 'nvim-treesitter'.install {
+  "javascript", "typescript",
+  "glimmer", "glimmer_javascript", "glimmer_typescript",
 }
 
-local ts_install = require("nvim-treesitter.install")
-local ts_update = ts_install.update({ with_sync = true })
+-- Some of this is in ember.nvim
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    'javascript', 'typescript',
+    "javascript.glimmer", "typescript.glimmer",
+  },
+  callback = function()
+    vim.treesitter.start()
 
-ts_install.prefer_git = true
+    -- Folding
+    vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.wo[0][0].foldmethod = 'expr'
 
-ts_update()
+    -- indentation
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+})
+
+vim.treesitter.language.register('glimmer_javascript', 'gjs')
+vim.treesitter.language.register('glimmer_typescript', 'gts')
+vim.treesitter.language.register('glimmer', 'hbs')

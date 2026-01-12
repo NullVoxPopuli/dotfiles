@@ -16,6 +16,24 @@ return function(use)
   -- autoclose and autorename tags
   use {
     'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup({
+        opts = {
+          -- Defaults
+          enable_close = true,          -- Auto close tags
+          enable_rename = true,         -- Auto rename pairs of tags
+          enable_close_on_slash = false -- Auto close on trailing </
+        },
+        -- Also override individual filetype configs, these take priority.
+        -- Empty by default, useful if one of the "opts" global settings
+        -- doesn't work well in a specific filetype
+        per_filetype = {
+          -- ["html"] = {
+          --   enable_close = false
+          -- }
+        },
+      })
+    end,
   }
 
   use {
@@ -25,73 +43,60 @@ return function(use)
     --
     --       (main is also super buggy right now)
     'nvim-treesitter/nvim-treesitter',
-    -- for developing highlights
-    -- '~/Development/OpenSource/nvim-treesitter',
-    run = function()
-      require("nvim-treesitter.install").prefer_git = true
-      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-      ts_update()
-    end,
+    branch = "main",
     config = function()
+      require('nvim-treesitter').install({
+        -- Many handled by ember.nvim
+        -- Web Framework Languages
+        "svelte",
+        -- Web Transport Languages
+        "graphql",
+        -- "help", -- missing?
+        -- "comment", -- slow?
+        -- Configuration Languages
+        "toml", "jsonc", "yaml",
+        "dockerfile",
+        "lua", "vim", "hyprlang",
+        "hcl", "terraform",
+        -- Scripting Languages
+        "commonlisp",
+        "bash",
+        "jq",
+        -- Languages I don't know how to categorize
+        "ruby",
+        -- Systems Languages
+        "c", "cmake",
+        "rust",
+        "go",
+        -- Specifically for the treesitter AST
+        "query",
+        -- Utility Syntaxes
+        "diff",
+        "jq",
+        "git_rebase", "gitcommit", "gitignore"
+      })
+
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = {
+          'markdown',
+          'scss',
+          'jq', 'bash', 'c', 'go', 'rust', 'diff',
+          'svelte', 'graphql', 'toml', 'yaml', 'dockerfile',
+        },
+        callback = function()
+          -- Folding
+          vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          vim.wo[0][0].foldmethod = 'expr'
+
+          -- indentation
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+          -- Fancy!
+          vim.treesitter.start()
+        end,
+      })
+
       require("nvim-treesitter.install").prefer_git = true
-      require 'nvim-treesitter.configs'.setup {
-        autotag = {
-          enable = true,
-          filetypes = {
-            "html",
-            "javascript", "typescript",
-            "typescript.glimmer", "javascript.glimmer",
-            "javascriptreact", "typescriptreact",
-            "markdown", "markdown_inline",
-            "glimmer", "handlebars", "hbs", "svelte", "vue"
-          }
-        },
-        ensure_installed = {
-          -- Web Languages
-          "javascript", "typescript",
-          "html", "css", "regex",
-          -- Web Framework Languages
-          "glimmer", "glimmer_javascript", "glimmer_typescript",
-          "svelte",
-          -- Web Transport Languages
-          "graphql",
-          -- Documentation Languages
-          "markdown", "markdown_inline",
-          -- "help", -- missing?
-          -- "comment", -- slow?
-          "jsdoc",
-          -- Configuration Languages
-          "toml", "jsonc", "yaml",
-          "dockerfile",
-          "lua", "vim", "hyprlang",
-          "hcl", "terraform",
-          -- Scripting Languages
-          "commonlisp",
-          "bash",
-          "jq",
-          -- Languages I don't know how to categorize
-          "ruby",
-          -- Systems Languages
-          "c", "cmake",
-          "rust",
-          "go",
-          -- Specifically for the treesitter AST
-          "query",
-          -- Utility Syntaxes
-          "diff",
-          "jq",
-          "git_rebase", "gitcommit", "gitignore"
-        },
-        ignore_install = {
-          "json" -- jsonc is better
-        },
-        highlight = {
-          enable = true,
-        },
-        indent = {
-          enable = true
-        },
-      }
 
       require('ts_context_commentstring').setup({})
       vim.g.skip_ts_context_commentstring_module = true
@@ -100,6 +105,21 @@ return function(use)
 
       vim.filetype.add({
         pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+      })
+
+      -- For developing grammars, uncomment
+      -- It's not explained why this "needs" to be in an autocmd
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'TSUpdate',
+        callback = function()
+          require('nvim-treesitter.parsers').glimmer = {
+            install_info = {
+              path = "/Users/psego/Development/NullVoxPopuli/tree-sitter-glimmer"
+              -- url = 'https://github.com/ember-tooling/tree-sitter-glimmer',
+              -- revision = '384cc9b80bfd46c027b815b863f911df4286b92c',
+            },
+          }
+        end
       })
     end
   }
