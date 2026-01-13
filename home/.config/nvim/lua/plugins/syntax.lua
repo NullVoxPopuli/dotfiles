@@ -106,21 +106,6 @@ return function(use)
       vim.filetype.add({
         pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
       })
-
-      -- For developing grammars, uncomment
-      -- It's not explained why this "needs" to be in an autocmd
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'TSUpdate',
-        callback = function()
-          require('nvim-treesitter.parsers').glimmer = {
-            install_info = {
-              path = "/Users/psego/Development/NullVoxPopuli/tree-sitter-glimmer"
-              -- url = 'https://github.com/ember-tooling/tree-sitter-glimmer',
-              -- revision = '384cc9b80bfd46c027b815b863f911df4286b92c',
-            },
-          }
-        end
-      })
     end
   }
 
