@@ -15,7 +15,9 @@ return function(use)
 
   -- autoclose and autorename tags
   use {
-    'windwp/nvim-ts-autotag',
+    -- 'windwp/nvim-ts-autotag',
+    'NullVoxPopuli/nvim-ts-autotag',
+    branch = 'patch-1',
     config = function()
       require('nvim-ts-autotag').setup({
         opts = {
