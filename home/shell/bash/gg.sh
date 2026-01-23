@@ -179,19 +179,31 @@ function gg() {
   if [ "$SKIP_WORKTREES" == "false" ]; then
     num_worktrees=$( git worktree list | wc -l )
 
+    # Ask to choose a worktree
     if [ "$num_worktrees" -gt "1" ]; then
-      # Ask to choose a worktree
 
-      function print_worktrees() {
-        PREV_IFS=$IFS; IFS=$'\n'; full_worktrees=($(git worktree list)); IFS=$PREV_IFS;
+      function worktree_rows() {
+        git worktree list |
+        while read -r path commit branch; do
+          age=$(git show -s --format=%cr "$commit")
 
-        for i in "${full_worktrees[@]}"; do
-          trimmed=$(echo $i | sed "s#$PREFIX##")
-          echo $trimmed
+          printf "%s\t%s\t%s\t%s\n" \
+            "$path" \
+            "${commit:0:7}" \
+            "$age" \
+            "$branch"
         done
       }
 
-      selected_worktree=$(print_worktrees | column -t | fzf \
+      function print_worktrees() {
+        worktree_rows |
+        while IFS= read -r line; do
+          trimmed=$(echo "$line" | sed "s#$PREFIX##")
+          echo "$trimmed"
+        done
+      }
+
+      selected_worktree=$(print_worktrees | column -t -s $'\t' | fzf \
         -1 \
         --no-hscroll \
         --no-mouse \
