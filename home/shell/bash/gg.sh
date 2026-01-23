@@ -182,28 +182,29 @@ function gg() {
     # Ask to choose a worktree
     if [ "$num_worktrees" -gt "1" ]; then
 
-      function worktree_rows() {
+      function print_worktrees() {
+        local c_path c_commit c_age c_branch reset
+        c_path=$(tput setaf 6)
+        c_commit=$(tput setaf 3)
+        c_age=$(tput setaf 2)
+        c_branch=$(tput setaf 4)
+        reset=$(tput sgr0)
+
         git worktree list |
         while read -r path commit branch; do
           age=$(git show -s --format=%cr "$commit")
+          trimmed=$(echo "$path" | sed "s#$PREFIX##")
 
-          printf "%s\t%s\t%s\t%s\n" \
-            "$path" \
-            "${commit:0:7}" \
-            "$age" \
-            "$branch"
-        done
-      }
-
-      function print_worktrees() {
-        worktree_rows |
-        while IFS= read -r line; do
-          trimmed=$(echo "$line" | sed "s#$PREFIX##")
-          echo "$trimmed"
+          printf "%s%s%s\t%s%s%s\t%s%s%s\t%s%s%s\n" \
+            "$c_path"   "$trimmed"       "$reset" \
+            "$c_commit" "${commit:0:7}"  "$reset" \
+            "$c_age"    "$age"           "$reset" \
+            "$c_branch" "$branch"        "$reset"
         done
       }
 
       selected_worktree=$(print_worktrees | column -t -s $'\t' | fzf \
+        --ansi \
         -1 \
         --no-hscroll \
         --no-mouse \
@@ -211,7 +212,9 @@ function gg() {
         $QUERY \
       )
 
-      selected_worktree=$(echo $selected_worktree | cut -f 1 -d ' ')
+      selected_worktree=$(echo "$selected_worktree" \
+        | sed -E 's/\x1b\[[0-9;]*m//g' \
+        | awk '{print $1}')
 
       if [  "$selected_worktree" == "" ]; then
         return 0
