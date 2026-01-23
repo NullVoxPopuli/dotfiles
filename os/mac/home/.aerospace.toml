@@ -25,8 +25,9 @@ after-startup-command = []
 start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
+# Guide says "Unless you're a hard-core i3 user..." But like, there is no ergonomic way to rotate a sub-container otherwise...
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
