@@ -56,7 +56,7 @@ return function(use)
         -- "help", -- missing?
         -- "comment", -- slow?
         -- Configuration Languages
-        "toml", "jsonc", "yaml",
+        "toml", "yaml",
         "dockerfile",
         "lua", "vim", "hyprlang",
         "hcl", "terraform",
