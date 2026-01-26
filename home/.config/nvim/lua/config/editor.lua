@@ -13,9 +13,13 @@
 --   it's useful to have the focus not be stolen).
 --
 -- I can still view the messages via `:messages` if I really need to.
+--
+-- A caveat though, is that this isn't focusable if I need it to be.
+--
+-- TODO: figure out a way to toggle this in some ergonomic way.
 require('vim._extui').enable({
   msg = {
     target = 'msg',
-    timeout = 250
+    timeout = 2500
   }
 })

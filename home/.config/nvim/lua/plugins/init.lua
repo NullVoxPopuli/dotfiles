@@ -34,6 +34,7 @@ require('packer').startup(function(use)
   require('plugins.visuals')(use)
   require('plugins.snippets')(use)
   require('plugins.ai')(use)
+  require('plugins.testing')(use)
   use {
     'NullVoxPopuli/ember.nvim',
     requires = {

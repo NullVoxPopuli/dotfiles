@@ -56,7 +56,7 @@ return function(use)
         -- "help", -- missing?
         -- "comment", -- slow?
         -- Configuration Languages
-        "toml", "yaml",
+        "toml", "json", "yaml",
         "dockerfile",
         "lua", "vim", "hyprlang",
         "hcl", "terraform",
@@ -82,7 +82,7 @@ return function(use)
         pattern = {
           'markdown',
           'scss',
-          'jq', 'bash', 'c', 'go', 'rust', 'diff',
+          'json', 'jq', 'bash', 'c', 'go', 'rust', 'diff',
           'svelte', 'graphql', 'toml', 'yaml', 'dockerfile',
         },
         callback = function()

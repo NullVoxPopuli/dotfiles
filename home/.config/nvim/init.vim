@@ -19,10 +19,6 @@ set shell=/bin/bash\ --login
 
 augroup ShouldBeDefaults
   autocmd!
-  " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
-  " Set everything to jsonc, cause it's easier
-  autocmd FileType json set filetype=jsonc
-  autocmd FileType json5 set filetype=jsonc
   autocmd BufRead *.mts set filetype=typescript
   autocmd BufRead *.edge set filetype=html.edge
 

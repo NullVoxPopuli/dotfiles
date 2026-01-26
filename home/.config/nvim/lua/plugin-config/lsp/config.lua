@@ -24,3 +24,24 @@ vim.diagnostic.config({
     focusable = true,
   },
 })
+
+-- For Treesitter query debugging, enable virtual text
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = { 'query' },
+--   callback = function()
+--     vim.diagnostic.config({
+--       virtual_text = true,
+--       signs = true,
+--       underline = true,
+--       update_in_insert = false,
+--       severity_sort = true,
+--       float = {
+--         show_header = false,
+--         source = true,
+--         border = 'rounded',
+--         -- So we can copy-paste errors to chat
+--         focusable = true,
+--       },
+--     })
+--   end,
+-- })

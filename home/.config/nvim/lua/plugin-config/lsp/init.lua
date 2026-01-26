@@ -72,6 +72,7 @@ vim.lsp.config('yamlls', {
 
 vim.lsp.enable('yamlls')
 
+vim.lsp.enable('ts_query_ls');
 vim.lsp.enable('bashls');
 vim.lsp.enable('cssls');
 vim.lsp.enable('dockerls');
