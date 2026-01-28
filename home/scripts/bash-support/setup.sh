@@ -14,3 +14,9 @@ case "${unameOut}" in
 esac
 
 
+# Disable hostname completion entirely
+# This prevents "@" from needing to be escaped in the terminal due to
+# @::1  @broadcosthost @localhost
+#
+# Seems to only be on macos? we'll see what happens on linux later today
+shopt -u hostcomplete
