@@ -41,6 +41,8 @@ regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:
 bindings = [
   # Should be macOS default
   { key = "F11", action = "ToggleSimpleFullscreen" },
+  { key = "C", mods = "Alt", chars = "\u001bc" },
+  { key = "T", mods = "Alt", chars = "\u001bt" },
 
   # With same directory
   { mods= "Control|Shift", key = "n", action = "CreateNewWindow" },
