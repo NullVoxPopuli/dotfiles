@@ -1,0 +1,11 @@
+#!/bin/bash
+
+MY_FORK_REMOTE="nvp"
+
+if git remote | grep -Fxq "$MY_FORK_REMOTE"; then
+  git fetch nvp
+  git reset nvp/$(gbranch)
+else
+  echo "Remote '$MY_FORK_REMOTE' does not exist"
+  exit 1
+fi
