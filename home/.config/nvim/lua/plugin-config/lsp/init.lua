@@ -2,11 +2,13 @@ require('plugin-config.lsp.keymap')
 require('plugin-config.lsp.config')
 require('plugin-config.lsp.completions')
 
+local utils = require('utils')
 
 -- https://github.com/j-hui/fidget.nvim
 require "fidget".setup {}
 
 vim.lsp.config('eslint', {
+  root_dir = utils.eslint_root_dir,
   settings = {
     useFlatConfig = true,
   },
@@ -16,6 +18,20 @@ vim.lsp.config('eslint', {
     "json",
     "markdown"
   },
+  on_new_config = function(new_config, new_root_dir) 
+    local info = utils.eslint_config()
+
+      print("eslint on_new_config")
+      print(info)
+    if not info then
+      return
+    end
+
+    if not info.is_modern then
+      print("Not modern")
+      new_config.settings.useFlatConfig = false
+    end
+  end
 })
 vim.lsp.enable('eslint');
 
