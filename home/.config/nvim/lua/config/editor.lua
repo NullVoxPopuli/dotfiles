@@ -17,7 +17,7 @@
 -- A caveat though, is that this isn't focusable if I need it to be.
 --
 -- TODO: figure out a way to toggle this in some ergonomic way.
-require('vim._extui').enable({
+require('vim._core.ui2').enable({
   msg = {
     target = 'msg',
     timeout = 2500
