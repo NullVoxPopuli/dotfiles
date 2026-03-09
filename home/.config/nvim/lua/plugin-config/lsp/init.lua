@@ -9,6 +9,7 @@ require "fidget".setup {}
 
 vim.lsp.config('oxfmt', {})
 vim.lsp.enable('oxfmt')
+
 vim.lsp.config('oxlint', {})
 vim.lsp.enable('oxlint')
 
