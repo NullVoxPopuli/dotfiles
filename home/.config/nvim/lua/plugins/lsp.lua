@@ -13,7 +13,7 @@ return function(use)
   use {
     'stevearc/conform.nvim',
     config = function()
-      local config = { "prettier", stop_after_first = true }
+      local config = { "oxfmt", "prettier", stop_after_first = true }
 
       require('conform').setup({
         formatters_by_ft = {
@@ -31,6 +31,9 @@ return function(use)
         },
         notify_on_error = false,
         formatters = {
+          oxfmt = {
+            require_cwd = true
+          },
           -- We don't want to enable prettierd
           -- because it requires global installation, and then
           -- we can't even have projects without prettier

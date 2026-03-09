@@ -7,6 +7,11 @@ local utils = require('utils')
 -- https://github.com/j-hui/fidget.nvim
 require "fidget".setup {}
 
+vim.lsp.config('oxfmt', {})
+vim.lsp.enable('oxfmt')
+vim.lsp.config('oxlint', {})
+vim.lsp.enable('oxlint')
+
 vim.lsp.config('eslint', {
   root_dir = utils.eslint_root_dir,
   settings = {
@@ -18,11 +23,11 @@ vim.lsp.config('eslint', {
     "json",
     "markdown"
   },
-  on_new_config = function(new_config, new_root_dir) 
+  on_new_config = function(new_config, new_root_dir)
     local info = utils.eslint_config()
 
-      print("eslint on_new_config")
-      print(info)
+    print("eslint on_new_config")
+    print(info)
     if not info then
       return
     end
