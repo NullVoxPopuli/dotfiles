@@ -1,0 +1,5 @@
+#!/bin/bash
+
+specifier="${1#NullVoxPopuli:}"
+
+git checkout "$specifier"
