@@ -31,7 +31,7 @@ local function find_nearest(lookFor)
 end
 
 local function eslint_config()
-  local modern = vim.fs.root(0,{ 'eslint.config.js', 'eslint.config.mjs', 'eslint.config.cjs' })
+  local modern = vim.fs.root(0, { 'eslint.config.js', 'eslint.config.mjs', 'eslint.config.cjs' })
 
   if modern then
     return {
@@ -40,16 +40,19 @@ local function eslint_config()
     }
   end
 
-  local legacy = vim.fs.root(0, { '.eslintrc.cjs', '.eslintrc.js' })
-
-  if legacy then
-    return {
-      is_modern = false,
-      root_dir = legacy
-    }
-  end
-
+  -- No support for old eslint for now
   return nil
+
+  -- local legacy = vim.fs.root(0, { '.eslintrc.cjs', '.eslintrc.js' })
+  --
+  -- if legacy then
+  --   return {
+  --     is_modern = false,
+  --     root_dir = legacy
+  --   }
+  -- end
+  --
+  -- return nil
 end
 
 
