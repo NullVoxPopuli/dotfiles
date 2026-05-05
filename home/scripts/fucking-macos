@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# 5 million, default is like 65k
+# also watchman is probably needed
+limit=5000000
+
+echo kern.maxfiles=$limit | sudo tee -a /etc/sysctl.conf
+echo kern.maxfilesperproc=$limit | sudo tee -a /etc/sysctl.conf
+sudo sysctl -w kern.maxfiles=$limit
+sudo sysctl -w kern.maxfilesperproc=$limit
+ulimit -n $limit $limit
