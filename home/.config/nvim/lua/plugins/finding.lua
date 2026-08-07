@@ -10,6 +10,11 @@ return function(use)
     end
   }
 
+  use {
+    'nvim-telescope/telescope-fzy-native.nvim',
+    run = 'git submodule update --init --recursive && cd deps/fzy-lua-native && make',
+  }
+
   -- / for search
   -- * for search forward
   -- # for search backwards

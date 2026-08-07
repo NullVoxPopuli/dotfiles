@@ -1,22 +1,20 @@
-local fn = vim.fn
-
--- Automatically install packer
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-    install_path })
-  print("Installing packer close and reopen Neovim...")
+local pckr_path = vim.fn.stdpath('data') .. '/pckr/pckr.nvim'
+if not (vim.uv or vim.loop).fs_stat(pckr_path) then
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/lewis6991/pckr.nvim',
+    pckr_path,
+  })
 end
+vim.opt.rtp:prepend(pckr_path)
+vim.cmd.source(pckr_path .. '/plugin/pckr.lua')
 
-
--- :PackerCompile
--- :PackerClean
--- :PackerInstall
--- :PackerUpdate
--- :PackerSync
-require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+local specs = {}
+local function use(spec)
+  specs[#specs + 1] = spec
+end
 
 
   -- Fun
@@ -45,7 +43,6 @@ require('packer').startup(function(use)
       require('ember.nvim').config()
     end
   }
-
 
   -- NOTE: previously tried plugins
   --   twilight.nvim
@@ -222,7 +219,7 @@ require('packer').startup(function(use)
     config = function()
       require('tabout').setup {}
     end,
-    wants = { 'nvim-treesitter' }
+    requires = { 'nvim-treesitter/nvim-treesitter' }
   }
 
   -- Measure typing speed
@@ -234,9 +231,8 @@ require('packer').startup(function(use)
     end
   }
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require('packer').sync()
-  end
-end)
+require('pckr').add(specs)
+
+-- These are used by init.vim immediately after this file is loaded.
+vim.cmd.packadd('blink.cmp')
+vim.cmd.packadd('edge')

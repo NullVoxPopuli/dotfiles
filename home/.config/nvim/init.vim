@@ -2,6 +2,7 @@
 " More info:
 " https://stackoverflow.com/questions/5845557/in-a-vimrc-is-set-nocompatible-completely-useless
 set nocompatible
+set termguicolors
 
 " Actual config split out here
 lua require('plugins')

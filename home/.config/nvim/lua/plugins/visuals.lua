@@ -64,7 +64,7 @@ return function(use)
   -- Syntax / Theme
   ----------------------
   -- use 'joshdick/onedark.vim'
-  use 'sainnhe/edge'
+  use { 'sainnhe/edge', start = true }
 
   -- UI
   use 'stevearc/dressing.nvim'

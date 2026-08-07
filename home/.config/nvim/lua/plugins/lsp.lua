@@ -6,7 +6,7 @@ return function(use)
     requires = {
       -- It bothers me that this person's name is all caps
       'L3MON4D3/LuaSnip',
-      { 'Saghen/blink.cmp', tag = 'v1.1.1' }
+      { 'Saghen/blink.cmp', tag = 'v1.1.1', start = true },
     },
   }
 

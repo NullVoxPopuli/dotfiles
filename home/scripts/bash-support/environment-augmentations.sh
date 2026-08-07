@@ -98,8 +98,14 @@ if [ -d "$HOME/.local/bin" ]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
+# golang
 if [ -d "$HOME/go" ]; then 
   export PATH="$HOME/go/bin:$PATH"
+fi
+
+# opencode
+if [ -d "$HOME/.opencode" ]; then
+  export PATH="$HOME/.opencode/bin:$PATH"
 fi
 
 # NVIDIA CUDA

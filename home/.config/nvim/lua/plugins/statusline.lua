@@ -1,6 +1,7 @@
 return function(use)
   use {
     'nvim-lualine/lualine.nvim',
+    requires = { 'jcdickinson/wpm.nvim' },
     -- 'NullVoxPopuli/lualine.nvim',
     -- branch = 'fix-filename-width',
     config = function()

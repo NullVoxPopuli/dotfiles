@@ -46,7 +46,14 @@ return function(use)
     --       (main is also super buggy right now)
     'nvim-treesitter/nvim-treesitter',
     branch = "main",
+    start = true,
+    run = ':TSUpdate',
+    requires = { 'JoosepAlviste/nvim-ts-context-commentstring' },
     config = function()
+      require('nvim-treesitter').setup {
+        install_dir = vim.fn.stdpath('data') .. '/site',
+      }
+
       require('nvim-treesitter').install({
         -- Many handled by ember.nvim
         -- Web Framework Languages

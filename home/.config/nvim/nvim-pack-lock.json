@@ -1,0 +1,13 @@
+{
+  "plugins": {
+    "ember.nvim": {
+      "rev": "b08ae4f9982e79a9bf5721245a8bf1b526aabb68",
+      "src": "file:///home/nvp/Development/NullVoxPopuli/ember.nvim"
+    },
+    "nvim-treesitter": {
+      "rev": "3d3321b560a63ff92a8692401f303a5123336b86",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
+    }
+  }
+}
