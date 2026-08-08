@@ -84,7 +84,8 @@ fi
 # pnpm
 if [ -n "$(which pnpm)" ]; then
   export PNPM_HOME="$HOME/.local/share/pnpm"
-  export PATH="$PNPM_HOME:$PATH"
+  PNPM_GLOBAL_BIN="$PNPM_HOME/bin"
+  export PATH="$PNPM_HOME:$PNPM_GLOBAL_BIN:$PATH"
 fi
 
 
