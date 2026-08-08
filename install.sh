@@ -81,6 +81,7 @@ ln -s $PWD/home/.config/swayosd ~/.config/swayosd
 ln -s $PWD/home/.config/yofi ~/.config/yofi
 ln -s $PWD/home/.config/fontconfig ~/.config/fontconfig
 ln -s $PWD/home/.config/ghostty ~/.config/ghostty
+ln -s $PWD/home/.config/opencode ~/.config/opencode
 
 
 case "${unameOut}" in
