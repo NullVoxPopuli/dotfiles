@@ -1,0 +1,13 @@
+backups/
+cache/
+downloads/
+file-history/
+plugins/
+projects/
+session-env/
+sessions/
+shell-snapshots/
+.credentials.json
+.last-cleanup
+history.jsonl
+

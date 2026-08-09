@@ -1,0 +1,9 @@
+{
+  "enabledPlugins": {
+    "chrome-devtools-mcp@claude-plugins-official": true
+  },
+  "tui": "fullscreen",
+  "theme": "dark",
+  "model": "claude-fable-5[1m]",
+  "autoMemoryDirectory": "~/.claude/memory"
+}

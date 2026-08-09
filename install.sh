@@ -37,7 +37,11 @@ mkdir -p ~/.config/pop-shell/
 rm -rf ~/Applications
 rm -rf ~/scripts
 rm -rf ~/shell
+rm -rf ~/.gitmessage
+rm -rf ~/.prototools
+rm -rf ~/.tldrrc
 rm -rf ~/.themes
+rm -rf ~/.cspell.json
 rm -rf ~/.bash_profile
 rm -rf ~/.config/nvim
 rm -rf ~/.config/fish
@@ -45,10 +49,6 @@ rm -rf ~/.config/bat
 rm -rf ~/.config/cosmic
 rm -rf ~/.config/starship.toml
 rm -rf ~/.config/pop-shell/config.json
-rm -rf ~/.gitmessage
-rm -rf ~/.prototools
-rm -rf ~/.tldrrc
-rm -rf ~/.cspell.json
 rm -rf ~/.config/hypr
 rm -rf ~/.config/waybar
 rm -rf ~/.config/swaync
@@ -56,6 +56,7 @@ rm -rf ~/.config/swayosd
 rm -rf ~/.config/yofi
 rm -rf ~/.config/fontconfig
 rm -rf ~/.config/ghostty
+rm -rf ~/.config/opencode
 
 
 ln -s $PWD/home/Applications ~/Applications
@@ -82,6 +83,12 @@ ln -s $PWD/home/.config/yofi ~/.config/yofi
 ln -s $PWD/home/.config/fontconfig ~/.config/fontconfig
 ln -s $PWD/home/.config/ghostty ~/.config/ghostty
 ln -s $PWD/home/.config/opencode ~/.config/opencode
+
+# Why does claude gotta be weird
+rm -rf ~/.claude/memory
+mkdir -p ~/.claude/memory
+ln -s $PWD/home/.claude/settings.json ~/.claude/settings.json 
+ln -s $PWD/home/.claude/memory ~/.claude/memory
 
 
 case "${unameOut}" in
