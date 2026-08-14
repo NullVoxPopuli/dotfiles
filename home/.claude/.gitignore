@@ -11,4 +11,4 @@ image-cache/
 .credentials.json
 .last-cleanup
 history.jsonl
-
+.last-update-result.json

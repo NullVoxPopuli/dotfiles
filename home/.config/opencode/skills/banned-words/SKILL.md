@@ -10,7 +10,10 @@ description: avoid certain word choices so as to not trigger people who are fed 
 - fails quietly
 - Spearheaded 
 - crutch
+- carrying
 - exactly the crutch
+- load bearing
+- load-bearing
 
 ## These symbols are not allowed ever
 
@@ -19,6 +22,4 @@ description: avoid certain word choices so as to not trigger people who are fed 
 ## Formatting that is not allowed ever
 
 - *bold text* bunch more text
-
-
 
