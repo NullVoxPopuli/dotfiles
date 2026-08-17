@@ -87,8 +87,14 @@ ln -s $PWD/home/.config/opencode ~/.config/opencode
 # Why does claude gotta be weird
 rm -rf ~/.claude/memory
 mkdir -p ~/.claude/memory
-ln -s $PWD/home/.claude/settings.json ~/.claude/settings.json 
+ln -s $PWD/home/.claude/settings.json ~/.claude/settings.json
 ln -s $PWD/home/.claude/memory ~/.claude/memory
+
+# skills are shared with opencode, so they live under .config/opencode
+rm -rf ~/.claude/skills
+rm -rf ~/.claude/output-styles
+ln -s $PWD/home/.claude/skills ~/.claude/skills
+ln -s $PWD/home/.claude/output-styles ~/.claude/output-styles
 
 
 case "${unameOut}" in
