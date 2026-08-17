@@ -1,5 +1,5 @@
 ---
-name: banned words
+name: banned-words
 description: avoid certain word choices so as to not trigger people who are fed up with reading LLM slop
 ---
 

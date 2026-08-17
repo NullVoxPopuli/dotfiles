@@ -1,6 +1,6 @@
 ---
-name: remember always 
-description: things to always remember 
+name: remember-always
+description: things to always remember
 ---
 
 
