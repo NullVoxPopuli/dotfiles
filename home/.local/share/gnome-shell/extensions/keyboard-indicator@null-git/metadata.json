@@ -1,0 +1,9 @@
+{
+  "name": "Keyboard Indicator",
+  "description": "Shows which keyboards are connected and lets you disable the built-in laptop keyboard while an external one is plugged in.",
+  "uuid": "keyboard-indicator@null-git",
+  "settings-schema": "org.gnome.shell.extensions.keyboard-indicator",
+  "session-modes": ["user", "unlock-dialog"],
+  "shell-version": ["45", "46", "47", "48", "49", "50"],
+  "version": 1
+}

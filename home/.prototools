@@ -1,5 +1,5 @@
-node = "~24"
 rust = "1.92.0"
+node = "~24"
 
 [settings]
 auto-install = true

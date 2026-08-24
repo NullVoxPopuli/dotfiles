@@ -33,6 +33,7 @@ mkdir -p ~/.local/share/nvim/_undo
 mkdir -p ~/.local/share/nvim/spell
 mkdir -p ~/.config/
 mkdir -p ~/.config/pop-shell/
+mkdir -p ~/.local/share/gnome-shell/extensions/
 
 rm -rf ~/Applications
 rm -rf ~/scripts
@@ -57,6 +58,7 @@ rm -rf ~/.config/yofi
 rm -rf ~/.config/fontconfig
 rm -rf ~/.config/ghostty
 rm -rf ~/.config/opencode
+rm -rf ~/.local/share/gnome-shell/extensions/keyboard-indicator@null-git
 
 
 ln -s $PWD/home/Applications ~/Applications
@@ -95,6 +97,21 @@ rm -rf ~/.claude/skills
 rm -rf ~/.claude/output-styles
 ln -s $PWD/home/.claude/skills ~/.claude/skills
 ln -s $PWD/home/.claude/output-styles ~/.claude/output-styles
+
+###############################################
+# GNOME Shell extensions
+#
+# The privileged half of keyboard-indicator is NOT installed here -- it needs
+# sudo and is a one-time thing. Run its helper/install.sh by hand.
+###############################################
+gnome_extensions="$PWD/home/.local/share/gnome-shell/extensions"
+
+if command -v glib-compile-schemas > /dev/null; then
+  glib-compile-schemas "$gnome_extensions/keyboard-indicator@null-git/schemas/"
+fi
+
+ln -s "$gnome_extensions/keyboard-indicator@null-git" \
+  ~/.local/share/gnome-shell/extensions/keyboard-indicator@null-git
 
 
 case "${unameOut}" in

@@ -1,0 +1,84 @@
+#!/bin/sh
+#
+# kbd-internal-toggle — inhibit or un-inhibit an input device by name.
+#
+# Runs as root, normally via pkexec from the keyboard-indicator GNOME extension.
+#
+#   kbd-internal-toggle enable  ["Device Name"]
+#   kbd-internal-toggle disable ["Device Name"]
+#   kbd-internal-toggle status  ["Device Name"]
+#
+# Uses the kernel's input-inhibit interface. Writing 1 to a device's
+# `inhibited` attribute makes the input core close it and stop delivering its
+# events; the device stays enumerated, so nothing re-probes and the index
+# doesn't churn. Writing 0 brings it back. Nothing persists across a reboot.
+#
+# The obvious alternative -- unbinding atkbd from serio0 -- does NOT work. The
+# serio bus ships with bind_mode=auto, so the core re-probes the port the moment
+# the driver lets go and atkbd re-binds about a second later. The giveaway is
+# the input device returning under a new inputN index.
+
+set -eu
+
+ACTION="${1:-status}"
+NAME="${2:-AT Translated Set 2 keyboard}"
+
+if [ -z "$NAME" ]; then
+  echo "empty device name" >&2
+  exit 2
+fi
+
+# Resolve name -> sysfs nodes. Paths only ever come from the glob and are
+# compared against file *contents*, so $NAME can't traverse anywhere.
+#
+# Word-splitting $targets below is safe: the paths are all /sys/class/input/inputN.
+targets=""
+matched=0
+for dir in /sys/class/input/input*/; do
+  [ -r "$dir/name" ] || continue
+  [ -e "$dir/inhibited" ] || continue
+  [ "$(cat "$dir/name")" = "$NAME" ] || continue
+  matched=1
+
+  # Only touch things that look like keyboards. EV_REP (bit 20) means key
+  # autorepeat, which separates a keyboard from a touchpad or mouse -- those
+  # report EV_KEY too. One physical keyboard usually exposes several
+  # interfaces and only some are keyboard-ish, so skip rather than bail.
+  ev="$(cat "$dir/capabilities/ev" 2>/dev/null || echo 0)"
+  case "$ev" in
+    *\ *) ev="${ev##* }" ;; # keep the low word if the mask is split
+  esac
+  [ "$((0x$ev & 0x100000))" -ne 0 ] || continue
+
+  targets="$targets $dir"
+done
+
+if [ -z "$targets" ]; then
+  if [ "$matched" -eq 1 ]; then
+    echo "refusing '$NAME': no keyboard interface (none report EV_REP)" >&2
+    exit 4
+  fi
+  echo "no input device named '$NAME'" >&2
+  exit 3
+fi
+
+case "$ACTION" in
+  status)
+    for dir in $targets; do
+      if [ "$(cat "$dir/inhibited")" = "1" ]; then echo disabled; else echo enabled; fi
+      break
+    done
+    ;;
+  disable)
+    for dir in $targets; do printf 1 > "$dir/inhibited"; done
+    echo disabled
+    ;;
+  enable)
+    for dir in $targets; do printf 0 > "$dir/inhibited"; done
+    echo enabled
+    ;;
+  *)
+    echo "usage: $0 {enable|disable|status} [device name]" >&2
+    exit 64
+    ;;
+esac

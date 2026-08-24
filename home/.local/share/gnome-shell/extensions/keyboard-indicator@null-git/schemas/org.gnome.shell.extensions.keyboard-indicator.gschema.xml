@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.keyboard-indicator"
+          path="/org/gnome/shell/extensions/keyboard-indicator/">
+    <key name="auto-disable" type="b">
+      <default>false</default>
+      <summary>Disable the built-in keyboard when an external one is connected</summary>
+    </key>
+    <key name="internal-device-name" type="s">
+      <default>'AT Translated Set 2 keyboard'</default>
+      <summary>Name the kernel reports for the built-in keyboard</summary>
+      <description>
+        Matched exactly against /sys/class/input/inputN/name. Identifies both
+        which device to inhibit and which keyboards count as external.
+      </description>
+    </key>
+  </schema>
+</schemalist>

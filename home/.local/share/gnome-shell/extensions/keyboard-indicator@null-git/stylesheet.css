@@ -1,0 +1,24 @@
+.keyboard-indicator-label {
+  margin-left: 4px;
+  max-width: 12em;
+}
+
+.keyboard-indicator-icon-muted {
+  opacity: 0.55;
+}
+
+.keyboard-indicator-state {
+  font-size: 0.85em;
+  padding-left: 2em;
+  opacity: 0.7;
+}
+
+.keyboard-indicator-disabled,
+.keyboard-indicator-absent {
+  opacity: 0.45;
+}
+
+.keyboard-indicator-warning {
+  font-size: 0.9em;
+  color: #f57900;
+}
