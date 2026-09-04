@@ -1,12 +1,12 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { filesize } from 'filesize';
-import { minify } from 'terser';
-import { execa,  execaCommand, $ } from 'execa';
+import fs from "node:fs";
+import path from "node:path";
+import { filesize } from "filesize";
+import { minify } from "terser";
+import { execa, execaCommand, $ } from "execa";
 
 const [, , subPath] = process.argv;
 
-const options =  {
+const options = {
   parse: {
     html5_comments: false,
   },
@@ -34,16 +34,16 @@ const options =  {
 };
 
 const getSize = (file) => {
-  const {size} = fs.statSync(file)
-  return filesize(size)
-}
+  const { size } = fs.statSync(file);
+  return filesize(size);
+};
 
-const files = fs.globSync(path.join(process.cwd(), subPath || '.', '/**/*.js'))
+const files = fs.globSync(path.join(process.cwd(), subPath || ".", "/**/*.js"));
 
 for (let file of files) {
-  console.log(`Minifying ${file} (${getSize(file)})`)
+  console.log(`Minifying ${file} (${getSize(file)})`);
 
-  const terserResult = await minify(fs.readFileSync(file, 'utf8'), options)
+  const terserResult = await minify(fs.readFileSync(file, "utf8"), options);
 
   if (terserResult.error) {
     throw terserResult.error;
@@ -53,14 +53,14 @@ for (let file of files) {
   let gz = `${min}.gz`;
   let br = `${min}.br`;
 
-  fs.writeFileSync(min, terserResult.code, 'utf8');
-  await execa({stdout: {file: gz}})`gzip -c ${min}`;
+  fs.writeFileSync(min, terserResult.code, "utf8");
+  await execa({ stdout: { file: gz } })`gzip -c ${min}`;
   await execa`brotli ${min} --quality=11 --output=${br}`;
 }
 
 /**
  * Run via:
- * ❯ node ~/Development/NullVoxPopuli/dotfiles/home/bin-js/compress.js ./dist/ 
+ * ❯ node ~/Development/NullVoxPopuli/dotfiles/home/bin-js/compress.js ./dist/
  *
  * See sizes via:
  * ❯ du --depth 1 --reverse --apparent-size --no-percent-bars --filter ".js$" ./dist/

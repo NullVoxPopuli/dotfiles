@@ -112,6 +112,8 @@ vim.lsp.config('*', {
 
 
 require("mason").setup {
+  firewall = { enabled = true },
+  log_level = vim.log.levels.ERROR,
   ui = {
     icons = {
       server_installed = "✓",
@@ -148,7 +150,6 @@ require("mason-lspconfig").setup {
     -- Linting / Formatting
     -- null_ls not needed for these
     "eslint",
-    "stylelint_lsp"
   },
   automatic_enable = false,
   automatic_installation = false

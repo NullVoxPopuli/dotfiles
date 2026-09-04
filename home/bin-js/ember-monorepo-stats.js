@@ -36,9 +36,7 @@ function containsEmbroider(manifest) {
     ...Object.keys(manifest.dependencies ?? {}),
   ];
 
-  return (
-    deps.includes("@embroider/webpack") || deps.includes("@embroider/vite")
-  );
+  return deps.includes("@embroider/webpack") || deps.includes("@embroider/vite");
 }
 
 for await (let workspace of await project.eachWorkspace()) {
