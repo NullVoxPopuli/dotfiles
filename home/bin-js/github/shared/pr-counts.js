@@ -1,4 +1,4 @@
-import { readCache, todayStr, writeCache } from "../../shared/cache.js";
+import { getCacheDate, readCache, writeCache } from "../../shared/cache.js";
 import { monthOf, since } from "../../shared/months.js";
 import { octokit } from "./octokit.js";
 
@@ -7,7 +7,7 @@ import { octokit } from "./octokit.js";
  * The window start is part of the path so a change to the window never
  * reuses stale data.
  */
-const cacheDir = `github/${todayStr}_since-${since.toISOString().slice(0, 7)}`;
+const cacheDir = () => `github/${getCacheDate()}_since-${since.toISOString().slice(0, 7)}`;
 
 /**
  * Monthly created and merged PR counts for one repo over both chart windows.
@@ -19,7 +19,7 @@ const cacheDir = `github/${todayStr}_since-${since.toISOString().slice(0, 7)}`;
  * @returns {Promise<{ createdCounts: Record<string, number>, mergedCounts: Record<string, number> }>}
  */
 export async function fetchRepoPRCounts(owner, repo) {
-  const cachePath = `${cacheDir}/${owner}__${repo}.json`;
+  const cachePath = `${cacheDir()}/${owner}__${repo}.json`;
   const cached = readCache(cachePath);
 
   if (cached) {

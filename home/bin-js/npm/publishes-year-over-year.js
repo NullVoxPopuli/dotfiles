@@ -6,23 +6,44 @@
  *   npm_<keyword>_active_packages_per_month.png  packages with at least one release
  *   npm_<keyword>_downloads_per_month.png        downloads summed over all packages
  *
- * Usage: node publishes-year-over-year.js [keyword]
+ * Usage: node publishes-year-over-year.js [keyword] [--cache-date YYYY-MM-DD|latest] [--exclude-scoped]
  *        KEYWORD=some-keyword node publishes-year-over-year.js
+ *
+ * The download counts for the current window are refetched once a day and
+ * take a while under the API's rate limit. Pass `--cache-date latest` to
+ * reuse the most recent day's data instead.
+ *
+ * `--exclude-scoped` leaves out "@scope/name" packages. Their downloads
+ * must be fetched one request at a time, so this also makes a fresh run
+ * many times faster. Output filenames gain an "_unscoped" suffix.
  */
 import { COLORS, writeYearOverYearChart } from "../shared/chart.js";
+import { parseCli } from "../shared/cli.js";
 import { mapConcurrent } from "../shared/concurrency.js";
 import { currentWindow, monthOf, since } from "../shared/months.js";
 import { fetchDownloadTotals } from "./shared/downloads.js";
 import { fetchReleaseTimes } from "./shared/release-times.js";
 import { searchPackagesByKeyword } from "./shared/search.js";
 
-const [, , fromArgs] = process.argv;
-const keyword = fromArgs ?? process.env.KEYWORD ?? "ember-addon";
+const { target, values } = parseCli({
+  cacheScope: "npm",
+  options: { "exclude-scoped": { type: "boolean" } },
+});
+const keyword = target ?? process.env.KEYWORD ?? "ember-addon";
+const excludeScoped = values["exclude-scoped"] ?? false;
+
+const subject = `npm "${keyword}" packages${excludeScoped ? " (unscoped only)" : ""}`;
+const outputPrefix = `npm_${keyword}${excludeScoped ? "_unscoped" : ""}`;
 
 const CONCURRENCY = 8;
 const PROGRESS_EVERY = 100;
 
-const allPackages = await searchPackagesByKeyword(keyword);
+const found = await searchPackagesByKeyword(keyword);
+const allPackages = excludeScoped ? found.filter((pkg) => !pkg.name.startsWith("@")) : found;
+
+if (excludeScoped) {
+  console.log(`Excluding ${found.length - allPackages.length} scoped packages.`);
+}
 
 // A package can only have a release inside the chart windows if its registry
 // document was modified inside them. Downloads, though, accrue to every package.
@@ -78,19 +99,19 @@ const daysWithDownloadData = downloads.lastDayWithDownloads?.startsWith(thisMont
 
 await Promise.all([
   writeYearOverYearChart({
-    title: `npm "${keyword}" packages: releases per month`,
+    title: `${subject}: releases per month`,
     yAxisLabel: "Number of releases",
     series: [{ label: "Releases", rgb: COLORS.blue, counts: releaseCounts }],
-    outputPath: `npm_${keyword}_releases_per_month.png`,
+    outputPath: `${outputPrefix}_releases_per_month.png`,
   }),
   writeYearOverYearChart({
-    title: `npm "${keyword}" packages: packages with a release per month`,
+    title: `${subject}: packages with a release per month`,
     yAxisLabel: "Number of packages",
     series: [{ label: "Active packages", rgb: COLORS.green, counts: packageCounts }],
-    outputPath: `npm_${keyword}_active_packages_per_month.png`,
+    outputPath: `${outputPrefix}_active_packages_per_month.png`,
   }),
   writeYearOverYearChart({
-    title: `npm "${keyword}" packages: downloads per month`,
+    title: `${subject}: downloads per month`,
     yAxisLabel: "Downloads",
     series: [
       {
@@ -100,7 +121,7 @@ await Promise.all([
         daysElapsed: daysWithDownloadData,
       },
     ],
-    outputPath: `npm_${keyword}_downloads_per_month.png`,
+    outputPath: `${outputPrefix}_downloads_per_month.png`,
   }),
 ]);
 

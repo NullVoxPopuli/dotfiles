@@ -2,14 +2,14 @@
  * Chart PRs created and merged per month across every repo in an org,
  * this year against last year.
  *
- * Usage: GITHUB_AUTH=token node prs-over-year-for-organization.js org-name
+ * Usage: GITHUB_AUTH=token node prs-over-year-for-organization.js org-name [--cache-date YYYY-MM-DD|latest]
  *        GITHUB_AUTH=token ORG=org-name node prs-over-year-for-organization.js
  */
+import { parseCli } from "../shared/cli.js";
 import { writeAggregateChart } from "./shared/aggregate.js";
 import { octokit } from "./shared/octokit.js";
 
-const [, , fromArgs] = process.argv;
-const orgName = fromArgs ?? process.env.ORG;
+const orgName = parseCli({ cacheScope: "github" }).target ?? process.env.ORG;
 
 if (!orgName) {
   console.error("Error: Provide a target GitHub Organization via ORG env var or CLI arg.");

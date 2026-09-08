@@ -1,4 +1,4 @@
-import { readCache, todayStr, writeCache } from "../../shared/cache.js";
+import { getCacheDate, readCache, writeCache } from "../../shared/cache.js";
 
 /**
  * The registry's own search endpoint cannot page past 5000 results and
@@ -75,7 +75,7 @@ async function collect(keyword, fromMs, toMs, into) {
  * @returns {Promise<Array<{ name: string, modified: number }>>} `modified` is a ms timestamp
  */
 export async function searchPackagesByKeyword(keyword) {
-  const cachePath = `npm/search/${todayStr}/${keyword}.all.json`;
+  const cachePath = `npm/search/${getCacheDate()}/${keyword}.all.json`;
   const cached = readCache(cachePath);
 
   if (cached) {

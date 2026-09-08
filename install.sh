@@ -93,9 +93,11 @@ ln -s $PWD/home/.claude/settings.json ~/.claude/settings.json
 ln -s $PWD/home/.claude/memory ~/.claude/memory
 
 # skills are shared with opencode, so they live under .config/opencode
+rm -rf ~/.claude/CLAUDE.md
 rm -rf ~/.claude/skills
 rm -rf ~/.claude/output-styles
 ln -s $PWD/home/.claude/skills ~/.claude/skills
+ln -s $PWD/home/.claude/CLAUDE.md ~/.claude/CLAUDE.md
 ln -s $PWD/home/.claude/output-styles ~/.claude/output-styles
 
 ###############################################

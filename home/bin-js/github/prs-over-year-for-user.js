@@ -2,14 +2,14 @@
  * Chart PRs created and merged per month across every repo a user owns,
  * this year against last year.
  *
- * Usage: GITHUB_AUTH=token node prs-over-year-for-user.js username
- *        GITHUB_AUTH=token USER=username node prs-over-year-for-user.js
+ * Usage: GITHUB_AUTH=token node prs-over-year-for-user.js username [--cache-date YYYY-MM-DD|latest]
+ *        GITHUB_AUTH=token USER_NAME=username node prs-over-year-for-user.js
  */
+import { parseCli } from "../shared/cli.js";
 import { writeAggregateChart } from "./shared/aggregate.js";
 import { octokit } from "./shared/octokit.js";
 
-const [, , fromArgs] = process.argv;
-const username = fromArgs ?? process.env.USER_NAME;
+const username = parseCli({ cacheScope: "github" }).target ?? process.env.USER_NAME;
 
 if (!username) {
   console.error("Error: Provide a target GitHub user via USER_NAME env var or CLI arg.");

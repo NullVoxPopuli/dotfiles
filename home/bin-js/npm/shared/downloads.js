@@ -1,4 +1,4 @@
-import { readCache, writeCache } from "../../shared/cache.js";
+import { getCacheDate, readCache, writeCache } from "../../shared/cache.js";
 import { mapConcurrent } from "../../shared/concurrency.js";
 import { fetchWithRetry } from "../../shared/fetch-retry.js";
 import { currentWindow, daysInMonth, monthOf, previousWindow } from "../../shared/months.js";
@@ -11,14 +11,17 @@ const BULK_LIMIT = 128;
 const CONCURRENCY = 4;
 const PROGRESS_EVERY = 25;
 
-/** Inclusive YYYY-MM-DD range covering a window, capped at today. */
+/**
+ * Inclusive YYYY-MM-DD range covering a window, capped at the cache date.
+ * The cache date is today unless the run is reusing an earlier day's cache.
+ */
 function rangeFor(window) {
   const first = window[0];
   const last = window.at(-1);
   const lastDay = `${last}-${String(daysInMonth(last)).padStart(2, "0")}`;
-  const today = new Date().toISOString().slice(0, 10);
+  const cap = getCacheDate();
 
-  return { start: `${first}-01`, end: lastDay < today ? lastDay : today };
+  return { start: `${first}-01`, end: lastDay < cap ? lastDay : cap };
 }
 
 /** Collapse one package's daily counts into monthly totals. */
