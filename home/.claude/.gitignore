@@ -1,5 +1,7 @@
 backups/
 cache/
+paste-cache/
+tasks/
 downloads/
 file-history/
 plugins/

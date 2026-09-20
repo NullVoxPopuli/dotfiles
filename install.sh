@@ -87,6 +87,7 @@ ln -s $PWD/home/.config/ghostty ~/.config/ghostty
 ln -s $PWD/home/.config/opencode ~/.config/opencode
 
 # Why does claude gotta be weird
+# https://github.com/anthropics/claude-code/issues/1455
 rm -rf ~/.claude/memory
 mkdir -p ~/.claude/memory
 ln -s $PWD/home/.claude/settings.json ~/.claude/settings.json

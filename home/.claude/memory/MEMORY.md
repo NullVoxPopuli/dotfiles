@@ -6,3 +6,4 @@
 - [url-shortener stack](url-shortener-stack.md) — pnpm monorepo: AdonisJS 7 api + Ember 7 web-client, JSON:API, GitHub OAuth, Stripe, subdomain dev setup
 - [Stripe quota work](stripe-quota-work.md) — WIP branch `stripe`: tiered plans + monthly link quotas; known rough edges as of Aug 2026
 - [New Ember projects use ember.nvp](new-ember-projects-use-ember-nvp.md) — scaffold all new Ember apps AND libraries with the ember.nvp generator, not stock blueprints
+- [Ember deprecation CI variants](ember-deprecation-ci-variants.md) — run ALL_DEPRECATIONS_ENABLED + OVERRIDE_DEPRECATION_VERSION locally when adding a deprecation
