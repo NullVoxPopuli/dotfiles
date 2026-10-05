@@ -28,6 +28,17 @@ function werk() {
   git switch -c $branchName $upstream
 }
 
+function werk-done() {
+  local upstream=$(git symbolic-ref refs/remotes/origin/HEAD --short)
+  local branchName="$(echo "$upstream" | sed -E 's/[^/]+\///')"
+
+  branchName="nvp/$branchName/tmp/$(uuid)"
+
+  echo "Switching to placeholder branch, $branchName, off of $upstream"
+
+  git switch -c "$branchName" "$upstream"
+}
+
 # Interactive git checkout (recent branches)
 function gcr() {
   if [[ -n "$1" ]]; then
